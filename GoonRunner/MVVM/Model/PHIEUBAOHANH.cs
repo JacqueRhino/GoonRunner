@@ -20,11 +20,11 @@ namespace GoonRunner.MVVM.Model
             this.CHITIETBAOHANHs = new HashSet<CHITIETBAOHANH>();
         }
     
-        public string MaBH { get; set; }
+        public int MaBH { get; set; }
         public string HoKH { get; set; }
         public string TenKH { get; set; }
         public Nullable<System.DateTime> NgayMuaHang { get; set; }
-        public string MaNV { get; set; }
+        public int MaNV { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETBAOHANH> CHITIETBAOHANHs { get; set; }

@@ -15,7 +15,7 @@
                                      FontFamily="../../Assets/Fonts/#JetBrains Mono"
                                      FontWeight="Light"
                                      Padding="14,5,5,5"
-                                     Foreground="#A89984"
+                                     Foreground="#7C6F64"
                                      x:Name="inputBox"/>
 
                             <Rectangle Grid.Row="0" Grid.ColumnSpan="2" Height="1" Width="7" VerticalAlignment="Top" HorizontalAlignment="left" Fill="#7C6F64"/>

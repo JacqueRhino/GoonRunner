@@ -20,13 +20,13 @@ namespace GoonRunner.MVVM.Model
             this.CHITIETHOADONs = new HashSet<CHITIETHOADON>();
         }
     
-        public string MaHD { get; set; }
-        public string MaKH { get; set; }
+        public int MaHD { get; set; }
+        public int MaKH { get; set; }
         public string HoKH { get; set; }
         public string TenKH { get; set; }
         public string SdtKH { get; set; }
         public string DiaChi { get; set; }
-        public string MaNV { get; set; }
+        public int MaNV { get; set; }
         public string HoNV { get; set; }
         public string TenNV { get; set; }
         public Nullable<System.DateTime> NgayMuaHang { get; set; }

@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace GoonRunner.MVVM.ViewModel
 {
@@ -10,14 +11,15 @@ namespace GoonRunner.MVVM.ViewModel
         public ICommand HomeViewCommand { get; set; }
         public ICommand NhanVienViewCommand { get; set; }
         public ICommand SignOutCommand { get; set; }
+        public ICommand CollapseRadioButtonCommand { get; set; }
         public HomeViewModel HomeVM { get; set; }
         public NhanVienViewModel NhanVienVM { get; set; }
         public SidebarNhanVienViewModel SidebarNhanVienVM { get; set; }
         private object _currentView;
         private string _displayname;
-        public string DisplayName { get => _displayname; set { _displayname = value; OnPropertyChanged(); } }
+        public string DisplayName { get { return _displayname; } set { _displayname = value; OnPropertyChanged(); } }
         private string _privilege;
-        public string Privilege { get => _privilege; set { _privilege = value; OnPropertyChanged(); } }
+        public string Privilege { get { return _privilege; } set { _privilege = value; OnPropertyChanged(); } }
         public object CurrentView
         {
             get { return _currentView; }
@@ -92,6 +94,7 @@ namespace GoonRunner.MVVM.ViewModel
         {
             LogIn loginWindow = new LogIn();
             var loginVM = loginWindow.DataContext as LoginViewModel; // Gọi LoginViewModel
+
             DisplayName = loginVM.DisplayName; // Lấy UserName
             Privilege = loginVM.Privilege; // Lấy Privilege
             HomeVM = new HomeViewModel();
@@ -115,7 +118,15 @@ namespace GoonRunner.MVVM.ViewModel
                 CurrentSidebarView = SidebarNhanVienVM;
                 EnableSidebar();
             });
-            
+
+            if (Privilege == "Admin")
+            {
+                CollapseRadioButtonCommand = new RelayCommand<RadioButton>((p) => true, (p) => 
+                {
+                    p.Visibility = Visibility.Collapsed;
+                });
+            }
+
             SignOutCommand = new RelayCommand<Window>((p) => true, (p) =>
             {
                 p.Hide();

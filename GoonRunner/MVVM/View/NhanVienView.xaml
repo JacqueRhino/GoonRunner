@@ -1,12 +1,140 @@
 <UserControl x:Class="GoonRunner.MVVM.View.NhanVienView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:GoonRunner.MVVM.View"
+             xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel"
+             d:DataContext="{d:DesignInstance Type=viewmodel:NhanVienViewModel}"
+             DataContext="{StaticResource NhanVienVM}"
              mc:Ignorable="d"
-             d:DesignHeight="590" d:DesignWidth="755">
+             Height="593" Width="1000"
+             MinHeight="500" MinWidth="700">
     <Grid>
-        <TextBlock Foreground="Black">NhanVien</TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="1" FontSize="24"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="#7C6F64" 
+                       FontFamily="../../Assets/Fonts/#JetBrains Mono"
+                       FontWeight="Medium" >
+                        Tất Cả Nhân Viên
+            </TextBlock>
+            <StackPanel Grid.Column="2" Margin="0,0,20,0"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <Button Style="{StaticResource NavButton}" >
+                    <Border CornerRadius="5" Background="#427B55" Padding="5">
+                        <ui:SymbolIcon Symbol="ArrowCircleLeft20" Foreground="#F9F5D7" FontSize="24"/>
+                    </Border>
+                </Button>
+                <Button Style="{StaticResource NavButton}">
+                    <Border CornerRadius="5" Background="#427B55" Padding="5">
+                        <ui:SymbolIcon Symbol="ArrowSortDownLines20" Foreground="#F9F5D7" FontSize="24"/>
+                    </Border>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <ListView Grid.Row="1"
+                  FontFamily="../../Assets/Fonts/#JetBrains Mono" 
+                  FontWeight="Medium"
+                  ItemsSource="{Binding NhanVienList}"
+                  SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Center"
+                  BorderBrush="#F9F5D7" 
+                  Width="960" Height="542">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Mã NV"  Width="50" DisplayMemberBinding="{Binding MaNV}" />
+                    <GridViewColumn Header="Thông Tin"  Width="200" DisplayMemberBinding="{Binding TenNV}"/>
+                    <GridViewColumn Header="Phòng Ban" Width="90" DisplayMemberBinding="{Binding MaPB}"/>
+                    <GridViewColumn Header="Giới Tính" Width="80" DisplayMemberBinding="{Binding GioiTinh}"/>
+                    <GridViewColumn Header="Số Điện Thoại" Width="190" DisplayMemberBinding="{Binding SdtNV}"/>
+                    <GridViewColumn Header="Địa Chỉ" Width="190" DisplayMemberBinding="{Binding DiaChiNV}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
+
+
+    <!--<Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.RowSpan="2" Margin="0,0,35,10" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" >
+                    <TextBlock FontSize="24"  
+                               Margin="301,0,-141,0" 
+                               Foreground="#7C6F64" 
+                               FontFamily="../../Assets/Fonts/#JetBrains Mono"
+                               FontWeight="Medium" >
+                        Tất Cả Nhân Viên
+                    </TextBlock>
+                </Grid>
+                <Grid Grid.Column="1" >
+                    <StackPanel Orientation="Horizontal" Margin="540,0,0,0"  >
+                        <Button Style="{StaticResource NavButton}" >
+                            <StackPanel Background="#FF2D9E2B">
+                                <ui:SymbolIcon Symbol="Settings32" FontSize="24"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource NavButton}">
+                            <StackPanel Background="#FF2D9E2B">
+                                <ui:SymbolIcon Symbol="DualScreenStatusBar24" FontSize="24"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid  Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <ListView Grid.Column="0"
+                          FontFamily="../../Assets/Fonts/#JetBrains Mono" 
+                          FontWeight="Medium"
+                          ItemsSource="{Binding NhanVienList}"
+                          SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}"
+                          VerticalAlignment="Top" 
+                          BorderBrush="#F9F5D7" 
+                          Grid.ColumnSpan="2" 
+                          Width="960" Height="542" 
+                          Margin="0,41,-278,0" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Mã NV"  Width="50" DisplayMemberBinding="{Binding MaNV}" />
+                            <GridViewColumn Header="Thông Tin"  Width="200" DisplayMemberBinding="{Binding TenNV}"/>
+                            <GridViewColumn Header="Phòng Ban" Width="170" DisplayMemberBinding="{Binding PHONGBAN.TenPB}"/>
+                            <GridViewColumn Header="Giới Tính" Width="80" DisplayMemberBinding="{Binding GioiTinh}"/>
+                            <GridViewColumn Header="Số Điện Thoại" Width="190" DisplayMemberBinding="{Binding SdtNV}"/>
+                            <GridViewColumn Header="Địa Chỉ" Width="190" DisplayMemberBinding="{Binding DiaChiNV}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </Grid>
+    </Grid> -->
 </UserControl>

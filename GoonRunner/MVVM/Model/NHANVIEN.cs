@@ -24,7 +24,7 @@ namespace GoonRunner.MVVM.Model
             this.PHIEUNHAPHANGs = new HashSet<PHIEUNHAPHANG>();
         }
     
-        public string MaNV { get; set; }
+        public int MaNV { get; set; }
         public string HoNV { get; set; }
         public string TenNV { get; set; }
         public string GioiTinh { get; set; }
@@ -34,7 +34,7 @@ namespace GoonRunner.MVVM.Model
         public string CMND { get; set; }
         public string ChucVu { get; set; }
         public Nullable<int> Luong { get; set; }
-        public string MaPB { get; set; }
+        public int MaPB { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ACCNHANVIEN> ACCNHANVIENs { get; set; }
