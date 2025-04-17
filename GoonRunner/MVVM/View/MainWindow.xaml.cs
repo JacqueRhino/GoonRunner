@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Design;
+﻿using GoonRunner.MVVM.ViewModel;
+using System.ComponentModel.Design;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;

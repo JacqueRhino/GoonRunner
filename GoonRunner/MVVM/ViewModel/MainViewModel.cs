@@ -3,6 +3,7 @@ using System.Windows.Input;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using System;
 
 namespace GoonRunner.MVVM.ViewModel
 {
@@ -11,7 +12,6 @@ namespace GoonRunner.MVVM.ViewModel
         public ICommand HomeViewCommand { get; set; }
         public ICommand NhanVienViewCommand { get; set; }
         public ICommand SignOutCommand { get; set; }
-        public ICommand CollapseRadioButtonCommand { get; set; }
         public HomeViewModel HomeVM { get; set; }
         public NhanVienViewModel NhanVienVM { get; set; }
         public SidebarNhanVienViewModel SidebarNhanVienVM { get; set; }
@@ -31,7 +31,6 @@ namespace GoonRunner.MVVM.ViewModel
         }
         
         private object _currentSidebarView;
-
         public object CurrentSidebarView
         {
             get { return _currentSidebarView; }
@@ -43,7 +42,6 @@ namespace GoonRunner.MVVM.ViewModel
         }
         
         private bool _sidebarButtonEnabled;
-
         public bool SidebarButtonEnabled
         {
             get { return _sidebarButtonEnabled; }
@@ -55,7 +53,6 @@ namespace GoonRunner.MVVM.ViewModel
         }
 
         private int _sidebarLeftGapWidth;
-
         public int SidebarLeftGapWidth
         {
             get { return _sidebarLeftGapWidth; }
@@ -67,7 +64,6 @@ namespace GoonRunner.MVVM.ViewModel
         }
 
         private int _sidebarWidth;
-
         public int SidebarWidth
         {
             get { return _sidebarWidth; }
@@ -79,7 +75,6 @@ namespace GoonRunner.MVVM.ViewModel
         }
 
         private string _split2Enabled;
-
         public string Split2Enabled
         {
             get { return _split2Enabled; }
@@ -94,7 +89,6 @@ namespace GoonRunner.MVVM.ViewModel
         {
             LogIn loginWindow = new LogIn();
             var loginVM = loginWindow.DataContext as LoginViewModel; // Gọi LoginViewModel
-
             DisplayName = loginVM.DisplayName; // Lấy UserName
             Privilege = loginVM.Privilege; // Lấy Privilege
             HomeVM = new HomeViewModel();
@@ -119,24 +113,20 @@ namespace GoonRunner.MVVM.ViewModel
                 EnableSidebar();
             });
 
-            if (Privilege == "Admin")
-            {
-                CollapseRadioButtonCommand = new RelayCommand<RadioButton>((p) => true, (p) => 
-                {
-                    p.Visibility = Visibility.Collapsed;
-                });
-            }
-
-            SignOutCommand = new RelayCommand<Window>((p) => true, (p) =>
-            {
-                p.Hide();
-                loginVM.UserName = "";
-                loginVM.Password = "";
-                loginVM.ErrorMassage = "";
-                loginWindow.Show();
-            });
+            SignOutCommand = new RelayCommand<Window>((p) => true, (p) => { SignOut(p); });
         }
 
+        private void SignOut(Window p)
+        {
+            LogIn loginWindow = new LogIn();
+            var loginVM = loginWindow.DataContext as LoginViewModel; // Gọi LoginViewModel
+            loginVM.UserName = "";
+            loginVM.Password = ""; // Khi thực hiện đăng xuất sẽ reset lại ô username và password
+            loginVM.ErrorMassage = "";
+            CurrentView = null;
+            loginWindow.Show();
+            p.Hide();
+        }
         private void EnableSidebar()
         {
             SidebarButtonEnabled = true;

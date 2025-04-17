@@ -6,11 +6,6 @@ using System.Windows.Input;
 using System.Windows;
 using System.Windows.Controls;
 using GoonRunner.MVVM.View;
-using System.Data.Entity.Core.Objects;
-using System.Runtime.Remoting.Contexts;
-using System.Windows.Threading;
-using System.Data.SqlClient;
-using System;
 
 namespace GoonRunner.MVVM.ViewModel
 {
@@ -38,7 +33,7 @@ namespace GoonRunner.MVVM.ViewModel
         public LoginViewModel()
         {
             IsLogin = false;
-            LoginCommand = new RelayCommand<Window>((p) => true, Login);
+            LoginCommand = new RelayCommand<Window>((p) => true, (p) => Login(p));
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => true, (p) => { Password = p.Password; });
             ForgotPasswordCommand = new RelayCommand<Window>((p) => true, (p) => 
             {
@@ -81,9 +76,24 @@ namespace GoonRunner.MVVM.ViewModel
             if (CheckAccount())
             {
                 IsLogin = true;
-                p.Hide();
                 MainWindow mainwindow = new MainWindow();
+                var MainVM = mainwindow.DataContext as MainViewModel;
+                MainVM.DisplayName = DisplayName; // Gắn DisplayName qua bên MainWindow
+                MainVM.Privilege = Privilege; // Gắn Privilege qua bên MainWindow
+
+                // Xử lý ẩn hiện danh mục dựa vào quyền của user
+                if(Privilege == "Nhân viên")
+                {
+                    mainwindow.NhanVienRadioButton.Visibility = Visibility.Collapsed;
+                    mainwindow.DonHangRadioButton.Visibility = Visibility.Collapsed;
+                }
+                else if (Privilege == "Admin")
+                {
+                    mainwindow.TrangChuRadioButton.Visibility = Visibility.Collapsed;
+                }
+
                 mainwindow.Show();
+                p.Hide();
             }
             else
             {
@@ -107,6 +117,7 @@ namespace GoonRunner.MVVM.ViewModel
                     return false;
             }
         }
+
         private static string MD5Hash(string input)
         {
             StringBuilder hash = new StringBuilder();
