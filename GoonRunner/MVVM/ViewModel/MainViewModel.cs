@@ -113,7 +113,14 @@ namespace GoonRunner.MVVM.ViewModel
                 EnableSidebar();
             });
 
-            SignOutCommand = new RelayCommand<Window>((p) => true, (p) => { SignOut(p); });
+            SignOutCommand = new RelayCommand<Window>((p) => true, (p) => 
+            {
+                MessageBoxResult MessageResult = MessageBox.Show("Bạn có muốn đăng xuất?", "Thông báo", MessageBoxButton.YesNo);
+                if (MessageResult == MessageBoxResult.Yes)
+                    SignOut(p);
+                else
+                    return;
+            });
         }
 
         private void SignOut(Window p)
@@ -123,7 +130,7 @@ namespace GoonRunner.MVVM.ViewModel
             loginVM.UserName = "";
             loginVM.Password = ""; // Khi thực hiện đăng xuất sẽ reset lại ô username và password
             loginVM.ErrorMassage = "";
-            CurrentView = null;
+            CurrentView = HomeVM;
             loginWindow.Show();
             p.Hide();
         }

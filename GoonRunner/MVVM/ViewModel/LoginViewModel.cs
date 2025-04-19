@@ -82,16 +82,47 @@ namespace GoonRunner.MVVM.ViewModel
                 MainVM.Privilege = Privilege; // Gắn Privilege qua bên MainWindow
 
                 // Xử lý ẩn hiện danh mục dựa vào quyền của user
-                if(Privilege == "Nhân viên")
+                switch(Privilege)
                 {
-                    mainwindow.NhanVienRadioButton.Visibility = Visibility.Collapsed;
-                    mainwindow.DonHangRadioButton.Visibility = Visibility.Collapsed;
+                    case "Nhân viên bán hàng":
+                        mainwindow.NhanVienRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.KhuyenMaiRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.BaoHanhRadioButton.Visibility = Visibility.Collapsed;
+                        break;
+                    case "Nhân viên kế toán":
+                        mainwindow.NhanVienRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.KhachHangRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.SanPhamRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.KhuyenMaiRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.BaoHanhRadioButton.Visibility = Visibility.Collapsed;
+                        break;
+                    case "Nhân viên chăm sóc khách hàng":
+                        mainwindow.NhanVienRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.DonHangRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.KhuyenMaiRadioButton.Visibility= Visibility.Collapsed;
+                        mainwindow.BaoHanhRadioButton.Visibility= Visibility.Collapsed;
+                        break;
+                    case "Nhân viên kiểm kho":
+                        mainwindow.NhanVienRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.KhachHangRadioButton.Visibility= Visibility.Collapsed;
+                        mainwindow.DonHangRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.KhuyenMaiRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.BaoHanhRadioButton.Visibility = Visibility.Collapsed;
+                        break;
+                    case "Nhân viên kỹ thuật":
+                        mainwindow.NhanVienRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.KhachHangRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.SanPhamRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.DonHangRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.KhuyenMaiRadioButton.Visibility = Visibility.Collapsed;
+                        break;
+                    case "Admin":
+                        mainwindow.KhachHangRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.SanPhamRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.DonHangRadioButton.Visibility = Visibility.Collapsed;
+                        mainwindow.BaoHanhRadioButton.Visibility = Visibility.Collapsed;
+                        break;
                 }
-                else if (Privilege == "Admin")
-                {
-                    mainwindow.TrangChuRadioButton.Visibility = Visibility.Collapsed;
-                }
-
                 mainwindow.Show();
                 p.Hide();
             }

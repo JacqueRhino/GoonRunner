@@ -181,7 +181,7 @@
                         </RadioButton.Resources>
                     </RadioButton>
 
-                    <RadioButton>
+                    <RadioButton Name="SanPhamRadioButton">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <ui:SymbolIcon Symbol="Box20" FontSize="28"/>
                             <TextBlock FontFamily="../../Assets/Fonts/#JetBrains Mono" 
@@ -195,7 +195,7 @@
                         </RadioButton.Resources>
                     </RadioButton>
 
-                    <RadioButton>
+                    <RadioButton Name="KhachHangRadioButton">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <ui:SymbolIcon Symbol="People20" FontSize="28"/>
                             <TextBlock FontFamily="../../Assets/Fonts/#JetBrains Mono" 
@@ -209,7 +209,7 @@
                         </RadioButton.Resources>
                     </RadioButton>
 
-                    <RadioButton>
+                    <RadioButton Name="KhuyenMaiRadioButton">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <ui:SymbolIcon Symbol="Tag20" FontSize="28"/>
                             <TextBlock FontFamily="../../Assets/Fonts/#JetBrains Mono" 
@@ -223,7 +223,7 @@
                         </RadioButton.Resources>
                     </RadioButton>
 
-                    <RadioButton>
+                    <RadioButton Name="BaoHanhRadioButton">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <ui:SymbolIcon Symbol="Wrench20" FontSize="28"/>
                             <TextBlock FontFamily="../../Assets/Fonts/#JetBrains Mono" 
