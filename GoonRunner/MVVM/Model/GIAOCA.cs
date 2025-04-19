@@ -14,8 +14,8 @@ namespace GoonRunner.MVVM.Model
     
     public partial class GIAOCA
     {
-        public string MaGC { get; set; }
-        public string MaNV { get; set; }
+        public int MaGC { get; set; }
+        public int MaNV { get; set; }
         public Nullable<System.DateTime> NgayLamViec { get; set; }
         public Nullable<System.DateTime> NgayTrongTuan { get; set; }
         public Nullable<int> CaLamViec { get; set; }

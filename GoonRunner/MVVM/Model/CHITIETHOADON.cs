@@ -14,8 +14,8 @@ namespace GoonRunner.MVVM.Model
     
     public partial class CHITIETHOADON
     {
-        public string MaHD { get; set; }
-        public string MaSP { get; set; }
+        public int MaHD { get; set; }
+        public int MaSP { get; set; }
         public string TenSP { get; set; }
         public Nullable<int> SoLuongDat { get; set; }
         public Nullable<int> DonGia { get; set; }

@@ -20,11 +20,11 @@ namespace GoonRunner.MVVM.Model
             this.DANHSACHMAGIAMGIAs = new HashSet<DANHSACHMAGIAMGIA>();
         }
     
-        public string MaKM { get; set; }
+        public int MaKM { get; set; }
         public string TenKM { get; set; }
         public Nullable<System.DateTime> NgayBatDau { get; set; }
         public Nullable<System.DateTime> NgayKetThuc { get; set; }
-        public string MaSP { get; set; }
+        public int MaSP { get; set; }
     
         public virtual SANPHAM SANPHAM { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

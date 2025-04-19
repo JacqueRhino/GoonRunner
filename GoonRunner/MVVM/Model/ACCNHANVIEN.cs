@@ -17,8 +17,8 @@ namespace GoonRunner.MVVM.Model
         public string DisplayName { get; set; }
         public string UserName { get; set; }
         public string Pass { get; set; }
-        public string MaNV { get; set; }
         public string Quyen { get; set; }
+        public int MaNV { get; set; }
     
         public virtual NHANVIEN NHANVIEN { get; set; }
     }

@@ -20,7 +20,7 @@ namespace GoonRunner.MVVM.Model
             this.NHANVIENs = new HashSet<NHANVIEN>();
         }
     
-        public string MaPB { get; set; }
+        public int MaPB { get; set; }
         public string TenPB { get; set; }
         public Nullable<int> SoLuongNV { get; set; }
     

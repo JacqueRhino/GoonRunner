@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="GoonRunnerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="GoonRunnerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ACCNHANVIEN">
           <Key>
             <PropertyRef Name="DisplayName" />
@@ -12,16 +12,16 @@
           <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="50" />
           <Property Name="Pass" Type="varchar" MaxLength="32" />
-          <Property Name="Quyen" Type="nvarchar" MaxLength="20" />
-          <Property Name="MaNV" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Quyen" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaNV" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CHITIETBAOHANH">
           <Key>
             <PropertyRef Name="MaBH" />
             <PropertyRef Name="MaSP" />
           </Key>
-          <Property Name="MaBH" Type="char" MaxLength="5" Nullable="false" />
-          <Property Name="MaSP" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="MaBH" Type="int" Nullable="false" />
+          <Property Name="MaSP" Type="int" Nullable="false" />
           <Property Name="TenSP" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="SoLuongDat" Type="int" />
           <Property Name="ThoiGianBH" Type="int" />
@@ -31,8 +31,8 @@
             <PropertyRef Name="MaHD" />
             <PropertyRef Name="MaSP" />
           </Key>
-          <Property Name="MaHD" Type="char" MaxLength="5" Nullable="false" />
-          <Property Name="MaSP" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="MaHD" Type="int" Nullable="false" />
+          <Property Name="MaSP" Type="int" Nullable="false" />
           <Property Name="TenSP" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="SoLuongDat" Type="int" />
           <Property Name="DonGia" Type="int" />
@@ -43,8 +43,8 @@
             <PropertyRef Name="MaPNH" />
             <PropertyRef Name="MaSP" />
           </Key>
-          <Property Name="MaPNH" Type="char" MaxLength="5" Nullable="false" />
-          <Property Name="MaSP" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="MaPNH" Type="int" Nullable="false" />
+          <Property Name="MaSP" Type="int" Nullable="false" />
           <Property Name="TenSP" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="SoLuongNhap" Type="int" />
           <Property Name="DonGia" Type="int" />
@@ -54,11 +54,11 @@
           <Key>
             <PropertyRef Name="MaKM" />
           </Key>
-          <Property Name="MaKM" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaKM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenKM" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="NgayBatDau" Type="smalldatetime" />
           <Property Name="NgayKetThuc" Type="smalldatetime" />
-          <Property Name="MaSP" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="MaSP" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="DANHSACHMAGIAMGIA">
           <Key>
@@ -67,14 +67,14 @@
           <Property Name="MaGiamGia" Type="char" MaxLength="10" Nullable="false" />
           <Property Name="NgayHetHan" Type="smalldatetime" />
           <Property Name="LoaiSP" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="MaKM" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaKM" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="GIAOCA">
           <Key>
             <PropertyRef Name="MaGC" />
           </Key>
-          <Property Name="MaGC" Type="char" MaxLength="5" Nullable="false" />
-          <Property Name="MaNV" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaGC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaNV" Type="int" Nullable="false" />
           <Property Name="NgayLamViec" Type="smalldatetime" />
           <Property Name="NgayTrongTuan" Type="smalldatetime" />
           <Property Name="CaLamViec" Type="int" />
@@ -86,20 +86,20 @@ warning 6002: The table/view 'GoonRunner.dbo.HINHNHANVIEN' does not have a prima
           <Key>
             <PropertyRef Name="MaNV" />
           </Key>
-          <Property Name="MaNV" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaNV" Type="int" Nullable="false" />
           <Property Name="HinhNV" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="HOADON">
           <Key>
             <PropertyRef Name="MaHD" />
           </Key>
-          <Property Name="MaHD" Type="char" MaxLength="5" Nullable="false" />
-          <Property Name="MaKH" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaHD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaKH" Type="int" Nullable="false" />
           <Property Name="HoKH" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TenKH" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="SdtKH" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="MaNV" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaNV" Type="int" Nullable="false" />
           <Property Name="HoNV" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TenNV" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="NgayMuaHang" Type="smalldatetime" />
@@ -111,26 +111,25 @@ warning 6002: The table/view 'GoonRunner.dbo.HINHNHANVIEN' does not have a prima
           <Key>
             <PropertyRef Name="MaKH" />
           </Key>
-          <Property Name="MaKH" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="HoKH" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TenKH" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="SdtKH" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="NgaySinh" Type="datetime" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="MaHD" Type="char" MaxLength="5" />
         </EntityType>
         <EntityType Name="NHACUNGCAP">
           <Key>
             <PropertyRef Name="MaNCC" />
           </Key>
-          <Property Name="MaNCC" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaNCC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenNCC" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="NHANVIEN">
           <Key>
             <PropertyRef Name="MaNV" />
           </Key>
-          <Property Name="MaNV" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaNV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="HoNV" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TenNV" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" Nullable="false" />
@@ -140,34 +139,34 @@ warning 6002: The table/view 'GoonRunner.dbo.HINHNHANVIEN' does not have a prima
           <Property Name="CMND" Type="char" MaxLength="12" Nullable="false" />
           <Property Name="ChucVu" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Luong" Type="int" />
-          <Property Name="MaPB" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaPB" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PHIEUBAOHANH">
           <Key>
             <PropertyRef Name="MaBH" />
           </Key>
-          <Property Name="MaBH" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaBH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="HoKH" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TenKH" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="NgayMuaHang" Type="smalldatetime" />
-          <Property Name="MaNV" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaNV" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PHIEUNHAPHANG">
           <Key>
             <PropertyRef Name="MaPNH" />
           </Key>
-          <Property Name="MaPNH" Type="char" MaxLength="5" Nullable="false" />
-          <Property Name="MaNCC" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaPNH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaNCC" Type="int" Nullable="false" />
           <Property Name="TenNCC" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="NgayNhap" Type="smalldatetime" />
           <Property Name="TongTien" Type="int" />
-          <Property Name="MaNV" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaNV" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PHONGBAN">
           <Key>
             <PropertyRef Name="MaPB" />
           </Key>
-          <Property Name="MaPB" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaPB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenPB" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SoLuongNV" Type="int" />
         </EntityType>
@@ -175,7 +174,7 @@ warning 6002: The table/view 'GoonRunner.dbo.HINHNHANVIEN' does not have a prima
           <Key>
             <PropertyRef Name="MaSP" />
           </Key>
-          <Property Name="MaSP" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="MaSP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenSP" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="LoaiSP" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ThoiGianBH" Type="int" />
@@ -190,11 +189,11 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             <PropertyRef Name="MaSP" />
             <PropertyRef Name="TenSP" />
           </Key>
-          <Property Name="MaSP" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="MaSP" Type="int" Nullable="false" />
           <Property Name="TenSP" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="SoLuong" Type="int" />
         </EntityType>
-        <Association Name="FK__ACCNHANVIE__MaNV__09746778">
+        <Association Name="FK__ACCNHANVIE__MaNV__4707859D">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
           <End Role="ACCNHANVIEN" Type="Self.ACCNHANVIEN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -206,7 +205,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETBAO__MaBH__1209AD79">
+        <Association Name="FK__CHITIETBAO__MaBH__4F9CCB9E">
           <End Role="PHIEUBAOHANH" Type="Self.PHIEUBAOHANH" Multiplicity="1" />
           <End Role="CHITIETBAOHANH" Type="Self.CHITIETBAOHANH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -218,7 +217,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETHOA__MaHD__0F2D40CE">
+        <Association Name="FK__CHITIETHOA__MaHD__4CC05EF3">
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -230,7 +229,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETHOA__MaSP__10216507">
+        <Association Name="FK__CHITIETHOA__MaSP__4DB4832C">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -242,7 +241,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETPH__MaPNH__14E61A24">
+        <Association Name="FK__CHITIETPH__MaPNH__52793849">
           <End Role="PHIEUNHAPHANG" Type="Self.PHIEUNHAPHANG" Multiplicity="1" />
           <End Role="CHITIETPHIEUNHAPHANG" Type="Self.CHITIETPHIEUNHAPHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -254,7 +253,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETPHI__MaSP__15DA3E5D">
+        <Association Name="FK__CHITIETPHI__MaSP__536D5C82">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CHITIETPHIEUNHAPHANG" Type="Self.CHITIETPHIEUNHAPHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -266,7 +265,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHUONGTRIN__MaSP__17C286CF">
+        <Association Name="FK__CHUONGTRIN__MaSP__5555A4F4">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CHUONGTRINHKHUYENMAI" Type="Self.CHUONGTRINHKHUYENMAI" Multiplicity="*" />
           <ReferentialConstraint>
@@ -278,7 +277,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DANHSACHMA__MaKM__18B6AB08">
+        <Association Name="FK__DANHSACHMA__MaKM__5649C92D">
           <End Role="CHUONGTRINHKHUYENMAI" Type="Self.CHUONGTRINHKHUYENMAI" Multiplicity="1" />
           <End Role="DANHSACHMAGIAMGIA" Type="Self.DANHSACHMAGIAMGIA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -290,7 +289,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GIAOCA__MaNV__0C50D423">
+        <Association Name="FK__GIAOCA__MaNV__49E3F248">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
           <End Role="GIAOCA" Type="Self.GIAOCA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -302,7 +301,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HINHNHANVI__MaNV__0A688BB1">
+        <Association Name="FK__HINHNHANVI__MaNV__47FBA9D6">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
           <End Role="HINHNHANVIEN" Type="Self.HINHNHANVIEN" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -314,7 +313,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__MaKH__0D44F85C">
+        <Association Name="FK__HOADON__MaKH__4AD81681">
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -326,7 +325,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__MaNV__0E391C95">
+        <Association Name="FK__HOADON__MaNV__4BCC3ABA">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -338,7 +337,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NHANVIEN__MaPB__0B5CAFEA">
+        <Association Name="FK__NHANVIEN__MaPB__48EFCE0F">
           <End Role="PHONGBAN" Type="Self.PHONGBAN" Multiplicity="1" />
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -350,7 +349,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUBAOHA__MaNV__11158940">
+        <Association Name="FK__PHIEUBAOHA__MaNV__4EA8A765">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
           <End Role="PHIEUBAOHANH" Type="Self.PHIEUBAOHANH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -362,7 +361,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUNHAP__MaNCC__12FDD1B2">
+        <Association Name="FK__PHIEUNHAP__MaNCC__5090EFD7">
           <End Role="NHACUNGCAP" Type="Self.NHACUNGCAP" Multiplicity="1" />
           <End Role="PHIEUNHAPHANG" Type="Self.PHIEUNHAPHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -374,7 +373,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUNHAPH__MaNV__13F1F5EB">
+        <Association Name="FK__PHIEUNHAPH__MaNV__51851410">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
           <End Role="PHIEUNHAPHANG" Type="Self.PHIEUNHAPHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -386,7 +385,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TONKHO__MaSP__16CE6296">
+        <Association Name="FK__TONKHO__MaSP__546180BB">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -427,76 +426,77 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
     [TONKHO].[SoLuong] AS [SoLuong]
     FROM [dbo].[TONKHO] AS [TONKHO]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__ACCNHANVIE__MaNV__09746778" Association="Self.FK__ACCNHANVIE__MaNV__09746778">
+          <AssociationSet Name="FK__ACCNHANVIE__MaNV__4707859D" Association="Self.FK__ACCNHANVIE__MaNV__4707859D">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="ACCNHANVIEN" EntitySet="ACCNHANVIEN" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETBAO__MaBH__1209AD79" Association="Self.FK__CHITIETBAO__MaBH__1209AD79">
+          <AssociationSet Name="FK__CHITIETBAO__MaBH__4F9CCB9E" Association="Self.FK__CHITIETBAO__MaBH__4F9CCB9E">
             <End Role="PHIEUBAOHANH" EntitySet="PHIEUBAOHANH" />
             <End Role="CHITIETBAOHANH" EntitySet="CHITIETBAOHANH" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETHOA__MaHD__0F2D40CE" Association="Self.FK__CHITIETHOA__MaHD__0F2D40CE">
+          <AssociationSet Name="FK__CHITIETHOA__MaHD__4CC05EF3" Association="Self.FK__CHITIETHOA__MaHD__4CC05EF3">
             <End Role="HOADON" EntitySet="HOADON" />
             <End Role="CHITIETHOADON" EntitySet="CHITIETHOADON" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETHOA__MaSP__10216507" Association="Self.FK__CHITIETHOA__MaSP__10216507">
+          <AssociationSet Name="FK__CHITIETHOA__MaSP__4DB4832C" Association="Self.FK__CHITIETHOA__MaSP__4DB4832C">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="CHITIETHOADON" EntitySet="CHITIETHOADON" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETPH__MaPNH__14E61A24" Association="Self.FK__CHITIETPH__MaPNH__14E61A24">
+          <AssociationSet Name="FK__CHITIETPH__MaPNH__52793849" Association="Self.FK__CHITIETPH__MaPNH__52793849">
             <End Role="PHIEUNHAPHANG" EntitySet="PHIEUNHAPHANG" />
             <End Role="CHITIETPHIEUNHAPHANG" EntitySet="CHITIETPHIEUNHAPHANG" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETPHI__MaSP__15DA3E5D" Association="Self.FK__CHITIETPHI__MaSP__15DA3E5D">
+          <AssociationSet Name="FK__CHITIETPHI__MaSP__536D5C82" Association="Self.FK__CHITIETPHI__MaSP__536D5C82">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="CHITIETPHIEUNHAPHANG" EntitySet="CHITIETPHIEUNHAPHANG" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHUONGTRIN__MaSP__17C286CF" Association="Self.FK__CHUONGTRIN__MaSP__17C286CF">
+          <AssociationSet Name="FK__CHUONGTRIN__MaSP__5555A4F4" Association="Self.FK__CHUONGTRIN__MaSP__5555A4F4">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="CHUONGTRINHKHUYENMAI" EntitySet="CHUONGTRINHKHUYENMAI" />
           </AssociationSet>
-          <AssociationSet Name="FK__DANHSACHMA__MaKM__18B6AB08" Association="Self.FK__DANHSACHMA__MaKM__18B6AB08">
+          <AssociationSet Name="FK__DANHSACHMA__MaKM__5649C92D" Association="Self.FK__DANHSACHMA__MaKM__5649C92D">
             <End Role="CHUONGTRINHKHUYENMAI" EntitySet="CHUONGTRINHKHUYENMAI" />
             <End Role="DANHSACHMAGIAMGIA" EntitySet="DANHSACHMAGIAMGIA" />
           </AssociationSet>
-          <AssociationSet Name="FK__GIAOCA__MaNV__0C50D423" Association="Self.FK__GIAOCA__MaNV__0C50D423">
+          <AssociationSet Name="FK__GIAOCA__MaNV__49E3F248" Association="Self.FK__GIAOCA__MaNV__49E3F248">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="GIAOCA" EntitySet="GIAOCA" />
           </AssociationSet>
-          <AssociationSet Name="FK__HINHNHANVI__MaNV__0A688BB1" Association="Self.FK__HINHNHANVI__MaNV__0A688BB1">
+          <AssociationSet Name="FK__HINHNHANVI__MaNV__47FBA9D6" Association="Self.FK__HINHNHANVI__MaNV__47FBA9D6">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="HINHNHANVIEN" EntitySet="HINHNHANVIEN" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MaKH__0D44F85C" Association="Self.FK__HOADON__MaKH__0D44F85C">
+          <AssociationSet Name="FK__HOADON__MaKH__4AD81681" Association="Self.FK__HOADON__MaKH__4AD81681">
             <End Role="KHACHHANG" EntitySet="KHACHHANG" />
             <End Role="HOADON" EntitySet="HOADON" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MaNV__0E391C95" Association="Self.FK__HOADON__MaNV__0E391C95">
+          <AssociationSet Name="FK__HOADON__MaNV__4BCC3ABA" Association="Self.FK__HOADON__MaNV__4BCC3ABA">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="HOADON" EntitySet="HOADON" />
           </AssociationSet>
-          <AssociationSet Name="FK__NHANVIEN__MaPB__0B5CAFEA" Association="Self.FK__NHANVIEN__MaPB__0B5CAFEA">
+          <AssociationSet Name="FK__NHANVIEN__MaPB__48EFCE0F" Association="Self.FK__NHANVIEN__MaPB__48EFCE0F">
             <End Role="PHONGBAN" EntitySet="PHONGBAN" />
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUBAOHA__MaNV__11158940" Association="Self.FK__PHIEUBAOHA__MaNV__11158940">
+          <AssociationSet Name="FK__PHIEUBAOHA__MaNV__4EA8A765" Association="Self.FK__PHIEUBAOHA__MaNV__4EA8A765">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="PHIEUBAOHANH" EntitySet="PHIEUBAOHANH" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUNHAP__MaNCC__12FDD1B2" Association="Self.FK__PHIEUNHAP__MaNCC__12FDD1B2">
+          <AssociationSet Name="FK__PHIEUNHAP__MaNCC__5090EFD7" Association="Self.FK__PHIEUNHAP__MaNCC__5090EFD7">
             <End Role="NHACUNGCAP" EntitySet="NHACUNGCAP" />
             <End Role="PHIEUNHAPHANG" EntitySet="PHIEUNHAPHANG" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUNHAPH__MaNV__13F1F5EB" Association="Self.FK__PHIEUNHAPH__MaNV__13F1F5EB">
+          <AssociationSet Name="FK__PHIEUNHAPH__MaNV__51851410" Association="Self.FK__PHIEUNHAPH__MaNV__51851410">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="PHIEUNHAPHANG" EntitySet="PHIEUNHAPHANG" />
           </AssociationSet>
-          <AssociationSet Name="FK__TONKHO__MaSP__16CE6296" Association="Self.FK__TONKHO__MaSP__16CE6296">
+          <AssociationSet Name="FK__TONKHO__MaSP__546180BB" Association="Self.FK__TONKHO__MaSP__546180BB">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="TONKHO" EntitySet="TONKHO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GoonRunnerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -507,61 +507,61 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
           <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Pass" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__ACCNHANVIE__MaNV__44CA3770" FromRole="ACCNHANVIEN" ToRole="NHANVIEN" />
-          <Property Name="Quyen" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Quyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaNV" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__ACCNHANVIE__MaNV__4707859D" FromRole="ACCNHANVIEN" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="CHITIETBAOHANH">
           <Key>
             <PropertyRef Name="MaBH" />
             <PropertyRef Name="MaSP" />
           </Key>
-          <Property Name="MaBH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="MaSP" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaBH" Type="Int32" Nullable="false" />
+          <Property Name="MaSP" Type="Int32" Nullable="false" />
           <Property Name="TenSP" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SoLuongDat" Type="Int32" />
           <Property Name="ThoiGianBH" Type="Int32" />
-          <NavigationProperty Name="PHIEUBAOHANH" Relationship="Self.FK__CHITIETBAO__MaBH__29221CFB" FromRole="CHITIETBAOHANH" ToRole="PHIEUBAOHANH" />
+          <NavigationProperty Name="PHIEUBAOHANH" Relationship="Self.FK__CHITIETBAO__MaBH__4F9CCB9E" FromRole="CHITIETBAOHANH" ToRole="PHIEUBAOHANH" />
         </EntityType>
         <EntityType Name="CHITIETHOADON">
           <Key>
             <PropertyRef Name="MaHD" />
             <PropertyRef Name="MaSP" />
           </Key>
-          <Property Name="MaHD" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="MaSP" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaHD" Type="Int32" Nullable="false" />
+          <Property Name="MaSP" Type="Int32" Nullable="false" />
           <Property Name="TenSP" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SoLuongDat" Type="Int32" />
           <Property Name="DonGia" Type="Int32" />
           <Property Name="ThanhTien" Type="Int32" />
-          <NavigationProperty Name="HOADON" Relationship="Self.FK__CHITIETHOA__MaHD__2645B050" FromRole="CHITIETHOADON" ToRole="HOADON" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CHITIETHOA__MaSP__2739D489" FromRole="CHITIETHOADON" ToRole="SANPHAM" />
+          <NavigationProperty Name="HOADON" Relationship="Self.FK__CHITIETHOA__MaHD__4CC05EF3" FromRole="CHITIETHOADON" ToRole="HOADON" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CHITIETHOA__MaSP__4DB4832C" FromRole="CHITIETHOADON" ToRole="SANPHAM" />
         </EntityType>
         <EntityType Name="CHITIETPHIEUNHAPHANG">
           <Key>
             <PropertyRef Name="MaPNH" />
             <PropertyRef Name="MaSP" />
           </Key>
-          <Property Name="MaPNH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="MaSP" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaPNH" Type="Int32" Nullable="false" />
+          <Property Name="MaSP" Type="Int32" Nullable="false" />
           <Property Name="TenSP" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SoLuongNhap" Type="Int32" />
           <Property Name="DonGia" Type="Int32" />
           <Property Name="ThanhTien" Type="Int32" />
-          <NavigationProperty Name="PHIEUNHAPHANG" Relationship="Self.FK__CHITIETPH__MaPNH__2BFE89A6" FromRole="CHITIETPHIEUNHAPHANG" ToRole="PHIEUNHAPHANG" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CHITIETPHI__MaSP__2CF2ADDF" FromRole="CHITIETPHIEUNHAPHANG" ToRole="SANPHAM" />
+          <NavigationProperty Name="PHIEUNHAPHANG" Relationship="Self.FK__CHITIETPH__MaPNH__52793849" FromRole="CHITIETPHIEUNHAPHANG" ToRole="PHIEUNHAPHANG" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CHITIETPHI__MaSP__536D5C82" FromRole="CHITIETPHIEUNHAPHANG" ToRole="SANPHAM" />
         </EntityType>
         <EntityType Name="CHUONGTRINHKHUYENMAI">
           <Key>
             <PropertyRef Name="MaKM" />
           </Key>
-          <Property Name="MaKM" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaKM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenKM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NgayBatDau" Type="DateTime" Precision="0" />
           <Property Name="NgayKetThuc" Type="DateTime" Precision="0" />
-          <Property Name="MaSP" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CHUONGTRIN__MaSP__2EDAF651" FromRole="CHUONGTRINHKHUYENMAI" ToRole="SANPHAM" />
-          <NavigationProperty Name="DANHSACHMAGIAMGIAs" Relationship="Self.FK__DANHSACHMA__MaKM__2FCF1A8A" FromRole="CHUONGTRINHKHUYENMAI" ToRole="DANHSACHMAGIAMGIA" />
+          <Property Name="MaSP" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CHUONGTRIN__MaSP__5555A4F4" FromRole="CHUONGTRINHKHUYENMAI" ToRole="SANPHAM" />
+          <NavigationProperty Name="DANHSACHMAGIAMGIAs" Relationship="Self.FK__DANHSACHMA__MaKM__5649C92D" FromRole="CHUONGTRINHKHUYENMAI" ToRole="DANHSACHMAGIAMGIA" />
         </EntityType>
         <EntityType Name="DANHSACHMAGIAMGIA">
           <Key>
@@ -570,68 +570,67 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
           <Property Name="MaGiamGia" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="NgayHetHan" Type="DateTime" Precision="0" />
           <Property Name="LoaiSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MaKM" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CHUONGTRINHKHUYENMAI" Relationship="Self.FK__DANHSACHMA__MaKM__2FCF1A8A" FromRole="DANHSACHMAGIAMGIA" ToRole="CHUONGTRINHKHUYENMAI" />
+          <Property Name="MaKM" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CHUONGTRINHKHUYENMAI" Relationship="Self.FK__DANHSACHMA__MaKM__5649C92D" FromRole="DANHSACHMAGIAMGIA" ToRole="CHUONGTRINHKHUYENMAI" />
         </EntityType>
         <EntityType Name="GIAOCA">
           <Key>
             <PropertyRef Name="MaGC" />
           </Key>
-          <Property Name="MaGC" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaGC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaNV" Type="Int32" Nullable="false" />
           <Property Name="NgayLamViec" Type="DateTime" Precision="0" />
           <Property Name="NgayTrongTuan" Type="DateTime" Precision="0" />
           <Property Name="CaLamViec" Type="Int32" />
           <Property Name="TrangThaiCa" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__GIAOCA__MaNV__236943A5" FromRole="GIAOCA" ToRole="NHANVIEN" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__GIAOCA__MaNV__49E3F248" FromRole="GIAOCA" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="HOADON">
           <Key>
             <PropertyRef Name="MaHD" />
           </Key>
-          <Property Name="MaHD" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="MaKH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaHD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaKH" Type="Int32" Nullable="false" />
           <Property Name="HoKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TenKH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SdtKH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaNV" Type="Int32" Nullable="false" />
           <Property Name="HoNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TenNV" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NgayMuaHang" Type="DateTime" Precision="0" />
           <Property Name="TongTien" Type="Int32" />
           <Property Name="TongChietKhau" Type="Int32" />
           <Property Name="TongThanhToan" Type="Int32" />
-          <NavigationProperty Name="CHITIETHOADONs" Relationship="Self.FK__CHITIETHOA__MaHD__2645B050" FromRole="HOADON" ToRole="CHITIETHOADON" />
-          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__HOADON__MaKH__245D67DE" FromRole="HOADON" ToRole="KHACHHANG" />
-          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__HOADON__MaNV__25518C17" FromRole="HOADON" ToRole="NHANVIEN" />
+          <NavigationProperty Name="CHITIETHOADONs" Relationship="Self.FK__CHITIETHOA__MaHD__4CC05EF3" FromRole="HOADON" ToRole="CHITIETHOADON" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__HOADON__MaKH__4AD81681" FromRole="HOADON" ToRole="KHACHHANG" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__HOADON__MaNV__4BCC3ABA" FromRole="HOADON" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="KHACHHANG">
           <Key>
             <PropertyRef Name="MaKH" />
           </Key>
-          <Property Name="MaKH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="HoKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TenKH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SdtKH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NgaySinh" Type="DateTime" Precision="3" />
           <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MaHD" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__MaKH__245D67DE" FromRole="KHACHHANG" ToRole="HOADON" />
+          <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__MaKH__4AD81681" FromRole="KHACHHANG" ToRole="HOADON" />
         </EntityType>
         <EntityType Name="NHACUNGCAP">
           <Key>
             <PropertyRef Name="MaNCC" />
           </Key>
-          <Property Name="MaNCC" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaNCC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenNCC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="PHIEUNHAPHANGs" Relationship="Self.FK__PHIEUNHAP__MaNCC__2A164134" FromRole="NHACUNGCAP" ToRole="PHIEUNHAPHANG" />
+          <NavigationProperty Name="PHIEUNHAPHANGs" Relationship="Self.FK__PHIEUNHAP__MaNCC__5090EFD7" FromRole="NHACUNGCAP" ToRole="PHIEUNHAPHANG" />
         </EntityType>
         <EntityType Name="NHANVIEN">
           <Key>
             <PropertyRef Name="MaNV" />
           </Key>
-          <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaNV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="HoNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TenNV" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
@@ -641,85 +640,85 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
           <Property Name="CMND" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="ChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Luong" Type="Int32" />
-          <Property Name="MaPB" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ACCNHANVIENs" Relationship="Self.FK__ACCNHANVIE__MaNV__44CA3770" FromRole="NHANVIEN" ToRole="ACCNHANVIEN" />
-          <NavigationProperty Name="GIAOCAs" Relationship="Self.FK__GIAOCA__MaNV__236943A5" FromRole="NHANVIEN" ToRole="GIAOCA" />
-          <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__MaNV__25518C17" FromRole="NHANVIEN" ToRole="HOADON" />
-          <NavigationProperty Name="HINHNHANVIEN" Relationship="Self.FK__HINHNHANVI__MaNV__2180FB33" FromRole="NHANVIEN" ToRole="HINHNHANVIEN" />
-          <NavigationProperty Name="PHONGBAN" Relationship="Self.FK__NHANVIEN__MaPB__22751F6C" FromRole="NHANVIEN" ToRole="PHONGBAN" />
-          <NavigationProperty Name="PHIEUBAOHANHs" Relationship="Self.FK__PHIEUBAOHA__MaNV__282DF8C2" FromRole="NHANVIEN" ToRole="PHIEUBAOHANH" />
-          <NavigationProperty Name="PHIEUNHAPHANGs" Relationship="Self.FK__PHIEUNHAPH__MaNV__2B0A656D" FromRole="NHANVIEN" ToRole="PHIEUNHAPHANG" />
+          <Property Name="MaPB" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ACCNHANVIENs" Relationship="Self.FK__ACCNHANVIE__MaNV__4707859D" FromRole="NHANVIEN" ToRole="ACCNHANVIEN" />
+          <NavigationProperty Name="GIAOCAs" Relationship="Self.FK__GIAOCA__MaNV__49E3F248" FromRole="NHANVIEN" ToRole="GIAOCA" />
+          <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__MaNV__4BCC3ABA" FromRole="NHANVIEN" ToRole="HOADON" />
+          <NavigationProperty Name="HINHNHANVIEN" Relationship="Self.FK__HINHNHANVI__MaNV__47FBA9D6" FromRole="NHANVIEN" ToRole="HINHNHANVIEN" />
+          <NavigationProperty Name="PHONGBAN" Relationship="Self.FK__NHANVIEN__MaPB__48EFCE0F" FromRole="NHANVIEN" ToRole="PHONGBAN" />
+          <NavigationProperty Name="PHIEUBAOHANHs" Relationship="Self.FK__PHIEUBAOHA__MaNV__4EA8A765" FromRole="NHANVIEN" ToRole="PHIEUBAOHANH" />
+          <NavigationProperty Name="PHIEUNHAPHANGs" Relationship="Self.FK__PHIEUNHAPH__MaNV__51851410" FromRole="NHANVIEN" ToRole="PHIEUNHAPHANG" />
         </EntityType>
         <EntityType Name="PHIEUBAOHANH">
           <Key>
             <PropertyRef Name="MaBH" />
           </Key>
-          <Property Name="MaBH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaBH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="HoKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TenKH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NgayMuaHang" Type="DateTime" Precision="0" />
-          <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CHITIETBAOHANHs" Relationship="Self.FK__CHITIETBAO__MaBH__29221CFB" FromRole="PHIEUBAOHANH" ToRole="CHITIETBAOHANH" />
-          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__PHIEUBAOHA__MaNV__282DF8C2" FromRole="PHIEUBAOHANH" ToRole="NHANVIEN" />
+          <Property Name="MaNV" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CHITIETBAOHANHs" Relationship="Self.FK__CHITIETBAO__MaBH__4F9CCB9E" FromRole="PHIEUBAOHANH" ToRole="CHITIETBAOHANH" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__PHIEUBAOHA__MaNV__4EA8A765" FromRole="PHIEUBAOHANH" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="PHIEUNHAPHANG">
           <Key>
             <PropertyRef Name="MaPNH" />
           </Key>
-          <Property Name="MaPNH" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="MaNCC" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaPNH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaNCC" Type="Int32" Nullable="false" />
           <Property Name="TenNCC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NgayNhap" Type="DateTime" Precision="0" />
           <Property Name="TongTien" Type="Int32" />
-          <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CHITIETPHIEUNHAPHANGs" Relationship="Self.FK__CHITIETPH__MaPNH__2BFE89A6" FromRole="PHIEUNHAPHANG" ToRole="CHITIETPHIEUNHAPHANG" />
-          <NavigationProperty Name="NHACUNGCAP" Relationship="Self.FK__PHIEUNHAP__MaNCC__2A164134" FromRole="PHIEUNHAPHANG" ToRole="NHACUNGCAP" />
-          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__PHIEUNHAPH__MaNV__2B0A656D" FromRole="PHIEUNHAPHANG" ToRole="NHANVIEN" />
+          <Property Name="MaNV" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CHITIETPHIEUNHAPHANGs" Relationship="Self.FK__CHITIETPH__MaPNH__52793849" FromRole="PHIEUNHAPHANG" ToRole="CHITIETPHIEUNHAPHANG" />
+          <NavigationProperty Name="NHACUNGCAP" Relationship="Self.FK__PHIEUNHAP__MaNCC__5090EFD7" FromRole="PHIEUNHAPHANG" ToRole="NHACUNGCAP" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__PHIEUNHAPH__MaNV__51851410" FromRole="PHIEUNHAPHANG" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="PHONGBAN">
           <Key>
             <PropertyRef Name="MaPB" />
           </Key>
-          <Property Name="MaPB" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaPB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenPB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SoLuongNV" Type="Int32" />
-          <NavigationProperty Name="NHANVIENs" Relationship="Self.FK__NHANVIEN__MaPB__22751F6C" FromRole="PHONGBAN" ToRole="NHANVIEN" />
+          <NavigationProperty Name="NHANVIENs" Relationship="Self.FK__NHANVIEN__MaPB__48EFCE0F" FromRole="PHONGBAN" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="SANPHAM">
           <Key>
             <PropertyRef Name="MaSP" />
           </Key>
-          <Property Name="MaSP" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaSP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenSP" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LoaiSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ThoiGianBH" Type="Int32" />
           <Property Name="GiaSP" Type="Int32" />
           <Property Name="NhaSX" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CoKhuyenMai" Type="Boolean" />
-          <NavigationProperty Name="CHITIETHOADONs" Relationship="Self.FK__CHITIETHOA__MaSP__2739D489" FromRole="SANPHAM" ToRole="CHITIETHOADON" />
-          <NavigationProperty Name="CHITIETPHIEUNHAPHANGs" Relationship="Self.FK__CHITIETPHI__MaSP__2CF2ADDF" FromRole="SANPHAM" ToRole="CHITIETPHIEUNHAPHANG" />
-          <NavigationProperty Name="CHUONGTRINHKHUYENMAIs" Relationship="Self.FK__CHUONGTRIN__MaSP__2EDAF651" FromRole="SANPHAM" ToRole="CHUONGTRINHKHUYENMAI" />
-          <NavigationProperty Name="TONKHOes" Relationship="Self.FK__TONKHO__MaSP__2DE6D218" FromRole="SANPHAM" ToRole="TONKHO" />
+          <NavigationProperty Name="CHITIETHOADONs" Relationship="Self.FK__CHITIETHOA__MaSP__4DB4832C" FromRole="SANPHAM" ToRole="CHITIETHOADON" />
+          <NavigationProperty Name="CHITIETPHIEUNHAPHANGs" Relationship="Self.FK__CHITIETPHI__MaSP__536D5C82" FromRole="SANPHAM" ToRole="CHITIETPHIEUNHAPHANG" />
+          <NavigationProperty Name="CHUONGTRINHKHUYENMAIs" Relationship="Self.FK__CHUONGTRIN__MaSP__5555A4F4" FromRole="SANPHAM" ToRole="CHUONGTRINHKHUYENMAI" />
+          <NavigationProperty Name="TONKHOes" Relationship="Self.FK__TONKHO__MaSP__546180BB" FromRole="SANPHAM" ToRole="TONKHO" />
         </EntityType>
         <EntityType Name="HINHNHANVIEN">
           <Key>
             <PropertyRef Name="MaNV" />
           </Key>
-          <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaNV" Type="Int32" Nullable="false" />
           <Property Name="HinhNV" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__HINHNHANVI__MaNV__2180FB33" FromRole="HINHNHANVIEN" ToRole="NHANVIEN" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__HINHNHANVI__MaNV__47FBA9D6" FromRole="HINHNHANVIEN" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="TONKHO">
           <Key>
             <PropertyRef Name="MaSP" />
             <PropertyRef Name="TenSP" />
           </Key>
-          <Property Name="MaSP" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaSP" Type="Int32" Nullable="false" />
           <Property Name="TenSP" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SoLuong" Type="Int32" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__TONKHO__MaSP__2DE6D218" FromRole="TONKHO" ToRole="SANPHAM" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__TONKHO__MaSP__546180BB" FromRole="TONKHO" ToRole="SANPHAM" />
         </EntityType>
-        <Association Name="FK__ACCNHANVIE__MaNV__44CA3770">
+        <Association Name="FK__ACCNHANVIE__MaNV__4707859D">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
           <End Role="ACCNHANVIEN" Type="Self.ACCNHANVIEN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -731,7 +730,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETBAO__MaBH__29221CFB">
+        <Association Name="FK__CHITIETBAO__MaBH__4F9CCB9E">
           <End Role="PHIEUBAOHANH" Type="Self.PHIEUBAOHANH" Multiplicity="1" />
           <End Role="CHITIETBAOHANH" Type="Self.CHITIETBAOHANH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -743,7 +742,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETHOA__MaHD__2645B050">
+        <Association Name="FK__CHITIETHOA__MaHD__4CC05EF3">
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -755,7 +754,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETHOA__MaSP__2739D489">
+        <Association Name="FK__CHITIETHOA__MaSP__4DB4832C">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CHITIETHOADON" Type="Self.CHITIETHOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -767,7 +766,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETPH__MaPNH__2BFE89A6">
+        <Association Name="FK__CHITIETPH__MaPNH__52793849">
           <End Role="PHIEUNHAPHANG" Type="Self.PHIEUNHAPHANG" Multiplicity="1" />
           <End Role="CHITIETPHIEUNHAPHANG" Type="Self.CHITIETPHIEUNHAPHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -779,7 +778,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHITIETPHI__MaSP__2CF2ADDF">
+        <Association Name="FK__CHITIETPHI__MaSP__536D5C82">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CHITIETPHIEUNHAPHANG" Type="Self.CHITIETPHIEUNHAPHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -791,7 +790,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHUONGTRIN__MaSP__2EDAF651">
+        <Association Name="FK__CHUONGTRIN__MaSP__5555A4F4">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CHUONGTRINHKHUYENMAI" Type="Self.CHUONGTRINHKHUYENMAI" Multiplicity="*" />
           <ReferentialConstraint>
@@ -803,7 +802,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DANHSACHMA__MaKM__2FCF1A8A">
+        <Association Name="FK__DANHSACHMA__MaKM__5649C92D">
           <End Role="CHUONGTRINHKHUYENMAI" Type="Self.CHUONGTRINHKHUYENMAI" Multiplicity="1" />
           <End Role="DANHSACHMAGIAMGIA" Type="Self.DANHSACHMAGIAMGIA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -815,7 +814,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GIAOCA__MaNV__236943A5">
+        <Association Name="FK__GIAOCA__MaNV__49E3F248">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
           <End Role="GIAOCA" Type="Self.GIAOCA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -827,7 +826,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__MaKH__245D67DE">
+        <Association Name="FK__HOADON__MaKH__4AD81681">
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -839,7 +838,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__MaNV__25518C17">
+        <Association Name="FK__HOADON__MaNV__4BCC3ABA">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -851,7 +850,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUNHAP__MaNCC__2A164134">
+        <Association Name="FK__PHIEUNHAP__MaNCC__5090EFD7">
           <End Role="NHACUNGCAP" Type="Self.NHACUNGCAP" Multiplicity="1" />
           <End Role="PHIEUNHAPHANG" Type="Self.PHIEUNHAPHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -863,7 +862,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HINHNHANVI__MaNV__2180FB33">
+        <Association Name="FK__HINHNHANVI__MaNV__47FBA9D6">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
           <End Role="HINHNHANVIEN" Type="Self.HINHNHANVIEN" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -875,7 +874,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NHANVIEN__MaPB__22751F6C">
+        <Association Name="FK__NHANVIEN__MaPB__48EFCE0F">
           <End Role="PHONGBAN" Type="Self.PHONGBAN" Multiplicity="1" />
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -887,7 +886,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUBAOHA__MaNV__282DF8C2">
+        <Association Name="FK__PHIEUBAOHA__MaNV__4EA8A765">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
           <End Role="PHIEUBAOHANH" Type="Self.PHIEUBAOHANH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -899,7 +898,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUNHAPH__MaNV__2B0A656D">
+        <Association Name="FK__PHIEUNHAPH__MaNV__51851410">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
           <End Role="PHIEUNHAPHANG" Type="Self.PHIEUNHAPHANG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -911,7 +910,7 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TONKHO__MaSP__2DE6D218">
+        <Association Name="FK__TONKHO__MaSP__546180BB">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -941,71 +940,71 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
           <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
           <EntitySet Name="HINHNHANVIENs" EntityType="Self.HINHNHANVIEN" />
           <EntitySet Name="TONKHOes" EntityType="Self.TONKHO" />
-          <AssociationSet Name="FK__ACCNHANVIE__MaNV__44CA3770" Association="Self.FK__ACCNHANVIE__MaNV__44CA3770">
+          <AssociationSet Name="FK__ACCNHANVIE__MaNV__4707859D" Association="Self.FK__ACCNHANVIE__MaNV__4707859D">
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
             <End Role="ACCNHANVIEN" EntitySet="ACCNHANVIENs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETBAO__MaBH__29221CFB" Association="Self.FK__CHITIETBAO__MaBH__29221CFB">
+          <AssociationSet Name="FK__CHITIETBAO__MaBH__4F9CCB9E" Association="Self.FK__CHITIETBAO__MaBH__4F9CCB9E">
             <End Role="PHIEUBAOHANH" EntitySet="PHIEUBAOHANHs" />
             <End Role="CHITIETBAOHANH" EntitySet="CHITIETBAOHANHs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETHOA__MaHD__2645B050" Association="Self.FK__CHITIETHOA__MaHD__2645B050">
+          <AssociationSet Name="FK__CHITIETHOA__MaHD__4CC05EF3" Association="Self.FK__CHITIETHOA__MaHD__4CC05EF3">
             <End Role="HOADON" EntitySet="HOADONs" />
             <End Role="CHITIETHOADON" EntitySet="CHITIETHOADONs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETHOA__MaSP__2739D489" Association="Self.FK__CHITIETHOA__MaSP__2739D489">
+          <AssociationSet Name="FK__CHITIETHOA__MaSP__4DB4832C" Association="Self.FK__CHITIETHOA__MaSP__4DB4832C">
             <End Role="SANPHAM" EntitySet="SANPHAMs" />
             <End Role="CHITIETHOADON" EntitySet="CHITIETHOADONs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETPH__MaPNH__2BFE89A6" Association="Self.FK__CHITIETPH__MaPNH__2BFE89A6">
+          <AssociationSet Name="FK__CHITIETPH__MaPNH__52793849" Association="Self.FK__CHITIETPH__MaPNH__52793849">
             <End Role="PHIEUNHAPHANG" EntitySet="PHIEUNHAPHANGs" />
             <End Role="CHITIETPHIEUNHAPHANG" EntitySet="CHITIETPHIEUNHAPHANGs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHITIETPHI__MaSP__2CF2ADDF" Association="Self.FK__CHITIETPHI__MaSP__2CF2ADDF">
+          <AssociationSet Name="FK__CHITIETPHI__MaSP__536D5C82" Association="Self.FK__CHITIETPHI__MaSP__536D5C82">
             <End Role="SANPHAM" EntitySet="SANPHAMs" />
             <End Role="CHITIETPHIEUNHAPHANG" EntitySet="CHITIETPHIEUNHAPHANGs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHUONGTRIN__MaSP__2EDAF651" Association="Self.FK__CHUONGTRIN__MaSP__2EDAF651">
+          <AssociationSet Name="FK__CHUONGTRIN__MaSP__5555A4F4" Association="Self.FK__CHUONGTRIN__MaSP__5555A4F4">
             <End Role="SANPHAM" EntitySet="SANPHAMs" />
             <End Role="CHUONGTRINHKHUYENMAI" EntitySet="CHUONGTRINHKHUYENMAIs" />
           </AssociationSet>
-          <AssociationSet Name="FK__DANHSACHMA__MaKM__2FCF1A8A" Association="Self.FK__DANHSACHMA__MaKM__2FCF1A8A">
+          <AssociationSet Name="FK__DANHSACHMA__MaKM__5649C92D" Association="Self.FK__DANHSACHMA__MaKM__5649C92D">
             <End Role="CHUONGTRINHKHUYENMAI" EntitySet="CHUONGTRINHKHUYENMAIs" />
             <End Role="DANHSACHMAGIAMGIA" EntitySet="DANHSACHMAGIAMGIAs" />
           </AssociationSet>
-          <AssociationSet Name="FK__GIAOCA__MaNV__236943A5" Association="Self.FK__GIAOCA__MaNV__236943A5">
+          <AssociationSet Name="FK__GIAOCA__MaNV__49E3F248" Association="Self.FK__GIAOCA__MaNV__49E3F248">
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
             <End Role="GIAOCA" EntitySet="GIAOCAs" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MaKH__245D67DE" Association="Self.FK__HOADON__MaKH__245D67DE">
+          <AssociationSet Name="FK__HOADON__MaKH__4AD81681" Association="Self.FK__HOADON__MaKH__4AD81681">
             <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
             <End Role="HOADON" EntitySet="HOADONs" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MaNV__25518C17" Association="Self.FK__HOADON__MaNV__25518C17">
+          <AssociationSet Name="FK__HOADON__MaNV__4BCC3ABA" Association="Self.FK__HOADON__MaNV__4BCC3ABA">
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
             <End Role="HOADON" EntitySet="HOADONs" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUNHAP__MaNCC__2A164134" Association="Self.FK__PHIEUNHAP__MaNCC__2A164134">
+          <AssociationSet Name="FK__PHIEUNHAP__MaNCC__5090EFD7" Association="Self.FK__PHIEUNHAP__MaNCC__5090EFD7">
             <End Role="NHACUNGCAP" EntitySet="NHACUNGCAPs" />
             <End Role="PHIEUNHAPHANG" EntitySet="PHIEUNHAPHANGs" />
           </AssociationSet>
-          <AssociationSet Name="FK__HINHNHANVI__MaNV__2180FB33" Association="Self.FK__HINHNHANVI__MaNV__2180FB33">
+          <AssociationSet Name="FK__HINHNHANVI__MaNV__47FBA9D6" Association="Self.FK__HINHNHANVI__MaNV__47FBA9D6">
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
             <End Role="HINHNHANVIEN" EntitySet="HINHNHANVIENs" />
           </AssociationSet>
-          <AssociationSet Name="FK__NHANVIEN__MaPB__22751F6C" Association="Self.FK__NHANVIEN__MaPB__22751F6C">
+          <AssociationSet Name="FK__NHANVIEN__MaPB__48EFCE0F" Association="Self.FK__NHANVIEN__MaPB__48EFCE0F">
             <End Role="PHONGBAN" EntitySet="PHONGBANs" />
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUBAOHA__MaNV__282DF8C2" Association="Self.FK__PHIEUBAOHA__MaNV__282DF8C2">
+          <AssociationSet Name="FK__PHIEUBAOHA__MaNV__4EA8A765" Association="Self.FK__PHIEUBAOHA__MaNV__4EA8A765">
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
             <End Role="PHIEUBAOHANH" EntitySet="PHIEUBAOHANHs" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUNHAPH__MaNV__2B0A656D" Association="Self.FK__PHIEUNHAPH__MaNV__2B0A656D">
+          <AssociationSet Name="FK__PHIEUNHAPH__MaNV__51851410" Association="Self.FK__PHIEUNHAPH__MaNV__51851410">
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
             <End Role="PHIEUNHAPHANG" EntitySet="PHIEUNHAPHANGs" />
           </AssociationSet>
-          <AssociationSet Name="FK__TONKHO__MaSP__2DE6D218" Association="Self.FK__TONKHO__MaSP__2DE6D218">
+          <AssociationSet Name="FK__TONKHO__MaSP__546180BB" Association="Self.FK__TONKHO__MaSP__546180BB">
             <End Role="SANPHAM" EntitySet="SANPHAMs" />
             <End Role="TONKHO" EntitySet="TONKHOes" />
           </AssociationSet>
@@ -1019,10 +1018,10 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
           <EntitySetMapping Name="ACCNHANVIENs">
             <EntityTypeMapping TypeName="GoonRunnerModel.ACCNHANVIEN">
               <MappingFragment StoreEntitySet="ACCNHANVIEN">
-                <ScalarProperty Name="Quyen" ColumnName="Quyen" />
                 <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Quyen" ColumnName="Quyen" />
                 <ScalarProperty Name="MaNV" ColumnName="MaNV" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1123,7 +1122,6 @@ warning 6002: The table/view 'GoonRunner.dbo.TONKHO' does not have a primary key
                 <ScalarProperty Name="SdtKH" ColumnName="SdtKH" />
                 <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-                <ScalarProperty Name="MaHD" ColumnName="MaHD" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

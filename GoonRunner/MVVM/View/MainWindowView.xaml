@@ -123,6 +123,7 @@
                         
                         <StackPanel Margin="10,0,5,0">
                             <TextBlock Text="{Binding DisplayName}"
+                                       Margin="0,4,0,0"
                                        Foreground="{StaticResource Foreground}"
                                        FontSize="14"
                                        FontFamily="#JetBrains Mono"/>
@@ -131,7 +132,7 @@
                                        FontSize="12"
                                        FontFamily="#JetBrains Mono"/>
                         </StackPanel>
-                        
+
                     </StackPanel>
                 </Grid>
             </GroupBox>
@@ -142,7 +143,7 @@
                         <RowDefinition Height="70"/>
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0">
-                            <RadioButton
+                            <RadioButton Name="TrangChuRadioButton"
                                 Command="{Binding HomeViewCommand}"
                                 Click="DisableSidebarAndChangeTitle"
                                 IsChecked="True">
@@ -156,7 +157,7 @@
                                 </RadioButton.Resources>
                             </RadioButton>
                         
-                            <RadioButton
+                            <RadioButton Name="NhanVienRadioButton"
                                 Command="{Binding NhanVienViewCommand}"
                                 Click="ChangeTitleNhanvien">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -169,7 +170,7 @@
                                 </RadioButton.Resources>
                             </RadioButton>
                         
-                            <RadioButton
+                            <RadioButton Name="DonHangRadioButton"
                                 Click="ChangeTitleDonhang">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                     <ui:SymbolIcon Symbol="ClipboardBulletListRtl20" FontSize="28"/>
@@ -181,7 +182,7 @@
                                 </RadioButton.Resources>
                             </RadioButton>
                         
-                            <RadioButton
+                            <RadioButton Name="SanPhamRadioButton"
                                 Click="ChangeTitleSanpham">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                     <ui:SymbolIcon Symbol="Box20" FontSize="28"/>
@@ -193,7 +194,7 @@
                                 </RadioButton.Resources>
                             </RadioButton>
                         
-                             <RadioButton
+                             <RadioButton Name="KhachHangRadioButton"
                                  Click="ChangeTitleKhachhang">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                     <ui:SymbolIcon Symbol="People20" FontSize="28"/>
@@ -205,7 +206,7 @@
                                 </RadioButton.Resources>
                             </RadioButton>
                         
-                            <RadioButton
+                            <RadioButton Name="KhuyenMaiRadioButton"
                                 Click="ChangeTitleKhuyenmai">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                     <ui:SymbolIcon Symbol="Tag20" FontSize="28"/>
@@ -217,7 +218,7 @@
                                 </RadioButton.Resources>
                             </RadioButton>
                         
-                            <RadioButton
+                            <RadioButton Name="BaoHanhRadioButton"
                                 Click="ChangeTitleBaohanh">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                     <ui:SymbolIcon Symbol="Wrench20" FontSize="28"/>

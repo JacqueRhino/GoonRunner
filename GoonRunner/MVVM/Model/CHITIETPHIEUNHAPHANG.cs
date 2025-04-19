@@ -14,8 +14,8 @@ namespace GoonRunner.MVVM.Model
     
     public partial class CHITIETPHIEUNHAPHANG
     {
-        public string MaPNH { get; set; }
-        public string MaSP { get; set; }
+        public int MaPNH { get; set; }
+        public int MaSP { get; set; }
         public string TenSP { get; set; }
         public Nullable<int> SoLuongNhap { get; set; }
         public Nullable<int> DonGia { get; set; }

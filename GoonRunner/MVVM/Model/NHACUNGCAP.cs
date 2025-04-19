@@ -20,7 +20,7 @@ namespace GoonRunner.MVVM.Model
             this.PHIEUNHAPHANGs = new HashSet<PHIEUNHAPHANG>();
         }
     
-        public string MaNCC { get; set; }
+        public int MaNCC { get; set; }
         public string TenNCC { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -17,7 +17,7 @@ namespace GoonRunner.MVVM.Model
         public string MaGiamGia { get; set; }
         public Nullable<System.DateTime> NgayHetHan { get; set; }
         public string LoaiSP { get; set; }
-        public string MaKM { get; set; }
+        public int MaKM { get; set; }
     
         public virtual CHUONGTRINHKHUYENMAI CHUONGTRINHKHUYENMAI { get; set; }
     }

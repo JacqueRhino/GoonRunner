@@ -14,7 +14,7 @@ namespace GoonRunner.MVVM.Model
     
     public partial class TONKHO
     {
-        public string MaSP { get; set; }
+        public int MaSP { get; set; }
         public string TenSP { get; set; }
         public Nullable<int> SoLuong { get; set; }
     

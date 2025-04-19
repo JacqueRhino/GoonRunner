@@ -14,7 +14,7 @@ namespace GoonRunner.MVVM.Model
     
     public partial class HINHNHANVIEN
     {
-        public string MaNV { get; set; }
+        public int MaNV { get; set; }
         public byte[] HinhNV { get; set; }
     
         public virtual NHANVIEN NHANVIEN { get; set; }

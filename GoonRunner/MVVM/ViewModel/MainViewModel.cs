@@ -115,17 +115,27 @@ namespace GoonRunner.MVVM.ViewModel
                 CurrentSidebarView = SidebarNhanVienVM;
                 EnableSidebar();
             });
-            
+
             SignOutCommand = new RelayCommand<Window>((p) => true, (p) =>
             {
-                p.Hide();
-                loginVM.UserName = "";
-                loginVM.Password = "";
-                loginVM.ErrorMassage = "";
-                loginWindow.Show();
+                MessageBoxResult MessageResult = MessageBox.Show("Bạn có muốn đăng xuất?", "Thông báo", MessageBoxButton.YesNo);
+                if (MessageResult == MessageBoxResult.Yes)
+                    SignOut(p);
+                else
+                    return;
             });
         }
-
+        private void SignOut(Window p)
+        {
+            LogInView loginWindow = new LogInView();
+            var loginVM = loginWindow.DataContext as LoginViewModel; // Gọi LoginViewModel
+            loginVM.UserName = "";
+            loginVM.Password = ""; // Khi thực hiện đăng xuất sẽ reset lại ô username và password
+            loginVM.ErrorMassage = "";
+            CurrentView = HomeVM;
+            loginWindow.Show();
+            p.Hide();
+        }
         private void EnableSidebar()
         {
             SidebarButtonEnabled = true;
