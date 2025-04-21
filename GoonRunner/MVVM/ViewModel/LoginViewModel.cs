@@ -23,10 +23,10 @@ namespace GoonRunner.MVVM.ViewModel
         private string _errormessage;
         public string ErrorMassage { get => _errormessage; set { _errormessage = value; OnPropertyChanged(); } }
 
-        private string _privilege;
+        private string _privilege = "DEVELOPER";
         public string Privilege { get => _privilege; set { _privilege = value; OnPropertyChanged(); } }
 
-        private string _displayname;
+        private string _displayname = "BYPASS FOR DEVELOPER";
         public string DisplayName { get => _displayname; set { _displayname = value; OnPropertyChanged(); } }
         public ICommand LoginCommand { get; set; }
         public ICommand PasswordChangedCommand { get; set; }
@@ -36,7 +36,7 @@ namespace GoonRunner.MVVM.ViewModel
         {
             IsLogin = false;
             Placeholder = "Nhập mật khẩu";
-            LoginCommand = new RelayCommand<Window>((p) => true, (p) => Login(p));
+            LoginCommand = new RelayCommand<Window>((p) => true, (p) => LoginBYPASS(p));
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => true, (p) =>
             {
                 if (string.IsNullOrEmpty(p.Password))

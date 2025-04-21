@@ -16,7 +16,7 @@ namespace GoonRunner.MVVM.ViewModel
         private object _currentView;
         private string _displayname;
         public string DisplayName { get => _displayname; set { _displayname = value; OnPropertyChanged(); } }
-        private string _privilege;
+        private string _privilege = "DEVELOPER";
         public string Privilege { get => _privilege; set { _privilege = value; OnPropertyChanged(); } }
         public object CurrentView
         {
@@ -102,13 +102,13 @@ namespace GoonRunner.MVVM.ViewModel
             
             //Change View
 
-            HomeViewCommand = new Wpf.Ui.Input.RelayCommand<RadioButton>(o =>
+            HomeViewCommand = new RelayCommand<RadioButton>(o =>
             {
                 CurrentView = HomeVM;
                 DisableSidebar();
             });
             
-            NhanVienViewCommand = new Wpf.Ui.Input.RelayCommand<RadioButton>(o =>
+            NhanVienViewCommand = new RelayCommand<RadioButton>(o =>
             {
                 CurrentView = NhanVienVM;
                 CurrentSidebarView = SidebarNhanVienVM;

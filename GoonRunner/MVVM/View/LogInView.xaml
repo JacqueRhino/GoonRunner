@@ -77,13 +77,15 @@
                                         
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="PasswordChanged">
-                                        <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
+                                    <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
                                                            CommandParameter="{Binding ElementName=Password}"/>
-                                    </i:EventTrigger>
+                                    <!-- <i:InvokeCommandAction Command="{Binding SetUpPlaceholder }"  -->
+                                    <!--                        CommandParameter="{Binding ElementName=Placeholder}"/> -->
+                                </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </PasswordBox>
-
-                            <TextBlock IsHitTestVisible="False"
+                        
+                        <TextBlock IsHitTestVisible="False"
                                    Text="{Binding Placeholder}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
@@ -93,7 +95,8 @@
                                    FontSize="12"
                                    x:Name="Placeholder"
                                    Foreground="#A89984"/>
-                        </Grid>
+                        
+                    </Grid>
                 </GroupBox>
                 
                 <TextBlock Grid.Row="2" Name="ForgotPasswordTxt"

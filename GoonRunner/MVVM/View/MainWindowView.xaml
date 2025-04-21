@@ -59,13 +59,13 @@
                        FontFamily="../../Assets/Fonts/#Segoe Fluent Icons" FontWeight="Medium" FontSize="12"
                        BorderThickness="0"
                        Cursor="Hand"
-                       Click="OnContentChanged"
+                       Click="MinimizeOnClick"
                        Style="{StaticResource WindowControlButton}">
                      
                 </Button>
                 
                <Button Grid.Row="0" Grid.Column="2" Width="auto" Height="auto"
-                       Click="MaximizeAndMinimizeOnClick"
+                       Click="MaximizeAndNormalOnClick"
                        Style="{StaticResource WindowControlButton}"
                        FontFamily="../../Assets/Fonts/#Segoe Fluent Icons" FontSize="12"
                        Name="MaximizeButton"
@@ -111,17 +111,18 @@
                     
                     <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
                             
-                        <Button Height="60" Width="auto" Style="{StaticResource NavButton}">
-                            <StackPanel>
-                                    <Ellipse Width="30" Height="30">
+                        <!-- <Button Height="60" Width="auto" Style="{StaticResource NavButton}"> -->
+                        <!--     <StackPanel> -->
+                                    <Ellipse Margin="10,0,0,0" Width="30" Height="30">
                                         <Ellipse.Fill>
                                             <ImageBrush ImageSource="pack://application:,,,/Assets/Images/TestAvatar.jpeg"></ImageBrush>
                                         </Ellipse.Fill>
                                     </Ellipse>
-                            </StackPanel>
-                        </Button>
+                        <!--     </StackPanel> -->
+                        <!-- </Button> -->
                         
-                        <StackPanel Margin="10,0,5,0">
+                        <StackPanel Margin="10,0,0,5"
+                                    VerticalAlignment="Center">
                             <TextBlock Text="{Binding DisplayName}"
                                        Margin="0,4,0,0"
                                        Name="Displayname"

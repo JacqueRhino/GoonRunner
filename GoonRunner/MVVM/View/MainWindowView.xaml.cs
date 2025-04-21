@@ -16,7 +16,7 @@ namespace GoonRunner.MVVM.View
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
 
         }
-        private void OnContentChanged(object sender, RoutedEventArgs e)
+        private void MinimizeOnClick(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
@@ -25,7 +25,7 @@ namespace GoonRunner.MVVM.View
             Application.Current.Shutdown();
         }
 
-        private void MaximizeAndMinimizeOnClick(object sender, RoutedEventArgs e)
+        private void MaximizeAndNormalOnClick(object sender, RoutedEventArgs e)
         {
             WindowState = (WindowState == WindowState.Maximized ?
                 WindowState.Normal : WindowState.Maximized);                
