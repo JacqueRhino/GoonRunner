@@ -197,7 +197,8 @@
                             </RadioButton>
                         
                              <RadioButton Name="KhachHangRadioButton"
-                                 Click="ChangeTitleKhachhang">
+                                         Command="{Binding KhachHangViewCommand}"
+                                         Click="ChangeTitleKhachhang">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                     <ui:SymbolIcon Symbol="People20" FontSize="28"/>
                                     <TextBlock FontFamily="../../Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">

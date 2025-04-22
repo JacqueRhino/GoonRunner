@@ -1,15 +1,13 @@
 using GoonRunner.MVVM.Model;
 using System.Collections.ObjectModel;
-using System.Data.Entity;
 using System.Linq;
-using System.Windows;
 
 namespace GoonRunner.MVVM.ViewModel
 {
     public class NhanVienViewModel : BaseViewModel
     {
-        private ObservableCollection<NHANVIEN> _NhanVienList;
-        public ObservableCollection<NHANVIEN> NhanVienList { get { return _NhanVienList; } set { _NhanVienList = value; OnPropertyChanged(); } }
+        private ObservableCollection<NHANVIEN> _nhanvienlist;
+        public ObservableCollection<NHANVIEN> NhanVienList { get { return _nhanvienlist; } set { _nhanvienlist = value; OnPropertyChanged(); } }
 
         public NhanVienViewModel()
         {

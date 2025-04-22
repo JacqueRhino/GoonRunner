@@ -84,6 +84,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\View\HomeView.xaml" />
+    <Page Include="MVVM\View\KhachHangView.xaml" />
     <Page Include="MVVM\View\LogInView.xaml" />
     <Page Include="MVVM\View\MainWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -91,6 +92,7 @@
     </Page>
     <Page Include="MVVM\View\NhanVienView.xaml" />
     <Page Include="MVVM\View\SidebarNhanVienView.xaml" />
+    <Page Include="MVVM\View\SidebarKhachHangView.xaml" />
     <Page Include="Resources\MainResource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -186,15 +188,20 @@
     <Compile Include="MVVM\ViewModel\BaseViewModel.cs" />
     <Compile Include="MVVM\ViewModel\ForgotPasswordViewModel.cs" />
     <Compile Include="MVVM\ViewModel\HomeViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\KhachHangViewModel.cs" />
     <Compile Include="MVVM\ViewModel\LoginViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
     <Compile Include="MVVM\ViewModel\NhanVienViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\SidebarKhachHangViewModel.cs" />
     <Compile Include="MVVM\ViewModel\SidebarNhanVienViewModel.cs" />
     <Compile Include="MVVM\View\ForgotPasswordView.xaml.cs">
       <DependentUpon>ForgotPasswordView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\KhachHangView.xaml.cs">
+      <DependentUpon>KhachHangView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\LogInView.xaml.cs">
       <DependentUpon>LogInView.xaml</DependentUpon>
@@ -208,6 +215,9 @@
     </Compile>
     <Compile Include="MVVM\View\SidebarNhanVienView.xaml.cs">
       <DependentUpon>SidebarNhanVienView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\SidebarKhachHangView.xaml.cs">
+      <DependentUpon>SidebarKhachHangView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

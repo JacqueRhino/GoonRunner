@@ -7,6 +7,9 @@
             <DataTemplate DataType="{x:Type viewmodel:HomeViewModel}">
                 <view:HomeView/>
             </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodel:KhachHangViewModel}">
+            <view:KhachHangView/>
+        </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodel:NhanVienViewModel}">
                 <view:NhanVienView/>
             </DataTemplate>
@@ -15,8 +18,12 @@
             <DataTemplate DataType="{x:Type viewmodel:SidebarNhanVienViewModel}">
                 <view:SidebarNhanVienView/>
             </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodel:SidebarKhachHangViewModel}">
+            <view:SidebarKhachHangView/>
+        </DataTemplate>
     
-    <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
-    <viewmodel:NhanVienViewModel x:Key="NhanVienVM"></viewmodel:NhanVienViewModel>
-    <viewmodel:ForgotPasswordViewModel x:Key="ForgotPassVM"></viewmodel:ForgotPasswordViewModel>
+    <viewmodel:LoginViewModel x:Key="LoginVM"/>
+    <viewmodel:KhachHangViewModel x:Key="KhachHangVM"/>
+    <viewmodel:NhanVienViewModel x:Key="NhanVienVM"/>
+    <viewmodel:ForgotPasswordViewModel x:Key="ForgotPassVM"/>
 </ResourceDictionary>
