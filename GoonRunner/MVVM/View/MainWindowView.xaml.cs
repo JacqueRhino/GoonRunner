@@ -94,6 +94,7 @@ namespace GoonRunner.MVVM.View
             Split2.Visibility = Visibility.Collapsed;
             MainGrid.ColumnDefinitions[5].Width = new GridLength(0);
             MainGrid.ColumnDefinitions[4].Width = new GridLength(0);
+            SidebarButton.IsChecked = false;
             
             this.Title = "GoonRunner - Trang chủ";
         }

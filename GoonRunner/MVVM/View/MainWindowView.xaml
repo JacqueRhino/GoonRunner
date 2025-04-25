@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:gr="clr-namespace:GoonRunner.CustomControl"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel" 
@@ -91,19 +92,17 @@
                     
                     <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
                         
-                    <Button Height="60" Width="auto" Style="{StaticResource NavButton}"
+                    <ToggleButton Style="{StaticResource NavToggleButton}"
                             Name="SidebarButton"
+                            FontSize="24"
+                            gr:Extensions.Icon="DualScreenStatusBar24"
                             IsEnabled="{Binding SidebarButtonEnabled}"
                             Click="ControlSidebar">
-                        <StackPanel>
-                                <ui:SymbolIcon Symbol="DualScreenStatusBar24" FontSize="24" Foreground="{StaticResource Foreground}"/>
-                        </StackPanel>
-                    </Button>
+                    </ToggleButton>
                     
-                    <Button Height="60" Width="auto" Style="{StaticResource NavButton}">
-                        <StackPanel>
-                                <ui:SymbolIcon Symbol="Settings32" FontSize="24" Foreground="{StaticResource Foreground}"/>
-                        </StackPanel>
+                    <Button Height="60" Width="auto" Style="{StaticResource NavButton}"
+                            FontSize="24"
+                            gr:Extensions.Icon="Settings32">
                     </Button>
                         
                     </StackPanel>
@@ -146,11 +145,12 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0">
                             <RadioButton Name="TrangChuRadioButton"
+                                         Style="{StaticResource RadioButtonStyle}"
+                                         gr:Extensions.Icon="Home20"
                                 Command="{Binding HomeViewCommand}"
                                 Click="DisableSidebarAndChangeTitle"
                                 IsChecked="True">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <ui:SymbolIcon Symbol="Home20" FontSize="28"/>
                                     <TextBlock FontFamily="../../Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Trang Chủ
                                     </TextBlock>
@@ -160,10 +160,11 @@
                             </RadioButton>
                         
                             <RadioButton Name="NhanVienRadioButton"
+                                         Style="{StaticResource RadioButtonStyle}"
+                                         gr:Extensions.Icon="PersonAccounts20"
                                 Command="{Binding NhanVienViewCommand}"
                                 Click="ChangeTitleNhanvien">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <ui:SymbolIcon Symbol="PersonAccounts20" FontSize="28"/>
                                     <TextBlock FontFamily="../../Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Nhân Viên
                                     </TextBlock>
@@ -173,9 +174,10 @@
                             </RadioButton>
                         
                             <RadioButton Name="DonHangRadioButton"
+                                         Style="{StaticResource RadioButtonStyle}"
+                                         gr:Extensions.Icon="ClipboardBulletListRtl20"
                                 Click="ChangeTitleDonhang">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <ui:SymbolIcon Symbol="ClipboardBulletListRtl20" FontSize="28"/>
                                     <TextBlock FontFamily="../../Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Đơn Hàng
                                     </TextBlock>
@@ -185,9 +187,10 @@
                             </RadioButton>
                         
                             <RadioButton Name="SanPhamRadioButton"
+                                         Style="{StaticResource RadioButtonStyle}"
+                                         gr:Extensions.Icon="Box20"
                                 Click="ChangeTitleSanpham">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <ui:SymbolIcon Symbol="Box20" FontSize="28"/>
                                     <TextBlock FontFamily="../../Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Sản Phẩm
                                     </TextBlock>
@@ -210,9 +213,10 @@
                             </RadioButton>
                         
                             <RadioButton Name="KhuyenMaiRadioButton"
+                                         Style="{StaticResource RadioButtonStyle}"
+                                         gr:Extensions.Icon="Tag20"
                                 Click="ChangeTitleKhuyenmai">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <ui:SymbolIcon Symbol="Tag20" FontSize="28"/>
                                     <TextBlock FontFamily="../../Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Khuyến Mại
                                     </TextBlock>
@@ -222,9 +226,10 @@
                             </RadioButton>
                         
                             <RadioButton Name="BaoHanhRadioButton"
+                                         Style="{StaticResource RadioButtonStyle}"
+                                         gr:Extensions.Icon="Wrench20"
                                 Click="ChangeTitleBaohanh">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <ui:SymbolIcon Symbol="Wrench20" FontSize="28"/>
                                     <TextBlock FontFamily="../../Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Bảo hành
                                     </TextBlock>
@@ -236,10 +241,10 @@
                     
                     <Button Grid.Row="1"
                             Style="{StaticResource SignOutButtonTheme}"
+                            gr:Extensions.Icon="SignOut20"
                             Command="{Binding SignOutCommand}"
                             CommandParameter="{Binding ElementName=mainWindow}">
                        <StackPanel Orientation="Horizontal">
-                        <ui:SymbolIcon Symbol="SignOut20" FontSize="28"/>
                         <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" 
                                    FontSize="18" Margin="10,0,0,0" 
                                    VerticalAlignment="Center">

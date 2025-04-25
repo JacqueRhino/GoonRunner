@@ -36,7 +36,7 @@ namespace GoonRunner.MVVM.ViewModel
         {
             IsLogin = false;
             Placeholder = "Nhập mật khẩu";
-            LoginCommand = new RelayCommand<Window>((p) => true, (p) => LoginBYPASS(p));
+            LoginCommand = new RelayCommand<Window>((p) => true, (p) => Login(p));
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => true, (p) =>
             {
                 if (string.IsNullOrEmpty(p.Password))
