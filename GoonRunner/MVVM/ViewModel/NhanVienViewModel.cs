@@ -1,6 +1,8 @@
 using GoonRunner.MVVM.Model;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace GoonRunner.MVVM.ViewModel
 {
@@ -8,10 +10,11 @@ namespace GoonRunner.MVVM.ViewModel
     {
         private ObservableCollection<NHANVIEN> _nhanvienlist;
         public ObservableCollection<NHANVIEN> NhanVienList { get { return _nhanvienlist; } set { _nhanvienlist = value; OnPropertyChanged(); } }
-
+        public ICommand RefreshCommand { get; set; }
         public NhanVienViewModel()
         {
             LoadNhanVienList();
+            RefreshCommand = new RelayCommand<Button>((p) => true, (p) => { LoadNhanVienList(); });
         }
         private void LoadNhanVienList()
         {

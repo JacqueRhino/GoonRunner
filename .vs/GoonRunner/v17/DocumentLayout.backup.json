@@ -1,42 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\",
+  "WorkspaceRootPath": "D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|d:\\download\\bai_tap_nghe\\dkai\\dkai\\goonrunner\\goonrunner\\mvvm\\view\\forgotpasswordview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|solutionrelative:goonrunner\\mvvm\\view\\forgotpasswordview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|d:\\download\\bai_tap_nghe\\goonrunner\\goonrunner\\goonrunner\\mvvm\\viewmodel\\sidebarnhanvienviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|solutionrelative:goonrunner\\mvvm\\viewmodel\\sidebarnhanvienviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|d:\\download\\bai_tap_nghe\\dkai\\dkai\\goonrunner\\goonrunner\\mvvm\\view\\forgotpasswordview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|solutionrelative:goonrunner\\mvvm\\view\\forgotpasswordview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\goonrunner\\mvvm\\view\\sidebarnhanvienview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|solutionrelative:goonrunner\\mvvm\\view\\sidebarnhanvienview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|d:\\download\\bai_tap_nghe\\dkai\\dkai\\goonrunner\\goonrunner\\mvvm\\view\\nhanvienview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|solutionrelative:goonrunner\\mvvm\\view\\nhanvienview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|d:\\download\\bai_tap_nghe\\dkai\\dkai\\goonrunner\\goonrunner\\mvvm\\view\\mainwindowview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|solutionrelative:goonrunner\\mvvm\\view\\mainwindowview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\goonrunner\\mvvm\\view\\mainwindowview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|solutionrelative:goonrunner\\mvvm\\view\\mainwindowview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|d:\\download\\bai_tap_nghe\\dkai\\dkai\\goonrunner\\goonrunner\\mvvm\\view\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|solutionrelative:goonrunner\\mvvm\\view\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\goonrunner\\mvvm\\viewmodel\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\goonrunner\\mvvm\\viewmodel\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|solutionrelative:goonrunner\\mvvm\\viewmodel\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|d:\\download\\bai_tap_nghe\\dkai\\dkai\\goonrunner\\goonrunner\\resources\\mainresource.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|solutionrelative:goonrunner\\resources\\mainresource.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\goonrunner\\mvvm\\viewmodel\\nhanvienviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|solutionrelative:goonrunner\\mvvm\\viewmodel\\nhanvienviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\goonrunner\\mvvm\\viewmodel\\nhanvienviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|solutionrelative:goonrunner\\mvvm\\viewmodel\\nhanvienviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\goonrunner\\mvvm\\view\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|solutionrelative:goonrunner\\mvvm\\view\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\goonrunner\\mvvm\\view\\nhanvienview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|solutionrelative:goonrunner\\mvvm\\view\\nhanvienview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\goonrunner\\resources\\mainresource.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C0416715-99C3-48FE-8D1F-92A2E58104ED}|GoonRunner\\GoonRunner.csproj|solutionrelative:goonrunner\\resources\\mainresource.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,114 +46,84 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ForgotPasswordView.xaml.cs",
-              "DocumentMoniker": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\MVVM\\View\\ForgotPasswordView.xaml.cs",
-              "RelativeDocumentMoniker": "GoonRunner\\MVVM\\View\\ForgotPasswordView.xaml.cs",
-              "ToolTip": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\MVVM\\View\\ForgotPasswordView.xaml.cs",
-              "RelativeToolTip": "GoonRunner\\MVVM\\View\\ForgotPasswordView.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAbAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\GoonRunner\\MVVM\\ViewModel\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "GoonRunner\\MVVM\\ViewModel\\LoginViewModel.cs",
+              "ToolTip": "D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\GoonRunner\\MVVM\\ViewModel\\LoginViewModel.cs",
+              "RelativeToolTip": "GoonRunner\\MVVM\\ViewModel\\LoginViewModel.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAUwJsAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T16:23:02.828Z",
+              "WhenOpened": "2025-05-07T17:56:07.409Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NhanVienViewModel.cs",
+              "DocumentMoniker": "D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\GoonRunner\\MVVM\\ViewModel\\NhanVienViewModel.cs",
+              "RelativeDocumentMoniker": "GoonRunner\\MVVM\\ViewModel\\NhanVienViewModel.cs",
+              "ToolTip": "D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\GoonRunner\\MVVM\\ViewModel\\NhanVienViewModel.cs",
+              "RelativeToolTip": "GoonRunner\\MVVM\\ViewModel\\NhanVienViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T15:55:15.467Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NhanVienView.xaml",
+              "DocumentMoniker": "D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\GoonRunner\\MVVM\\View\\NhanVienView.xaml",
+              "RelativeDocumentMoniker": "GoonRunner\\MVVM\\View\\NhanVienView.xaml",
+              "ToolTip": "D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\GoonRunner\\MVVM\\View\\NhanVienView.xaml",
+              "RelativeToolTip": "GoonRunner\\MVVM\\View\\NhanVienView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-07T15:54:40.813Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LogInView.xaml",
+              "DocumentMoniker": "D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\GoonRunner\\MVVM\\View\\LogInView.xaml",
+              "RelativeDocumentMoniker": "GoonRunner\\MVVM\\View\\LogInView.xaml",
+              "ToolTip": "D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\GoonRunner\\MVVM\\View\\LogInView.xaml",
+              "RelativeToolTip": "GoonRunner\\MVVM\\View\\LogInView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-06T19:18:45.94Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SidebarNhanVienViewModel.cs",
+              "DocumentMoniker": "D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\GoonRunner\\MVVM\\ViewModel\\SidebarNhanVienViewModel.cs",
+              "RelativeDocumentMoniker": "GoonRunner\\MVVM\\ViewModel\\SidebarNhanVienViewModel.cs",
+              "ToolTip": "D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\GoonRunner\\MVVM\\ViewModel\\SidebarNhanVienViewModel.cs",
+              "RelativeToolTip": "GoonRunner\\MVVM\\ViewModel\\SidebarNhanVienViewModel.cs",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAQwI0AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T09:03:54.235Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ForgotPasswordView.xaml",
-              "DocumentMoniker": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\MVVM\\View\\ForgotPasswordView.xaml",
-              "RelativeDocumentMoniker": "GoonRunner\\MVVM\\View\\ForgotPasswordView.xaml",
-              "ToolTip": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\MVVM\\View\\ForgotPasswordView.xaml",
-              "RelativeToolTip": "GoonRunner\\MVVM\\View\\ForgotPasswordView.xaml",
+              "Title": "SidebarNhanVienView.xaml",
+              "DocumentMoniker": "D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\GoonRunner\\MVVM\\View\\SidebarNhanVienView.xaml",
+              "RelativeDocumentMoniker": "GoonRunner\\MVVM\\View\\SidebarNhanVienView.xaml",
+              "ToolTip": "D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\GoonRunner\\MVVM\\View\\SidebarNhanVienView.xaml",
+              "RelativeToolTip": "GoonRunner\\MVVM\\View\\SidebarNhanVienView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-20T16:22:54.124Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainWindowView.xaml.cs",
-              "DocumentMoniker": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\MVVM\\View\\MainWindowView.xaml.cs",
-              "RelativeDocumentMoniker": "GoonRunner\\MVVM\\View\\MainWindowView.xaml.cs",
-              "ToolTip": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\MVVM\\View\\MainWindowView.xaml.cs",
-              "RelativeToolTip": "GoonRunner\\MVVM\\View\\MainWindowView.xaml.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAcwBQAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T16:03:57.566Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LogInView.xaml",
-              "DocumentMoniker": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\MVVM\\View\\LogInView.xaml",
-              "RelativeDocumentMoniker": "GoonRunner\\MVVM\\View\\LogInView.xaml",
-              "ToolTip": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\MVVM\\View\\LogInView.xaml",
-              "RelativeToolTip": "GoonRunner\\MVVM\\View\\LogInView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-20T15:39:29.861Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MainResource.xaml",
-              "DocumentMoniker": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\Resources\\MainResource.xaml",
-              "RelativeDocumentMoniker": "GoonRunner\\Resources\\MainResource.xaml",
-              "ToolTip": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\Resources\\MainResource.xaml",
-              "RelativeToolTip": "GoonRunner\\Resources\\MainResource.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-20T15:38:25.382Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NhanVienView.xaml",
-              "DocumentMoniker": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\MVVM\\View\\NhanVienView.xaml",
-              "RelativeDocumentMoniker": "GoonRunner\\MVVM\\View\\NhanVienView.xaml",
-              "ToolTip": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\MVVM\\View\\NhanVienView.xaml",
-              "RelativeToolTip": "GoonRunner\\MVVM\\View\\NhanVienView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-20T11:18:56.388Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "NhanVienViewModel.cs",
-              "DocumentMoniker": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\MVVM\\ViewModel\\NhanVienViewModel.cs",
-              "RelativeDocumentMoniker": "GoonRunner\\MVVM\\ViewModel\\NhanVienViewModel.cs",
-              "ToolTip": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\MVVM\\ViewModel\\NhanVienViewModel.cs",
-              "RelativeToolTip": "GoonRunner\\MVVM\\ViewModel\\NhanVienViewModel.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAYwBkAAABbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T11:33:52.17Z"
+              "WhenOpened": "2025-05-07T03:00:10.398Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "LoginViewModel.cs",
-              "DocumentMoniker": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\MVVM\\ViewModel\\LoginViewModel.cs",
-              "RelativeDocumentMoniker": "GoonRunner\\MVVM\\ViewModel\\LoginViewModel.cs",
-              "ToolTip": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\MVVM\\ViewModel\\LoginViewModel.cs",
-              "RelativeToolTip": "GoonRunner\\MVVM\\ViewModel\\LoginViewModel.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAUwK8AAABXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T12:35:59.158Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MainWindowView.xaml",
-              "DocumentMoniker": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\MVVM\\View\\MainWindowView.xaml",
-              "RelativeDocumentMoniker": "GoonRunner\\MVVM\\View\\MainWindowView.xaml",
-              "ToolTip": "D:\\Download\\Bai_tap_nghe\\dkai\\dkai\\GoonRunner\\GoonRunner\\MVVM\\View\\MainWindowView.xaml",
-              "RelativeToolTip": "GoonRunner\\MVVM\\View\\MainWindowView.xaml",
+              "Title": "MainResource.xaml",
+              "DocumentMoniker": "D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\GoonRunner\\Resources\\MainResource.xaml",
+              "RelativeDocumentMoniker": "GoonRunner\\Resources\\MainResource.xaml",
+              "ToolTip": "D:\\Download\\Bai_tap_nghe\\GoonRunner\\GoonRunner\\GoonRunner\\Resources\\MainResource.xaml",
+              "RelativeToolTip": "GoonRunner\\Resources\\MainResource.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-04-20T11:21:34.569Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-06T14:45:24.238Z"
             }
           ]
         }

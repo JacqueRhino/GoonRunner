@@ -4,16 +4,16 @@
                     xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel">
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
     <!-- Menu View -->
-            <DataTemplate DataType="{x:Type viewmodel:HomeViewModel}">
-                <view:HomeView/>
-            </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodel:KhachHangViewModel}">
-            <view:KhachHangView/>
-        </DataTemplate>
-            <DataTemplate DataType="{x:Type viewmodel:NhanVienViewModel}">
-                <view:NhanVienView/>
-            </DataTemplate>
-    
+    <DataTemplate DataType="{x:Type viewmodel:HomeViewModel}">
+        <view:HomeView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:KhachHangViewModel}">
+        <view:KhachHangView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:NhanVienViewModel}">
+        <view:NhanVienView/>
+    </DataTemplate>
+
     <!-- Sidebar View -->
             <DataTemplate DataType="{x:Type viewmodel:SidebarNhanVienViewModel}">
                 <view:SidebarNhanVienView/>
@@ -25,5 +25,6 @@
     <viewmodel:LoginViewModel x:Key="LoginVM"/>
     <viewmodel:KhachHangViewModel x:Key="KhachHangVM"/>
     <viewmodel:NhanVienViewModel x:Key="NhanVienVM"/>
+    <viewmodel:SidebarNhanVienViewModel x:Key="SidebarNhanVienVM"/>
     <viewmodel:ForgotPasswordViewModel x:Key="ForgotPassVM"/>
 </ResourceDictionary>

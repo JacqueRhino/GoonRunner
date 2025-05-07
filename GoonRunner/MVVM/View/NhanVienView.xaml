@@ -45,7 +45,8 @@
                 <Button Style="{StaticResource NavButtonChangeColor}" >
                         <ui:SymbolIcon Symbol="ArrowSort16" FontSize="20"/>
                 </Button>
-                <Button Style="{StaticResource NavButtonChangeColor}">
+                <Button Style="{StaticResource NavButtonChangeColor}"
+                        Command="{Binding RefreshCommand}">
                         <ui:SymbolIcon Symbol="ArrowClockwise24" FontSize="20"/>
                 </Button>
             </StackPanel>

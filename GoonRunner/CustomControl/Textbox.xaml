@@ -12,7 +12,7 @@
                   Header="Lastname">
             <Grid>
                 <TextBox Margin="1"
-                         Text="{Binding UserName}"
+                         Text="{Binding SetBinding, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          BorderThickness="0"
                          Background="Transparent"
                          VerticalContentAlignment="Center"

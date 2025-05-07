@@ -54,7 +54,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <gr:Textbox SetHeader="Username" 
-                                SetPlaceholder="Nhập username" 
+                                SetPlaceholder="Nhập username"
                                 SetBinding="{Binding UserName}"
                                 Margin="0,0,0,10"/>
                 
@@ -77,11 +77,9 @@
                                         
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="PasswordChanged">
-                                    <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
+                                        <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
                                                            CommandParameter="{Binding ElementName=Password}"/>
-                                    <!-- <i:InvokeCommandAction Command="{Binding SetUpPlaceholder }"  -->
-                                    <!--                        CommandParameter="{Binding ElementName=Placeholder}"/> -->
-                                </i:EventTrigger>
+                                    </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </PasswordBox>
                         

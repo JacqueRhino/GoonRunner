@@ -5,6 +5,10 @@
              xmlns:gr="clr-namespace:GoonRunner.CustomControl"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel"
+             d:DataContext="{d:DesignInstance Type=viewmodel:SidebarNhanVienViewModel}"
+             DataContext="{StaticResource SidebarNhanVienVM}"
              mc:Ignorable="d"
              d:DesignHeight="590" d:DesignWidth="250">
     <Grid>
@@ -27,90 +31,42 @@
                         </Button>
                         
                         <Grid Grid.Column="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="51"/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            
-                            <!-- <GroupBox Grid.Row="0" Style="{StaticResource GroupboxForTextbox}" -->
-                            <!--           Header="Lastname"> -->
-                            <!--     <Grid> -->
-                            <!--         <TextBox Margin="1" -->
-                            <!--                  Text="{Binding UserName}" -->
-                            <!--                  BorderThickness="0" -->
-                            <!--                  Background="Transparent" -->
-                            <!--                  VerticalContentAlignment="Center" -->
-                            <!--                  FontFamily="../../Assets/Fonts/#JetBrains Mono" -->
-                            <!--                  Padding="3,0,0,5" -->
-                            <!--                  FontWeight="Regular" -->
-                            <!--                  Foreground="#3c3836" -->
-                            <!--                  Name="InputBoxLastname" -->
-                            <!--         /> -->
-                            <!--          -->
-                            <!--         <TextBlock IsHitTestVisible="False" -->
-                            <!--                    Text="Nhập họ" -->
-                            <!--                    VerticalAlignment="Center" -->
-                            <!--                    HorizontalAlignment="Left" -->
-                            <!--                    FontFamily="../../Assets/Fonts/#JetBrains Mono" -->
-                            <!--                    FontWeight="Light" -->
-                            <!--                    Margin="5,0,0,5" -->
-                            <!--                    FontSize="12" -->
-                            <!--                    Foreground="{Binding Foreground,ElementName=InputBoxLastname}"> -->
-                            <!--                  -->
-                            <!--             <TextBlock.Style> -->
-                            <!--                 <Style TargetType="{x:Type TextBlock}"> -->
-                            <!--                     <Style.Triggers> -->
-                            <!--                         <DataTrigger Binding="{Binding Text, ElementName=InputBoxLastname}" Value=""> -->
-                            <!--                             <Setter Property="Visibility" Value="Visible"/> -->
-                            <!--                         </DataTrigger> -->
-                            <!--                     </Style.Triggers> -->
-                            <!--                     <Setter Property="Visibility" Value="Hidden"/> -->
-                            <!--                 </Style> -->
-                            <!--             </TextBlock.Style> -->
-                            <!--         </TextBlock> -->
-                            <!--     </Grid> -->
-                            <!-- </GroupBox> -->
-                            
-                            <gr:Textbox Grid.Row="0" SetHeader="Họ" SetPlaceholder="Nhập họ"/>
-                            <gr:Textbox Grid.Row="1" SetHeader="Tên" SetPlaceholder="Nhập tên"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="51"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <gr:Textbox Grid.Row="0" SetHeader="Họ" SetPlaceholder="Nhập họ" SetBinding="{Binding HoNV}"/>
+                    <gr:Textbox Grid.Row="1" SetHeader="Tên" SetPlaceholder="Nhập tên" SetBinding="{Binding TenNV}"/>
                             
                         </Grid>
                     </Grid>
-            
-                    <gr:Textbox SetHeader="Địa chỉ" SetPlaceholder="Nhập địa chỉ"/>
-                    <gr:Textbox SetHeader="SĐT" SetPlaceholder="Nhập số điện thoại"/>
-                    <gr:Textbox SetHeader="CMND" SetPlaceholder="Nhập Chứng minh nhân dân"/>
-                    <ComboBox SelectedIndex="0" FontSize="12" BorderBrush="#3c3836" Foreground="#3c3836"
+
+                    <gr:Textbox SetHeader="Địa chỉ" SetPlaceholder="Nhập địa chỉ" SetBinding="{Binding DiaChi}"/>
+                    <gr:Textbox SetHeader="SĐT" SetPlaceholder="Nhập số điện thoại" SetBinding="{Binding SDT}"/>
+                    <gr:Textbox SetHeader="CMND" SetPlaceholder="Nhập Chứng minh nhân dân" SetBinding="{Binding CMND}"/>
+            <ComboBox SelectedIndex="0" FontSize="12" BorderBrush="#3c3836" Foreground="#3c3836"
                               Name="Role"
                               gr:Extensions.Header="Chức vụ"
                               Padding="5,5,0,5"
                               Margin="0,0,0,5"
-                              Background="Transparent">
-                           <ComboBoxItem Content="Nhân viên bán hàng"/> 
-                           <ComboBoxItem Content="Châm sóc khách hàng"/> 
-                           <ComboBoxItem Content="Nhân viên kiểm kho"/> 
-                           <ComboBoxItem Content="Quản lý cửa hàng"/> 
-                           <ComboBoxItem Content="Nhân viên kỹ thuật web"/> 
-                           <ComboBoxItem Content="Nhân viên bào hành"/> 
-                           <ComboBoxItem Content="Nhân viên Marketing"/> 
-                           <ComboBoxItem Content="Giao hàng"/> 
-                           <ComboBoxItem Content="Bảo vệ"/> 
-                           <ComboBoxItem Content="Lao công"/> 
-                </ComboBox>
+                              Background="Transparent"
+                              ItemsSource="{Binding Roles}"
+                              SelectedItem="{Binding SelectedRole, Mode=TwoWay}">
+            </ComboBox>
                     
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <ComboBox SelectedIndex="0" FontSize="12" BorderBrush="#3c3836" Foreground="#3c3836"
+                <ComboBox SelectedIndex="0" FontSize="12" BorderBrush="#3c3836" Foreground="#3c3836"
                               gr:Extensions.Header="Giới tính"
                               Padding="5,5,0,5"
                               Margin="0,0,0,5"
-                              Background="Transparent">
-                               <ComboBoxItem Content="Nam"/> 
-                               <ComboBoxItem Content="Nữ"/> 
-                    </ComboBox>
+                              Background="Transparent"
+                              ItemsSource="{Binding Gender}"
+                              SelectedItem="{Binding SelectedGender, Mode=TwoWay}">
+                </ComboBox>
                     
                     <DatePicker Grid.Column="1"
                                 gr:Extensions.Header="Ngày sinh"
@@ -118,7 +74,8 @@
                                 Foreground="#3c3836" 
                                 BorderBrush="#3c3836"
                                 FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"
-                                Margin="0,0,0,5" />
+                                Margin="0,0,0,5" 
+                                SelectedDate="{Binding SelectedDate, Mode=TwoWay}"/>
                 </Grid>
                 <Grid HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
@@ -128,8 +85,10 @@
                     </Grid.ColumnDefinitions>
                     
                     <Button Grid.Column="0"
+                            Name="ButtonAdd"
                             Margin="10"
-                            Style="{StaticResource SidebarButton}">
+                            Style="{StaticResource SidebarButton}"
+                            Command="{Binding AddNhanVienCommand}">
                         <StackPanel>
                             <ui:SymbolIcon Symbol="Add24" FontSize="20"/>
                         </StackPanel>

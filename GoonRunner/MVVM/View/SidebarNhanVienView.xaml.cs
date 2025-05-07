@@ -7,12 +7,7 @@ namespace GoonRunner.MVVM.View
     {
         public SidebarNhanVienView()
         {
-            InitializeComponent();
-        }
-
-        private void Test(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Test");
+            InitializeComponent();         
         }
     }
 }
