@@ -55,7 +55,7 @@
                     </Grid.RowDefinitions>
                     <gr:Textbox SetHeader="Username" 
                                 SetPlaceholder="Nhập username"
-                                SetBinding="{Binding UserName}"
+                                SetBinding="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                               
                                 Margin="0,0,0,10"/>
                 
                 
@@ -75,7 +75,18 @@
                             PasswordChar="*"
                             x:Name="Password">
                                         
-                            <i:Interaction.Triggers>
+                            <PasswordBox.Template>
+                                <ControlTemplate TargetType="PasswordBox">
+                                    <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ScrollViewer x:Name="PART_ContentHost"
+                                                      Margin="0"
+                                                      VerticalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </PasswordBox.Template>
+                        <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="PasswordChanged">
                                         <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
                                                            CommandParameter="{Binding ElementName=Password}"/>
@@ -169,7 +180,7 @@
 
             <!-- Horizontal Line -->
             <Rectangle Grid.Row="0" Height="2" Width="14" VerticalAlignment="Top" HorizontalAlignment="Left" Fill="{StaticResource Foreground}"/>
-            <Rectangle Grid.Row="0" Height="2" Width="304" VerticalAlignment="Top" HorizontalAlignment="Right" Fill="{StaticResource Foreground}"/>
+            <Rectangle Grid.Row="0" Height="2" Width="315" VerticalAlignment="Top" HorizontalAlignment="Right" Fill="{StaticResource Foreground}"/>
             <Rectangle Grid.Row="0" Height="2" VerticalAlignment="Bottom" Fill="{StaticResource Foreground}"/>
             <!-- Vertical Line -->
             <Rectangle Grid.Row="0" Width="2" HorizontalAlignment="Left" Fill="{StaticResource Foreground}"/>
@@ -177,7 +188,7 @@
 
 
         </Grid>
-        <TextBlock Text="Log in"
+        <TextBlock Text="Login"
                    FontSize="16" FontFamily="JetBrains Mono" FontWeight="Bold"
                    Foreground="{StaticResource Foreground}"
                    Width="auto" Height="auto"
