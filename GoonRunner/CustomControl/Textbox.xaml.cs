@@ -50,30 +50,11 @@ namespace GoonRunner.CustomControl
             Placeholder.Text = e.NewValue as string;
         }
 
-        // binding
-        //public static readonly DependencyProperty SetBindingProperty = DependencyProperty.Register(
-        //    nameof(SetBinding), typeof(string), typeof(Textbox), new PropertyMetadata(null, OnSetBindingPropertyChanged));
-
-        //public new string SetBinding
-        //{
-        //    get => (string)GetValue(SetBindingProperty);
-        //    set => SetValue(SetBindingProperty, value);
-        //}
-
-        //private static void OnSetBindingPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        //{
-        //    if (d is Textbox textbox) textbox.OnSetBindingPropertyChanged(e);
-        //}
-
-        //private void OnSetBindingPropertyChanged(DependencyPropertyChangedEventArgs e)
-        //{
-        //    Inputbox.Text = e.NewValue as string ?? string.Empty;
-        //}
         public static readonly DependencyProperty SetBindingProperty =
             DependencyProperty.Register("SetBinding", typeof(object), typeof(Textbox),
                 new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
-        public object SetBinding
+        public new object SetBinding
         {
             get { return GetValue(SetBindingProperty); }
             set { SetValue(SetBindingProperty, value); }
