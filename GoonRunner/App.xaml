@@ -7,6 +7,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ui:ControlsDictionary/>
+                <ui:ThemesDictionary Theme="Light" />
                 <ResourceDictionary Source="pack://application:,,,/Theme/TextboxTheme.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Theme/ButtonTheme.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Theme/WindowControlButton.xaml"/>
@@ -20,6 +21,7 @@
                 <ResourceDictionary Source="pack://application:,,,/Theme/DatePickerTheme.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Theme/ComboBox.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Resources/MainResource.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Theme/ListViewTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
          </ResourceDictionary>
     </Application.Resources>

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:gr="clr-namespace:GoonRunner.CustomControl"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel"
              d:DataContext="{d:DesignInstance Type=viewmodel:NhanVienViewModel}"
@@ -10,21 +11,67 @@
              mc:Ignorable="d"
              d:DesignWidth="590"
              d:DesignHeight="700" >
+    
     <UserControl.Resources>
         <SolidColorBrush x:Key="Foreground" Color="#3c3836"/>
         <SolidColorBrush x:Key="Foreground2" Color="#A89984"/>
         <SolidColorBrush x:Key="Background" Color="#fbf1c7"/>
         <SolidColorBrush x:Key="Orange" Color="#D65D0E"/>
         <SolidColorBrush x:Key="Green" Color="#427B55"/>
-
+        
+   <!-- Styles for the ListView -->
+        <Style x:Key="ListViewItemStyle" TargetType="ListViewItem">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="BorderThickness" Value="0 0 0 1"/>
+            <Setter Property="BorderBrush" Value="#EEEEEE"/>
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#F5F5F5"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <!-- Style for the button -->
+        <Style x:Key="DetailButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#0A6E9E"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="8,2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="3" 
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#085F89"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <!-- Style for header -->
+        <Style x:Key="HeaderStyle" TargetType="GridViewColumnHeader">
+            <Setter Property="Background" Value="#F5F5F5"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="BorderBrush" Value="#DDDDDD"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        </Style>
     </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Margin="0,0,0,10">
+        <Grid Grid.Row="0" Margin="0,0,0,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -54,23 +101,25 @@
 
         <ListView Grid.Row="1"
                   Margin="5,0,10,0"
-                  FontFamily="../../Assets/Fonts/#JetBrains Mono" 
+                  FontFamily="../../Assets/Fonts/#JetBrains Mono"
                   FontWeight="Medium"
                   ItemsSource="{Binding NhanVienList}"
                   SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}"
                   VerticalAlignment="Top"
-                  BorderBrush="{StaticResource Foreground}"
+                  Foreground="{StaticResource Foreground}"
+                  BorderThickness="0"
+                  ItemContainerStyle="{StaticResource CenteredListViewItemStyle}"
                   Background="Transparent" >
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Mã NV" DisplayMemberBinding="{Binding MaNV}" />
-                    <GridViewColumn Header="Thông Tin" DisplayMemberBinding="{Binding TenNV}"/>
-                    <GridViewColumn Header="Phòng Ban" DisplayMemberBinding="{Binding MaPB}"/>
-                    <GridViewColumn Header="Giới Tính" DisplayMemberBinding="{Binding GioiTinh}"/>
-                    <GridViewColumn Header="Số Điện Thoại" DisplayMemberBinding="{Binding SdtNV}"/>
-                    <GridViewColumn Header="Địa Chỉ" DisplayMemberBinding="{Binding DiaChiNV}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+             <ListView.View>
+                        <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle1}">
+                            <GridViewColumn Header="Mã NV" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="MaNV"/>
+                            <GridViewColumn Header="Thông Tin" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="TenNV"/>
+                            <GridViewColumn Header="Phòng Ban" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="MaPB"/>
+                            <GridViewColumn Header="Giới Tính" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="GioiTinh"/>
+                            <GridViewColumn Header="Số Điện Thoại" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="SdtNV"/>
+                            <GridViewColumn Header="Địa Chỉ" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="DiaChiNV"/>
+                        </GridView>
+                    </ListView.View>
+            </ListView>
     </Grid>
 </UserControl>

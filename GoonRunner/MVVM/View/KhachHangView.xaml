@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:gr="clr-namespace:GoonRunner.CustomControl"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel"
              d:DataContext="{d:DesignInstance Type=viewmodel:KhachHangViewModel}"
@@ -53,20 +54,22 @@
 
         <ListView Grid.Row="1"
                   Margin="5,0,10,0"
-                  FontFamily="../../Assets/Fonts/#JetBrains Mono" 
+                  FontFamily="../../Assets/Fonts/#JetBrains Mono"
                   FontWeight="Medium"
                   ItemsSource="{Binding KhachHangList}"
-                  SelectedItem="{Binding Sele,Mode=OneWayToSource}"
+                  SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}"
                   VerticalAlignment="Top"
-                  BorderBrush="{StaticResource Foreground}"
+                  Foreground="{StaticResource Foreground}"
+                  BorderThickness="0"
+                  ItemContainerStyle="{StaticResource CenteredListViewItemStyle}"
                   Background="Transparent" >
             <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Mã KH" DisplayMemberBinding="{Binding MaKH}" />
-                    <GridViewColumn Header="Thông Tin" DisplayMemberBinding="{Binding TenKH}"/>
-                    <GridViewColumn Header="Ngày Sinh" DisplayMemberBinding="{Binding NgaySinh}"/>
-                    <GridViewColumn Header="Số Điện Thoại" DisplayMemberBinding="{Binding SdtKH}"/>
-                    <GridViewColumn Header="Địa Chỉ" DisplayMemberBinding="{Binding DiaChi}"/>
+                <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle1}">
+                    <GridViewColumn Header="Mã KH" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="MaKH"/>
+                    <GridViewColumn Header="Thông Tin" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="TenKH"/>
+                    <GridViewColumn Header="Ngày Sinh" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="NgaySinh"/>
+                    <GridViewColumn Header="Số Điện Thoại" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="SdtKH"/>
+                    <GridViewColumn Header="Địa chỉ" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="DiaChi"/>
                 </GridView>
             </ListView.View>
         </ListView>

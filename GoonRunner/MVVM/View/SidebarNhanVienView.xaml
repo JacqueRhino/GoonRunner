@@ -19,17 +19,34 @@
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         
-                        <Button Width="100" HorizontalAlignment="Center" Cursor="Hand">
+                        <Button Width="100" HorizontalAlignment="Center" Cursor="Hand" Background="Transparent">
+                            <Button.Style>
+                                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Grid Background="{TemplateBinding Background}">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="Transparent"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Background" Value="Transparent"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
                             <Grid>
                                 <ui:SymbolIcon Symbol="PersonCircle20" FontSize="70" Foreground="#3c3836" Name="AvatarIcon" />
-                                <Image Name="AvatarImage">
-                                    <!-- <Image.Source> -->
-                                    <!--     a -->
-                                    <!-- </Image.Source> -->
-                                </Image>
+                                <Image Name="AvatarImage" />
                             </Grid>
-                        </Button>
-                        
+                        </Button>                        
                         <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="51"/>

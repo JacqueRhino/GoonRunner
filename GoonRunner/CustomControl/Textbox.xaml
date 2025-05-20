@@ -11,7 +11,8 @@
                   x:Name="GroupBox"
                   Header="Lastname">
             <Grid>
-                <TextBox Margin="1"
+                <TextBox x:Name="Inputbox"
+                         Margin="1"
                          Text="{Binding SetBinding, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          BorderThickness="0"
                          Background="Transparent"
@@ -20,10 +21,22 @@
                          Padding="3,0,0,5"
                          FontWeight="Regular"
                          Foreground="#3c3836"
-                         x:Name="Inputbox"
-                />
-        
+                         OverridesDefaultStyle="True">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                <ScrollViewer x:Name="PART_ContentHost"
+                                              VerticalAlignment="Center"
+                                              Margin="0" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>        
+                
                 <TextBlock IsHitTestVisible="False"
+                           OverridesDefaultStyle="True"
                            Text="Nhập họ"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"

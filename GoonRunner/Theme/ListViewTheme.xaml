@@ -1,0 +1,70 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:gr="clr-namespace:GoonRunner.CustomControl"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="Foreground" Color="#3c3836"/>
+    <SolidColorBrush x:Key="GridView.MouseOver.Foreground" Color="#D53E3E"/>
+    <Style x:Key="GridViewColumnHeaderStyle1" TargetType="{x:Type GridViewColumnHeader}">
+        
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
+        <Setter Property="FontFamily" Value="pack://application:,,,/Assets/Fonts/#JetBrains Mono" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                    <Border BorderThickness="1" BorderBrush="Transparent" Background="Transparent" x:Name="Border">
+                        <TextBlock x:Name="ContentHeader" Text="{TemplateBinding Content}" Padding="5,5,5,0" Width="{TemplateBinding Width}" TextAlignment="Center" />
+                    </Border>
+                    
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="{StaticResource GridView.MouseOver.Foreground}" TargetName="Border"/>
+                            <Setter Property="TextBlock.Foreground" Value="{StaticResource GridView.MouseOver.Foreground}" TargetName="ContentHeader"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+      <!-- Style for ListView Items -->
+    <Style x:Key="CenteredListViewItemStyle" TargetType="ListViewItem">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#076678"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <!-- Style for TextBlocks within GridView Cells -->
+    <Style x:Key="CenteredGridViewCellStyle" TargetType="TextBlock">
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Path=IsMouseOver}" Value="True">
+                <Setter Property="Foreground" Value="#FBF1C7"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    
+    <!-- Template for MaNV Column -->
+    <DataTemplate x:Key="ColumnTemplate">
+        <TextBlock Text="{Binding MaNV}" Style="{StaticResource CenteredGridViewCellStyle}"/>
+    </DataTemplate>
+    
+    <Style TargetType="ScrollBar">
+        <Setter Property="Background" Value="#FBF1C7"/>
+    </Style>
+
+    <Style TargetType="Thumb">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="Red"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Red"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>
