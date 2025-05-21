@@ -6,6 +6,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel" 
         xmlns:gr="clr-namespace:GoonRunner.CustomControl"
+        xmlns:animation="clr-namespace:GoonRunner.CustomControl"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=viewmodel:LoginViewModel}"
         DataContext="{StaticResource LoginVM}"
@@ -21,7 +22,17 @@
     <Window.Resources>
     <SolidColorBrush x:Key="Foreground" Color="#3c3836"/>
     <SolidColorBrush x:Key="Background" Color="#fbf1c7"/>
-    </Window.Resources>
+    
+    <Storyboard x:Key="SpinnerStoryboard" RepeatBehavior="Forever">
+        <DoubleAnimation
+            Storyboard.TargetName="SpinnerRotate"
+            Storyboard.TargetProperty="Angle"
+            From="0" To="360" Duration="0:0:1"/>
+    </Storyboard>
+    
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    <animation:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
+    </Window.Resources> 
     
     <Grid>
         <Grid Margin="0,10,0,0"
@@ -126,11 +137,27 @@
                         Command="{Binding LoginCommand}"
                         CommandParameter="{Binding ElementName=loginWindow}"
                         IsDefault="True">
-                    <TextBlock FontSize="20"
-                               FontWeight="Medium"
-                               FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono">
-                        Đăng nhập
-                    </TextBlock>
+                    <Grid>
+                        <TextBlock FontSize="20"
+                                   FontWeight="Medium"
+                                   FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"
+                                   Visibility="{Binding IsLoading, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                            Đăng nhập
+                        </TextBlock>
+                        
+                        <Grid Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
+                              HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Grid.RenderTransform>
+                                <RotateTransform x:Name="SpinnerRotate" CenterX="10" CenterY="10"/>
+                            </Grid.RenderTransform>
+                            <Path Width="20" Height="20" Stretch="Uniform" 
+                                  Fill="{StaticResource Background}"
+                                  Data="M9.999,0A10,10,0,1,0,20,10,10,10,0,0,0,9.999,0Zm0,3A7,7,0,1,1,3,10,7,7,0,0,1,9.999,3Z"/>
+                            <Path Width="20" Height="20" Stretch="Uniform" 
+                                  Fill="{StaticResource Background}"
+                                  Data="M10,0a10,10,0,0,1,10,10H16A6,6,0,0,0,10,4V0Z"/>
+                        </Grid>
+                    </Grid>
                 </Button>
 
                 <TextBlock Name="ErrorMessageText"

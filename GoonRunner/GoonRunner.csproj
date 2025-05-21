@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomControl\Extensions.cs" />
+    <Compile Include="CustomControl\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="CustomControl\Textbox.xaml.cs">
       <DependentUpon>Textbox.xaml</DependentUpon>
     </Compile>

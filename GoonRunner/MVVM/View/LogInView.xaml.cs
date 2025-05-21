@@ -8,6 +8,10 @@ namespace GoonRunner.MVVM.View
         public LogInView()
         {
             InitializeComponent();
+            this.Loaded += (sender, e) =>
+            {
+                var storyboard = Resources["SpinnerStoryboard"] as System.Windows.Media.Animation.Storyboard;
+            };
         }
         private void DragMoving(object sender, MouseButtonEventArgs e)
         {
