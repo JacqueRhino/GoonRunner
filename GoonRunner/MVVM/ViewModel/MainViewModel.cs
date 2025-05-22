@@ -10,12 +10,30 @@ namespace GoonRunner.MVVM.ViewModel
         public ICommand HomeViewCommand { get; set; }
         public ICommand NhanVienViewCommand { get; set; }
         public ICommand KhachHangViewCommand { get; set; }
+        public ICommand SanPhamViewCommand { get; set; }
+        public ICommand PhieuNhapHangViewCommand { get; set; }
+        public ICommand ChiTietPhieuNhapHangViewCommand { get; set; }
+        public ICommand HoaDonViewCommand { get; set; }
+        public ICommand ChiTietHoaDonViewCommand { get; set; }
+        public ICommand TonKhoViewCommand { get; set; }
         public ICommand SignOutCommand { get; set; }
         public HomeViewModel HomeVM { get; set; }
+        public OwnerHomeViewModel OwnerHomeVM { get; set; }
         public KhachHangViewModel KhachHangVM { get; set; }
         public NhanVienViewModel NhanVienVM { get; set; }
+        public SanPhamViewModel SanPhamVM { get; set; }
+        public PhieuNhapHangViewModel PhieuNhapHangVM { get; set; }
+        public ChiTietPhieuNhapHangViewModel ChiTietPhieuNhapHangVM { get; set; }
+        public HoaDonViewModel HoaDonVM { get; set; }
+        public ChiTietHoaDonViewModel ChiTietHoaDonVM { get; set; }
+        public TonKhoViewModel TonKhoVM { get; set; }
         public SidebarNhanVienViewModel SidebarNhanVienVM { get; set; }
         public SidebarKhachHangViewModel SidebarKhachHangVM { get; set; }
+        public SidebarPhieuNhapHangViewModel SidebarPhieuNhapHangVM { get; set; }
+        public SidebarChiTietPhieuNhapHangViewModel SidebarChiTietPhieuNhapHangVM { get; set; }
+        public SidebarHoaDonViewModel SidebarHoaDonVM { get; set; }
+        public SidebarChiTietHoaDonViewModel SidebarChiTietHoaDonVM { get; set; }
+        
         private object _currentView;
         private string _displayname;
         public string DisplayName { get => _displayname; set { _displayname = value; OnPropertyChanged(); } }
@@ -98,33 +116,94 @@ namespace GoonRunner.MVVM.ViewModel
             DisplayName = loginVM.DisplayName; // Lấy UserName
             Privilege = loginVM.Privilege; // Lấy Privilege
             HomeVM = new HomeViewModel();
+            OwnerHomeVM = new OwnerHomeViewModel();
             KhachHangVM = new KhachHangViewModel();
             NhanVienVM = new NhanVienViewModel();
+            SanPhamVM = new SanPhamViewModel();
+            PhieuNhapHangVM = new PhieuNhapHangViewModel();
+            ChiTietPhieuNhapHangVM = new ChiTietPhieuNhapHangViewModel();
+            HoaDonVM = new HoaDonViewModel();
+            ChiTietHoaDonVM = new ChiTietHoaDonViewModel();
+            TonKhoVM = new TonKhoViewModel();
             SidebarNhanVienVM = new SidebarNhanVienViewModel();
             SidebarKhachHangVM = new SidebarKhachHangViewModel();
-            CurrentView = HomeVM;
+            SidebarPhieuNhapHangVM = new SidebarPhieuNhapHangViewModel();
+            SidebarChiTietPhieuNhapHangVM = new SidebarChiTietPhieuNhapHangViewModel();
+            SidebarHoaDonVM = new SidebarHoaDonViewModel();
+            SidebarChiTietHoaDonVM = new SidebarChiTietHoaDonViewModel();
+            if (Privilege == "Chủ cửa hàng")
+                CurrentView = OwnerHomeVM;
+            else 
+                CurrentView = HomeVM;
             // DisableSidebar();
-            
+
             //Change View
 
             HomeViewCommand = new RelayCommand<RadioButton>(o =>
             {
-                CurrentView = HomeVM;
+                if (Privilege == "Chủ cửa hàng")
+                {
+                    CurrentView = OwnerHomeVM;
+                }
+                else
+                {
+                    CurrentView = HomeVM;
+                }
                 DisableSidebar();
             });
-            
+
             NhanVienViewCommand = new RelayCommand<RadioButton>(o =>
             {
                 CurrentView = NhanVienVM;
                 CurrentSidebarView = SidebarNhanVienVM;
                 EnableSidebar();
             });
-            
+
             KhachHangViewCommand = new RelayCommand<RadioButton>(o =>
             {
                 CurrentView = KhachHangVM;
                 CurrentSidebarView = SidebarKhachHangVM;
                 EnableSidebar();
+            });
+
+            SanPhamViewCommand = new RelayCommand<RadioButton>(o =>
+            {
+                CurrentView = SanPhamVM;
+                DisableSidebar();
+            });
+
+            PhieuNhapHangViewCommand = new RelayCommand<RadioButton>(o =>
+            {
+                CurrentView = PhieuNhapHangVM;
+                CurrentSidebarView = SidebarPhieuNhapHangVM;
+                EnableSidebar();
+            });
+
+            ChiTietPhieuNhapHangViewCommand = new RelayCommand<RadioButton>(o =>
+            {
+                CurrentView = ChiTietPhieuNhapHangVM;
+                CurrentSidebarView = SidebarChiTietPhieuNhapHangVM;
+                EnableSidebar();
+            });
+
+            HoaDonViewCommand = new RelayCommand<RadioButton>(o =>
+            {
+                CurrentView = HoaDonVM;
+                CurrentSidebarView = SidebarHoaDonVM;
+                EnableSidebar();
+            });
+
+            ChiTietHoaDonViewCommand = new RelayCommand<RadioButton>(o =>
+            {
+                CurrentView = ChiTietHoaDonVM;
+                CurrentSidebarView = SidebarChiTietHoaDonVM;
+                EnableSidebar();
+            });
+
+            TonKhoViewCommand = new RelayCommand<RadioButton>(o =>
+            {
+                CurrentView = TonKhoVM;
+                DisableSidebar();
             });
 
             SignOutCommand = new RelayCommand<Window>((p) => true, (p) =>

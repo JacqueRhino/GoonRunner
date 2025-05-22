@@ -11,7 +11,7 @@
         DataContext="{StaticResource MainVM}"
         Title="GoonRunner - Trang chủ"
         Name="mainWindow"
-        Height="720" Width="1280" MinHeight="500" MinWidth="700" Background="{StaticResource Background}"
+        Height="800" Width="1280" MinHeight="500" MinWidth="700" Background="{StaticResource Background}"
         Icon="/GoonRunner.ico">
     <Window.Resources>
         <SolidColorBrush x:Key="Foreground" Color="#3c3836"/>
@@ -24,74 +24,81 @@
     </WindowChrome.WindowChrome>
     <Grid Name="MainGrid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/> <!--gap-->
-            <ColumnDefinition Width="225" MaxWidth="250"/>
-            <ColumnDefinition Width="10"/> <!--gap-->
+            <ColumnDefinition Width="10"/>
+            <!--gap-->
+            <ColumnDefinition Width="250" MaxWidth="250"/>
+            <ColumnDefinition Width="10"/>
+            <!--gap-->
             <ColumnDefinition Width="*" MinWidth="100"/>
-            <ColumnDefinition  Width="{Binding SidebarLeftGapWidth}"/> <!--gap-->
+            <ColumnDefinition  Width="{Binding SidebarLeftGapWidth}"/>
+            <!--gap-->
             <ColumnDefinition Width="{Binding SidebarWidth}" MaxWidth="280"/>
-            <ColumnDefinition Width="10"/> <!--gap-->
+            <ColumnDefinition Width="10"/>
+            <!--gap-->
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/> <!--gap-->
+            <RowDefinition Height="30"/>
+            <!--gap-->
             <RowDefinition Height="60"/>
-            <RowDefinition Height="10"/> <!--gap-->
+            <RowDefinition Height="10"/>
+            <!--gap-->
             <RowDefinition Height="*"/>
-            <RowDefinition Height="10"/> <!--gap-->
+            <RowDefinition Height="10"/>
+            <!--gap-->
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Grid.Column="0" ColumnSpan="7">
-               <Grid.RowDefinitions>
-                   <RowDefinition Height="30"/>
-                   <RowDefinition/>
-               </Grid.RowDefinitions>
-               
-               <Grid.ColumnDefinitions>
-                   <ColumnDefinition/>
-                   <ColumnDefinition Width="40"/>
-                   <ColumnDefinition Width="40"/>
-                   <ColumnDefinition Width="40"/>
-               </Grid.ColumnDefinitions>
-                
-                <Rectangle Width="auto" Height="auto"
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Width="auto" Height="auto"
                            PreviewMouseLeftButtonDown="DragMoving"
                            Fill="Transparent"/>
-            
-                <Button Grid.Row="0" Grid.Column="1" Width="auto" Height="auto"                       
+
+            <Button Grid.Row="0" Grid.Column="1" Width="auto" Height="auto"                       
                        FontFamily="pack://application:,,,/Assets/Fonts/#Segoe Fluent Icons" FontWeight="Medium" FontSize="12"
                        BorderThickness="0"
                        Cursor="Hand"
                        Click="MinimizeOnClick"
                        Style="{StaticResource WindowControlButton}">
-                     
-                </Button>
-                
-               <Button Grid.Row="0" Grid.Column="2" Width="auto" Height="auto"
+                
+            </Button>
+
+            <Button Grid.Row="0" Grid.Column="2" Width="auto" Height="auto"
                        Click="MaximizeAndNormalOnClick"
                        Style="{StaticResource WindowControlButton}"
                        FontFamily="pack://application:,,,/Assets/Fonts/#Segoe Fluent Icons" FontSize="12"
                        Name="MaximizeButton"
                >
-                   
-               </Button>
-               <Button Grid.Row="0" Grid.Column="3" Width="auto" Height="auto"
+                
+            </Button>
+            <Button Grid.Row="0" Grid.Column="3" Width="auto" Height="auto"
                        FontFamily="pack://application:,,,/Assets/Fonts/#Segoe Fluent Icons" FontWeight="Medium" FontSize="12"
                        BorderThickness="0"
                        Click="ClosedOnClick"
                        Style="{StaticResource CloseButton}"
                >
-                    
-               </Button>
+                
+            </Button>
         </Grid>
-            <GroupBox Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="1" Style="{StaticResource GroupBoxGoonRunner}" Header="Nav">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    
-                    <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
-                        
+        <GroupBox Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="1" Style="{StaticResource GroupBoxGoonRunner}" Header="Nav">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+
                     <ToggleButton Style="{StaticResource NavToggleButton}"
                             Name="SidebarButton"
                             FontSize="24"
@@ -99,185 +106,243 @@
                             IsEnabled="{Binding SidebarButtonEnabled}"
                             Click="ControlSidebar">
                     </ToggleButton>
-                    
+
                     <Button Height="60" Width="auto" Style="{StaticResource NavButton}"
                             FontSize="24"
                             gr:Extensions.Icon="Settings32">
                     </Button>
-                        
-                    </StackPanel>
-                    
-                    
-                    <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                            
-                        <!-- <Button Height="60" Width="auto" Style="{StaticResource NavButton}"> -->
-                        <!--     <StackPanel> -->
-                                    <Ellipse Margin="10,0,0,0" Width="30" Height="30">
-                                        <Ellipse.Fill>
-                                            <ImageBrush ImageSource="pack://application:,,,/Assets/Images/TestAvatar.jpeg"></ImageBrush>
-                                        </Ellipse.Fill>
-                                    </Ellipse>
-                        <!--     </StackPanel> -->
-                        <!-- </Button> -->
-                        
-                        <StackPanel Margin="10,0,0,5"
+
+                </StackPanel>
+
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+
+                    <!-- <Button Height="60" Width="auto" Style="{StaticResource NavButton}"> -->
+                    <!--     <StackPanel> -->
+                    <Ellipse Margin="10,0,0,0" Width="30" Height="30">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="pack://application:,,,/Assets/Images/TestAvatar.jpeg"></ImageBrush>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <!--     </StackPanel> -->
+                    <!-- </Button> -->
+
+                    <StackPanel Margin="10,0,0,5"
                                     VerticalAlignment="Center">
-                            <TextBlock Text="{Binding DisplayName}"
+                        <TextBlock Text="{Binding DisplayName}"
                                        Margin="0,4,0,0"
                                        Name="Displayname"
                                        Foreground="{StaticResource Foreground}"
                                        FontSize="14"
                                        FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"/>
-                            <TextBlock Text="{Binding Privilege}"
+                        <TextBlock Text="{Binding Privilege}"
                                        Foreground="{StaticResource Foreground}"
                                        FontSize="12"
                                        FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"/>
-                        </StackPanel>
-                        
                     </StackPanel>
-                </Grid>
-            </GroupBox>
-            <GroupBox Grid.Column="1" Grid.Row="3" Style="{StaticResource GroupBoxGoonRunner}" Header="Menu">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="70"/>
-                    </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0">
-                            <RadioButton Name="TrangChuRadioButton"
+
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="1" Grid.Row="3" Style="{StaticResource GroupBoxGoonRunner}" Header="Menu">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="70"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <RadioButton Name="TrangChuRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
                                          gr:Extensions.Icon="Home20"
                                 Command="{Binding HomeViewCommand}"
                                 Click="DisableSidebarAndChangeTitle"
                                 IsChecked="True">
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Trang Chủ
-                                    </TextBlock>
-                                </StackPanel>
-                                <RadioButton.Resources>
-                                </RadioButton.Resources>
-                            </RadioButton>
-                        
-                            <RadioButton Name="NhanVienRadioButton"
+                            </TextBlock>
+                        </StackPanel>
+                        <RadioButton.Resources>
+                        </RadioButton.Resources>
+                    </RadioButton>
+
+                    <RadioButton Name="NhanVienRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
                                          gr:Extensions.Icon="PersonAccounts20"
                                 Command="{Binding NhanVienViewCommand}"
                                 Click="ChangeTitleNhanvien">
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Nhân Viên
-                                    </TextBlock>
-                                </StackPanel>
-                                <RadioButton.Resources>
-                                </RadioButton.Resources>
-                            </RadioButton>
-                        
-                            <RadioButton Name="DonHangRadioButton"
+                            </TextBlock>
+                        </StackPanel>
+                        <RadioButton.Resources>
+                        </RadioButton.Resources>
+                    </RadioButton>
+
+                    <RadioButton Name="HoaDonRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
                                          gr:Extensions.Icon="ClipboardBulletListRtl20"
-                                Click="ChangeTitleDonhang">
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
-                                        Đơn Hàng
-                                    </TextBlock>
-                                </StackPanel>
-                                <RadioButton.Resources>
-                                </RadioButton.Resources>
-                            </RadioButton>
-                        
-                            <RadioButton Name="SanPhamRadioButton"
+                                 Command="{Binding HoaDonViewCommand}"
+                                 Click="ChangeTitleHoadon">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                                        Hóa Đơn
+                            </TextBlock>
+                        </StackPanel>
+                        <RadioButton.Resources>
+                        </RadioButton.Resources>
+                    </RadioButton>
+                    
+                    <RadioButton Name="ChiTietHoaDonRadioButton"
+                                         Style="{StaticResource RadioButtonStyle}"
+                                         gr:Extensions.Icon="ClipboardBulletListRtl20"
+                                 Command="{Binding ChiTietHoaDonViewCommand}"
+                                 Click="ChangeTitleChitiethoadon">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                                        CT Hóa Đơn
+                            </TextBlock>
+                        </StackPanel>
+                        <RadioButton.Resources>
+                        </RadioButton.Resources>
+                    </RadioButton>
+
+                    <RadioButton Name="SanPhamRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
                                          gr:Extensions.Icon="Box20"
+                                         Command="{Binding SanPhamViewCommand}"
                                 Click="ChangeTitleSanpham">
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Sản Phẩm
-                                    </TextBlock>
-                                </StackPanel>
-                                <RadioButton.Resources>
-                                </RadioButton.Resources>
-                            </RadioButton>
-                        
-                            <RadioButton Name="KhachHangRadioButton"
+                            </TextBlock>
+                        </StackPanel>
+                        <RadioButton.Resources>
+                        </RadioButton.Resources>
+                    </RadioButton>
+
+                    <RadioButton Name="PhieuNhapHangRadioButton"
+                                         Style="{StaticResource RadioButtonStyle}"
+                                         gr:Extensions.Icon="ClipboardBulletListRtl20"
+                                         Command="{Binding PhieuNhapHangViewCommand}"
+                                Click="ChangeTitlePhieunhaphang">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                                        Phiếu Nhập
+                            </TextBlock>
+                        </StackPanel>
+                        <RadioButton.Resources>
+                        </RadioButton.Resources>
+                    </RadioButton>
+                    
+                    <RadioButton Name="ChiTietPhieuNhapHangRadioButton"
+                                         Style="{StaticResource RadioButtonStyle}"
+                                         gr:Extensions.Icon="ClipboardBulletListRtl20"
+                                         Command="{Binding ChiTietPhieuNhapHangViewCommand}"
+                                Click="ChangeTitleChitietphieunhaphang">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                                        CT Phiếu Nhập
+                            </TextBlock>
+                        </StackPanel>
+                        <RadioButton.Resources>
+                        </RadioButton.Resources>
+                    </RadioButton>
+                    
+                    <RadioButton Name="TonKhoRadioButton"
+                                         Style="{StaticResource RadioButtonStyle}"
+                                         gr:Extensions.Icon="ClipboardBulletListRtl20"
+                                         Command="{Binding TonKhoViewCommand}"
+                                Click="ChangeTitleTonkho">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                                        Tồn Kho
+                            </TextBlock>
+                        </StackPanel>
+                        <RadioButton.Resources>
+                        </RadioButton.Resources>
+                    </RadioButton>
+                    
+                    <RadioButton Name="KhachHangRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
                                          Command="{Binding KhachHangViewCommand}"
                                          gr:Extensions.Icon="People20"
                                          Click="ChangeTitleKhachhang">
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Khách Hàng
-                                    </TextBlock>
-                                </StackPanel>
-                                <RadioButton.Resources>
-                                </RadioButton.Resources>
-                            </RadioButton>
-                        
-                            <RadioButton Name="KhuyenMaiRadioButton"
+                            </TextBlock>
+                        </StackPanel>
+                        <RadioButton.Resources>
+                        </RadioButton.Resources>
+                    </RadioButton>
+
+                    <RadioButton Name="KhuyenMaiRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
                                          gr:Extensions.Icon="Tag20"
                                 Click="ChangeTitleKhuyenmai">
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Khuyến Mại
-                                    </TextBlock>
-                                </StackPanel>
-                                <RadioButton.Resources>
-                                </RadioButton.Resources>
-                            </RadioButton>
-                        
-                            <RadioButton Name="BaoHanhRadioButton"
+                            </TextBlock>
+                        </StackPanel>
+                        <RadioButton.Resources>
+                        </RadioButton.Resources>
+                    </RadioButton>
+
+                    <RadioButton Name="BaoHanhRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
                                          gr:Extensions.Icon="Wrench20"
                                 Click="ChangeTitleBaohanh">
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Bảo hành
-                                    </TextBlock>
-                                </StackPanel>
-                                <RadioButton.Resources>
-                                </RadioButton.Resources>
-                            </RadioButton>
+                            </TextBlock>
                         </StackPanel>
-                    
-                    <Button Grid.Row="1"
+                        <RadioButton.Resources>
+                        </RadioButton.Resources>
+                    </RadioButton>
+                </StackPanel>
+
+                <Button Grid.Row="1"
                             Style="{StaticResource SignOutButtonTheme}"
                             gr:Extensions.Icon="SignOut20"
                             Command="{Binding SignOutCommand}"
                             CommandParameter="{Binding ElementName=mainWindow}">
-                       <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
                         <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" 
                                    FontSize="18" Margin="10,0,0,0" 
                                    VerticalAlignment="Center">
                             Đăng xuất
                         </TextBlock>
-                       </StackPanel>
-                    </Button>
-                </Grid>
-                    
-            </GroupBox>
-        
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+        </GroupBox>
+
         <GridSplitter Grid.Column="2" Grid.Row="3" Style="{StaticResource GridSplitterColumn}"
                       VerticalAlignment="Stretch" HorizontalAlignment="Left" 
                       ResizeBehavior="PreviousAndNext" ResizeDirection="Columns"
                       Margin="-6,20,0,10"
-                      DragDelta="SetMenuWidth"/>        
-            <GroupBox Grid.Column="3" Grid.Row="3" Style="{StaticResource GroupBoxGoonRunner}" Header="Main">
-                <ContentControl
-                    Content="{Binding CurrentView}"/> 
-            </GroupBox>
+                      DragDelta="SetMenuWidth"/>
+        <GroupBox Grid.Column="3" Grid.Row="3" Style="{StaticResource GroupBoxGoonRunner}" Header="Main">
+            <ContentControl
+                    Content="{Binding CurrentView}"/>
+        </GroupBox>
         <GridSplitter Name="Split2" Grid.Column="4" Grid.Row="3" Style="{StaticResource GridSplitterColumn}"
                       VerticalAlignment="Stretch" HorizontalAlignment="Left" 
                       ResizeBehavior="PreviousAndNext" ResizeDirection="Columns"
                       Margin="-6,20,0,10"
                       DragDelta="CheckSidebarWidth"
                       DragCompleted="SetSidebarWidth"/>
-            <GroupBox Grid.Column="5" Grid.Row="3" Style="{StaticResource GroupBoxGoonRunner}" Header="Sidebar">
-                <ContentControl 
+        <GroupBox Grid.Column="5" Grid.Row="3" Style="{StaticResource GroupBoxGoonRunner}" Header="Sidebar">
+            <ContentControl 
                     HorizontalContentAlignment="Stretch"
                     VerticalContentAlignment="Stretch"
                     
                     Content="{Binding CurrentSidebarView}"/>
-            </GroupBox>
+        </GroupBox>
     </Grid>
 </Window>

@@ -105,7 +105,7 @@ namespace GoonRunner.MVVM.ViewModel
         public ICommand AddNhanVienCommand { get; set; }
         public SidebarNhanVienViewModel()
         {
-            
+            SelectedDate = DateTime.Now;
             DanhSachNhanVien = new ObservableCollection<NHANVIEN>(DataProvider.Ins.goonRunnerDB.NHANVIENs);
             AddNhanVienCommand = new RelayCommand<Button>((p) => { return true; }, (p) =>
             {
@@ -153,12 +153,11 @@ namespace GoonRunner.MVVM.ViewModel
                     return;
                 }
 
-                
-
                 var nhanvien = new NHANVIEN() { HoNV = HoNV, TenNV = TenNV, DiaChiNV = DiaChi, SdtNV = SDT, CMND = CMND, ChucVu = ChucVu, GioiTinh = GioiTinh, NgaySinh = NgaySinh, MaPB = MaPB};
                 DataProvider.Ins.goonRunnerDB.NHANVIENs.Add(nhanvien);
                 DataProvider.Ins.goonRunnerDB.SaveChanges();
                 DanhSachNhanVien.Add(nhanvien);
+                MessageBox.Show("Thêm thành công!");
             });
 
         }

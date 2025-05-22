@@ -7,24 +7,73 @@
     <DataTemplate DataType="{x:Type viewmodel:HomeViewModel}">
         <view:HomeView/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:OwnerHomeViewModel}">
+        <view:OwnerHomeView/>
+    </DataTemplate>
     <DataTemplate DataType="{x:Type viewmodel:KhachHangViewModel}">
         <view:KhachHangView/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewmodel:NhanVienViewModel}">
         <view:NhanVienView/>
     </DataTemplate>
-
-    <!-- Sidebar View -->
-            <DataTemplate DataType="{x:Type viewmodel:SidebarNhanVienViewModel}">
-                <view:SidebarNhanVienView/>
-            </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodel:SidebarKhachHangViewModel}">
-            <view:SidebarKhachHangView/>
-        </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:SanPhamViewModel}">
+        <view:SanPhamView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:PhieuNhapHangViewModel}">
+        <view:PhieuNhapHangView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:ChiTietPhieuNhapHangViewModel}">
+        <view:ChiTietPhieuNhapHangView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:HoaDonViewModel}">
+        <view:HoaDonView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:ChiTietHoaDonViewModel}">
+        <view:ChiTietHoaDonView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:TonKhoViewModel}">
+        <view:TonKhoView/>
+    </DataTemplate>
     
+    <!-- Sidebar View -->
+    <DataTemplate DataType="{x:Type viewmodel:SidebarNhanVienViewModel}">
+        <view:SidebarNhanVienView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:SidebarKhachHangViewModel}">
+        <view:SidebarKhachHangView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:SidebarSanPhamViewModel}">
+        <view:SidebarSanPhamView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:SidebarPhieuNhapHangViewModel}">
+        <view:SidebarPhieuNhapHangView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:SidebarChiTietPhieuNhapHangViewModel}">
+        <view:SidebarChiTietPhieuNhapHangView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:SidebarHoaDonViewModel}">
+        <view:SidebarHoaDonView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:SidebarChiTietHoaDonViewModel}">
+        <view:SidebarChiTietHoaDonView/>
+    </DataTemplate>
+
     <viewmodel:LoginViewModel x:Key="LoginVM"/>
+    <viewmodel:OwnerHomeViewModel x:Key="OwnerHomeVM"/>
     <viewmodel:KhachHangViewModel x:Key="KhachHangVM"/>
     <viewmodel:NhanVienViewModel x:Key="NhanVienVM"/>
+    <viewmodel:SanPhamViewModel x:Key="SanPhamVM"/>
+    <viewmodel:PhieuNhapHangViewModel x:Key="PhieuNhapHangVM"/>
+    <viewmodel:ChiTietPhieuNhapHangViewModel x:Key="ChiTietPhieuNhapHangVM"/>
+    <viewmodel:HoaDonViewModel x:Key="HoaDonVM"/>
+    <viewmodel:ChiTietHoaDonViewModel x:Key="ChiTietHoaDonVM"/>
+    <viewmodel:SidebarKhachHangViewModel x:Key="SidebarKhachHangVM"/>
     <viewmodel:SidebarNhanVienViewModel x:Key="SidebarNhanVienVM"/>
+    <viewmodel:SidebarSanPhamViewModel x:Key="SidebarSanPhamVM"/>
+    <viewmodel:SidebarPhieuNhapHangViewModel x:Key="SidebarPhieuNhapHangVM"/>
+    <viewmodel:SidebarChiTietPhieuNhapHangViewModel x:Key="SidebarChiTietPhieuNhapHangVM"/>
+    <viewmodel:SidebarHoaDonViewModel x:Key="SidebarHoaDonVM"/>
+    <viewmodel:SidebarChiTietHoaDonViewModel x:Key="SidebarChiTietHoaDonVM"/>
+    <viewmodel:TonKhoViewModel x:Key="TonKhoVM"/>
     <viewmodel:ForgotPasswordViewModel x:Key="ForgotPassVM"/>
 </ResourceDictionary>

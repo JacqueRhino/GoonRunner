@@ -79,7 +79,19 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="CustomControl\Textbox.xaml" />
+    <Page Include="MVVM\View\ChiTietHoaDonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\ChiTietPhieuNhapHangView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\ForgotPasswordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\HoaDonView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -91,8 +103,44 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MVVM\View\NhanVienView.xaml" />
+    <Page Include="MVVM\View\OwnerHomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\PhieuNhapHangView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\SanPhamView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\SidebarChiTietHoaDonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\SidebarChiTietPhieuNhapHangView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\SidebarHoaDonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\SidebarNhanVienView.xaml" />
     <Page Include="MVVM\View\SidebarKhachHangView.xaml" />
+    <Page Include="MVVM\View\SidebarPhieuNhapHangView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\SidebarSanPhamView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\TonKhoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\MainResource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -108,6 +156,10 @@
     <Page Include="Theme\GridSplitterTheme.xaml" />
     <Page Include="Theme\ListViewTheme.xaml" />
     <Page Include="Theme\GroupBox.xaml" />
+    <Page Include="Theme\ListViewTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Theme\MenuButtonTheme.xaml" />
     <Page Include="Theme\SidebarButtonTheme.xaml" />
     <Page Include="Theme\WindowControlButton.xaml" />
@@ -139,6 +191,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Model\DataProvider.cs" />
+    <Compile Include="MVVM\Model\DoanhThuTheoNgay.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\Model\GIAOCA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -184,20 +239,39 @@
     <Compile Include="MVVM\Model\SANPHAM.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Model\TONKHO.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
+    <Compile Include="MVVM\Model\TonKho.cs" />
     <Compile Include="MVVM\ViewModel\BaseViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ChiTietHoaDonViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\ChiTietPhieuNhapHangViewModel.cs" />
     <Compile Include="MVVM\ViewModel\ForgotPasswordViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\HoaDonViewModel.cs" />
     <Compile Include="MVVM\ViewModel\HomeViewModel.cs" />
     <Compile Include="MVVM\ViewModel\KhachHangViewModel.cs" />
     <Compile Include="MVVM\ViewModel\LoginViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
     <Compile Include="MVVM\ViewModel\NhanVienViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\OwnerHomeViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\PhieuNhapHangViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\SanPhamViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\SidebarChiTietHoaDonViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\SidebarChiTietPhieuNhapHangViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\SidebarHoaDonViewModel.cs" />
     <Compile Include="MVVM\ViewModel\SidebarKhachHangViewModel.cs" />
     <Compile Include="MVVM\ViewModel\SidebarNhanVienViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\SidebarPhieuNhapHangViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\SidebarSanPhamViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\TonKhoViewModel.cs" />
+    <Compile Include="MVVM\View\ChiTietHoaDonView.xaml.cs">
+      <DependentUpon>ChiTietHoaDonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\ChiTietPhieuNhapHangView.xaml.cs">
+      <DependentUpon>ChiTietPhieuNhapHangView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\ForgotPasswordView.xaml.cs">
       <DependentUpon>ForgotPasswordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\HoaDonView.xaml.cs">
+      <DependentUpon>HoaDonView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
@@ -215,11 +289,38 @@
     <Compile Include="MVVM\View\NhanVienView.xaml.cs">
       <DependentUpon>NhanVienView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\View\OwnerHomeView.xaml.cs">
+      <DependentUpon>OwnerHomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\PhieuNhapHangView.xaml.cs">
+      <DependentUpon>PhieuNhapHangView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\SanPhamView.xaml.cs">
+      <DependentUpon>SanPhamView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\SidebarChiTietHoaDonView.xaml.cs">
+      <DependentUpon>SidebarChiTietHoaDonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\SidebarChiTietPhieuNhapHangView.xaml.cs">
+      <DependentUpon>SidebarChiTietPhieuNhapHangView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\SidebarHoaDonView.xaml.cs">
+      <DependentUpon>SidebarHoaDonView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\SidebarNhanVienView.xaml.cs">
       <DependentUpon>SidebarNhanVienView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\SidebarKhachHangView.xaml.cs">
       <DependentUpon>SidebarKhachHangView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\SidebarPhieuNhapHangView.xaml.cs">
+      <DependentUpon>SidebarPhieuNhapHangView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\SidebarSanPhamView.xaml.cs">
+      <DependentUpon>SidebarSanPhamView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\TonKhoView.xaml.cs">
+      <DependentUpon>TonKhoView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -348,6 +449,8 @@
     <Content Include="Assets\Fonts\Segoe Fluent Icons.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Assets\Images\nen1.png" />
+    <Resource Include="Assets\Images\nen2.png" />
     <Content Include="MVVM\Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

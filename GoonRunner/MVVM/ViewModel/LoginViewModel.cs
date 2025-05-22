@@ -7,6 +7,10 @@ using System.Windows.Input;
 using System.Windows;
 using GoonRunner.MVVM.Model;
 using GoonRunner.MVVM.View;
+using System.Windows.Automation;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace GoonRunner.MVVM.ViewModel
 {
@@ -196,7 +200,7 @@ namespace GoonRunner.MVVM.ViewModel
                 ["Nhân viên chăm sóc khách hàng"] = new List<UIElement>
                 {
                     mainwindow.NhanVienRadioButton,
-                    mainwindow.DonHangRadioButton,
+                    mainwindow.HoaDonRadioButton,
                     mainwindow.KhuyenMaiRadioButton,
                     mainwindow.BaoHanhRadioButton
                 },
@@ -204,7 +208,7 @@ namespace GoonRunner.MVVM.ViewModel
                 {
                     mainwindow.NhanVienRadioButton,
                     mainwindow.KhachHangRadioButton,
-                    mainwindow.DonHangRadioButton,
+                    mainwindow.HoaDonRadioButton,
                     mainwindow.KhuyenMaiRadioButton,
                     mainwindow.BaoHanhRadioButton
                 },
@@ -213,14 +217,14 @@ namespace GoonRunner.MVVM.ViewModel
                     mainwindow.NhanVienRadioButton,
                     mainwindow.KhachHangRadioButton,
                     mainwindow.SanPhamRadioButton,
-                    mainwindow.DonHangRadioButton,
+                    mainwindow.HoaDonRadioButton,
                     mainwindow.KhuyenMaiRadioButton
                 },
                 ["Admin"] = new List<UIElement>
                 {
                     mainwindow.KhachHangRadioButton,
                     mainwindow.SanPhamRadioButton,
-                    mainwindow.DonHangRadioButton,
+                    mainwindow.HoaDonRadioButton,
                     mainwindow.BaoHanhRadioButton
                 }
             };

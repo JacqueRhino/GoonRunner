@@ -4,41 +4,40 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5425814515e8423fb94168b1b3833cd6" Name="Diagram1">
-        <EntityTypeShape EntityType="GoonRunnerModel.ACCNHANVIEN" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoonRunnerModel.CHITIETBAOHANH" Width="1.5" PointX="7.5" PointY="16.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoonRunnerModel.CHITIETHOADON" Width="1.5" PointX="10.5" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoonRunnerModel.CHITIETPHIEUNHAPHANG" Width="1.5" PointX="10.5" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoonRunnerModel.CHUONGTRINHKHUYENMAI" Width="1.5" PointX="10.5" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoonRunnerModel.DANHSACHMAGIAMGIA" Width="1.5" PointX="12.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoonRunnerModel.GIAOCA" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoonRunnerModel.HOADON" Width="1.5" PointX="8.25" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoonRunnerModel.KHACHHANG" Width="1.5" PointX="6" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoonRunnerModel.NHACUNGCAP" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoonRunnerModel.NHANVIEN" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoonRunnerModel.PHIEUBAOHANH" Width="1.5" PointX="5.25" PointY="16.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoonRunnerModel.PHIEUNHAPHANG" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoonRunnerModel.PHONGBAN" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoonRunnerModel.SANPHAM" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoonRunnerModel.HINHNHANVIEN" Width="1.5" PointX="5.25" PointY="23.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GoonRunnerModel.TONKHO" Width="1.5" PointX="10.5" PointY="7" IsExpanded="true" />
-        <AssociationConnector Association="GoonRunnerModel.FK__ACCNHANVIE__MaNV__5535A963" ManuallyRouted="false" />
-        <AssociationConnector Association="GoonRunnerModel.FK__CHITIETBAO__MaBH__5DCAEF64" ManuallyRouted="false" />
-        <AssociationConnector Association="GoonRunnerModel.FK__CHITIETHOA__MaHD__5AEE82B9" ManuallyRouted="false" />
-        <AssociationConnector Association="GoonRunnerModel.FK__CHITIETHOA__MaSP__5BE2A6F2" ManuallyRouted="false" />
-        <AssociationConnector Association="GoonRunnerModel.FK__CHITIETPH__MaPNH__60A75C0F" ManuallyRouted="false" />
-        <AssociationConnector Association="GoonRunnerModel.FK__CHITIETPHI__MaSP__619B8048" ManuallyRouted="false" />
-        <AssociationConnector Association="GoonRunnerModel.FK__CHUONGTRIN__MaSP__6383C8BA" ManuallyRouted="false" />
-        <AssociationConnector Association="GoonRunnerModel.FK__DANHSACHMA__MaKM__6477ECF3" ManuallyRouted="false" />
-        <AssociationConnector Association="GoonRunnerModel.FK__GIAOCA__MaNV__5812160E" ManuallyRouted="false" />
-        <AssociationConnector Association="GoonRunnerModel.FK__HOADON__MaKH__59063A47" ManuallyRouted="false" />
-        <AssociationConnector Association="GoonRunnerModel.FK__HOADON__MaNV__59FA5E80" ManuallyRouted="false" />
-        <AssociationConnector Association="GoonRunnerModel.FK__PHIEUNHAP__MaNCC__5EBF139D" ManuallyRouted="false" />
-        <AssociationConnector Association="GoonRunnerModel.FK__HINHNHANVI__MaNV__5629CD9C" ManuallyRouted="false" />
-        <AssociationConnector Association="GoonRunnerModel.FK__NHANVIEN__MaPB__571DF1D5" ManuallyRouted="false" />
-        <AssociationConnector Association="GoonRunnerModel.FK__PHIEUBAOHA__MaNV__5CD6CB2B" ManuallyRouted="false" />
-        <AssociationConnector Association="GoonRunnerModel.FK__PHIEUNHAPH__MaNV__5FB337D6" ManuallyRouted="false" />
-        <AssociationConnector Association="GoonRunnerModel.FK__TONKHO__MaSP__628FA481" ManuallyRouted="false" />
+      <Diagram DiagramId="5425814515e8423fb94168b1b3833cd6" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="GoonRunnerModel.ACCNHANVIEN" Width="1.5" PointX="5.25" PointY="21.625" />
+        <EntityTypeShape EntityType="GoonRunnerModel.CHITIETBAOHANH" Width="1.5" PointX="7.5" PointY="15.5" />
+        <EntityTypeShape EntityType="GoonRunnerModel.CHITIETHOADON" Width="1.5" PointX="10.5" PointY="9.5" />
+        <EntityTypeShape EntityType="GoonRunnerModel.CHITIETPHIEUNHAPHANG" Width="1.5" PointX="13.5" PointY="9.75" />
+        <EntityTypeShape EntityType="GoonRunnerModel.CHUONGTRINHKHUYENMAI" Width="1.5" PointX="10.5" PointY="5.75" />
+        <EntityTypeShape EntityType="GoonRunnerModel.DANHSACHMAGIAMGIA" Width="1.5" PointX="12.75" PointY="5.875" />
+        <EntityTypeShape EntityType="GoonRunnerModel.GIAOCA" Width="1.5" PointX="5.25" PointY="18.625" />
+        <EntityTypeShape EntityType="GoonRunnerModel.HOADON" Width="1.5" PointX="5.25" PointY="9.125" />
+        <EntityTypeShape EntityType="GoonRunnerModel.KHACHHANG" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="GoonRunnerModel.NHACUNGCAP" Width="1.5" PointX="6" PointY="3.125" />
+        <EntityTypeShape EntityType="GoonRunnerModel.NHANVIEN" Width="1.5" PointX="3" PointY="8.625" />
+        <EntityTypeShape EntityType="GoonRunnerModel.PHIEUBAOHANH" Width="1.5" PointX="5.25" PointY="15.5" />
+        <EntityTypeShape EntityType="GoonRunnerModel.PHIEUNHAPHANG" Width="1.5" PointX="8.25" PointY="9.625" />
+        <EntityTypeShape EntityType="GoonRunnerModel.PHONGBAN" Width="1.5" PointX="0.75" PointY="10" />
+        <EntityTypeShape EntityType="GoonRunnerModel.SANPHAM" Width="1.5" PointX="8.25" PointY="5.375" />
+        <EntityTypeShape EntityType="GoonRunnerModel.HINHNHANVIEN" Width="1.5" PointX="5.25" PointY="5.5" />
+        <AssociationConnector Association="GoonRunnerModel.FK__ACCNHANVIE__MaNV__6C5905DD" />
+        <AssociationConnector Association="GoonRunnerModel.FK__CHITIETBAO__MaBH__74EE4BDE" />
+        <AssociationConnector Association="GoonRunnerModel.FK__CHITIETHOA__MaHD__7211DF33" />
+        <AssociationConnector Association="GoonRunnerModel.FK__CHITIETHOA__MaSP__7306036C" />
+        <AssociationConnector Association="GoonRunnerModel.FK__CHITIETPH__MaPNH__77CAB889" />
+        <AssociationConnector Association="GoonRunnerModel.FK__CHITIETPHI__MaSP__78BEDCC2" />
+        <AssociationConnector Association="GoonRunnerModel.FK__CHUONGTRIN__MaSP__79B300FB" />
+        <AssociationConnector Association="GoonRunnerModel.FK__DANHSACHMA__MaKM__7AA72534" />
+        <AssociationConnector Association="GoonRunnerModel.FK__GIAOCA__MaNV__6F357288" />
+        <AssociationConnector Association="GoonRunnerModel.FK__HOADON__MaKH__702996C1" />
+        <AssociationConnector Association="GoonRunnerModel.FK__HOADON__MaNV__711DBAFA" />
+        <AssociationConnector Association="GoonRunnerModel.FK__PHIEUNHAP__MaNCC__75E27017" />
+        <AssociationConnector Association="GoonRunnerModel.FK__HINHNHANVI__MaNV__6D4D2A16" />
+        <AssociationConnector Association="GoonRunnerModel.FK__NHANVIEN__MaPB__6E414E4F" />
+        <AssociationConnector Association="GoonRunnerModel.FK__PHIEUBAOHA__MaNV__73FA27A5" />
+        <AssociationConnector Association="GoonRunnerModel.FK__PHIEUNHAPH__MaNV__76D69450" />
+        <EntityTypeShape EntityType="GoonRunnerModel.DoanhThuTheoNgay" Width="1.5" PointX="1.625" PointY="1.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

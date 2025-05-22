@@ -20,7 +20,6 @@ namespace GoonRunner.MVVM.Model
             this.CHITIETHOADONs = new HashSet<CHITIETHOADON>();
             this.CHITIETPHIEUNHAPHANGs = new HashSet<CHITIETPHIEUNHAPHANG>();
             this.CHUONGTRINHKHUYENMAIs = new HashSet<CHUONGTRINHKHUYENMAI>();
-            this.TONKHOes = new HashSet<TONKHO>();
         }
     
         public int MaSP { get; set; }
@@ -37,7 +36,5 @@ namespace GoonRunner.MVVM.Model
         public virtual ICollection<CHITIETPHIEUNHAPHANG> CHITIETPHIEUNHAPHANGs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHUONGTRINHKHUYENMAI> CHUONGTRINHKHUYENMAIs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TONKHO> TONKHOes { get; set; }
     }
 }

@@ -24,7 +24,6 @@ namespace GoonRunner.MVVM.Model
         public int MaNCC { get; set; }
         public string TenNCC { get; set; }
         public Nullable<System.DateTime> NgayNhap { get; set; }
-        public Nullable<int> TongTien { get; set; }
         public int MaNV { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

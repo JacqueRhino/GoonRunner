@@ -30,9 +30,6 @@ namespace GoonRunner.MVVM.Model
         public string HoNV { get; set; }
         public string TenNV { get; set; }
         public Nullable<System.DateTime> NgayMuaHang { get; set; }
-        public Nullable<int> TongTien { get; set; }
-        public Nullable<int> TongChietKhau { get; set; }
-        public Nullable<int> TongThanhToan { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETHOADON> CHITIETHOADONs { get; set; }

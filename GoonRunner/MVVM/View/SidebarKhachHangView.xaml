@@ -5,21 +5,25 @@
              xmlns:gr="clr-namespace:GoonRunner.CustomControl"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel"
+             d:DataContext="{d:DesignInstance Type=viewmodel:SidebarKhachHangViewModel}"
+             DataContext="{StaticResource SidebarKhachHangVM}"
              mc:Ignorable="d"
              d:DesignHeight="590" d:DesignWidth="250">
     <Grid>
         <StackPanel>
-                    <gr:Textbox SetHeader="Họ KH" SetPlaceholder="Nhập họ khách hàng"/>
-                    <gr:Textbox SetHeader="Tên KH" SetPlaceholder="Nhập tên khách hàng"/>
-                    <gr:Textbox SetHeader="Địa chỉ" SetPlaceholder="Nhập địa chỉ"/>
-                    <gr:Textbox SetHeader="SĐT" SetPlaceholder="Nhập số điện thoại"/>
+                    <gr:Textbox SetHeader="Họ KH" SetPlaceholder="Nhập họ khách hàng" SetBinding="{Binding HoKH}"/>
+                    <gr:Textbox SetHeader="Tên KH" SetPlaceholder="Nhập tên khách hàng" SetBinding="{Binding TenKH}"/>
+                    <gr:Textbox SetHeader="Địa chỉ" SetPlaceholder="Nhập địa chỉ" SetBinding="{Binding DiaChi}"/>
+                    <gr:Textbox SetHeader="SĐT" SetPlaceholder="Nhập số điện thoại" SetBinding="{Binding SDT}"/>
                     
                     <DatePicker gr:Extensions.Header="Ngày sinh"
                                 VerticalContentAlignment="Center"
                                 Foreground="#3c3836" 
                                 BorderBrush="#3c3836"
                                 FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"
-                                Margin="0,0,0,5" />
+                                Margin="0,0,0,5"
+                                SelectedDate="{Binding SelectedDate, Mode=TwoWay}"/>
                 <Grid HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -29,7 +33,8 @@
                     
                     <Button Grid.Column="0"
                             Margin="10"
-                            Style="{StaticResource SidebarButton}">
+                            Style="{StaticResource SidebarButton}"
+                            Command="{Binding AddKhachHangCommand}">
                         <StackPanel>
                             <ui:SymbolIcon Symbol="Add24" FontSize="20"/>
                         </StackPanel>

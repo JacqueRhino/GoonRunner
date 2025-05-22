@@ -33,8 +33,8 @@
                             </Border>
                         </ControlTemplate>
                     </TextBox.Template>
-                </TextBox>        
-                
+                </TextBox>
+
                 <TextBlock IsHitTestVisible="False"
                            OverridesDefaultStyle="True"
                            Text="Nhập họ"
@@ -46,7 +46,7 @@
                            FontSize="12"
                            x:Name="Placeholder"
                            Foreground="#A89984">
-        
+
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}">
                             <Style.Triggers>

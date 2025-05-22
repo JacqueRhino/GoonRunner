@@ -1,6 +1,8 @@
 using GoonRunner.MVVM.Model;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace GoonRunner.MVVM.ViewModel
 {
@@ -8,14 +10,13 @@ namespace GoonRunner.MVVM.ViewModel
     {
         private ObservableCollection<KHACHHANG> _khachhanglist;
         public ObservableCollection<KHACHHANG> KhachHangList { get { return _khachhanglist; } set { _khachhanglist = value; OnPropertyChanged(); } }
-
         private KHACHHANG _selectedKHACHHANG;
-
-        public KHACHHANG SelectedKHACHHANG { get { return _selectedKHACHHANG; } set { _selectedKHACHHANG = value; OnPropertyChanged(); }
-        }
+        public KHACHHANG SelectedKHACHHANG { get { return _selectedKHACHHANG; } set { _selectedKHACHHANG = value; OnPropertyChanged(); } }
+        public ICommand RefreshCommand { get; set; }
         public KhachHangViewModel()
         {
             LoadKhachHangList();
+            RefreshCommand = new RelayCommand<Button>((p) => true, (p) => { LoadKhachHangList(); });
         }
         private void LoadKhachHangList()
         {
@@ -25,13 +26,11 @@ namespace GoonRunner.MVVM.ViewModel
             foreach (var item in DanhSachKhachHang)
             {
                 KHACHHANG khachhang = new KHACHHANG();
-                khachhang.MaKH = DataProvider.Ins.goonRunnerDB.KHACHHANGs.Where((n) => n.MaKH == i).Select(n => n.MaKH).FirstOrDefault();
-                var HoKH = DataProvider.Ins.goonRunnerDB.KHACHHANGs.Where(n => n.MaKH == i).Select(n => n.HoKH).FirstOrDefault();
-                var TenKH = DataProvider.Ins.goonRunnerDB.KHACHHANGs.Where(n => n.MaKH == i).Select(n => n.TenKH).FirstOrDefault();
-                khachhang.TenKH = HoKH + " " + TenKH;
-                khachhang.SdtKH = DataProvider.Ins.goonRunnerDB.KHACHHANGs.Where((n) => n.MaKH == i).Select(n => n.SdtKH).FirstOrDefault();
-                khachhang.NgaySinh = DataProvider.Ins.goonRunnerDB.KHACHHANGs.Where((n) => n.MaKH == i).Select(n => n.NgaySinh).FirstOrDefault();
-                khachhang.DiaChi = DataProvider.Ins.goonRunnerDB.KHACHHANGs.Where((n) => n.MaKH == i).Select(n => n.DiaChi).FirstOrDefault();
+                khachhang.MaKH = item.MaKH;
+                khachhang.TenKH = item.HoKH + " " + item.TenKH;
+                khachhang.SdtKH = item.SdtKH;
+                khachhang.NgaySinh = item.NgaySinh;
+                khachhang.DiaChi = item.DiaChi;
                 KhachHangList.Add(khachhang);
                 i++;
             }

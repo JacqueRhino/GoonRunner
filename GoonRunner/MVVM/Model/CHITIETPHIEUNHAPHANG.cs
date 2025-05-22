@@ -19,7 +19,6 @@ namespace GoonRunner.MVVM.Model
         public string TenSP { get; set; }
         public Nullable<int> SoLuongNhap { get; set; }
         public Nullable<int> DonGia { get; set; }
-        public Nullable<int> ThanhTien { get; set; }
     
         public virtual PHIEUNHAPHANG PHIEUNHAPHANG { get; set; }
         public virtual SANPHAM SANPHAM { get; set; }

@@ -20,6 +20,7 @@ namespace GoonRunner.MVVM.Model
         public Nullable<int> SoLuongDat { get; set; }
         public Nullable<int> DonGia { get; set; }
         public Nullable<int> ThanhTien { get; set; }
+        public Nullable<int> TongTien { get; set; }
     
         public virtual HOADON HOADON { get; set; }
         public virtual SANPHAM SANPHAM { get; set; }
