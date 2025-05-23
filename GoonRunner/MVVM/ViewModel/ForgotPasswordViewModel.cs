@@ -25,6 +25,7 @@ namespace GoonRunner.MVVM.ViewModel
                 LogInView loginView = new LogInView();
                 loginView.Show();
                 p.Hide();
+                Placeholder = "Nhập mật khẩu mới";
             });
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => true, (p) =>
             {
