@@ -24,6 +24,7 @@ namespace GoonRunner.MVVM.ViewModel
         public ICommand RefreshCommand { get; set; }
         public OwnerHomeViewModel()
         {
+            HienThiDoanhThu = 0;
             SelectedDate = DateTime.Today;
             LoadDoanhThu();
             RefreshCommand = new RelayCommand<Button>((p) => true, (p) => { LoadDoanhThu(); });

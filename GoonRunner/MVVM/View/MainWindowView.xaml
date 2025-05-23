@@ -182,7 +182,7 @@
 
                     <RadioButton Name="HoaDonRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
-                                         gr:Extensions.Icon="ClipboardBulletListRtl20"
+                                         gr:Extensions.Icon="Clipboard20"
                                  Command="{Binding HoaDonViewCommand}"
                                  Click="ChangeTitleHoadon">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -196,7 +196,7 @@
                     
                     <RadioButton Name="ChiTietHoaDonRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
-                                         gr:Extensions.Icon="ClipboardBulletListRtl20"
+                                         gr:Extensions.Icon="clipboardedit20"
                                  Command="{Binding ChiTietHoaDonViewCommand}"
                                  Click="ChangeTitleChitiethoadon">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -224,7 +224,7 @@
 
                     <RadioButton Name="PhieuNhapHangRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
-                                         gr:Extensions.Icon="ClipboardBulletListRtl20"
+                                         gr:Extensions.Icon="BoxArrowUp20"
                                          Command="{Binding PhieuNhapHangViewCommand}"
                                 Click="ChangeTitlePhieunhaphang">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -238,7 +238,7 @@
                     
                     <RadioButton Name="ChiTietPhieuNhapHangRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
-                                         gr:Extensions.Icon="ClipboardBulletListRtl20"
+                                         gr:Extensions.Icon="BoxEdit24"
                                          Command="{Binding ChiTietPhieuNhapHangViewCommand}"
                                 Click="ChangeTitleChitietphieunhaphang">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -252,9 +252,9 @@
                     
                     <RadioButton Name="TonKhoRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
-                                         gr:Extensions.Icon="ClipboardBulletListRtl20"
+                                         gr:Extensions.Icon="BoxMultiple20"
                                          Command="{Binding TonKhoViewCommand}"
-                                Click="ChangeTitleTonkho">
+                                         Click="ChangeTitleTonkho">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Tồn Kho

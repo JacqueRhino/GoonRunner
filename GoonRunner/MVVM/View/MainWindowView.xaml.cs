@@ -94,56 +94,56 @@ namespace GoonRunner.MVVM.View
             MainGrid.ColumnDefinitions[4].Width = new GridLength(0);
             SidebarButton.IsChecked = false;
             
-            this.Title = "GoonRunner - Trang chủ";
+            Title = "GoonRunner - Trang chủ";
         }
 
         private void ChangeTitleNhanvien(object sender, RoutedEventArgs e)
         {
-            this.Title = "GoonRunner - Nhân viên";
+            Title = "GoonRunner - Nhân viên";
         }
 
         private void ChangeTitleHoadon(object sender, RoutedEventArgs e)
         {
-            this.Title = "GoonRunner - Hóa đơn";
+            Title = "GoonRunner - Hóa đơn";
         }
 
         private void ChangeTitleSanpham(object sender, RoutedEventArgs e)
         {
-            this.Title = "GoonRunner - Sản phẩm";
+            Title = "GoonRunner - Sản phẩm";
         }
         private void ChangeTitlePhieunhaphang(object sender, RoutedEventArgs e)
         {
-            this.Title = "GoonRunner - Phiếu nhập hàng";
+            Title = "GoonRunner - Phiếu nhập hàng";
         }
 
         private void ChangeTitleKhachhang(object sender, RoutedEventArgs e)
         {
-            this.Title = "GoonRunner - Khách Hàng";
+            Title = "GoonRunner - Khách Hàng";
         }
 
         private void ChangeTitleKhuyenmai(object sender, RoutedEventArgs e)
         {
-            this.Title = "GoonRunner - Khuyến mại";
+            Title = "GoonRunner - Khuyến mại";
         }
 
         private void ChangeTitleBaohanh(object sender, RoutedEventArgs e)
         {
-            this.Title = "GoonRunner - Bảo hành";
+            Title = "GoonRunner - Bảo hành";
         }
 
         private void ChangeTitleChitietphieunhaphang(object sender, RoutedEventArgs e)
         {
-            this.Title = "GoonRunner - Chi tiết phiếu nhập hàng";
+            Title = "GoonRunner - Chi tiết phiếu nhập hàng";
         }
 
         private void ChangeTitleChitiethoadon(object sender, RoutedEventArgs e)
         {
-            this.Title = "GoonRunner - Chi tiết hóa đơn";
+            Title = "GoonRunner - Chi tiết hóa đơn";
         }
 
         private void ChangeTitleTonkho(object sender, System.Windows.RoutedEventArgs e)
         {
-            this.Title = "GoonRunner - Tồn kho";
+            Title = "GoonRunner - Tồn kho";
         }
     }
 }
