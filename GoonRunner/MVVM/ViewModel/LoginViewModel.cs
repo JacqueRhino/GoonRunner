@@ -28,7 +28,7 @@ namespace GoonRunner.MVVM.ViewModel
         public string Placeholder { get => _placeholder; set { _placeholder = value; OnPropertyChanged(); } }
 
         private string _errormessage;
-        public string ErrorMassage { get => _errormessage; set { _errormessage = value; OnPropertyChanged(); } }
+        public string ErrorMessage { get => _errormessage; set { _errormessage = value; OnPropertyChanged(); } }
 
         private string _privilege = "DEVELOPER";
         public string Privilege { get => _privilege; set { _privilege = value; OnPropertyChanged(); } }
@@ -67,29 +67,29 @@ namespace GoonRunner.MVVM.ViewModel
             if (p == null)
                 return;
             
-            ErrorMassage = "";
+            ErrorMessage = "";
             
             if (string.IsNullOrEmpty(UserName))
             {
-                ErrorMassage = "Hãy nhập tên người dùng";
+                ErrorMessage = "Hãy nhập tên người dùng";
                 return;
             }
 
             if (UserName.Length < 3)
             {
-                ErrorMassage = "Tên người dùng phải dài ít nhất là 3 ký tự";
+                ErrorMessage = "Tên người dùng phải dài ít nhất là 3 ký tự";
                 return;
             }
             
             if (string.IsNullOrEmpty(Password))
             {
-                ErrorMassage = "Hãy nhập mật khẩu";
+                ErrorMessage = "Hãy nhập mật khẩu";
                 return;
             }
             
             if (Password.Length < 3)
             {
-                ErrorMassage = "Mật khẩu phải dài ít nhất là 3 ký tự";
+                ErrorMessage = "Mật khẩu phải dài ít nhất là 3 ký tự";
                 return;
             }
 
@@ -97,12 +97,12 @@ namespace GoonRunner.MVVM.ViewModel
             var storyboard = p.Resources["SpinnerStoryboard"] as System.Windows.Media.Animation.Storyboard;
             storyboard?.Begin();
 
-            var accountValid = await Task.Run(CheckAccount);
+            var isAccountValid = await Task.Run(CheckAccount);
             IsLoading = false;
             storyboard?.Stop();
-            if (!accountValid)
+            if (!isAccountValid)
             {
-                ErrorMassage = "Tên tài khoản hoặc mật khẩu không đúng.";
+                ErrorMessage = "Tên tài khoản hoặc mật khẩu không đúng.";
                 return;
             }
             
@@ -136,32 +136,32 @@ namespace GoonRunner.MVVM.ViewModel
             
             if (string.IsNullOrEmpty(UserName))
             {
-                ErrorMassage = "Hãy nhập tên người dùng";
+                ErrorMessage = "Hãy nhập tên người dùng";
                 return;
             }
 
             if (UserName.Length < 3)
             {
-                ErrorMassage = "Tên người dùng phải dài ít nhất là 3 ký tự";
+                ErrorMessage = "Tên người dùng phải dài ít nhất là 3 ký tự";
                 return;
             }
             
             if (string.IsNullOrEmpty(Password))
             {
-                ErrorMassage = "Hãy nhập mật khẩu";
+                ErrorMessage = "Hãy nhập mật khẩu";
                 return;
             }
             
             if (Password.Length < 3)
             {
-                ErrorMassage = "Mật khẩu phải dài ít nhất là 3 ký tự";
+                ErrorMessage = "Mật khẩu phải dài ít nhất là 3 ký tự";
                 return;
             }
 
             // Kiểm tra tài khoản
             if (!CheckAccount())
             {
-                ErrorMassage = "Tên tài khoản hoặc mật khẩu không đúng.";
+                ErrorMessage = "Tên tài khoản hoặc mật khẩu không đúng.";
                 return;
             }
             
@@ -244,7 +244,7 @@ namespace GoonRunner.MVVM.ViewModel
             string EncodedPass = MD5Hash(Password);
             if (!System.Data.Entity.Database.Exists("GoonRunnerEntities"))
             {
-                ErrorMassage = "Cấu hình cơ sở dữ liệu không chính xác";
+                ErrorMessage = "Cấu hình cơ sở dữ liệu không chính xác";
                 return false;
             }
 
@@ -252,40 +252,10 @@ namespace GoonRunner.MVVM.ViewModel
             {
                 if (!context.Database.Exists())
                 {
-                    ErrorMassage = "Không thể kết nối cơ sở dữ liệu";
+                    ErrorMessage = "Không thể kết nối cơ sở dữ liệu";
                     return false;
                 }
-
                 
-                // T xài stored procedure bên SQL Server cho hiểu xuất cao hơn
-                // procedure đây:
-                // CREATE PROCEDURE kiem_tra_login
-                //     @UserName NVARCHAR(50),
-                // @PasswordHash NVARCHAR(100)
-                // AS
-                //     BEGIN
-                // SET NOCOUNT ON;
-                //
-                // SELECT 
-                //     DisplayName,
-                //     Quyen
-                // FROM 
-                //     ACCNHANVIEN
-                // WHERE 
-                //     UserName COLLATE Latin1_General_CS_AS = @UserName
-                // AND Pass = @PasswordHash;
-                // END                
-                    
-                // nếu thấy bất tiện thì t cũng có optimize cái cũ:
-                // var userAccount = context.ACCNHANVIENs
-                //     .Where(record => record.UserName == UserName && record.Pass == EncodedPass)
-                //     .Select(record => new
-                //     {
-                //         record.DisplayName,
-                //         record.Quyen
-                //     })
-                //     .FirstOrDefault();
-
                 try
                 {
                     var userAccount = context.Database.SqlQuery<UserAccountDTO>(
@@ -305,17 +275,17 @@ namespace GoonRunner.MVVM.ViewModel
                 {
                     if (exception.Number == 2812)
                     {
-                        ErrorMassage = "Stored procedure 'kiem_tra_login' không tồn tại trong cơ sở dữ liệu.";
+                        ErrorMessage = "Stored procedure 'kiem_tra_login' không tồn tại trong cơ sở dữ liệu.";
                     }
                     else
                     {
-                        ErrorMassage = $"Lỗi truy vấn cơ sở dữ liệu: {exception.Message}";
+                        ErrorMessage = $"Lỗi truy vấn cơ sở dữ liệu: {exception.Message}";
                     }
                     return false;
                 }
                 catch (System.Exception ex)
                 {
-                    ErrorMassage = $"Lỗi không xác định: {ex.Message}";
+                    ErrorMessage = $"Lỗi không xác định: {ex.Message}";
                     return false;
                 }
 

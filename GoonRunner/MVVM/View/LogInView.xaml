@@ -20,18 +20,18 @@
         WindowStartupLocation="CenterScreen"
         Icon="/GoonRunner.ico">
     <Window.Resources>
-    <SolidColorBrush x:Key="Foreground" Color="#3c3836"/>
-    <SolidColorBrush x:Key="Background" Color="#fbf1c7"/>
-    
-    <Storyboard x:Key="SpinnerStoryboard" RepeatBehavior="Forever">
-        <DoubleAnimation
-            Storyboard.TargetName="SpinnerRotate"
-            Storyboard.TargetProperty="Angle"
-            From="0" To="360" Duration="0:0:1"/>
-    </Storyboard>
-    
-    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-    <animation:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
+        <SolidColorBrush x:Key="Foreground" Color="#3c3836"/>
+        <SolidColorBrush x:Key="Background" Color="#fbf1c7"/>
+        
+        <Storyboard x:Key="SpinnerStoryboard" RepeatBehavior="Forever">
+            <DoubleAnimation
+                Storyboard.TargetName="SpinnerRotate"
+                Storyboard.TargetProperty="Angle"
+                From="0" To="360" Duration="0:0:1"/>
+        </Storyboard>
+        
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <animation:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
     </Window.Resources> 
     
     <Grid>
@@ -164,7 +164,7 @@
                            MaxWidth="235"
                            TextWrapping="Wrap"
                            Margin="0,5,0,0"
-                           Text="{Binding ErrorMassage}"
+                           Text="{Binding ErrorMessage}"
                            Style="{StaticResource ErrorMessageStyle}"/>
 
             </StackPanel>
