@@ -11,6 +11,10 @@ namespace GoonRunner.MVVM.View
         public ForgotPasswordView()
         {
             InitializeComponent();
+            Loaded += (sender, e) =>
+            {
+                var storyboard = Resources["SpinnerStoryboard"] as System.Windows.Media.Animation.Storyboard;
+            };
         }
 
         private void MinimizedOnClick(object sender, RoutedEventArgs e)

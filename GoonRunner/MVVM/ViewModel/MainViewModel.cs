@@ -221,7 +221,7 @@ namespace GoonRunner.MVVM.ViewModel
             var loginVM = loginWindow.DataContext as LoginViewModel; // Gọi LoginViewModel
             loginVM.UserName = "";
             loginVM.Password = ""; // Khi thực hiện đăng xuất sẽ reset lại ô username và password
-            loginVM.ErrorMassage = "";
+            loginVM.ErrorMessage = "";
             CurrentView = HomeVM;
             loginWindow.Show();
             p.Hide();

@@ -27,11 +27,5 @@ namespace GoonRunner.MVVM.View
         {
             WindowState = WindowState.Minimized;
         }
-
-        private bool AuthenticateSuccessful()
-        {
-            return true;
-        }
-
     }
 }

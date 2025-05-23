@@ -7,10 +7,6 @@ using System.Windows.Input;
 using System.Windows;
 using GoonRunner.MVVM.Model;
 using GoonRunner.MVVM.View;
-using System.Windows.Automation;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 
 namespace GoonRunner.MVVM.ViewModel
 {
@@ -109,7 +105,9 @@ namespace GoonRunner.MVVM.ViewModel
             IsLogin = true;
             Placeholder = "Nhập mật khẩu";
             MainWindowView mainwindow = new MainWindowView();
-            // Đổi qua xài như vậy để tránh tình trạng null làm sập app như hồi sáng
+            
+            
+            //TODO: Thêm error handling
             if (mainwindow.DataContext is MainViewModel MainVM)
             {
                 MainVM.DisplayName = DisplayName;
@@ -122,63 +120,6 @@ namespace GoonRunner.MVVM.ViewModel
             p.Hide();
         }
 
-        private void LoginBYPASS(Window p)
-        {
-            IsLogin = true;
-            p.Hide();
-            MainWindowView mainwindow = new MainWindowView();
-            mainwindow.Show();
-        }
-        private void Login(Window p)
-        {
-            if (p == null)
-                return;
-            
-            if (string.IsNullOrEmpty(UserName))
-            {
-                ErrorMessage = "Hãy nhập tên người dùng";
-                return;
-            }
-
-            if (UserName.Length < 3)
-            {
-                ErrorMessage = "Tên người dùng phải dài ít nhất là 3 ký tự";
-                return;
-            }
-            
-            if (string.IsNullOrEmpty(Password))
-            {
-                ErrorMessage = "Hãy nhập mật khẩu";
-                return;
-            }
-            
-            if (Password.Length < 3)
-            {
-                ErrorMessage = "Mật khẩu phải dài ít nhất là 3 ký tự";
-                return;
-            }
-
-            // Kiểm tra tài khoản
-            if (!CheckAccount())
-            {
-                ErrorMessage = "Tên tài khoản hoặc mật khẩu không đúng.";
-                return;
-            }
-            
-            IsLogin = true;
-            Placeholder = "Nhập mật khẩu";
-            MainWindowView mainwindow = new MainWindowView();
-            var MainVM = mainwindow.DataContext as MainViewModel;
-            MainVM.DisplayName = DisplayName; // Gắn DisplayName qua bên MainWindow
-            MainVM.Privilege = Privilege; // Gắn Privilege qua bên MainWindow
-
-            // Xử lý ẩn hiện danh mục dựa vào quyền của user
-            SetVisibilityByPrivilege(mainwindow);
-                
-            mainwindow.Show();
-            p.Hide();
-        }
-        
         private void SetVisibilityByPrivilege(MainWindowView mainwindow)
         {
             var hiddenControlsByRole = new Dictionary<string, List<UIElement>>
@@ -241,7 +182,7 @@ namespace GoonRunner.MVVM.ViewModel
 
         private bool CheckAccount()
         {
-            string EncodedPass = MD5Hash(Password);
+            string encodedPass = MD5Hash(Password);
             if (!System.Data.Entity.Database.Exists("GoonRunnerEntities"))
             {
                 ErrorMessage = "Cấu hình cơ sở dữ liệu không chính xác";
@@ -261,7 +202,7 @@ namespace GoonRunner.MVVM.ViewModel
                     var userAccount = context.Database.SqlQuery<UserAccountDTO>(
                         "EXEC kiem_tra_login @UserName, @PasswordHash",
                         new SqlParameter("@UserName", UserName),
-                        new SqlParameter("@PasswordHash", EncodedPass)
+                        new SqlParameter("@PasswordHash", encodedPass)
                     ).FirstOrDefault();
                     
                     if (userAccount == null)
