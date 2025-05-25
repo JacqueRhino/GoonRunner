@@ -15,9 +15,7 @@
         Icon="/GoonRunner.ico">
     <Window.Resources>
         <SolidColorBrush x:Key="Foreground" Color="#3c3836"/>
-        <SolidColorBrush x:Key="Foreground2" Color="#A89984"/>
         <SolidColorBrush x:Key="Background" Color="#fbf1c7"/>
-        <SolidColorBrush x:Key="Orange" Color="#D65D0E"/>
     </Window.Resources>
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0"/>

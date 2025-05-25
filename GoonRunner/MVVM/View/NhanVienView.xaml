@@ -17,7 +17,7 @@
         <SolidColorBrush x:Key="Foreground2" Color="#A89984"/>
         <SolidColorBrush x:Key="Background" Color="#fbf1c7"/>
         <SolidColorBrush x:Key="Orange" Color="#D65D0E"/>
-        <SolidColorBrush x:Key="Green" Color="#427B55"/>
+        <SolidColorBrush x:Key="Aqua" Color="#427B55"/>
         
     </UserControl.Resources>
     
