@@ -20,7 +20,7 @@ namespace GoonRunner.MVVM.ViewModel
         public int MaPNH { get => _mapnh; set { _mapnh = value; OnPropertyChanged(); } }
         
         private int _masp;
-        public int MaSP { get => _masp; set { _masp = value; OnPropertyChanged(); } }
+        public int MaSP { get => _masp; set { _masp = value; LoadSanPhamInfo(value); OnPropertyChanged(); } }
         private string _tensp;
         public string TenSP { get => _tensp; set { _tensp = value; OnPropertyChanged(); } }
         private int _soluongnhap;
@@ -28,9 +28,10 @@ namespace GoonRunner.MVVM.ViewModel
         private int _dongia;
         public int DonGia { get => _dongia; set { _dongia = value; OnPropertyChanged(); } }
         public ICommand AddChiTietPhieuNhapHangCommand { get; set; }
-
-        public SidebarChiTietPhieuNhapHangViewModel()
+        public SidebarChiTietPhieuNhapHangViewModel() { }
+        public SidebarChiTietPhieuNhapHangViewModel(int maPNH)
         {
+            MaPNH = maPNH;
             //ChiTietPhieuNhapHangViewModel chiTietPhieuNhapHangViewModel = new ChiTietPhieuNhapHangViewModel();
             //MaPNH = chiTietPhieuNhapHangViewModel.MaPNH;
             DanhSachPhieuNhapHang = new ObservableCollection<CHITIETPHIEUNHAPHANG>(DataProvider.Ins.goonRunnerDB.CHITIETPHIEUNHAPHANGs);
@@ -73,12 +74,30 @@ namespace GoonRunner.MVVM.ViewModel
                     DataProvider.Ins.goonRunnerDB.SaveChanges();
                     DanhSachPhieuNhapHang.Add(chitietphieunhaphang);
                     MessageBox.Show("Thêm thành công!");
+                    MainViewModel.Instance?.ChiTietPhieuNhapHangVM?.LoadChiTietPhieuNhapHangList();
                 }
                 catch (System.Data.Entity.Infrastructure.DbUpdateException)
                 {
                     MessageBox.Show("Không có Mã phiếu nhập hàng này");
                 }
             });
+        }
+
+        private void LoadSanPhamInfo(int maSP)
+        {
+            try
+            {
+                var sanpham = DataProvider.Ins.goonRunnerDB.SANPHAMs.FirstOrDefault(sp => sp.MaSP == maSP);
+
+                if (sanpham != null)
+                {
+                    TenSP = sanpham.TenSP;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải thông tin khách hàng: {ex.Message}");
+            }
         }
     }
 }

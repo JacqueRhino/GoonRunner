@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:gr="clr-namespace:GoonRunner.CustomControl"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel"
@@ -25,7 +26,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Margin="0,0,0,10">
+        <Grid Grid.Row="0" Margin="0,10,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -60,10 +61,15 @@
                   ItemsSource="{Binding PhieuNhapHangList}"
                   SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}"
                   VerticalAlignment="Top"
-                  BorderBrush="{StaticResource Foreground}"
+                  Foreground="{StaticResource Foreground}"
                   BorderThickness="0"
                   ItemContainerStyle="{StaticResource CenteredListViewItemStyle}"
                   Background="Transparent" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding DoubleClickCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <ListView.View>
                 <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle1}">
                     <GridViewColumn Header="Mã phiếu" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="MaPNH" />

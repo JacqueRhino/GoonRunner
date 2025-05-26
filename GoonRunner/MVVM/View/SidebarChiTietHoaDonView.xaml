@@ -7,16 +7,15 @@
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel"
              d:DataContext="{d:DesignInstance Type=viewmodel:SidebarChiTietHoaDonViewModel}"
-             DataContext="{StaticResource SidebarChiTietHoaDonVM}"
              mc:Ignorable="d"
              d:DesignHeight="590" d:DesignWidth="250">
     <Grid>
         <StackPanel>
-            <gr:Textbox SetHeader="Mã HD" SetPlaceholder="Nhập mã KH" SetBinding="{Binding MaHD}"/>
-            <gr:Textbox SetHeader="Mã SP" SetPlaceholder="Nhập họ KH" SetBinding="{Binding MaSP}"/>
-            <gr:Textbox SetHeader="Tên SP" SetPlaceholder="Nhập tên KH" SetBinding="{Binding TenSP}"/>
-            <gr:Textbox SetHeader="Số lượng bán" SetPlaceholder="Nhập Số điện thoại KH" SetBinding="{Binding SoLuongBan}"/>
-            <gr:Textbox SetHeader="Đơn giá" SetPlaceholder="Nhập địa chỉ KH" SetBinding="{Binding DonGia}"/>
+            <gr:Textbox SetHeader="Mã HD" SetPlaceholder="Nhập mã HD" SetBinding="{Binding MaHD}" IsHitTestVisible="False"/>
+            <gr:Textbox SetHeader="Mã SP" SetPlaceholder="Nhập mã SP" SetBinding="{Binding MaSP}"/>
+            <gr:Textbox SetHeader="Tên SP" SetPlaceholder="Nhập tên SP" SetBinding="{Binding TenSP}"/>
+            <gr:Textbox SetHeader="Số lượng bán" SetPlaceholder="Nhập số lượng bán" SetBinding="{Binding SoLuongBan}"/>
+            <gr:Textbox SetHeader="Đơn giá" SetPlaceholder="Nhập đơn giá" SetBinding="{Binding DonGia}"/>
 
             <Grid HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>

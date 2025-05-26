@@ -39,6 +39,10 @@ namespace GoonRunner.MVVM.ViewModel
         public string DisplayName { get => _displayname; set { _displayname = value; OnPropertyChanged(); } }
         private string _privilege = "DEVELOPER";
         public string Privilege { get => _privilege; set { _privilege = value; OnPropertyChanged(); } }
+        private int _manv;
+        public int MaNV { get => _manv; set { _manv = value; OnPropertyChanged(); } }
+        private int _currentuser;
+        public int CurrentUser { get => _currentuser; set { _currentuser = value; OnPropertyChanged(); } }
         public object CurrentView
         {
             get { return _currentView; }
@@ -109,12 +113,14 @@ namespace GoonRunner.MVVM.ViewModel
             }
         }
 
+        public static MainViewModel Instance { get; private set; }
         public MainViewModel()
         {
+            Instance = this;
             LogInView loginWindow = new LogInView();
-            var loginVM = loginWindow.DataContext as LoginViewModel; // Gọi LoginViewModel
-            DisplayName = loginVM.DisplayName; // Lấy UserName
-            Privilege = loginVM.Privilege; // Lấy Privilege
+            var loginVM = loginWindow.DataContext as LoginViewModel;
+            DisplayName = loginVM.DisplayName;
+            Privilege = loginVM.Privilege;
             HomeVM = new HomeViewModel();
             OwnerHomeVM = new OwnerHomeViewModel();
             KhachHangVM = new KhachHangViewModel();
@@ -131,10 +137,10 @@ namespace GoonRunner.MVVM.ViewModel
             SidebarChiTietPhieuNhapHangVM = new SidebarChiTietPhieuNhapHangViewModel();
             SidebarHoaDonVM = new SidebarHoaDonViewModel();
             SidebarChiTietHoaDonVM = new SidebarChiTietHoaDonViewModel();
-            if (Privilege == "Chủ cửa hàng")
-                CurrentView = OwnerHomeVM;
-            else 
-                CurrentView = HomeVM;
+            //if (Privilege == "Chủ cửa hàng")
+            //    CurrentView = OwnerHomeVM;
+            //else 
+            //    CurrentView = HomeVM;
             // DisableSidebar();
 
             //Change View
@@ -176,6 +182,7 @@ namespace GoonRunner.MVVM.ViewModel
             {
                 CurrentView = PhieuNhapHangVM;
                 CurrentSidebarView = SidebarPhieuNhapHangVM;
+                MainViewModel.Instance.SidebarPhieuNhapHangVM.LoadCurrentUserAsEmployee();
                 EnableSidebar();
             });
 
@@ -190,6 +197,7 @@ namespace GoonRunner.MVVM.ViewModel
             {
                 CurrentView = HoaDonVM;
                 CurrentSidebarView = SidebarHoaDonVM;
+                MainViewModel.Instance.SidebarHoaDonVM.LoadCurrentUserAsEmployee();
                 EnableSidebar();
             });
 
@@ -223,6 +231,8 @@ namespace GoonRunner.MVVM.ViewModel
             loginVM.Password = ""; // Khi thực hiện đăng xuất sẽ reset lại ô username và password
             loginVM.ErrorMessage = "";
             CurrentView = HomeVM;
+            loginVM.MaNV = 0;
+           
             loginWindow.Show();
             p.Hide();
         }

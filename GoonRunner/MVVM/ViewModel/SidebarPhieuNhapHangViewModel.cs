@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,11 +20,13 @@ namespace GoonRunner.MVVM.ViewModel
         private DateTime _selecteddate;
         public DateTime SelectedDate { get => _selecteddate; set { if (_selecteddate != value) { _selecteddate = value; NgayNhap = value; OnPropertyChanged(); } } }
         private int _mancc;
-        public int MaNCC { get => _mancc; set { _mancc = value; OnPropertyChanged(); } }
+        public int MaNCC { get => _mancc; set { _mancc = value; LoadNhaCungCapInfo(value); OnPropertyChanged(); } }
         private string _tenncc;
         public string TenNCC { get => _tenncc; set { _tenncc = value; OnPropertyChanged(); } }
         private int _manv;
         public int MaNV { get => _manv; set { _manv = value; OnPropertyChanged(); } }
+        private int _currentuser;
+        public int CurrentUser { get => _currentuser; set { _currentuser = value; OnPropertyChanged(); } }
         private DateTime _ngaynhap;
         public DateTime NgayNhap { get => _ngaynhap; set { _ngaynhap = value; OnPropertyChanged(); } }
         public ICommand AddPhieuNhapHangCommand { get; set; }
@@ -63,7 +66,38 @@ namespace GoonRunner.MVVM.ViewModel
                 DataProvider.Ins.goonRunnerDB.SaveChanges();
                 DanhSachPhieuNhapHang.Add(phieunhaphang);
                 MessageBox.Show("Thêm thành công!");
+                MainViewModel.Instance?.PhieuNhapHangVM?.LoadPhieuNhapHangList();
             });
+        }
+        private void LoadNhaCungCapInfo(int maNCC)
+        {
+            try
+            {
+                // Assuming you have a KHACHHANG entity in your database
+                var nhacungcap = DataProvider.Ins.goonRunnerDB.NHACUNGCAPs.FirstOrDefault(ncc => ncc.MaNCC == maNCC);
+
+                if (nhacungcap != null)
+                {
+                    // Auto-fill customer information
+                    TenNCC = nhacungcap.TenNCC;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải thông tin nhà cung cấp: {ex.Message}");
+            }
+        }
+        public void LoadCurrentUserAsEmployee()
+        {
+            try
+            {
+                CurrentUser = MainViewModel.Instance.CurrentUser;
+                MaNV = CurrentUser;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show($"Lỗi khi tải thông tin nhân viên hiện tại: {ex.Message}");
+            }
         }
         private bool IsInSmallDateTimeRange(DateTime dateTime)
         {

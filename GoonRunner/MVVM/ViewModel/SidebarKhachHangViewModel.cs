@@ -29,6 +29,7 @@ namespace GoonRunner.MVVM.ViewModel
 
         public SidebarKhachHangViewModel()
         {
+            SelectedDate = DateTime.Now;
             DanhSachKhachHang = new ObservableCollection<KHACHHANG>(DataProvider.Ins.goonRunnerDB.KHACHHANGs);
             AddKhachHangCommand = new RelayCommand<Button>((p) => { return true; }, (p) => 
             {
@@ -73,6 +74,7 @@ namespace GoonRunner.MVVM.ViewModel
                 DataProvider.Ins.goonRunnerDB.SaveChanges();
                 DanhSachKhachHang.Add(khachhang);
                 MessageBox.Show("Thêm thành công!");
+                MainViewModel.Instance?.KhachHangVM?.LoadKhachHangList();
             });
         } 
         private bool IsInSmallDateTimeRange(DateTime dateTime)

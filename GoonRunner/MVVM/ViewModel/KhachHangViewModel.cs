@@ -18,7 +18,7 @@ namespace GoonRunner.MVVM.ViewModel
             LoadKhachHangList();
             RefreshCommand = new RelayCommand<Button>((p) => true, (p) => { LoadKhachHangList(); });
         }
-        private void LoadKhachHangList()
+        public void LoadKhachHangList()
         {
             KhachHangList = new ObservableCollection<KHACHHANG>();
             var DanhSachKhachHang = DataProvider.Ins.goonRunnerDB.KHACHHANGs;

@@ -178,6 +178,20 @@
                         </RadioButton.Resources>
                     </RadioButton>
 
+                    <RadioButton Name="SanPhamRadioButton"
+                                 Style="{StaticResource RadioButtonStyle}"
+                                 gr:Extensions.Icon="Box20"
+                                 Command="{Binding SanPhamViewCommand}"
+                                 Click="ChangeTitleSanpham">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                                        Sản Phẩm
+                            </TextBlock>
+                        </StackPanel>
+                        <RadioButton.Resources>
+                        </RadioButton.Resources>
+                    </RadioButton>
+
                     <RadioButton Name="HoaDonRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
                                          gr:Extensions.Icon="Clipboard20"
@@ -191,8 +205,8 @@
                         <RadioButton.Resources>
                         </RadioButton.Resources>
                     </RadioButton>
-                    
-                    <RadioButton Name="ChiTietHoaDonRadioButton"
+
+                    <!--<RadioButton Name="ChiTietHoaDonRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
                                          gr:Extensions.Icon="clipboardedit20"
                                  Command="{Binding ChiTietHoaDonViewCommand}"
@@ -204,21 +218,7 @@
                         </StackPanel>
                         <RadioButton.Resources>
                         </RadioButton.Resources>
-                    </RadioButton>
-
-                    <RadioButton Name="SanPhamRadioButton"
-                                         Style="{StaticResource RadioButtonStyle}"
-                                         gr:Extensions.Icon="Box20"
-                                         Command="{Binding SanPhamViewCommand}"
-                                Click="ChangeTitleSanpham">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
-                                        Sản Phẩm
-                            </TextBlock>
-                        </StackPanel>
-                        <RadioButton.Resources>
-                        </RadioButton.Resources>
-                    </RadioButton>
+                    </RadioButton>-->
 
                     <RadioButton Name="PhieuNhapHangRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
@@ -233,8 +233,8 @@
                         <RadioButton.Resources>
                         </RadioButton.Resources>
                     </RadioButton>
-                    
-                    <RadioButton Name="ChiTietPhieuNhapHangRadioButton"
+
+                    <!--<RadioButton Name="ChiTietPhieuNhapHangRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
                                          gr:Extensions.Icon="BoxEdit24"
                                          Command="{Binding ChiTietPhieuNhapHangViewCommand}"
@@ -246,8 +246,8 @@
                         </StackPanel>
                         <RadioButton.Resources>
                         </RadioButton.Resources>
-                    </RadioButton>
-                    
+                    </RadioButton>-->
+
                     <RadioButton Name="TonKhoRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
                                          gr:Extensions.Icon="BoxMultiple20"
@@ -261,7 +261,7 @@
                         <RadioButton.Resources>
                         </RadioButton.Resources>
                     </RadioButton>
-                    
+
                     <RadioButton Name="KhachHangRadioButton"
                                          Style="{StaticResource RadioButtonStyle}"
                                          Command="{Binding KhachHangViewCommand}"

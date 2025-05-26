@@ -12,16 +12,9 @@ namespace GoonRunner.MVVM.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class CHITIETHOADON
+    public partial class View_Test
     {
-        public int MaHD { get; set; }
-        public int MaSP { get; set; }
-        public string TenSP { get; set; }
-        public Nullable<int> SoLuongDat { get; set; }
-        public Nullable<int> DonGia { get; set; }
-        public Nullable<int> ThanhTien { get; set; }
-    
-        public virtual HOADON HOADON { get; set; }
-        public virtual SANPHAM SANPHAM { get; set; }
+        public string UserName { get; set; }
+        public string Pass { get; set; }
     }
 }

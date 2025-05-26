@@ -1,4 +1,5 @@
 ﻿using GoonRunner.MVVM.Model;
+using GoonRunner.MVVM.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,7 +23,7 @@ namespace GoonRunner.MVVM.ViewModel
         private int _mahd;
         public int MaHD { get => _mahd; set { _mahd = value; OnPropertyChanged(); } }
         private int _makh;
-        public int MaKH { get => _makh; set { _makh = value; OnPropertyChanged(); } }
+        public int MaKH { get => _makh; set { _makh = value; OnPropertyChanged(); LoadKhachHangInfo(value); } }
         private string _hokh;
         public string HoKH { get => _hokh; set { _hokh = value; OnPropertyChanged(); } }
         private string _tenkh;
@@ -30,13 +31,17 @@ namespace GoonRunner.MVVM.ViewModel
         private string _sdtkh;
         public string SDTKH { get => _sdtkh; set { _sdtkh = value; OnPropertyChanged(); } }
         private string _diachi;
-        public string DiaChi { get => _diachi; set { _diachi = value; OnPropertyChanged(); } }
+        public string DiaChi { get => _diachi; set { _diachi = value; OnPropertyChanged(); } }                  
         private int _manv;
-        public int MaNV { get => _manv; set { _manv = value; OnPropertyChanged(); } }
+        public int MaNV { get => _manv; set { _manv = value; OnPropertyChanged(); LoadNhanVienInfo(value);  } }
+        private string _hotennv;
+        public string HoTenNV { get => _hotennv; set { _hotennv = value; OnPropertyChanged(); } }
         private string _honv;
         public string HoNV { get => _honv; set { _honv = value; OnPropertyChanged(); } }
         private string _tennv;
         public string TenNV { get => _tennv; set { _tennv = value; OnPropertyChanged(); } }
+        private int _currentuser;
+        public int CurrentUser { get => _currentuser; set { _currentuser = value; OnPropertyChanged(); } }
         private DateTime _ngaymuahang;
         public DateTime NgayMuaHang { get => _ngaymuahang; set { _ngaymuahang = value; OnPropertyChanged(); } }
         public ICommand AddHoaDonCommand { get; set; }
@@ -77,23 +82,23 @@ namespace GoonRunner.MVVM.ViewModel
                     return;
                 }
 
-                if (MaNV == 0)
-                {
-                    MessageBox.Show("Hãy nhập Mã nhân viên");
-                    return;
-                }
+                //if (MaNV == 0)
+                //{
+                //    MessageBox.Show("Hãy nhập Mã nhân viên");
+                //    return;
+                //}
 
-                if (string.IsNullOrEmpty(HoNV))
+                if (string.IsNullOrEmpty(HoTenNV))
                 {
                     MessageBox.Show("Hãy nhập Họ nhân viên");
                     return;
                 }
 
-                if (string.IsNullOrEmpty(TenNV))
-                {
-                    MessageBox.Show("Hãy nhập Tên nhân viên");
-                    return;
-                }
+                //if (string.IsNullOrEmpty(TenNV))
+                //{
+                //    MessageBox.Show("Hãy nhập Tên nhân viên");
+                //    return;
+                //}
 
                 if (!IsInSmallDateTimeRange(NgayMuaHang))
                 {
@@ -117,7 +122,83 @@ namespace GoonRunner.MVVM.ViewModel
                 DataProvider.Ins.goonRunnerDB.SaveChanges();
                 DanhSachHoaDon.Add(hoadon);
                 MessageBox.Show("Thêm thành công!");
+                MainViewModel.Instance?.HoaDonVM?.LoadHoaDonList();
+                ClearFields();
             });
+        }
+        private void LoadKhachHangInfo(int maKH)
+        {
+            try
+            {
+                // Assuming you have a KHACHHANG entity in your database
+                var khachHang = DataProvider.Ins.goonRunnerDB.KHACHHANGs.FirstOrDefault(kh => kh.MaKH == maKH);
+
+                if (khachHang != null)
+                {
+                    // Auto-fill customer information
+                    HoKH = khachHang.HoKH;
+                    TenKH = khachHang.TenKH;
+                    SDTKH = khachHang.SdtKH;
+                    DiaChi = khachHang.DiaChi;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải thông tin khách hàng: {ex.Message}");
+            }
+        }
+
+        private void LoadNhanVienInfo(int maNV)
+        {
+            try
+            {
+                // Assuming you have a NHANVIEN entity in your database
+                var nhanVien = DataProvider.Ins.goonRunnerDB.NHANVIENs.FirstOrDefault(nv => nv.MaNV == maNV);
+
+                if (nhanVien != null)
+                {
+                    // Auto-fill employee information
+                    HoTenNV = nhanVien.HoNV + " " + nhanVien.TenNV;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải thông tin nhân viên: {ex.Message}");
+            }
+        }
+
+        public void LoadCurrentUserAsEmployee()
+        {
+            try
+            {
+                CurrentUser = MainViewModel.Instance.CurrentUser;
+                if (MainViewModel.Instance.Privilege != "Chủ cửa hàng" && CurrentUser == 0)
+                {
+                   MessageBox.Show("Không có thông tin đăng nhập. Vui lòng đăng nhập lại.");
+                }
+                MaNV = CurrentUser;
+                LoadNhanVienInfo(CurrentUser);
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show($"Lỗi khi tải thông tin nhân viên hiện tại: {ex.Message}");
+            }
+        }
+
+        private void ClearFields()
+        {
+            // Reset customer fields
+            MaKH = 0;
+            HoKH = string.Empty;
+            TenKH = string.Empty;
+            SDTKH = string.Empty;
+            DiaChi = string.Empty;
+
+            // Do not reset employee fields since they should stay with the logged-in user
+            // Instead, reload the current user information
+            LoadCurrentUserAsEmployee();
+
+            SelectedDate = DateTime.Now;
         }
         private bool IsInSmallDateTimeRange(DateTime dateTime)
         {

@@ -60,7 +60,7 @@
                   ItemsSource="{Binding TonKhoList}"
                   SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}"
                   VerticalAlignment="Top"
-                  BorderBrush="{StaticResource Foreground}"
+                  Foreground="{StaticResource Foreground}"
                   BorderThickness="0"
                   ItemContainerStyle="{StaticResource CenteredListViewItemStyle}"
                   Background="Transparent" >

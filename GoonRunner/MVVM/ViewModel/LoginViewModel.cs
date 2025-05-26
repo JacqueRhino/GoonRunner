@@ -31,6 +31,10 @@ namespace GoonRunner.MVVM.ViewModel
 
         private string _displayname = "BYPASS FOR DEVELOPER";
         public string DisplayName { get => _displayname; set { _displayname = value; OnPropertyChanged(); } }
+        private int _manv;
+        public int MaNV { get => _manv; set { _manv = value; OnPropertyChanged(); } }
+        private UserAccountDTO _useraccount;
+        public UserAccountDTO UserAccount { get => _useraccount; set { _useraccount = value; OnPropertyChanged(); } }
         public ICommand LoginCommand { get; set; }
         public ICommand PasswordChangedCommand { get; set; }
         public ICommand ForgotPasswordCommand { get; set; }
@@ -105,17 +109,26 @@ namespace GoonRunner.MVVM.ViewModel
             IsLogin = true;
             Placeholder = "Nhập mật khẩu";
             MainWindowView mainwindow = new MainWindowView();
-            
+            SidebarHoaDonView sidebarHoaDonView = new SidebarHoaDonView();
+            var SidebarHoaDonVM = sidebarHoaDonView.DataContext as SidebarHoaDonViewModel;
             
             //TODO: Thêm error handling
             if (mainwindow.DataContext is MainViewModel MainVM)
             {
                 MainVM.DisplayName = DisplayName;
                 MainVM.Privilege = Privilege;
+                if (Privilege == "Chủ cửa hàng")
+                {
+                    MainVM.CurrentView = MainVM.OwnerHomeVM;
+                }
+                else
+                {
+                    MainVM.CurrentView = MainVM.HomeVM;
+                }
             }
-
+            MainViewModel.Instance.CurrentUser = MaNV;
             SetVisibilityByPrivilege(mainwindow);
-                
+            
             mainwindow.Show();
             p.Hide();
         }
@@ -128,6 +141,8 @@ namespace GoonRunner.MVVM.ViewModel
                 {
                     mainwindow.NhanVienRadioButton,
                     mainwindow.KhuyenMaiRadioButton,
+                    //mainwindow.ChiTietHoaDonRadioButton,
+                    //mainwindow.ChiTietPhieuNhapHangRadioButton,
                     mainwindow.BaoHanhRadioButton
                 },
                 ["Nhân viên kế toán"] = new List<UIElement>
@@ -135,6 +150,10 @@ namespace GoonRunner.MVVM.ViewModel
                     mainwindow.NhanVienRadioButton,
                     mainwindow.KhachHangRadioButton,
                     mainwindow.SanPhamRadioButton,
+                    mainwindow.HoaDonRadioButton,
+                    //mainwindow.ChiTietHoaDonRadioButton,
+                    mainwindow.PhieuNhapHangRadioButton,
+                    //mainwindow.ChiTietPhieuNhapHangRadioButton,
                     mainwindow.KhuyenMaiRadioButton,
                     mainwindow.BaoHanhRadioButton
                 },
@@ -142,6 +161,9 @@ namespace GoonRunner.MVVM.ViewModel
                 {
                     mainwindow.NhanVienRadioButton,
                     mainwindow.HoaDonRadioButton,
+                    //mainwindow.ChiTietHoaDonRadioButton,
+                    mainwindow.PhieuNhapHangRadioButton,
+                    //mainwindow.ChiTietPhieuNhapHangRadioButton,
                     mainwindow.KhuyenMaiRadioButton,
                     mainwindow.BaoHanhRadioButton
                 },
@@ -150,6 +172,9 @@ namespace GoonRunner.MVVM.ViewModel
                     mainwindow.NhanVienRadioButton,
                     mainwindow.KhachHangRadioButton,
                     mainwindow.HoaDonRadioButton,
+                    //mainwindow.ChiTietHoaDonRadioButton,
+                    mainwindow.PhieuNhapHangRadioButton,
+                    //mainwindow.ChiTietPhieuNhapHangRadioButton,
                     mainwindow.KhuyenMaiRadioButton,
                     mainwindow.BaoHanhRadioButton
                 },
@@ -159,6 +184,9 @@ namespace GoonRunner.MVVM.ViewModel
                     mainwindow.KhachHangRadioButton,
                     mainwindow.SanPhamRadioButton,
                     mainwindow.HoaDonRadioButton,
+                    //mainwindow.ChiTietHoaDonRadioButton,
+                    mainwindow.PhieuNhapHangRadioButton,
+                    //mainwindow.ChiTietPhieuNhapHangRadioButton,
                     mainwindow.KhuyenMaiRadioButton
                 },
                 ["Admin"] = new List<UIElement>
@@ -166,6 +194,19 @@ namespace GoonRunner.MVVM.ViewModel
                     mainwindow.KhachHangRadioButton,
                     mainwindow.SanPhamRadioButton,
                     mainwindow.HoaDonRadioButton,
+                    //mainwindow.ChiTietHoaDonRadioButton,
+                    mainwindow.PhieuNhapHangRadioButton,
+                    //mainwindow.ChiTietPhieuNhapHangRadioButton,
+                    mainwindow.BaoHanhRadioButton
+                },
+                ["Chủ cửa hàng"] = new List<UIElement>
+                {
+                    mainwindow.KhachHangRadioButton,
+                    mainwindow.SanPhamRadioButton,
+                    //mainwindow.HoaDonRadioButton,
+                    //mainwindow.ChiTietHoaDonRadioButton,
+                    //mainwindow.PhieuNhapHangRadioButton,
+                    //mainwindow.ChiTietPhieuNhapHangRadioButton,
                     mainwindow.BaoHanhRadioButton
                 }
             };
@@ -199,17 +240,18 @@ namespace GoonRunner.MVVM.ViewModel
                 
                 try
                 {
-                    var userAccount = context.Database.SqlQuery<UserAccountDTO>(
+                    var UserAccount = context.Database.SqlQuery<UserAccountDTO>(
                         "EXEC kiem_tra_login @UserName, @PasswordHash",
                         new SqlParameter("@UserName", UserName),
                         new SqlParameter("@PasswordHash", encodedPass)
                     ).FirstOrDefault();
                     
-                    if (userAccount == null)
+                    if (UserAccount == null)
                         return false;
 
-                    DisplayName = userAccount.DisplayName;
-                    Privilege = userAccount.Quyen;
+                    DisplayName = UserAccount.DisplayName;
+                    Privilege = UserAccount.Quyen;
+                    MaNV = UserAccount.MaNV;
                     return true;
                 }
                 catch (SqlException exception)
@@ -237,6 +279,7 @@ namespace GoonRunner.MVVM.ViewModel
         {
             public string DisplayName { get; set; }
             public string Quyen { get; set; }
+            public int MaNV { get; set; }
         }
         
         private static string MD5Hash(string input)

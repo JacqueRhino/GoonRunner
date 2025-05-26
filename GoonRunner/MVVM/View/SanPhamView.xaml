@@ -25,7 +25,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Margin="0,0,0,10">
+        <Grid Grid.Row="0" Margin="0,10,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -60,7 +60,7 @@
                   ItemsSource="{Binding SanPhamList}"
                   SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}"
                   VerticalAlignment="Top"
-                  BorderBrush="{StaticResource Foreground}"
+                  Foreground="{StaticResource Foreground}"
                   BorderThickness="0"
                   ItemContainerStyle="{StaticResource CenteredListViewItemStyle}"
                   Background="Transparent" >

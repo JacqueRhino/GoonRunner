@@ -40,6 +40,8 @@ namespace GoonRunner.MVVM.ViewModel
         public string SelectedGender { get => _selectedgender; set { if (_selectedgender != value) { _selectedgender = value; GioiTinh = value; OnPropertyChanged(); } } }
         private DateTime _selecteddate;
         public DateTime SelectedDate { get => _selecteddate; set { if (_selecteddate != value) { _selecteddate = value; NgaySinh = value; OnPropertyChanged(); } } }
+        private int _manv;
+        public int MaNV { get => _manv; set { _manv = value; OnPropertyChanged(); } }
         private string _honv;
         public string HoNV { get => _honv; set { _honv = value; OnPropertyChanged(); } }
         private string _tennv;
@@ -103,10 +105,18 @@ namespace GoonRunner.MVVM.ViewModel
         private DateTime _ngaysinh;
         public DateTime NgaySinh { get => _ngaysinh; set { _ngaysinh = value; OnPropertyChanged(); } }
         public ICommand AddNhanVienCommand { get; set; }
-        public SidebarNhanVienViewModel()
+        public SidebarNhanVienViewModel() 
         {
             SelectedDate = DateTime.Now;
+            LoadNhanVienInfo(MaNV);
+        }
+        public SidebarNhanVienViewModel(int maNV)
+        {
+            MaNV = maNV;
+            LoadNhanVienInfo(MaNV);
+            SelectedDate = DateTime.Now;
             DanhSachNhanVien = new ObservableCollection<NHANVIEN>(DataProvider.Ins.goonRunnerDB.NHANVIENs);
+            
             AddNhanVienCommand = new RelayCommand<Button>((p) => { return true; }, (p) =>
             {
                 if (string.IsNullOrEmpty(HoNV))
@@ -158,8 +168,33 @@ namespace GoonRunner.MVVM.ViewModel
                 DataProvider.Ins.goonRunnerDB.SaveChanges();
                 DanhSachNhanVien.Add(nhanvien);
                 MessageBox.Show("Thêm thành công!");
+                MainViewModel.Instance?.NhanVienVM?.LoadNhanVienList();
             });
 
+        }
+        private void LoadNhanVienInfo(int maNV)
+        {
+            try
+            {
+                var nhanvien = DataProvider.Ins.goonRunnerDB.NHANVIENs.FirstOrDefault(nv => nv.MaNV == maNV);
+
+                if (nhanvien != null)
+                {
+                    // Auto-fill customer information
+                    HoNV = nhanvien.HoNV;
+                    TenNV = nhanvien.TenNV;
+                    DiaChi = nhanvien.DiaChiNV;
+                    SDT = nhanvien.SdtNV;
+                    CMND = nhanvien.CMND;
+                    ChucVu = nhanvien.ChucVu;
+                    GioiTinh = nhanvien.GioiTinh;
+                    NgaySinh = nhanvien.NgaySinh;
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show($"Lỗi khi tải thông tin nhân viên: {ex.Message}");
+            }
         }
         private bool IsInSmallDateTimeRange(DateTime dateTime)
         {

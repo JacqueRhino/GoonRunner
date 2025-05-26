@@ -7,7 +7,6 @@
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel"
              d:DataContext="{d:DesignInstance Type=viewmodel:SidebarHoaDonViewModel}"
-             DataContext="{StaticResource SidebarHoaDonVM}"
              mc:Ignorable="d"
              d:DesignHeight="590" d:DesignWidth="250">
     <Grid>
@@ -17,9 +16,9 @@
             <gr:Textbox SetHeader="Tên KH" SetPlaceholder="Nhập tên KH" SetBinding="{Binding TenKH}"/>
             <gr:Textbox SetHeader="SDT KH" SetPlaceholder="Nhập Số điện thoại KH" SetBinding="{Binding SDTKH}"/>
             <gr:Textbox SetHeader="Địa chỉ" SetPlaceholder="Nhập địa chỉ KH" SetBinding="{Binding DiaChi}"/>
-            <gr:Textbox SetHeader="Mã NV" SetPlaceholder="Nhập mã NV" SetBinding="{Binding MaNV}"/>
-            <gr:Textbox SetHeader="Họ NV" SetPlaceholder="Nhập họ NV" SetBinding="{Binding HoNV}"/>
-            <gr:Textbox SetHeader="Tên NV" SetPlaceholder="Nhập tên NV" SetBinding="{Binding TenNV}"/>
+            <!--<gr:Textbox SetHeader="Mã NV" SetPlaceholder="Nhập mã NV" SetBinding="{Binding MaNV}"/>-->
+            <gr:Textbox SetHeader="Họ tên NV" SetPlaceholder="Nhập họ tên NV" SetBinding="{Binding HoTenNV, Mode=TwoWay}" IsHitTestVisible="False"/>
+            <!--<gr:Textbox SetHeader="Tên NV" SetPlaceholder="Nhập tên NV" SetBinding="{Binding TenNV}"/>-->
             <DatePicker gr:Extensions.Header="Ngày mua hàng"
                     VerticalContentAlignment="Center"
                     Foreground="#3c3836" 

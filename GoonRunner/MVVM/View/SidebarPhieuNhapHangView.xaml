@@ -7,7 +7,6 @@
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel"
              d:DataContext="{d:DesignInstance Type=viewmodel:SidebarPhieuNhapHangViewModel}"
-             DataContext="{StaticResource SidebarPhieuNhapHangVM}"
              mc:Ignorable="d"
              d:DesignHeight="590" d:DesignWidth="250">
     <Grid>
@@ -21,7 +20,7 @@
                     FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"
                     Margin="0,0,0,5"
                     SelectedDate="{Binding SelectedDate, Mode=TwoWay}"/>
-            <gr:Textbox SetHeader="Mã NV" SetPlaceholder="Nhập mã NV" SetBinding="{Binding MaNV}"/>
+            <gr:Textbox SetHeader="Mã NV" SetPlaceholder="Nhập mã NV" SetBinding="{Binding MaNV, Mode=TwoWay}" IsHitTestVisible="False"/>
 
             <Grid HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>

@@ -17,27 +17,47 @@ namespace GoonRunner.MVVM.ViewModel
         public ObservableCollection<CHITIETHOADON> ChiTietHoaDonList { get { return _chitiethoadonlist; } set { _chitiethoadonlist = value; OnPropertyChanged(); } }
         private int _mahd;
         public int MaHD { get { return _mahd; } set { _mahd = value; LoadChiTietHoaDonList(); OnPropertyChanged(); } }
+        private int _tongtien;
+        public int TongTien { get { return _tongtien; } set { _tongtien = value; OnPropertyChanged(); } }
         public ICommand RefreshCommand { get; set; }
+        public ICommand PreviousPageCommand { get; set; }
         public ChiTietHoaDonViewModel()
         {
-            LoadChiTietHoaDonList();
             RefreshCommand = new RelayCommand<Button>((p) => true, (p) => { LoadChiTietHoaDonList(); });
         }
-        private void LoadChiTietHoaDonList()
+        public ChiTietHoaDonViewModel(int maHD)
+        {
+            MaHD = maHD;
+            LoadChiTietHoaDonList();
+            RefreshCommand = new RelayCommand<Button>((p) => true, (p) => { LoadChiTietHoaDonList(); });
+            PreviousPageCommand = new RelayCommand<object>((p) => true, (p) =>
+            {
+                // Tạo ViewModel mới dựa trên MaHD
+                MainViewModel.Instance.HoaDonVM = new HoaDonViewModel();
+
+                // Chuyển View
+                MainViewModel.Instance.CurrentView = MainViewModel.Instance.HoaDonVM;
+                MainViewModel.Instance.CurrentSidebarView = MainViewModel.Instance.SidebarHoaDonVM;
+            });
+        }
+        public void LoadChiTietHoaDonList()
         {
             ChiTietHoaDonList = new ObservableCollection<CHITIETHOADON>();
             int i = MaHD;
-            var DanhSachChiTietHoaDon = DataProvider.Ins.goonRunnerDB.CHITIETHOADONs.Where((n) => n.MaHD == i).ToList();
+            int temp = 0;
+            var DanhSachChiTietHoaDon = DataProvider.Ins.goonRunnerDB.CHITIETHOADONs.Where((n) => n.MaHD == i);
             foreach (var item in DanhSachChiTietHoaDon)
             {
-                CHITIETHOADON chitiethoadonn = new CHITIETHOADON();
-                chitiethoadonn.MaSP = item.MaSP;
-                chitiethoadonn.TenSP = item.TenSP;
-                chitiethoadonn.SoLuongDat = item.SoLuongDat;
-                chitiethoadonn.DonGia = item.DonGia;
-                chitiethoadonn.ThanhTien = item.SoLuongDat * item.DonGia;
-                ChiTietHoaDonList.Add(chitiethoadonn);
+                CHITIETHOADON chitiethoadon = new CHITIETHOADON();
+                chitiethoadon.MaSP = item.MaSP;
+                chitiethoadon.TenSP = item.TenSP;
+                chitiethoadon.SoLuongDat = item.SoLuongDat;
+                chitiethoadon.DonGia = item.DonGia;
+                chitiethoadon.ThanhTien = item.SoLuongDat * item.DonGia;
+                temp += chitiethoadon.ThanhTien ?? 0;
+                ChiTietHoaDonList.Add(chitiethoadon);
             }
+            TongTien = temp;
         }
     }
 }

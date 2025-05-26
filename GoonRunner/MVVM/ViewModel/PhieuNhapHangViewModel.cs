@@ -11,13 +11,24 @@ namespace GoonRunner.MVVM.ViewModel
     {
         private ObservableCollection<PHIEUNHAPHANG> _phieunhaphanglist;
         public ObservableCollection<PHIEUNHAPHANG> PhieuNhapHangList { get { return _phieunhaphanglist; } set { _phieunhaphanglist = value; OnPropertyChanged(); } }
+        private PHIEUNHAPHANG _selectedItem;
+        public PHIEUNHAPHANG SelectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(); } }
+        public ICommand DoubleClickCommand { get; set; }
         public ICommand RefreshCommand { get; set; }
         public PhieuNhapHangViewModel()
         {
             LoadPhieuNhapHangList();
             RefreshCommand = new RelayCommand<Button>((p) => true, (p) => { LoadPhieuNhapHangList(); });
+            DoubleClickCommand = new RelayCommand<object>((p) => SelectedItem != null, (p) =>
+            {
+                MainViewModel.Instance.ChiTietPhieuNhapHangVM = new ChiTietPhieuNhapHangViewModel(SelectedItem.MaPNH);
+                MainViewModel.Instance.SidebarChiTietPhieuNhapHangVM = new SidebarChiTietPhieuNhapHangViewModel(SelectedItem.MaPNH);
+
+                MainViewModel.Instance.CurrentView = MainViewModel.Instance.ChiTietPhieuNhapHangVM;
+                MainViewModel.Instance.CurrentSidebarView = MainViewModel.Instance.SidebarChiTietPhieuNhapHangVM;
+            });
         }
-        private void LoadPhieuNhapHangList()
+        public void LoadPhieuNhapHangList()
         {
             PhieuNhapHangList = new ObservableCollection<PHIEUNHAPHANG>();
             var DanhSachPhieuNhapHang = DataProvider.Ins.goonRunnerDB.PHIEUNHAPHANGs;

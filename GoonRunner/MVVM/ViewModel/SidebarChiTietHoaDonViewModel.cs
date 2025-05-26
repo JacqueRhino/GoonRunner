@@ -19,7 +19,7 @@ namespace GoonRunner.MVVM.ViewModel
         public int MaHD { get => _mahd; set { _mahd = value; OnPropertyChanged(); } }
 
         private int _masp;
-        public int MaSP { get => _masp; set { _masp = value; OnPropertyChanged(); } }
+        public int MaSP { get => _masp; set { _masp = value; LoadSanPhamInfo(value); OnPropertyChanged(); } }
         private string _tensp;
         public string TenSP { get => _tensp; set { _tensp = value; OnPropertyChanged(); } }
         private int _soluongban;
@@ -31,9 +31,10 @@ namespace GoonRunner.MVVM.ViewModel
         private int _tongtien;
         public int TongTien { get => _tongtien; set { _tongtien = value; OnPropertyChanged(); } }
         public ICommand AddChiTietHoaDonCommand { get; set; }
-
-        public SidebarChiTietHoaDonViewModel()
+        public SidebarChiTietHoaDonViewModel() { }
+        public SidebarChiTietHoaDonViewModel(int maHD)
         {
+            MaHD = maHD;
             DanhSachChiTietHoaDon = new ObservableCollection<CHITIETHOADON>(DataProvider.Ins.goonRunnerDB.CHITIETHOADONs);
             AddChiTietHoaDonCommand = new RelayCommand<Button>((p) => { return true; }, (p) =>
             {
@@ -74,12 +75,30 @@ namespace GoonRunner.MVVM.ViewModel
                     DataProvider.Ins.goonRunnerDB.SaveChanges();
                     DanhSachChiTietHoaDon.Add(chitiethoadon);
                     MessageBox.Show("Thêm thành công!");
+                    MainViewModel.Instance?.ChiTietHoaDonVM?.LoadChiTietHoaDonList();
                 }
                 catch (System.Data.Entity.Infrastructure.DbUpdateException)
                 {
                     MessageBox.Show("Không có Mã hóa đơn hàng này");
                 }
             });
+        }
+        private void LoadSanPhamInfo(int maSP)
+        {
+            try
+            {
+                var sanpham = DataProvider.Ins.goonRunnerDB.CHITIETPHIEUNHAPHANGs.FirstOrDefault(sp => sp.MaSP == maSP);
+
+                if (sanpham != null)
+                {
+                    TenSP = sanpham.TenSP;
+                    DonGia = (int)sanpham.DonGia;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải thông tin khách hàng: {ex.Message}");
+            }
         }
     }
 }

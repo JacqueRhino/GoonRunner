@@ -50,7 +50,7 @@
                                 FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"
                                 Margin="0,0,0,5" 
                                 SelectedDate="{Binding SelectedDate, Mode=TwoWay}"/>
-                    <TextBlock Grid.Column="1" Text="{Binding HienThiDoanhThu, Mode=TwoWay}"
+                    <TextBlock Grid.Column="1" Text="{Binding HienThiDoanhThu, StringFormat={}{0:N0}đ, Mode=TwoWay}"
                                Grid.Row="1" 
                                Foreground="#427B58" 
                                FontSize="30" 
@@ -70,7 +70,7 @@
                                HorizontalAlignment="Center"
                                Foreground="#D53E3E"  
                                FontFamily="#JetBrains Mono"/>
-                    <TextBlock Text="{Binding HienThiLoiNhuan}" 
+                    <TextBlock Text="{Binding HienThiLoiNhuan, StringFormat={}{0:N0}đ}" 
                                Grid.Row="2" 
                                HorizontalAlignment="Center"
                                Foreground="#D53E3E"  
