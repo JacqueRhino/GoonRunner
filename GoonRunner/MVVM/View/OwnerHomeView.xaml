@@ -13,7 +13,7 @@
              d:DesignHeight="590" d:DesignWidth="755">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -29,7 +29,7 @@
             <GroupBox Grid.Row="0" 
                       Grid.Column="0" 
                       Style="{StaticResource GroupBoxGoonRunner}" 
-                      Header="Lương" Foreground="#427B58">
+                      Header="Doanh thu" Foreground="#427B58">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" MinWidth="10" MaxWidth="30"/>
@@ -50,10 +50,14 @@
                                 FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"
                                 Margin="0,0,0,5" 
                                 SelectedDate="{Binding SelectedDate, Mode=TwoWay}"/>
-                    <TextBlock Grid.Column="1" Text="{Binding HienThiDoanhThu, Mode=TwoWay}" Grid.Row="1" Foreground="#427B58" FontSize="30" Margin="10,0,0,0"/>
+                    <TextBlock Grid.Column="1" Text="{Binding HienThiDoanhThu, Mode=TwoWay}"
+                               Grid.Row="1" 
+                               Foreground="#427B58" 
+                               FontSize="30" 
+                               Margin="10,0,0,0"/>
                 </Grid>
             </GroupBox>
-            <GroupBox Grid.Row="0" Grid.Column="1" Style="{StaticResource GroupBoxGoonRunner}" Header="Tình Trạng" Foreground="#D53E3E">
+            <GroupBox Grid.Row="0" Grid.Column="1" Style="{StaticResource GroupBoxGoonRunner}" Header="Lợi nhuận" Foreground="#D53E3E">
                 <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" MinHeight="10"/>
@@ -61,12 +65,12 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*" MinHeight="10"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Số sản phẩm sắp hết hàng" 
+                    <TextBlock Text="Tháng này" 
                                Grid.Row="1" 
                                HorizontalAlignment="Center"
                                Foreground="#D53E3E"  
                                FontFamily="#JetBrains Mono"/>
-                    <TextBlock Text="0" 
+                    <TextBlock Text="{Binding HienThiLoiNhuan}" 
                                Grid.Row="2" 
                                HorizontalAlignment="Center"
                                Foreground="#D53E3E"  
@@ -168,57 +172,6 @@
             </GroupBox>
             <GroupBox Grid.Column="2" Style="{StaticResource GroupBoxGoonRunner}" Header="Sản Phẩm Bán Chạy">
                 <Image Source="/Assets/Images/nen2.png"/>
-            </GroupBox>
-        </Grid>
-        <Grid Grid.Row="3">
-            <GroupBox Grid.Row="0" Style="{StaticResource GroupBoxGoonRunner}" Header="Lịch Làm">
-                <Grid ShowGridLines="True" Margin="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*" MinHeight="30"/>
-                        <RowDefinition Height="*" MinHeight="30"/>
-                        <RowDefinition Height="*" MinHeight="30"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!-- Hàng tiêu đề -->
-                    <TextBlock Text="Ca làm" Grid.Row="0" Grid.Column="0" FontWeight="Bold" HorizontalAlignment="Center" />
-                    <TextBlock Text="Thứ 2" Grid.Row="0" Grid.Column="1" FontWeight="Bold" HorizontalAlignment="Center" />
-                    <TextBlock Text="Thứ 3" Grid.Row="0" Grid.Column="2" FontWeight="Bold" HorizontalAlignment="Center" />
-                    <TextBlock Text="Thứ 4" Grid.Row="0" Grid.Column="3" FontWeight="Bold" HorizontalAlignment="Center" />
-                    <TextBlock Text="Thứ 5" Grid.Row="0" Grid.Column="4" FontWeight="Bold" HorizontalAlignment="Center" />
-                    <TextBlock Text="Thứ 6" Grid.Row="0" Grid.Column="5" FontWeight="Bold" HorizontalAlignment="Center" />
-                    <TextBlock Text="Thứ 7" Grid.Row="0" Grid.Column="6" FontWeight="Bold" HorizontalAlignment="Center" />
-                    <TextBlock Text="Chủ Nhật" Grid.Row="0" Grid.Column="7" FontWeight="Bold" HorizontalAlignment="Center" />
-
-                    <!-- Sáng -->
-                    <TextBlock Text="Sáng" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    <Border Background="#076678" Grid.Row="1" Grid.Column="1"/>
-                    <Border Background="#076678" Grid.Row="1" Grid.Column="4"/>
-                    <Border Background="#076678" Grid.Row="1" Grid.Column="6"/>
-
-                    <!-- Chiều -->
-                    <TextBlock Text="Chiều" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    <Border Background="#076678" Grid.Row="2" Grid.Column="2"/>
-                    <Border Background="#076678" Grid.Row="2" Grid.Column="4"/>
-                    <Border Background="#076678" Grid.Row="2" Grid.Column="5"/>
-
-                    <!-- Tối -->
-                    <TextBlock Text="Tối" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    <Border Background="#076678" Grid.Row="3" Grid.Column="4"/>
-                    <Border Background="#076678" Grid.Row="3" Grid.Column="5"/>
-                    <Border Background="#076678" Grid.Row="3" Grid.Column="6"/>
-                </Grid>
-
             </GroupBox>
         </Grid>
     </Grid>
