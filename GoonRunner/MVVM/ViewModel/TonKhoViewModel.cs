@@ -14,20 +14,53 @@ namespace GoonRunner.MVVM.ViewModel
     {
         private ObservableCollection<TonKho> _tonkholist;
         public ObservableCollection<TonKho> TonKhoList { get { return _tonkholist; } set { _tonkholist = value; OnPropertyChanged(); } }
+        private string _filterText;
+        public string FilterText { get => _filterText; set { _filterText = value; OnPropertyChanged(); FilteredTonKhoList.Refresh(); } }
+        private System.ComponentModel.ICollectionView _filteredtonkholist;
+        public System.ComponentModel.ICollectionView FilteredTonKhoList { get => _filteredtonkholist; set { _filteredtonkholist = value; OnPropertyChanged(); } }
         public ICommand RefreshCommand { get; set; }
         public TonKhoViewModel()
         {
+            TonKhoList = new ObservableCollection<TonKho>(); 
             LoadTonKhoList();
-            RefreshCommand = new RelayCommand<Button>((p) => true, (p) => { LoadTonKhoList(); });
+            FilteredTonKhoList = System.Windows.Data.CollectionViewSource.GetDefaultView(TonKhoList);
+            FilteredTonKhoList.Filter = FilterTonKho;
+            
+            RefreshCommand = new RelayCommand<Button>((p) => true, (p) =>
+            {
+                LoadTonKhoList();
+                FilterText = string.Empty;
+            });
         }
+
+        private bool FilterTonKho(object obj)
+        {
+            if (string.IsNullOrWhiteSpace(FilterText))
+                return true;
+
+            TonKho tonKho = obj as TonKho;
+
+            if (int.TryParse(FilterText, out var maTK ))
+            {
+                if (tonKho.STT == maTK)
+                    return true;
+            }
+            
+            if ( tonKho.sanpham.TenSP?.IndexOf(FilterText, StringComparison.OrdinalIgnoreCase) >= 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         private void LoadTonKhoList()
         {
-            TonKhoList = new ObservableCollection<TonKho>();
+            TonKhoList?.Clear();
             int i = 1;
             var DanhSachSanPham = DataProvider.Ins.goonRunnerDB.SANPHAMs;
             foreach (var item in DanhSachSanPham)
             {
-                var inputList = DataProvider.Ins.goonRunnerDB.CHITIETPHIEUNHAPHANGs.Where(p => p.MaSP == item.MaSP); // Mã SP của CHITIETPHIEUNHAPHANG == Mã SP của SANPHAM
+                var inputList = DataProvider.Ins.goonRunnerDB.CHITIETPHIEUNHAPHANGs.Where(p => p.MaSP == item.MaSP); 
                 var outputList = DataProvider.Ins.goonRunnerDB.CHITIETHOADONs.Where(p => p.MaSP == item.MaSP);
 
                 int sumInput = 0;
@@ -49,6 +82,7 @@ namespace GoonRunner.MVVM.ViewModel
                 TonKhoList.Add(tonkho);
                 i++;
             }
+            FilteredTonKhoList?.Refresh();
         }
     }
 }
