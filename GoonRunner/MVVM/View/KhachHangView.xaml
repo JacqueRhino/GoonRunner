@@ -9,27 +9,25 @@
              d:DataContext="{d:DesignInstance Type=viewmodel:KhachHangViewModel}"
              DataContext="{StaticResource KhachHangVM}"
              mc:Ignorable="d"
-             d:DesignWidth="590"
-             d:DesignHeight="700" >
+             d:DesignWidth="1080"
+             d:DesignHeight="720">
     <UserControl.Resources>
         <SolidColorBrush x:Key="Foreground" Color="#3c3836"/>
         <SolidColorBrush x:Key="Foreground2" Color="#A89984"/>
         <SolidColorBrush x:Key="Background" Color="#fbf1c7"/>
         <SolidColorBrush x:Key="Orange" Color="#D65D0E"/>
         <SolidColorBrush x:Key="Aqua" Color="#427B55"/>
-
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <Grid Grid.Row="0" Margin="0,10,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" MinWidth="230"/>
+                <ColumnDefinition Width="*" MinWidth="230"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="1" FontSize="20"
                        HorizontalAlignment="Center"
@@ -43,34 +41,40 @@
                         Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right">
-                <Button Style="{StaticResource NavButtonChangeColor}" >
-                        <ui:SymbolIcon Symbol="ArrowSort16" FontSize="20"/>
-                </Button>
+                <!-- <Button Style="{StaticResource NavButtonChangeColor}" > -->
+                <!--         <ui:SymbolIcon Symbol="ArrowSort16" FontSize="20"/> -->
+                <!-- </Button> -->
+                <gr:Textbox SetHeader="Filter" 
+                            Margin="0,0,0,10"
+                            Width="150" 
+                            Height="45"
+                            VerticalAlignment="Center"
+                            SetPlaceholder="Tìm khách hàng"
+                            SetBinding="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"/>
                 <Button Style="{StaticResource NavButtonChangeColor}"
                         Command="{Binding RefreshCommand}">
                         <ui:SymbolIcon Symbol="ArrowClockwise24" FontSize="20"/>
                 </Button>
             </StackPanel>
         </Grid>
-
         <ListView Grid.Row="1"
                   Margin="5,0,10,0"
                   FontFamily="{StaticResource 'JetBrains Mono'}"
                   FontWeight="Medium"
-                  ItemsSource="{Binding KhachHangList}"
-                  SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}"
+                  ItemsSource="{Binding FilteredKhachHangList}"
+                  SelectedItem="{Binding SelectedKHACHHANG}"
                   VerticalAlignment="Top"
                   Foreground="{StaticResource Foreground}"
                   BorderThickness="0"
                   ItemContainerStyle="{StaticResource CenteredListViewItemStyle}"
-                  Background="Transparent" >
+                  Background="Transparent">
             <ListView.View>
                 <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle1}">
                     <GridViewColumn Header="Mã KH" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="MaKH"/>
                     <GridViewColumn Header="Thông Tin" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="TenKH"/>
                     <GridViewColumn Header="Ngày Sinh" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="NgaySinh"/>
                     <GridViewColumn Header="Số Điện Thoại" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="SdtKH"/>
-                    <GridViewColumn Header="Địa chỉ" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="DiaChi"/>
+                    <GridViewColumn Header="Địa Chỉ" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="DiaChi"/>
                 </GridView>
             </ListView.View>
         </ListView>
