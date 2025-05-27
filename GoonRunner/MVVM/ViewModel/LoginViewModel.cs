@@ -147,25 +147,24 @@ namespace GoonRunner.MVVM.ViewModel
                 },
                 ["Nhân viên kế toán"] = new List<UIElement>
                 {
-                    mainwindow.NhanVienRadioButton,
                     mainwindow.KhachHangRadioButton,
                     mainwindow.SanPhamRadioButton,
-                    mainwindow.HoaDonRadioButton,
                     //mainwindow.ChiTietHoaDonRadioButton,
                     mainwindow.PhieuNhapHangRadioButton,
                     //mainwindow.ChiTietPhieuNhapHangRadioButton,
                     mainwindow.KhuyenMaiRadioButton,
-                    mainwindow.BaoHanhRadioButton
+                    mainwindow.BaoHanhRadioButton,
+                    mainwindow.TonKhoRadioButton
                 },
                 ["Nhân viên chăm sóc khách hàng"] = new List<UIElement>
                 {
                     mainwindow.NhanVienRadioButton,
-                    mainwindow.HoaDonRadioButton,
                     //mainwindow.ChiTietHoaDonRadioButton,
                     mainwindow.PhieuNhapHangRadioButton,
                     //mainwindow.ChiTietPhieuNhapHangRadioButton,
                     mainwindow.KhuyenMaiRadioButton,
-                    mainwindow.BaoHanhRadioButton
+                    mainwindow.BaoHanhRadioButton,
+                    mainwindow.TonKhoRadioButton
                 },
                 ["Nhân viên kiểm kho"] = new List<UIElement>
                 {
@@ -181,33 +180,33 @@ namespace GoonRunner.MVVM.ViewModel
                 ["Nhân viên kỹ thuật"] = new List<UIElement>
                 {
                     mainwindow.NhanVienRadioButton,
-                    mainwindow.KhachHangRadioButton,
-                    mainwindow.SanPhamRadioButton,
                     mainwindow.HoaDonRadioButton,
                     //mainwindow.ChiTietHoaDonRadioButton,
                     mainwindow.PhieuNhapHangRadioButton,
                     //mainwindow.ChiTietPhieuNhapHangRadioButton,
-                    mainwindow.KhuyenMaiRadioButton
+                    mainwindow.PhieuNhapHangRadioButton,
+                    mainwindow.TonKhoRadioButton
                 },
                 ["Admin"] = new List<UIElement>
                 {
                     mainwindow.KhachHangRadioButton,
-                    mainwindow.SanPhamRadioButton,
                     mainwindow.HoaDonRadioButton,
                     //mainwindow.ChiTietHoaDonRadioButton,
                     mainwindow.PhieuNhapHangRadioButton,
                     //mainwindow.ChiTietPhieuNhapHangRadioButton,
-                    mainwindow.BaoHanhRadioButton
+                    mainwindow.BaoHanhRadioButton,
+                    mainwindow.TonKhoRadioButton
                 },
                 ["Chủ cửa hàng"] = new List<UIElement>
                 {
                     mainwindow.KhachHangRadioButton,
-                    mainwindow.SanPhamRadioButton,
-                    //mainwindow.HoaDonRadioButton,
+                    mainwindow.TonKhoRadioButton,
+                    mainwindow.HoaDonRadioButton,
                     //mainwindow.ChiTietHoaDonRadioButton,
-                    //mainwindow.PhieuNhapHangRadioButton,
+                    mainwindow.PhieuNhapHangRadioButton,
                     //mainwindow.ChiTietPhieuNhapHangRadioButton,
-                    mainwindow.BaoHanhRadioButton
+                    mainwindow.BaoHanhRadioButton,
+                    mainwindow.TonKhoRadioButton
                 }
             };
         

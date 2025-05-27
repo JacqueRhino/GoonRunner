@@ -26,7 +26,7 @@ namespace GoonRunner.MVVM.ViewModel
         private DateTime _ngaysinh;
         public DateTime NgaySinh { get => _ngaysinh; set { _ngaysinh = value; OnPropertyChanged(); } }
         public ICommand AddKhachHangCommand { get; set; }
-
+        public ICommand ClearFieldCommand { get; set; }
         public SidebarKhachHangViewModel()
         {
             SelectedDate = DateTime.Now;
@@ -76,7 +76,20 @@ namespace GoonRunner.MVVM.ViewModel
                 MessageBox.Show("Thêm thành công!");
                 MainViewModel.Instance?.KhachHangVM?.LoadKhachHangList();
             });
-        } 
+
+            ClearFieldCommand = new RelayCommand<Button>((p) => { return true; }, (p) =>
+            {
+                ClearFields();
+            });
+        }
+        private void ClearFields()
+        {
+            HoKH = string.Empty;
+            TenKH = string.Empty;
+            DiaChi = string.Empty;
+            SDT = string.Empty;
+            SelectedDate = DateTime.Now;
+        }
         private bool IsInSmallDateTimeRange(DateTime dateTime)
         {
             // Define SMALLDATETIME boundaries

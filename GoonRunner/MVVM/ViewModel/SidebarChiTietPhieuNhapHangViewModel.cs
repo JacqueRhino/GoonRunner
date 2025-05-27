@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +29,7 @@ namespace GoonRunner.MVVM.ViewModel
         private int _dongia;
         public int DonGia { get => _dongia; set { _dongia = value; OnPropertyChanged(); } }
         public ICommand AddChiTietPhieuNhapHangCommand { get; set; }
+        public ICommand ClearFieldCommand { get; set; }
         public SidebarChiTietPhieuNhapHangViewModel() { }
         public SidebarChiTietPhieuNhapHangViewModel(int maPNH)
         {
@@ -81,6 +83,18 @@ namespace GoonRunner.MVVM.ViewModel
                     MessageBox.Show("Không có Mã phiếu nhập hàng này");
                 }
             });
+
+            ClearFieldCommand = new RelayCommand<Button>((p) => { return true; }, (p) =>
+            {
+                ClearFields();
+            });
+        }
+        private void ClearFields()
+        {
+            MaSP = 0;
+            TenSP = string.Empty;
+            SoLuongNhap = 0;
+            DonGia = 0;
         }
 
         private void LoadSanPhamInfo(int maSP)

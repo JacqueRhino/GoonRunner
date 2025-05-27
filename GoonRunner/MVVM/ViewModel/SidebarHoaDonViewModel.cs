@@ -45,6 +45,7 @@ namespace GoonRunner.MVVM.ViewModel
         private DateTime _ngaymuahang;
         public DateTime NgayMuaHang { get => _ngaymuahang; set { _ngaymuahang = value; OnPropertyChanged(); } }
         public ICommand AddHoaDonCommand { get; set; }
+        public ICommand ClearFieldCommand { get; set; }
 
         public SidebarHoaDonViewModel()
         {
@@ -125,6 +126,20 @@ namespace GoonRunner.MVVM.ViewModel
                 MainViewModel.Instance?.HoaDonVM?.LoadHoaDonList();
                 ClearFields();
             });
+
+            ClearFieldCommand = new RelayCommand<Button>((p) => { return true; }, (p) =>
+            {
+                ClearFields();
+            });
+        }
+        private void ClearFields()
+        {
+            MaKH = 0;
+            HoKH = string.Empty;
+            TenKH = string.Empty;
+            SDTKH = string.Empty;
+            DiaChi = string.Empty;
+            SelectedDate = DateTime.Now;
         }
         private void LoadKhachHangInfo(int maKH)
         {
@@ -156,6 +171,8 @@ namespace GoonRunner.MVVM.ViewModel
                 if (nhanVien != null)
                 {
                     // Auto-fill employee information
+                    HoNV = nhanVien.HoNV;
+                    TenNV = nhanVien.TenNV;
                     HoTenNV = nhanVien.HoNV + " " + nhanVien.TenNV;
                 }
             }
@@ -181,22 +198,6 @@ namespace GoonRunner.MVVM.ViewModel
             {
                 //MessageBox.Show($"Lỗi khi tải thông tin nhân viên hiện tại: {ex.Message}");
             }
-        }
-
-        private void ClearFields()
-        {
-            // Reset customer fields
-            MaKH = 0;
-            HoKH = string.Empty;
-            TenKH = string.Empty;
-            SDTKH = string.Empty;
-            DiaChi = string.Empty;
-
-            // Do not reset employee fields since they should stay with the logged-in user
-            // Instead, reload the current user information
-            LoadCurrentUserAsEmployee();
-
-            SelectedDate = DateTime.Now;
         }
         private bool IsInSmallDateTimeRange(DateTime dateTime)
         {

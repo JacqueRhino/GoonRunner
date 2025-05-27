@@ -31,6 +31,7 @@ namespace GoonRunner.MVVM.ViewModel
         private int _tongtien;
         public int TongTien { get => _tongtien; set { _tongtien = value; OnPropertyChanged(); } }
         public ICommand AddChiTietHoaDonCommand { get; set; }
+        public ICommand ClearFieldCommand { get; set; }
         public SidebarChiTietHoaDonViewModel() { }
         public SidebarChiTietHoaDonViewModel(int maHD)
         {
@@ -82,6 +83,17 @@ namespace GoonRunner.MVVM.ViewModel
                     MessageBox.Show("Không có Mã hóa đơn hàng này");
                 }
             });
+
+            ClearFieldCommand = new RelayCommand<Button>((p) => { return true; }, (p) =>
+            {
+                ClearFields();
+            });
+        }
+        private void ClearFields()
+        {
+            MaSP = 0;
+            TenSP = string.Empty;
+            SoLuongBan = 0;
         }
         private void LoadSanPhamInfo(int maSP)
         {

@@ -30,6 +30,7 @@ namespace GoonRunner.MVVM.ViewModel
         private DateTime _ngaynhap;
         public DateTime NgayNhap { get => _ngaynhap; set { _ngaynhap = value; OnPropertyChanged(); } }
         public ICommand AddPhieuNhapHangCommand { get; set; }
+        public ICommand ClearFieldCommand { get; set; }
 
         public SidebarPhieuNhapHangViewModel()
         {
@@ -68,6 +69,17 @@ namespace GoonRunner.MVVM.ViewModel
                 MessageBox.Show("Thêm thành công!");
                 MainViewModel.Instance?.PhieuNhapHangVM?.LoadPhieuNhapHangList();
             });
+
+            ClearFieldCommand = new RelayCommand<Button>((p) => { return true; }, (p) =>
+            {
+                ClearFields();
+            });
+        }
+        private void ClearFields()
+        {
+            MaNCC = 0;
+            TenNCC = string.Empty;
+            SelectedDate = DateTime.Now;
         }
         private void LoadNhaCungCapInfo(int maNCC)
         {

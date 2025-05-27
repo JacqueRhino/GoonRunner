@@ -12,50 +12,62 @@
              d:DesignHeight="590" d:DesignWidth="250">
     <Grid>
         <StackPanel>
-                    <gr:Textbox SetHeader="Họ KH" SetPlaceholder="Nhập họ khách hàng" SetBinding="{Binding HoKH}"/>
-                    <gr:Textbox SetHeader="Tên KH" SetPlaceholder="Nhập tên khách hàng" SetBinding="{Binding TenKH}"/>
-                    <gr:Textbox SetHeader="Địa chỉ" SetPlaceholder="Nhập địa chỉ" SetBinding="{Binding DiaChi}"/>
-                    <gr:Textbox SetHeader="SĐT" SetPlaceholder="Nhập số điện thoại" SetBinding="{Binding SDT}"/>
-                    
-                    <DatePicker gr:Extensions.Header="Ngày sinh"
+            <gr:Textbox SetHeader="Họ KH" SetPlaceholder="Nhập họ khách hàng" SetBinding="{Binding HoKH}"/>
+            <gr:Textbox SetHeader="Tên KH" SetPlaceholder="Nhập tên khách hàng" SetBinding="{Binding TenKH}"/>
+            <gr:Textbox SetHeader="Địa chỉ" SetPlaceholder="Nhập địa chỉ" SetBinding="{Binding DiaChi}"/>
+            <gr:Textbox SetHeader="SĐT" SetPlaceholder="Nhập số điện thoại" SetBinding="{Binding SDT}"/>
+
+            <DatePicker gr:Extensions.Header="Ngày sinh"
                                 VerticalContentAlignment="Center"
                                 Foreground="{StaticResource Foreground}" 
                                 BorderBrush="{StaticResource Foreground}"
                                 FontFamily="{StaticResource 'JetBrains Mono'}"
                                 Margin="0,0,0,5"
                                 SelectedDate="{Binding SelectedDate, Mode=TwoWay}"/>
-                <Grid HorizontalAlignment="Center">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    
-                    <Button Grid.Column="0"
-                            Margin="10"
-                            Style="{StaticResource SidebarButton}"
-                            Command="{Binding AddKhachHangCommand}">
-                        <StackPanel>
-                            <ui:SymbolIcon Symbol="Add24" FontSize="20"/>
-                        </StackPanel>
-                    </Button>
-                    
-                    <Button Grid.Column="1"
-                            Margin="10"
-                            Style="{StaticResource SidebarButton}">
-                        <StackPanel>
-                            <ui:SymbolIcon Symbol="Pen24" FontSize="20"/>
-                        </StackPanel>
-                    </Button>
-                    
-                    <Button Grid.Column="2"
-                            Margin="10"
-                            Style="{StaticResource SidebarButtonDelete}">
-                        <StackPanel>
-                            <ui:SymbolIcon Symbol="Delete24" FontSize="20"/>
-                        </StackPanel>
-                    </Button>
-                </Grid>
+            <Grid HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                        Name="ButtonAdd"
+                        Margin="10"
+                        Style="{StaticResource SidebarButton}"
+                        Command="{Binding AddKhachHangCommand}">
+                    <StackPanel>
+                        <ui:SymbolIcon Symbol="Add24" FontSize="20"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Column="1"
+                        Margin="10"
+                        Style="{StaticResource SidebarButton}">
+                    <StackPanel>
+                        <ui:SymbolIcon Symbol="Pen24" FontSize="20"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Column="2"
+                        Margin="10"
+                        Style="{StaticResource SidebarButton}"
+                        FontFamily="../../Assets/Fonts/#Segoe Fluent Icons" FontWeight="Medium" FontSize="20"
+                        Command="{Binding ClearFieldCommand}">
+                    <StackPanel>
+                        <TextBlock Text="" FontFamily="{StaticResource 'Segoe Fluent Icons'}" FontSize="22"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Column="3"
+                        Margin="10"
+                        Style="{StaticResource SidebarButtonDelete}">
+                    <StackPanel>
+                        <ui:SymbolIcon Symbol="Delete24" FontSize="20"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
         </StackPanel>
     </Grid>
 </UserControl>

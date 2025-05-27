@@ -23,8 +23,9 @@ namespace GoonRunner.MVVM.ViewModel
             RefreshCommand = new RelayCommand<Button>((p) => true, (p) => { LoadNhanVienList(); });
             DoubleClickCommand = new RelayCommand<object>((p) => SelectedItem != null, (p) =>
             {
-                MainViewModel.Instance.SidebarNhanVienVM = new SidebarNhanVienViewModel(SelectedItem.MaNV);
-
+                //MainViewModel.Instance.SidebarNhanVienVM = new SidebarNhanVienViewModel(SelectedItem.MaNV);
+                MainViewModel.Instance.SidebarNhanVienVM.MaNV = SelectedItem.MaNV;
+                MainViewModel.Instance.SidebarNhanVienVM.LoadNhanVienInfo(SelectedItem.MaNV);
                 //MainViewModel.Instance.CurrentView = MainViewModel.Instance.ChiTietHoaDonVM;
                 //MainViewModel.Instance.CurrentSidebarView = MainViewModel.Instance.SidebarNhanVienVM;
             });

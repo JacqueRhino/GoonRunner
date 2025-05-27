@@ -15,16 +15,16 @@ namespace GoonRunner.MVVM.ViewModel
     {
         public ObservableCollection<string> Roles { get; } = new ObservableCollection<string> 
         { 
-            "Nhân viên bán hàng", 
-            "Chăm sóc khách hàng", 
-            "Nhân viên kiểm kho", 
-            "Quản lý cửa hàng", 
-            "Nhân viên kỹ thuật web", 
-            "Nhân viên bảo hành",
+            "Nhân viên bán hàng",
+            "Nhân viên kế toán",
+            "Nhân viên kỹ thuật",
             "Nhân viên Marketing",
-            "Giao hàng", 
-            "Bảo vệ",
-            "Lao công"
+            "Nhân viên tạp vụ",
+            "Nhân viên kiểm kho",
+            "Nhân viên bảo vệ",
+            "Chăm sóc khách hàng", 
+            "Nhân viên giao hàng",
+            "Nhân viên quản trị mạng"
         };
         public ObservableCollection<string> Gender { get; } = new ObservableCollection<string>
         {
@@ -68,29 +68,32 @@ namespace GoonRunner.MVVM.ViewModel
                         case "Nhân viên bán hàng":
                             _mapb = 1;
                             break;
-                        case "Chăm sóc khách hàng":
+                        case "Nhân viên kế toán":
                             _mapb = 2;
                             break;
-                        case "Quản lý cửa hàng":
+                        case "Nhân viên kỹ thuật":
                             _mapb = 3;
                             break;
-                        case "Nhân viên kỹ thuật web":
+                        case "Nhân viên Marketing":
                             _mapb = 4;
                             break;
-                        case "Nhân viên bảo hành":
+                        case "Nhân viên tạp vụ":
                             _mapb = 5;
                             break;
-                        case "Nhân viên Marketing":
+                        case "Nhân viên kiểm kho":
                             _mapb = 6;
                             break;
-                        case "Giao hàng":
+                        case "Nhân viên bảo vệ":
                             _mapb = 7;
                             break;
-                        case "Bảo vệ":
+                        case "Chăm sóc khách hàng":
                             _mapb = 8;
                             break;
-                        case "Lao công":
+                        case "Nhân viên giao hàng":
                             _mapb = 9;
+                            break;
+                        case "Nhân viên quản trị mạng":
+                            _mapb = 10;
                             break;
                         default:
                             _mapb = 0;
@@ -107,20 +110,21 @@ namespace GoonRunner.MVVM.ViewModel
         private DateTime _ngaysinh;
         public DateTime NgaySinh { get => _ngaysinh; set { _ngaysinh = value; OnPropertyChanged(); } }
         public ICommand AddNhanVienCommand { get; set; }
-        public SidebarNhanVienViewModel() 
+        public ICommand ClearFieldCommand { get; set; }
+        public SidebarNhanVienViewModel()
         {
-            SelectedDate = DateTime.Now;
-            LoadNhanVienInfo(MaNV);
-        }
-        public SidebarNhanVienViewModel(int maNV)
-        {
-            MaNV = maNV;
-            LoadNhanVienInfo(MaNV);
+            SelectedRole = "Nhân viên bán hàng";
+            SelectedGender = "Nam";
             SelectedDate = DateTime.Now;
             DanhSachNhanVien = new ObservableCollection<NHANVIEN>(DataProvider.Ins.goonRunnerDB.NHANVIENs);
-            
             AddNhanVienCommand = new RelayCommand<Button>((p) => { return true; }, (p) =>
             {
+                if (MaNV != 0)
+                {
+                    MessageBox.Show("Nhân viên này đã tồn tại");
+                    return;
+                }
+                
                 if (string.IsNullOrEmpty(HoNV))
                 {
                     MessageBox.Show("Hãy nhập Họ NV");
@@ -171,10 +175,15 @@ namespace GoonRunner.MVVM.ViewModel
                 DanhSachNhanVien.Add(nhanvien);
                 MessageBox.Show("Thêm thành công!");
                 MainViewModel.Instance?.NhanVienVM?.LoadNhanVienList();
+                ClearFields();
             });
 
+            ClearFieldCommand = new RelayCommand<Button>((p) => { return true; }, (p) => 
+            {
+                ClearFields();
+            });
         }
-        private void LoadNhanVienInfo(int maNV)
+        public void LoadNhanVienInfo(int maNV)
         {
             try
             {
@@ -197,6 +206,18 @@ namespace GoonRunner.MVVM.ViewModel
             {
                 //MessageBox.Show($"Lỗi khi tải thông tin nhân viên: {ex.Message}");
             }
+        }
+        private void ClearFields()
+        {
+            MaNV = 0;
+            HoNV = string.Empty;
+            TenNV = string.Empty;
+            DiaChi = string.Empty;
+            SDT = string.Empty;
+            CMND = string.Empty;
+            SelectedRole = "Nhân viên bán hàng";
+            SelectedGender = "Nam";
+            SelectedDate = DateTime.Now;
         }
         private bool IsInSmallDateTimeRange(DateTime dateTime)
         {
