@@ -15,8 +15,8 @@
             <gr:Textbox SetHeader="Tên NCC" SetPlaceholder="Nhập tên NCC" SetBinding="{Binding TenNCC}"/>
             <DatePicker gr:Extensions.Header="Ngày nhập"
                     VerticalContentAlignment="Center"
-                    Foreground="#3c3836" 
-                    BorderBrush="#3c3836"
+                    Foreground="{StaticResource Foreground}" 
+                    BorderBrush="{StaticResource Foreground}"
                     FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"
                     Margin="0,0,0,5"
                     SelectedDate="{Binding SelectedDate, Mode=TwoWay}"/>

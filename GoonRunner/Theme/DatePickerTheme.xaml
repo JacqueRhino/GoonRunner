@@ -56,7 +56,7 @@
                           Header="{Binding Path=(gr:Extensions.Header), RelativeSource={RelativeSource Mode=TemplatedParent}}"
                           x:Name="GroupBox"
                           BorderBrush="{TemplateBinding BorderBrush}"
-                          Foreground="#3c3836"
+                          Foreground="{StaticResource Foreground}"
                           IsEnabled="{Binding IsEnabled,ElementName=ToggleButton}">
                     <Grid x:Name="PART_Root" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                         <Grid.ColumnDefinitions>
@@ -69,7 +69,7 @@
                                            HorizontalContentAlignment="Stretch" Grid.Row="0" VerticalContentAlignment="Center">
                             <DatePickerTextBox.Style>
                                 <Style TargetType="{x:Type DatePickerTextBox}">
-                                    <Setter Property="Foreground" Value="#FF333333"/>
+                                    <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
                                     <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
                                     <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
                                     <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>

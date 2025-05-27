@@ -11,11 +11,20 @@
              DataContext="{StaticResource OwnerHomeVM}"
              mc:Ignorable="d"
              d:DesignHeight="590" d:DesignWidth="755">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="Foreground" Color="#3c3836"/>
+        <!-- <SolidColorBrush x:Key="Foreground2" Color="#A89984"/> -->
+        <!-- <SolidColorBrush x:Key="Background" Color="#fbf1c7"/> -->
+        <SolidColorBrush x:Key="Orange" Color="#D65D0E"/>
+        <SolidColorBrush x:Key="Red" Color="#D53E3E"/>
+        <SolidColorBrush x:Key="Aqua" Color="#427B55"/>
+        <SolidColorBrush x:Key="Green" Color="#98971A"/>
+        <SolidColorBrush x:Key="Blue" Color="#076678"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -32,9 +41,9 @@
                       Header="Doanh thu" Foreground="#427B58">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" MinWidth="10" MaxWidth="30"/>
+                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*" MinWidth="10" MaxWidth="30"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" MinHeight="10"/>
@@ -42,22 +51,24 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*" MinHeight="10"/>
                     </Grid.RowDefinitions>
-                    <DatePicker Grid.Column="1"
+                    <DatePicker Grid.Row="1" Grid.Column="1"
                                 gr:Extensions.Header="Chọn ngày"
-                                VerticalContentAlignment="Center"
-                                Foreground="#3c3836" 
-                                BorderBrush="#3c3836"
+                                Width="140"
+                                HorizontalAlignment="Center"
+                                Foreground="{StaticResource Foreground}" 
+                                BorderBrush="{StaticResource Foreground}"
                                 FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"
                                 Margin="0,0,0,5" 
                                 SelectedDate="{Binding SelectedDate, Mode=TwoWay}"/>
                     <TextBlock Grid.Column="1" Text="{Binding HienThiDoanhThu, StringFormat={}{0:N0}đ, Mode=TwoWay}"
-                               Grid.Row="1" 
-                               Foreground="#427B58" 
+                               Grid.Row="2" 
+                               Foreground="{StaticResource Aqua}" 
                                FontSize="30" 
+                               FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"
                                Margin="10,0,0,0"/>
                 </Grid>
             </GroupBox>
-            <GroupBox Grid.Row="0" Grid.Column="1" Style="{StaticResource GroupBoxGoonRunner}" Header="Lợi nhuận" Foreground="#D53E3E">
+            <GroupBox Grid.Row="0" Grid.Column="1" Style="{StaticResource GroupBoxGoonRunner}" Header="Lợi nhuận" Foreground="{StaticResource Green}">
                 <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" MinHeight="10"/>
@@ -68,18 +79,18 @@
                     <TextBlock Text="Tháng này" 
                                Grid.Row="1" 
                                HorizontalAlignment="Center"
-                               Foreground="#D53E3E"  
-                               FontFamily="#JetBrains Mono"/>
+                               Foreground="{StaticResource Green}"  
+                               FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"/>
                     <TextBlock Text="{Binding HienThiLoiNhuan, StringFormat={}{0:N0}đ}" 
                                Grid.Row="2" 
                                HorizontalAlignment="Center"
-                               Foreground="#D53E3E"  
-                               FontFamily="#JetBrains Mono" 
+                               Foreground="{StaticResource Green}"  
+                               FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" 
                                FontWeight="Bold" 
-                               FontSize="32"/>
+                               FontSize="30"/>
                 </Grid>
             </GroupBox>
-            <GroupBox Grid.Row="0" Grid.Column="2" Style="{StaticResource GroupBoxGoonRunner}" Header="Xếp Hạng" Foreground="#D79921">
+            <GroupBox Grid.Row="0" Grid.Column="2" Style="{StaticResource GroupBoxGoonRunner}" Header="Xếp Hạng" Foreground="{StaticResource Orange}">
                 <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" MinHeight="10"/>
@@ -96,31 +107,31 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Tháng này"
                                Grid.Row="1" Grid.Column="1" 
-                               Foreground="#D79921" 
-                               FontFamily="#JetBrains Mono" 
+                               Foreground="{StaticResource Orange}" 
+                               FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" 
                                HorizontalAlignment="Center"/>
                     <TextBlock Text="Tháng Trước" 
                                Grid.Row="1" Grid.Column="3" 
-                               Foreground="#D79921" 
-                               FontFamily="#JetBrains Mono" 
+                               Foreground="{StaticResource Orange}" 
+                               FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" 
                                HorizontalAlignment="Center"/>
                     <TextBlock Text="1" 
                                Grid.Row="2" Grid.Column="1" 
-                               Foreground="#D79921" 
-                               FontFamily="#JetBrains Mono" 
+                               Foreground="{StaticResource Orange}" 
+                               FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" 
                                FontSize="30"
                                FontWeight="Bold" 
                                HorizontalAlignment="Center"/>
                     <TextBlock Text="7" 
                                Grid.Row="2" Grid.Column="3" 
-                               Foreground="#D79921" 
-                               FontFamily="#JetBrains Mono" 
+                               Foreground="{StaticResource Orange}" 
+                               FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" 
                                FontSize="30"
                                FontWeight="Bold" 
                                HorizontalAlignment="Center"/>
                 </Grid>
             </GroupBox>
-            <GroupBox Grid.Row="0" Grid.Column="3" Style="{StaticResource GroupBoxGoonRunner}" Header="KPI" Foreground="#98971A">
+            <GroupBox Grid.Row="0" Grid.Column="3" Style="{StaticResource GroupBoxGoonRunner}" Header="KPI" Foreground="{StaticResource Red}">
                 <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" MinHeight="10"/>
@@ -137,25 +148,25 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Đơn bán được" 
                                Grid.Row="1" Grid.Column="1" 
-                               Foreground="#98971A" 
-                               FontFamily="#JetBrains Mono" 
+                               Foreground="{StaticResource Red}" 
+                               FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" 
                                HorizontalAlignment="Center"/>
                     <TextBlock Text="Đơn cần bán"
                                Grid.Row="1" Grid.Column="3" 
-                               Foreground="#98971A" 
-                               FontFamily="#JetBrains Mono" 
+                               Foreground="{StaticResource Red}" 
+                               FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" 
                                HorizontalAlignment="Center"/>
                     <TextBlock Text="50" 
                                Grid.Row="2" Grid.Column="1" 
                                FontSize="30" 
-                               Foreground="#98971A" 
-                               FontFamily="#JetBrains Mono" 
+                               Foreground="{StaticResource Red}" 
+                               FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" 
                                FontWeight="Bold" 
                                HorizontalAlignment="Center"/>
                     <TextBlock Text="50" Grid.Row="2" Grid.Column="3" 
                                FontSize="30" 
-                               Foreground="#98971A" 
-                               FontFamily="#JetBrains Mono" 
+                               Foreground="{StaticResource Red}" 
+                               FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" 
                                FontWeight="Bold" 
                                HorizontalAlignment="Center"/>
                 </Grid>

@@ -125,18 +125,16 @@
                     <!--     </StackPanel> -->
                     <!-- </Button> -->
 
-                    <StackPanel Margin="10,0,0,5"
-                                    VerticalAlignment="Center">
+                    <StackPanel Margin="10,0,0,0">
                         <TextBlock Text="{Binding DisplayName}"
-                                       Margin="0,4,0,0"
                                        Name="Displayname"
                                        Foreground="{StaticResource Foreground}"
                                        FontSize="14"
-                                       FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"/>
+                                       FontFamily="{StaticResource 'JetBrains Mono'}"/>
                         <TextBlock Text="{Binding Privilege}"
                                        Foreground="{StaticResource Foreground}"
                                        FontSize="12"
-                                       FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"/>
+                                       FontFamily="{StaticResource 'JetBrains Mono'}"/>
                     </StackPanel>
 
                 </StackPanel>
@@ -156,7 +154,7 @@
                                 Click="DisableSidebarAndChangeTitle"
                                 IsChecked="True">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                            <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Trang Chủ
                             </TextBlock>
                         </StackPanel>
@@ -170,7 +168,7 @@
                                 Command="{Binding NhanVienViewCommand}"
                                 Click="ChangeTitleNhanvien">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                            <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Nhân Viên
                             </TextBlock>
                         </StackPanel>
@@ -184,7 +182,7 @@
                                  Command="{Binding SanPhamViewCommand}"
                                  Click="ChangeTitleSanpham">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                            <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Sản Phẩm
                             </TextBlock>
                         </StackPanel>
@@ -198,7 +196,7 @@
                                  Command="{Binding HoaDonViewCommand}"
                                  Click="ChangeTitleHoadon">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                            <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Hóa Đơn
                             </TextBlock>
                         </StackPanel>
@@ -212,7 +210,7 @@
                                  Command="{Binding ChiTietHoaDonViewCommand}"
                                  Click="ChangeTitleChitiethoadon">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                            <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         CT Hóa Đơn
                             </TextBlock>
                         </StackPanel>
@@ -226,7 +224,7 @@
                                          Command="{Binding PhieuNhapHangViewCommand}"
                                 Click="ChangeTitlePhieunhaphang">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                            <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Phiếu Nhập
                             </TextBlock>
                         </StackPanel>
@@ -240,7 +238,7 @@
                                          Command="{Binding ChiTietPhieuNhapHangViewCommand}"
                                 Click="ChangeTitleChitietphieunhaphang">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                            <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         CT Phiếu Nhập
                             </TextBlock>
                         </StackPanel>
@@ -254,7 +252,7 @@
                                          Command="{Binding TonKhoViewCommand}"
                                          Click="ChangeTitleTonkho">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                            <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Tồn Kho
                             </TextBlock>
                         </StackPanel>
@@ -268,7 +266,7 @@
                                          gr:Extensions.Icon="People20"
                                          Click="ChangeTitleKhachhang">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                            <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Khách Hàng
                             </TextBlock>
                         </StackPanel>
@@ -281,7 +279,7 @@
                                          gr:Extensions.Icon="Tag20"
                                 Click="ChangeTitleKhuyenmai">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                            <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Khuyến Mại
                             </TextBlock>
                         </StackPanel>
@@ -294,7 +292,7 @@
                                          gr:Extensions.Icon="Wrench20"
                                 Click="ChangeTitleBaohanh">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
+                            <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Bảo hành
                             </TextBlock>
                         </StackPanel>
@@ -309,7 +307,7 @@
                             Command="{Binding SignOutCommand}"
                             CommandParameter="{Binding ElementName=mainWindow}">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono" 
+                        <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" 
                                    FontSize="18" Margin="10,0,0,0" 
                                    VerticalAlignment="Center">
                             Đăng xuất

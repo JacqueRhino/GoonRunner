@@ -226,9 +226,9 @@ namespace GoonRunner.MVVM.ViewModel
         private void SignOut(Window p)
         {
             LogInView loginWindow = new LogInView();
-            var loginVM = loginWindow.DataContext as LoginViewModel; // Gọi LoginViewModel
+            var loginVM = loginWindow.DataContext as LoginViewModel; 
             loginVM.UserName = "";
-            loginVM.Password = ""; // Khi thực hiện đăng xuất sẽ reset lại ô username và password
+            loginVM.Password = ""; 
             loginVM.ErrorMessage = "";
             CurrentView = HomeVM;
             loginVM.MaNV = 0;

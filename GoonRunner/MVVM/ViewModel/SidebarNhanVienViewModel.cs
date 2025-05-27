@@ -39,7 +39,9 @@ namespace GoonRunner.MVVM.ViewModel
         private string _selectedgender;
         public string SelectedGender { get => _selectedgender; set { if (_selectedgender != value) { _selectedgender = value; GioiTinh = value; OnPropertyChanged(); } } }
         private DateTime _selecteddate;
-        public DateTime SelectedDate { get => _selecteddate; set { if (_selecteddate != value) { _selecteddate = value; NgaySinh = value; OnPropertyChanged(); } } }
+        public DateTime SelectedDate { get => _selecteddate; set { if (_selecteddate != value) { _selecteddate = value; FormattedDate = value.ToString("dd/MM/yyyy"); NgaySinh = value; OnPropertyChanged(); } } }
+        public string FormattedDate { get; private set; }
+
         private int _manv;
         public int MaNV { get => _manv; set { _manv = value; OnPropertyChanged(); } }
         private string _honv;

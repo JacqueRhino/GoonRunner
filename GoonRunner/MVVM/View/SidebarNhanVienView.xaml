@@ -43,7 +43,7 @@
                                 </Style>
                             </Button.Style>
                             <Grid>
-                                <ui:SymbolIcon Symbol="PersonCircle20" FontSize="70" Foreground="#3c3836" Name="AvatarIcon" />
+                                <ui:SymbolIcon Symbol="PersonCircle20" FontSize="70" Foreground="{StaticResource Foreground}" Name="AvatarIcon" />
                                 <Image Name="AvatarImage" />
                             </Grid>
                         </Button>                        
@@ -61,7 +61,7 @@
                     <gr:Textbox SetHeader="Địa chỉ" SetPlaceholder="Nhập địa chỉ" SetBinding="{Binding DiaChi}"/>
                     <gr:Textbox SetHeader="SĐT" SetPlaceholder="Nhập số điện thoại" SetBinding="{Binding SDT}"/>
                     <gr:Textbox SetHeader="CMND" SetPlaceholder="Nhập Chứng minh nhân dân" SetBinding="{Binding CMND}"/>
-            <ComboBox SelectedIndex="0" FontSize="12" BorderBrush="#3c3836" Foreground="#3c3836"
+            <ComboBox SelectedIndex="0" FontSize="12" BorderBrush="{StaticResource Foreground}" Foreground="{StaticResource Foreground}"
                               Name="Role"
                               gr:Extensions.Header="Chức vụ"
                               Padding="5,5,0,5"
@@ -76,7 +76,7 @@
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                <ComboBox SelectedIndex="0" FontSize="12" BorderBrush="#3c3836" Foreground="#3c3836"
+                <ComboBox SelectedIndex="0" FontSize="12" BorderBrush="{StaticResource Foreground}" Foreground="{StaticResource Foreground}"
                               gr:Extensions.Header="Giới tính"
                               Padding="5,5,0,5"
                               Margin="0,0,0,5"
@@ -88,9 +88,9 @@
                     <DatePicker Grid.Column="1"
                                 gr:Extensions.Header="Ngày sinh"
                                 VerticalContentAlignment="Center"
-                                Foreground="#3c3836" 
-                                BorderBrush="#3c3836"
-                                FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"
+                                Foreground="{StaticResource Foreground}" 
+                                BorderBrush="{StaticResource Foreground}"
+                                FontFamily="{StaticResource 'JetBrains Mono'}"
                                 Margin="0,0,0,5" 
                                 SelectedDate="{Binding SelectedDate, Mode=TwoWay}"/>
                 </Grid>

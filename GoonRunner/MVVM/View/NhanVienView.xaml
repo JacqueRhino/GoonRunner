@@ -38,7 +38,7 @@
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        Foreground="{StaticResource Foreground}" 
-                       FontFamily="../../Assets/Fonts/#JetBrains Mono"
+                       FontFamily="{StaticResource 'JetBrains Mono'}"
                        FontWeight="Medium" >
                         Tất Cả Nhân Viên
             </TextBlock>
@@ -58,7 +58,7 @@
 
         <ListView Grid.Row="1"
                   Margin="5,0,10,0"
-                  FontFamily="../../Assets/Fonts/#JetBrains Mono"
+                  FontFamily="{StaticResource 'JetBrains Mono'}"
                   FontWeight="Medium"
                   ItemsSource="{Binding NhanVienList}"
                   SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}"

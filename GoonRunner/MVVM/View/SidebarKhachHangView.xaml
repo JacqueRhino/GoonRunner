@@ -19,9 +19,9 @@
                     
                     <DatePicker gr:Extensions.Header="Ngày sinh"
                                 VerticalContentAlignment="Center"
-                                Foreground="#3c3836" 
-                                BorderBrush="#3c3836"
-                                FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"
+                                Foreground="{StaticResource Foreground}" 
+                                BorderBrush="{StaticResource Foreground}"
+                                FontFamily="{StaticResource 'JetBrains Mono'}"
                                 Margin="0,0,0,5"
                                 SelectedDate="{Binding SelectedDate, Mode=TwoWay}"/>
                 <Grid HorizontalAlignment="Center">
