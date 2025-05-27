@@ -45,9 +45,13 @@
                             </Border>
                         </Border>
                         <Border x:Name="Header" Grid.Column="1" Padding="5,0,0,0" Grid.RowSpan="2" Grid.Row="0">
-                            <ContentPresenter ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                            <TextBlock.FontFamily>{StaticResource 'JetBrains Mono'}</TextBlock.FontFamily>
-                            <TextBlock.FontSize>14</TextBlock.FontSize>
+                            <ContentPresenter 
+                                ContentSource="Header" 
+                                RecognizesAccessKey="True" 
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                TextBlock.FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"
+                                TextBlock.FontSize="14"
+                                />
                         </Border>
                         <ContentPresenter Grid.Column="1" Grid.ColumnSpan="2" Margin="{TemplateBinding Padding}" Grid.Row="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                     </Grid>
@@ -103,9 +107,12 @@
                             </Border>
                         </Border>
                         <Border x:Name="Header" Grid.Column="1" Padding="5,0,0,0" Grid.RowSpan="2" Grid.Row="0">
-                            <ContentPresenter ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                            <TextBlock.FontFamily>{StaticResource 'JetBrains Mono'}</TextBlock.FontFamily>
-                            <TextBlock.FontSize>12</TextBlock.FontSize>
+                            <ContentPresenter ContentSource="Header" 
+                                              RecognizesAccessKey="True" 
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              TextBlock.FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"
+                                              TextBlock.FontSize="12"
+                                              />
                         </Border>
                         <ContentPresenter Grid.Column="1" Grid.ColumnSpan="2" Margin="{TemplateBinding Padding}" Grid.Row="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                     </Grid>

@@ -87,8 +87,9 @@
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               IsHitTestVisible="false" Margin="{TemplateBinding Padding}"
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                            <TextBlock.FontFamily>{StaticResource 'JetBrains Mono'}</TextBlock.FontFamily>
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              TextBlock.FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono
+                                              "/>
                         </Grid>
                     </GroupBox>
                     <ControlTemplate.Triggers>

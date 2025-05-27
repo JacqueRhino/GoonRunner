@@ -125,10 +125,8 @@
                     <!--     </StackPanel> -->
                     <!-- </Button> -->
 
-                    <StackPanel Margin="10,0,0,5"
-                                    VerticalAlignment="Center">
+                    <StackPanel Margin="10,0,0,0">
                         <TextBlock Text="{Binding DisplayName}"
-                                       Margin="0,4,0,0"
                                        Name="Displayname"
                                        Foreground="{StaticResource Foreground}"
                                        FontSize="14"
