@@ -17,10 +17,10 @@
                          BorderThickness="0"
                          Background="Transparent"
                          VerticalContentAlignment="Center"
-                         FontFamily="../../Assets/Fonts/#JetBrains Mono"
+                         FontFamily="{StaticResource 'JetBrains Mono'}"
                          Padding="3,0,0,5"
                          FontWeight="Regular"
-                         Foreground="#3c3836"
+                         Foreground="{StaticResource Foreground}"
                          OverridesDefaultStyle="True">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
@@ -40,7 +40,7 @@
                            Text="Nhập họ"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           FontFamily="../../Assets/Fonts/#JetBrains Mono"
+                           FontFamily="{StaticResource 'JetBrains Mono'}"
                            FontWeight="Light"
                            Margin="5,0,0,5"
                            FontSize="12"

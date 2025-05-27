@@ -35,7 +35,7 @@
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        Foreground="{StaticResource Foreground}" 
-                       FontFamily="../../Assets/Fonts/#JetBrains Mono"
+                       FontFamily="{StaticResource 'JetBrains Mono'}"
                        FontWeight="Medium" >
                         Tất cả Khách Hàng
             </TextBlock>
@@ -55,7 +55,7 @@
 
         <ListView Grid.Row="1"
                   Margin="5,0,10,0"
-                  FontFamily="../../Assets/Fonts/#JetBrains Mono"
+                  FontFamily="{StaticResource 'JetBrains Mono'}"
                   FontWeight="Medium"
                   ItemsSource="{Binding KhachHangList}"
                   SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}"

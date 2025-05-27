@@ -360,105 +360,39 @@
     <Folder Include="Assets\Icon\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Fonts\JetBrainsMono-Bold.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMono-BoldItalic.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMono-ExtraBold.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMono-ExtraBoldItalic.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMono-ExtraLight.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMono-ExtraLightItalic.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMono-Italic.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMono-Light.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMono-LightItalic.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMono-Medium.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMono-MediumItalic.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMono-Regular.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMono-SemiBold.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMono-SemiBoldItalic.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMono-Thin.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMono-ThinItalic.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMonoNL-Bold.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMonoNL-BoldItalic.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMonoNL-ExtraBold.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMonoNL-ExtraBoldItalic.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMonoNL-ExtraLight.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMonoNL-ExtraLightItalic.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMonoNL-Italic.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMonoNL-Light.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMonoNL-LightItalic.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMonoNL-Medium.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMonoNL-MediumItalic.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMonoNL-Regular.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMonoNL-SemiBold.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMonoNL-SemiBoldItalic.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMonoNL-Thin.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\JetBrainsMonoNL-ThinItalic.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Fonts\Segoe Fluent Icons.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Assets\Fonts\JetBrainsMono-Bold.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMono-BoldItalic.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMono-ExtraBold.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMono-ExtraBoldItalic.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMono-ExtraLight.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMono-ExtraLightItalic.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMono-Italic.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMono-Light.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMono-LightItalic.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMono-Medium.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMono-MediumItalic.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMono-Regular.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMono-SemiBold.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMono-SemiBoldItalic.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMono-Thin.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMono-ThinItalic.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMonoNL-Bold.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMonoNL-BoldItalic.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMonoNL-ExtraBold.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMonoNL-ExtraBoldItalic.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMonoNL-ExtraLight.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMonoNL-ExtraLightItalic.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMonoNL-Italic.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMonoNL-Light.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMonoNL-LightItalic.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMonoNL-Medium.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMonoNL-MediumItalic.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMonoNL-Regular.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMonoNL-SemiBold.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMonoNL-SemiBoldItalic.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMonoNL-Thin.ttf" />
+    <Resource Include="Assets\Fonts\JetBrainsMonoNL-ThinItalic.ttf" />
+    <Resource Include="Assets\Fonts\Segoe Fluent Icons.ttf" />
     <Resource Include="Assets\Images\nen1.png" />
     <Resource Include="Assets\Images\nen2.png" />
     <Content Include="MVVM\Model\Model1.Context.tt">

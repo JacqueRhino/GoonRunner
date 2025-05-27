@@ -16,7 +16,7 @@
                               Header="{Binding Path=(gr:Extensions.Header), RelativeSource={RelativeSource Mode=TemplatedParent}}"
                               x:Name="GroupBox"
                               BorderBrush="{TemplateBinding BorderBrush}"
-                              Foreground="#3c3836"
+                              Foreground="{StaticResource Foreground}"
                               IsEnabled="{Binding IsEnabled,ElementName=ToggleButton}">
                         <Grid x:Name="MainGrid" SnapsToDevicePixels="true">
                             <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2"
@@ -88,7 +88,7 @@
                                               IsHitTestVisible="false" Margin="{TemplateBinding Padding}"
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                            <TextBlock.FontFamily>pack://application:,,,/Assets/Fonts/#JetBrains Mono</TextBlock.FontFamily>
+                            <TextBlock.FontFamily>{StaticResource 'JetBrains Mono'}</TextBlock.FontFamily>
                         </Grid>
                     </GroupBox>
                     <ControlTemplate.Triggers>

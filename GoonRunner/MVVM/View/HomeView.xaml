@@ -50,12 +50,12 @@
                                Grid.Row="1"
                                Grid.Column="1"
                                Foreground="{StaticResource Aqua}"
-                               FontFamily="#JetBrains Mono"/>
+                               FontFamily="{StaticResource 'JetBrains Mono'}"/>
                     <TextBlock Text="30,142,000đ" 
                                Grid.Row="2"
                                Grid.Column="1"
                                Foreground="{StaticResource Aqua}" 
-                               FontFamily="#JetBrains Mono"
+                               FontFamily="{StaticResource 'JetBrains Mono'}"
                                FontWeight="Bold" 
                                FontSize="32"/>
                 </Grid>
@@ -72,12 +72,12 @@
                                Grid.Row="1" 
                                HorizontalAlignment="Center"
                                Foreground="{StaticResource Red}"  
-                               FontFamily="#JetBrains Mono"/>
+                               FontFamily="{StaticResource 'JetBrains Mono'}"/>
                     <TextBlock Text="0" 
                                Grid.Row="2" 
                                HorizontalAlignment="Center"
                                Foreground="{StaticResource Red}"  
-                               FontFamily="#JetBrains Mono" 
+                               FontFamily="{StaticResource 'JetBrains Mono'}" 
                                FontWeight="Bold" 
                                FontSize="32"/>
                 </Grid>
@@ -100,24 +100,24 @@
                     <TextBlock Text="Tháng này"
                                Grid.Row="1" Grid.Column="1" 
                                Foreground="{StaticResource Orange}" 
-                               FontFamily="#JetBrains Mono" 
+                               FontFamily="{StaticResource 'JetBrains Mono'}" 
                                HorizontalAlignment="Center"/>
                     <TextBlock Text="Tháng Trước" 
                                Grid.Row="1" Grid.Column="3" 
                                Foreground="{StaticResource Orange}" 
-                               FontFamily="#JetBrains Mono" 
+                               FontFamily="{StaticResource 'JetBrains Mono'}" 
                                HorizontalAlignment="Center"/>
                     <TextBlock Text="1" 
                                Grid.Row="2" Grid.Column="1" 
                                Foreground="{StaticResource Orange}" 
-                               FontFamily="#JetBrains Mono" 
+                               FontFamily="{StaticResource 'JetBrains Mono'}" 
                                FontSize="30"
                                FontWeight="Bold" 
                                HorizontalAlignment="Center"/>
                     <TextBlock Text="7" 
                                Grid.Row="2" Grid.Column="3" 
                                Foreground="{StaticResource Orange}" 
-                               FontFamily="#JetBrains Mono" 
+                               FontFamily="{StaticResource 'JetBrains Mono'}" 
                                FontSize="30"
                                FontWeight="Bold" 
                                HorizontalAlignment="Center"/>
@@ -141,24 +141,24 @@
                     <TextBlock Text="Đơn bán được" 
                                Grid.Row="1" Grid.Column="1" 
                                Foreground="{StaticResource Green}" 
-                               FontFamily="#JetBrains Mono" 
+                               FontFamily="{StaticResource 'JetBrains Mono'}" 
                                HorizontalAlignment="Center"/>
                     <TextBlock Text="Đơn cần bán"
                                Grid.Row="1" Grid.Column="3" 
                                Foreground="{StaticResource Green}" 
-                               FontFamily="#JetBrains Mono" 
+                               FontFamily="{StaticResource 'JetBrains Mono'}" 
                                HorizontalAlignment="Center"/>
                     <TextBlock Text="50" 
                                Grid.Row="2" Grid.Column="1" 
                                FontSize="30" 
                                Foreground="{StaticResource Green}" 
-                               FontFamily="#JetBrains Mono" 
+                               FontFamily="{StaticResource 'JetBrains Mono'}" 
                                FontWeight="Bold" 
                                HorizontalAlignment="Center"/>
                     <TextBlock Text="50" Grid.Row="2" Grid.Column="3" 
                                FontSize="30" 
                                Foreground="{StaticResource Green}" 
-                               FontFamily="#JetBrains Mono" 
+                               FontFamily="{StaticResource 'JetBrains Mono'}" 
                                FontWeight="Bold" 
                                HorizontalAlignment="Center"/>
                 </Grid>

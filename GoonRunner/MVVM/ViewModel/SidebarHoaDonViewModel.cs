@@ -130,12 +130,10 @@ namespace GoonRunner.MVVM.ViewModel
         {
             try
             {
-                // Assuming you have a KHACHHANG entity in your database
                 var khachHang = DataProvider.Ins.goonRunnerDB.KHACHHANGs.FirstOrDefault(kh => kh.MaKH == maKH);
 
                 if (khachHang != null)
                 {
-                    // Auto-fill customer information
                     HoKH = khachHang.HoKH;
                     TenKH = khachHang.TenKH;
                     SDTKH = khachHang.SdtKH;

@@ -22,6 +22,7 @@
     <Window.Resources>
         <SolidColorBrush x:Key="Foreground" Color="#3c3836"/>
         <SolidColorBrush x:Key="Background" Color="#fbf1c7"/>
+        <SolidColorBrush x:Key="Blue" Color="#076678"/>
         
         <Storyboard x:Key="SpinnerStoryboard" RepeatBehavior="Forever">
             <DoubleAnimation
@@ -55,7 +56,7 @@
                 <TextBlock Text="Đăng Nhập Tài Khoản"
                            Foreground="{StaticResource Foreground}"
                            VerticalAlignment="Center" HorizontalAlignment="Center"
-                           FontFamily="../../Assets/Fonts/#JetBrains Mono" FontWeight="Medium" FontSize="16"
+                           FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="16"
                            Margin="0,0,0,20" />
 
                 <Grid Width="250">
@@ -79,7 +80,7 @@
                             BorderThickness="0"
                             Background="Transparent"
                             VerticalContentAlignment="Center"
-                            FontFamily="../../Assets/Fonts/#JetBrains Mono"
+                            FontFamily="{StaticResource 'JetBrains Mono'}"
                             FontWeight="Light"
                             Padding="3,0,0,5"
                             Foreground="{StaticResource Foreground}"
@@ -109,7 +110,7 @@
                                    Text="{Binding Placeholder}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
-                                   FontFamily="../../Assets/Fonts/#JetBrains Mono"
+                                   FontFamily="{StaticResource 'JetBrains Mono'}"
                                    FontWeight="Light"
                                    Margin="5,0,0,5"
                                    FontSize="12"
@@ -130,7 +131,7 @@
                 </Grid>
 
                 <Button Name="ButtonLogIn"
-                        Foreground="{StaticResource Background}" Background="#076678"
+                        Foreground="{StaticResource Background}" Background="{StaticResource Blue}"
                         Width="221" Height="61"
                         Margin="0,20,0,0"
                         Style="{StaticResource SigninButton}"
@@ -140,7 +141,7 @@
                     <Grid>
                         <TextBlock FontSize="20"
                                    FontWeight="Medium"
-                                   FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"
+                                   FontFamily="{StaticResource 'JetBrains Mono'}"
                                    Visibility="{Binding IsLoading, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
                             Đăng nhập
                         </TextBlock>
@@ -185,7 +186,7 @@
                 <Rectangle Width="auto" Height="auto" PreviewMouseLeftButtonDown="DragMoving" Fill="Transparent"/>
 
                 <Button Grid.Row="0" Grid.Column="1" Width="auto" Height="auto"                       
-                       FontFamily="../../Assets/Fonts/#Segoe Fluent Icons" FontWeight="Medium" FontSize="12"
+                       FontFamily="{StaticResource 'Segoe Fluent Icons'}" FontWeight="Medium" FontSize="12"
                        BorderThickness="0"
                        Cursor="Hand"
                        Click="MinimizedOnClick"
@@ -196,7 +197,7 @@
                        Style="{StaticResource WindowControlButton}"/>
 
                 <Button Grid.Row="0" Grid.Column="2" Width="auto" Height="auto"
-                       FontFamily="../../Assets/Fonts/#Segoe Fluent Icons" FontWeight="Medium" FontSize="12"
+                       FontFamily="{StaticResource 'Segoe Fluent Icons'}" FontWeight="Medium" FontSize="12"
                        BorderThickness="0"
                        Cursor="Hand"
                        Click="ClosedOnClick"
@@ -216,7 +217,7 @@
 
         </Grid>
         <TextBlock Text="Login"
-                   FontSize="16" FontFamily="JetBrains Mono" FontWeight="Bold"
+                   FontSize="16" FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Bold"
                    Foreground="{StaticResource Foreground}"
                    Width="auto" Height="auto"
                    HorizontalAlignment="Left" VerticalAlignment="Top"
