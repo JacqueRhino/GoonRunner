@@ -113,6 +113,7 @@
 
                 <Button Grid.Column="1"
                             Margin="10"
+                            Command="{Binding UpdateNhanVienCommand}"
                             Style="{StaticResource SidebarButton}">
                     <StackPanel>
                         <ui:SymbolIcon Symbol="Pen24" FontSize="20"/>
