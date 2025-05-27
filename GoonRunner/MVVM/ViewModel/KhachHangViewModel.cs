@@ -10,31 +10,36 @@ namespace GoonRunner.MVVM.ViewModel
 {
     public class KhachHangViewModel : BaseViewModel
     {
-        private ObservableCollection<KHACHHANG> _khachhanglist;
-        public ObservableCollection<KHACHHANG> KhachHangList { get => _khachhanglist; set { _khachhanglist = value; OnPropertyChanged(); } }
+        public ObservableCollection<KHACHHANG> KhachHangList { get; set; } = new ObservableCollection<KHACHHANG>();
+
         private KHACHHANG _selectedKHACHHANG;
         public KHACHHANG SelectedKHACHHANG { get => _selectedKHACHHANG; set { _selectedKHACHHANG = value; OnPropertyChanged(); } }
+
         private string _filterText;
         public string FilterText { get => _filterText; set { _filterText = value; OnPropertyChanged(); FilteredKhachHangList.Refresh(); } }
-        private ICollectionView _filteredKhachHangList;
-        public ICollectionView FilteredKhachHangList { get => _filteredKhachHangList; set { _filteredKhachHangList = value; OnPropertyChanged(); } }
+
+        public ICollectionView FilteredKhachHangList { get; set; }
+
         public ICommand RefreshCommand { get; set; }
 
         public KhachHangViewModel()
         {
-            LoadKhachHangList();
+            FilteredKhachHangList = CollectionViewSource.GetDefaultView(KhachHangList);
+            FilteredKhachHangList.Filter = FilterKhachHang;
+
             RefreshCommand = new RelayCommand<Button>((p) => true, (p) =>
             {
                 LoadKhachHangList();
-                FilterText = string.Empty; 
+                FilterText = string.Empty;
+                FilteredKhachHangList.Refresh();
             });
-            FilteredKhachHangList = CollectionViewSource.GetDefaultView(KhachHangList);
-            FilteredKhachHangList.Filter = FilterKhachHang;
+
+            LoadKhachHangList();
         }
 
         public void LoadKhachHangList()
         {
-            KhachHangList = new ObservableCollection<KHACHHANG>();
+            KhachHangList.Clear();
             var DanhSachKhachHang = DataProvider.Ins.goonRunnerDB.KHACHHANGs;
             foreach (var item in DanhSachKhachHang)
             {
@@ -48,28 +53,25 @@ namespace GoonRunner.MVVM.ViewModel
                 };
                 KhachHangList.Add(khachhang);
             }
+
+            FilteredKhachHangList?.Refresh();
         }
 
         private bool FilterKhachHang(object item)
         {
-            if (string.IsNullOrWhiteSpace(FilterText))
-                return true;
+            if (string.IsNullOrWhiteSpace(FilterText)) return true;
 
-            if (!(item is KHACHHANG khachhang))
-            {
-                return false;
-            }
+            if (!(item is KHACHHANG khachhang)) return false;
+
             if (int.TryParse(FilterText, out var maKH))
             {
                 if (khachhang.MaKH == maKH)
                     return true;
             }
-            var fullName = $"{khachhang.HoKH ?? ""} {khachhang.TenKH ?? ""}"; 
-            if ( fullName.IndexOf(FilterText, StringComparison.OrdinalIgnoreCase) >= 0)
-            {
-                return true;
-            }
-            return false;
+
+            // var fullName = $"{khachhang.HoKH ?? ""} {khachhang.TenKH ?? ""}";
+            return khachhang.TenKH.IndexOf(FilterText, StringComparison.OrdinalIgnoreCase) >= 0;
         }
+        
     }
 }
