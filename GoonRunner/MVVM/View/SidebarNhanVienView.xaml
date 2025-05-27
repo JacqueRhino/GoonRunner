@@ -131,8 +131,9 @@
                 </Button>
 
                 <Button Grid.Column="3"
-                            Margin="10"
-                            Style="{StaticResource SidebarButtonDelete}">
+                        Margin="10"
+                        Style="{StaticResource SidebarButtonDelete}"
+                        Command="{Binding DeleteNhanVienCommand}">
                     <StackPanel>
                         <ui:SymbolIcon Symbol="Delete24" FontSize="20"/>
                     </StackPanel>
