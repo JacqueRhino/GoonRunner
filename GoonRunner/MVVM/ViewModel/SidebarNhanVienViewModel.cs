@@ -422,18 +422,6 @@ namespace GoonRunner.MVVM.ViewModel
             SelectedGender = "Nam";
             SelectedDate = DateTime.Now;
         }
-        private void ClearFields()
-        {
-            MaNV = 0;
-            HoNV = string.Empty;
-            TenNV = string.Empty;
-            DiaChi = string.Empty;
-            SDT = string.Empty;
-            CMND = string.Empty;
-            SelectedRole = "Nhân viên bán hàng";
-            SelectedGender = "Nam";
-            SelectedDate = DateTime.Now;
-        }
         private bool IsInSmallDateTimeRange(DateTime dateTime)
         {
             // Define SMALLDATETIME boundaries
