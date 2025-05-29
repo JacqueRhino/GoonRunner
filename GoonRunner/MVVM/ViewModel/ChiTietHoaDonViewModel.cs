@@ -1,4 +1,4 @@
-﻿using GoonRunner.CustomControl;
+﻿using GoonRunner.Utils;
 using GoonRunner.MVVM.Model;
 using System;
 using System.Collections.Generic;
@@ -32,10 +32,8 @@ namespace GoonRunner.MVVM.ViewModel
             RefreshCommand = new RelayCommand<Button>((p) => true, (p) => { LoadChiTietHoaDonList(); });
             PreviousPageCommand = new RelayCommand<object>((p) => true, (p) =>
             {
-                // Tạo ViewModel mới dựa trên MaHD
                 MainViewModel.Instance.HoaDonVM = new HoaDonViewModel();
 
-                // Chuyển View
                 MainViewModel.Instance.CurrentView = MainViewModel.Instance.HoaDonVM;
                 MainViewModel.Instance.CurrentSidebarView = MainViewModel.Instance.SidebarHoaDonVM;
             });

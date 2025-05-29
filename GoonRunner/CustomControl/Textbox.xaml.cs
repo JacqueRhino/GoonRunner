@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace GoonRunner.CustomControl
+namespace GoonRunner.Utils
 {
     public partial class Textbox : UserControl
     {

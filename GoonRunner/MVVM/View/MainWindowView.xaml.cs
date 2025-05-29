@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using GoonRunner.MVVM.ViewModel;
 
 namespace GoonRunner.MVVM.View
 {
@@ -14,7 +16,6 @@ namespace GoonRunner.MVVM.View
             InitializeComponent();
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
-
         }
         private void MinimizeOnClick(object sender, RoutedEventArgs e)
         {
@@ -129,17 +130,7 @@ namespace GoonRunner.MVVM.View
             Title = "GoonRunner - Bảo hành";
         }
 
-        private void ChangeTitleChitietphieunhaphang(object sender, RoutedEventArgs e)
-        {
-            Title = "GoonRunner - Chi tiết phiếu nhập hàng";
-        }
-
-        private void ChangeTitleChitiethoadon(object sender, RoutedEventArgs e)
-        {
-            Title = "GoonRunner - Chi tiết hóa đơn";
-        }
-
-        private void ChangeTitleTonkho(object sender, System.Windows.RoutedEventArgs e)
+        private void ChangeTitleTonkho(object sender, RoutedEventArgs e)
         {
             CollapseSidebar();
             Title = "GoonRunner - Tồn kho";

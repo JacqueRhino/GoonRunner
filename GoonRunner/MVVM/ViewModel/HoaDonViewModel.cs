@@ -1,21 +1,17 @@
 ﻿using GoonRunner.MVVM.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+// ReSharper disable InconsistentNaming
 
 namespace GoonRunner.MVVM.ViewModel
 {
     public class HoaDonViewModel : BaseViewModel
     {
-        private ObservableCollection<HOADON> _hoadonlist;
-        public ObservableCollection<HOADON> HoaDonList { get { return _hoadonlist; } set { _hoadonlist = value; OnPropertyChanged(); } }
+        public ObservableCollection<HOADON> HoaDonList { get; set; } = new ObservableCollection<HOADON>();
         private HOADON _selectedItem;
         public HOADON SelectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(); } }
         private string _filterText;
@@ -26,26 +22,20 @@ namespace GoonRunner.MVVM.ViewModel
         public ICommand RefreshCommand { get; set; }
         public HoaDonViewModel()
         {
-            LoadHoaDonList();
+            Init();
             RefreshCommand = new RelayCommand<Button>((p) => true, (p) =>
             {
-                LoadHoaDonList();
                 FilterText = string.Empty;
+                LoadHoaDonList();
             });
             DoubleClickCommand = new RelayCommand<object>((p) => SelectedItem != null, (p) =>
             {
-                MainViewModel.Instance.ChiTietHoaDonVM = new ChiTietHoaDonViewModel(SelectedItem.MaHD);
-                MainViewModel.Instance.SidebarChiTietHoaDonVM = new SidebarChiTietHoaDonViewModel(SelectedItem.MaHD);
-
-                MainViewModel.Instance.CurrentView = MainViewModel.Instance.ChiTietHoaDonVM;
-                MainViewModel.Instance.CurrentSidebarView = MainViewModel.Instance.SidebarChiTietHoaDonVM;
+                NavigateToChiTietHoaDon(SelectedItem.MaHD);
             });
-            FilteredHoaDonList = CollectionViewSource.GetDefaultView(HoaDonList);
-            FilteredHoaDonList.Filter = FilterHoaDon;
         }
         public void LoadHoaDonList()
         {
-            HoaDonList = new ObservableCollection<HOADON>();
+            HoaDonList.Clear();
             var danhSachHoaDon = DataProvider.Ins.goonRunnerDB.HOADONs;
             foreach (var item in danhSachHoaDon)
             {
@@ -53,7 +43,7 @@ namespace GoonRunner.MVVM.ViewModel
                 {
                     MaHD = item.MaHD,
                     MaKH = item.MaKH,
-                    TenKH = item.HoKH + " " + item.TenKH,
+                    TenKH = $"{item.HoKH} {item.TenKH}", 
                     SdtKH = item.SdtKH,
                     DiaChi = item.DiaChi,
                     MaNV = item.MaNV,
@@ -66,26 +56,35 @@ namespace GoonRunner.MVVM.ViewModel
         
         private bool FilterHoaDon(object item)
         {
-            if (string.IsNullOrWhiteSpace(FilterText))
+            var filter = FilterText?.Trim();
+            if (string.IsNullOrWhiteSpace(filter))
                 return true;
 
             if (!(item is HOADON hoadon))
-            {
                 return false;
-            }
 
-            if (int.TryParse(FilterText, out var maHD))
-            {
-                if (hoadon.MaHD == maHD)
-                    return true;
-            }
-            
-            var fullName = $"{hoadon.HoKH ?? ""} {hoadon.TenKH ?? ""}"; 
-            if ( fullName.IndexOf(FilterText, StringComparison.OrdinalIgnoreCase) >= 0)
-            {
+            if (int.TryParse(filter, out var maHD) && hoadon.MaHD == maHD)
                 return true;
-            }
-            return false;
+
+            var fullName = $"{hoadon.HoKH ?? ""} {hoadon.TenKH ?? ""}";
+            return fullName.IndexOf(filter, StringComparison.OrdinalIgnoreCase) >= 0;
         }
+        
+        private void NavigateToChiTietHoaDon(int maHD)
+        {
+            MainViewModel.Instance.ChiTietHoaDonVM = new ChiTietHoaDonViewModel(maHD);
+            MainViewModel.Instance.SidebarChiTietHoaDonVM = new SidebarChiTietHoaDonViewModel(maHD);
+
+            MainViewModel.Instance.CurrentView = MainViewModel.Instance.ChiTietHoaDonVM;
+            MainViewModel.Instance.CurrentSidebarView = MainViewModel.Instance.SidebarChiTietHoaDonVM;
+        }
+
+        private void Init()
+        {
+            LoadHoaDonList();
+            FilteredHoaDonList = CollectionViewSource.GetDefaultView(HoaDonList);
+            FilteredHoaDonList.Filter = FilterHoaDon;
+        }
+        
     }
 }

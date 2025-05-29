@@ -24,24 +24,19 @@ namespace GoonRunner.MVVM.ViewModel
 
         public KhachHangViewModel()
         {
-            FilteredKhachHangList = CollectionViewSource.GetDefaultView(KhachHangList);
-            FilteredKhachHangList.Filter = FilterKhachHang;
-
+            Init();
             RefreshCommand = new RelayCommand<Button>((p) => true, (p) =>
             {
-                LoadKhachHangList();
-                FilterText = string.Empty;
-                FilteredKhachHangList.Refresh();
+                RefreshList();
             });
 
-            LoadKhachHangList();
         }
 
         public void LoadKhachHangList()
         {
             KhachHangList.Clear();
-            var DanhSachKhachHang = DataProvider.Ins.goonRunnerDB.KHACHHANGs;
-            foreach (var item in DanhSachKhachHang)
+            var danhSachKhachHang = DataProvider.Ins.goonRunnerDB.KHACHHANGs;
+            foreach (var item in danhSachKhachHang)
             {
                 var khachhang = new KHACHHANG
                 {
@@ -69,8 +64,21 @@ namespace GoonRunner.MVVM.ViewModel
                     return true;
             }
 
-            // var fullName = $"{khachhang.HoKH ?? ""} {khachhang.TenKH ?? ""}";
             return khachhang.TenKH.IndexOf(FilterText, StringComparison.OrdinalIgnoreCase) >= 0;
+        }
+
+        private void RefreshList()
+        {
+            LoadKhachHangList();
+            FilterText = string.Empty;
+            FilteredKhachHangList.Refresh();
+        }
+
+        private void Init()
+        {
+            LoadKhachHangList();
+            FilteredKhachHangList = CollectionViewSource.GetDefaultView(KhachHangList);
+            FilteredKhachHangList.Filter = FilterKhachHang;
         }
         
     }

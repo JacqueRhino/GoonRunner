@@ -1,5 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:gr="clr-namespace:GoonRunner.CustomControl"
+                    xmlns:gr="clr-namespace:GoonRunner.Utils"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <SolidColorBrush x:Key="Foreground" Color="#3c3836"/>
     <SolidColorBrush x:Key="GridView.MouseOver.Foreground" Color="#D53E3E"/>

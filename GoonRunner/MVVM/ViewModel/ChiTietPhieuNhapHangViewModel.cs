@@ -1,10 +1,6 @@
 ﻿using GoonRunner.MVVM.Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -39,8 +35,8 @@ namespace GoonRunner.MVVM.ViewModel
         {
             ChiTietPhieuNhapHangList = new ObservableCollection<CHITIETPHIEUNHAPHANG>();
             int i = MaPNH;
-            var DanhSachChiTietPhieuNhapHang = DataProvider.Ins.goonRunnerDB.CHITIETPHIEUNHAPHANGs.Where((n) => n.MaPNH == i).ToList();
-            foreach (var item in DanhSachChiTietPhieuNhapHang)
+            var danhSachChiTietPhieuNhapHang = DataProvider.Ins.goonRunnerDB.CHITIETPHIEUNHAPHANGs.Where((n) => n.MaPNH == i).ToList();
+            foreach (var item in danhSachChiTietPhieuNhapHang)
             {
                 CHITIETPHIEUNHAPHANG chitietphieunhaphang = new CHITIETPHIEUNHAPHANG();
                 chitietphieunhaphang.MaSP = item.MaSP;

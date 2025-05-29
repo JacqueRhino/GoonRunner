@@ -2,7 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace GoonRunner.CustomControl
+namespace GoonRunner.Utils
 {
     internal class Extensions
     {

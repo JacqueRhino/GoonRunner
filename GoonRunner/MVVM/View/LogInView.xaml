@@ -5,8 +5,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel" 
-        xmlns:gr="clr-namespace:GoonRunner.CustomControl"
-        xmlns:animation="clr-namespace:GoonRunner.CustomControl"
+        xmlns:gr="clr-namespace:GoonRunner.Utils"
+        xmlns:visibility="clr-namespace:GoonRunner.Utils"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=viewmodel:LoginViewModel}"
         DataContext="{StaticResource LoginVM}"
@@ -32,7 +32,7 @@
         </Storyboard>
         
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-        <animation:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
+        <visibility:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
     </Window.Resources> 
     
     <Grid>

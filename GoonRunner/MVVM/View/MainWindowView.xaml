@@ -1,10 +1,10 @@
 ﻿<Window x:Class="GoonRunner.MVVM.View.MainWindowView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:gr="clr-namespace:GoonRunner.CustomControl"
+        xmlns:gr="clr-namespace:GoonRunner.Utils"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:visibility="clr-namespace:GoonRunner.Utils"
         mc:Ignorable="d"
         xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel" 
         d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
@@ -16,10 +16,14 @@
     <Window.Resources>
         <SolidColorBrush x:Key="Foreground" Color="#3c3836"/>
         <SolidColorBrush x:Key="Background" Color="#fbf1c7"/>
+        
+        <visibility:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </Window.Resources>
+    
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
+    
     <Grid Name="MainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -148,11 +152,12 @@
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0">
                     <RadioButton Name="TrangChuRadioButton"
-                                         Style="{StaticResource RadioButtonStyle}"
-                                         gr:Extensions.Icon="Home20"
-                                Command="{Binding HomeViewCommand}"
-                                Click="DisableSidebarAndChangeTitle"
-                                IsChecked="True">
+                                            Style="{StaticResource RadioButtonStyle}"
+                                            gr:Extensions.Icon="Home20"
+                                            Command="{Binding HomeViewCommand}"
+                                            Click="DisableSidebarAndChangeTitle"
+                                            Visibility="{Binding IsHomeVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                            IsChecked="True">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Trang Chủ
@@ -163,9 +168,10 @@
                     </RadioButton>
 
                     <RadioButton Name="NhanVienRadioButton"
-                                         Style="{StaticResource RadioButtonStyle}"
-                                         gr:Extensions.Icon="PersonAccounts20"
+                                Style="{StaticResource RadioButtonStyle}"
+                                gr:Extensions.Icon="PersonAccounts20"
                                 Command="{Binding NhanVienViewCommand}"
+                                Visibility="{Binding IsNhanvienVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                 Click="ChangeTitleNhanvien">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
@@ -180,6 +186,7 @@
                                  Style="{StaticResource RadioButtonStyle}"
                                  gr:Extensions.Icon="Box20"
                                  Command="{Binding SanPhamViewCommand}"
+                                 Visibility="{Binding IsSanPhamVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Click="ChangeTitleSanpham">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
@@ -191,9 +198,10 @@
                     </RadioButton>
 
                     <RadioButton Name="HoaDonRadioButton"
-                                         Style="{StaticResource RadioButtonStyle}"
-                                         gr:Extensions.Icon="Clipboard20"
+                                 Style="{StaticResource RadioButtonStyle}"
+                                 gr:Extensions.Icon="Clipboard20"
                                  Command="{Binding HoaDonViewCommand}"
+                                 Visibility="{Binding IsHoaDonVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Click="ChangeTitleHoadon">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
@@ -204,25 +212,12 @@
                         </RadioButton.Resources>
                     </RadioButton>
 
-                    <!--<RadioButton Name="ChiTietHoaDonRadioButton"
-                                         Style="{StaticResource RadioButtonStyle}"
-                                         gr:Extensions.Icon="clipboardedit20"
-                                 Command="{Binding ChiTietHoaDonViewCommand}"
-                                 Click="ChangeTitleChitiethoadon">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
-                                        CT Hóa Đơn
-                            </TextBlock>
-                        </StackPanel>
-                        <RadioButton.Resources>
-                        </RadioButton.Resources>
-                    </RadioButton>-->
-
                     <RadioButton Name="PhieuNhapHangRadioButton"
-                                         Style="{StaticResource RadioButtonStyle}"
-                                         gr:Extensions.Icon="BoxArrowUp20"
-                                         Command="{Binding PhieuNhapHangViewCommand}"
-                                Click="ChangeTitlePhieunhaphang">
+                                 Style="{StaticResource RadioButtonStyle}"
+                                 gr:Extensions.Icon="BoxArrowUp20"
+                                 Visibility="{Binding IsPhieuNhapVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                 Command="{Binding PhieuNhapHangViewCommand}"
+                                 Click="ChangeTitlePhieunhaphang">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Phiếu Nhập
@@ -232,25 +227,12 @@
                         </RadioButton.Resources>
                     </RadioButton>
 
-                    <!--<RadioButton Name="ChiTietPhieuNhapHangRadioButton"
-                                         Style="{StaticResource RadioButtonStyle}"
-                                         gr:Extensions.Icon="BoxEdit24"
-                                         Command="{Binding ChiTietPhieuNhapHangViewCommand}"
-                                Click="ChangeTitleChitietphieunhaphang">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
-                                        CT Phiếu Nhập
-                            </TextBlock>
-                        </StackPanel>
-                        <RadioButton.Resources>
-                        </RadioButton.Resources>
-                    </RadioButton>-->
-
                     <RadioButton Name="TonKhoRadioButton"
-                                         Style="{StaticResource RadioButtonStyle}"
-                                         gr:Extensions.Icon="BoxMultiple20"
-                                         Command="{Binding TonKhoViewCommand}"
-                                         Click="ChangeTitleTonkho">
+                                 Style="{StaticResource RadioButtonStyle}"
+                                 gr:Extensions.Icon="BoxMultiple20"
+                                 Command="{Binding TonKhoViewCommand}"
+                                 Visibility="{Binding IsTonKhoVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                 Click="ChangeTitleTonkho">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Tồn Kho
@@ -261,10 +243,11 @@
                     </RadioButton>
 
                     <RadioButton Name="KhachHangRadioButton"
-                                         Style="{StaticResource RadioButtonStyle}"
-                                         Command="{Binding KhachHangViewCommand}"
-                                         gr:Extensions.Icon="People20"
-                                         Click="ChangeTitleKhachhang">
+                                 Style="{StaticResource RadioButtonStyle}"
+                                 Command="{Binding KhachHangViewCommand}"
+                                 gr:Extensions.Icon="People20"
+                                 Visibility="{Binding IsKhachHangVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                 Click="ChangeTitleKhachhang">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
                                         Khách Hàng
@@ -275,8 +258,9 @@
                     </RadioButton>
 
                     <RadioButton Name="KhuyenMaiRadioButton"
-                                         Style="{StaticResource RadioButtonStyle}"
-                                         gr:Extensions.Icon="Tag20"
+                                Style="{StaticResource RadioButtonStyle}"
+                                gr:Extensions.Icon="Tag20"
+                                Visibility="{Binding IsKhuyenMaiVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                 Click="ChangeTitleKhuyenmai">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
@@ -288,8 +272,9 @@
                     </RadioButton>
 
                     <RadioButton Name="BaoHanhRadioButton"
-                                         Style="{StaticResource RadioButtonStyle}"
-                                         gr:Extensions.Icon="Wrench20"
+                                Style="{StaticResource RadioButtonStyle}"
+                                gr:Extensions.Icon="Wrench20"
+                                Visibility="{Binding IsBaoHanhVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                 Click="ChangeTitleBaohanh">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">

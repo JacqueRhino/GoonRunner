@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:gr="clr-namespace:GoonRunner.CustomControl"
+             xmlns:gr="clr-namespace:GoonRunner.Utils"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel"
              d:DataContext="{d:DesignInstance Type=viewmodel:KhachHangViewModel}"
@@ -43,7 +43,7 @@
                 <!-- <Button Style="{StaticResource NavButtonChangeColor}" > -->
                 <!--         <ui:SymbolIcon Symbol="ArrowSort16" FontSize="20"/> -->
                 <!-- </Button> -->
-                <gr:Textbox SetHeader="Filter" 
+                <gr:Textbox SetHeader="Lọc" 
                             Margin="0,0,0,10"
                             Width="150" 
                             Height="45"
@@ -60,7 +60,7 @@
                   Margin="5,0,10,0"
                   FontFamily="{StaticResource 'JetBrains Mono'}"
                   FontWeight="Medium"
-                  ItemsSource="{Binding FilteredKhachHangList}"
+                  ItemsSource="{Binding KhachHangList}"
                   SelectedItem="{Binding SelectedKHACHHANG}"
                   VerticalAlignment="Top"
                   Foreground="{StaticResource Foreground}"

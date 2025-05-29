@@ -1,14 +1,11 @@
 ﻿using GoonRunner.MVVM.Model;
-using GoonRunner.MVVM.View;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+// ReSharper disable InconsistentNaming
 
 namespace GoonRunner.MVVM.ViewModel
 {
@@ -196,16 +193,14 @@ namespace GoonRunner.MVVM.ViewModel
             }
             catch (Exception ex)
             {
-                //MessageBox.Show($"Lỗi khi tải thông tin nhân viên hiện tại: {ex.Message}");
+                MessageBox.Show($"Lỗi khi tải thông tin nhân viên hiện tại: {ex.Message}");
             }
         }
         private bool IsInSmallDateTimeRange(DateTime dateTime)
         {
-            // Define SMALLDATETIME boundaries
-            DateTime minSmallDateTime = new DateTime(1900, 1, 1);
-            DateTime maxSmallDateTime = new DateTime(2079, 6, 6, 23, 59, 0);
+            var minSmallDateTime = new DateTime(1900, 1, 1);
+            var maxSmallDateTime = new DateTime(2079, 6, 6, 23, 59, 0);
 
-            // Check if the date is within range
             return dateTime >= minSmallDateTime && dateTime <= maxSmallDateTime;
         }
         private bool IsCurrentDateTime(DateTime dateTime)
