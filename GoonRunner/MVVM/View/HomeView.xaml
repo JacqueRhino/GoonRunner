@@ -82,7 +82,7 @@
                                FontSize="32"/>
                 </Grid>
             </GroupBox>
-            <GroupBox Grid.Row="0" Grid.Column="2" Style="{StaticResource GroupBoxGoonRunner}" Header="Xếp Hạng" Foreground="#D79921">
+            <GroupBox Grid.Row="0" Grid.Column="2" Style="{StaticResource GroupBoxGoonRunner}" Header="Xếp Hạng" Foreground="{StaticResource Orange}">
                 <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" MinHeight="10"/>
