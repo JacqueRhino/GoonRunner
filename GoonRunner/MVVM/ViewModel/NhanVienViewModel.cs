@@ -16,34 +16,34 @@ namespace GoonRunner.MVVM.ViewModel
         private int _manv;
         public int MaNV { get => _manv; set { _manv  = value; OnPropertyChanged(); } }
         public ICommand DoubleClickCommand { get; set; }
+        public ICommand LoadToSidebar { get; set; }
         public ICommand RefreshCommand { get; set; }
         public NhanVienViewModel()
         {
             LoadNhanVienList();
             RefreshCommand = new RelayCommand<Button>((p) => true, (p) => { LoadNhanVienList(); });
-            DoubleClickCommand = new RelayCommand<object>((p) => SelectedItem != null, (p) =>
+            LoadToSidebar = new RelayCommand<object>((p) => SelectedItem != null, (p) =>
             {
-                //MainViewModel.Instance.SidebarNhanVienVM = new SidebarNhanVienViewModel(SelectedItem.MaNV);
                 MainViewModel.Instance.SidebarNhanVienVM.MaNV = SelectedItem.MaNV;
                 MainViewModel.Instance.SidebarNhanVienVM.LoadNhanVienInfo(SelectedItem.MaNV);
-                //MainViewModel.Instance.CurrentView = MainViewModel.Instance.ChiTietHoaDonVM;
-                //MainViewModel.Instance.CurrentSidebarView = MainViewModel.Instance.SidebarNhanVienVM;
             });
         }
         public void LoadNhanVienList()
         {
             NhanVienList = new ObservableCollection<NHANVIEN>();
-            var DanhSachNhanVien = DataProvider.Ins.goonRunnerDB.NHANVIENs.Where(n => n.MaNV > 0);
+            var danhSachNhanVien = DataProvider.Ins.goonRunnerDB.NHANVIENs.Where(n => n.MaNV > 0);
             
-            foreach (var item in DanhSachNhanVien)
+            foreach (var item in danhSachNhanVien)
             {
-                NHANVIEN nhanvien = new NHANVIEN();
-                nhanvien.MaNV = item.MaNV;
-                nhanvien.TenNV = item.HoNV + " " + item.TenNV;
-                nhanvien.MaPB = item.MaPB;
-                nhanvien.GioiTinh = item.GioiTinh;
-                nhanvien.SdtNV = item.SdtNV;
-                nhanvien.DiaChiNV = item.DiaChiNV;
+                var nhanvien = new NHANVIEN
+                {
+                    MaNV = item.MaNV,
+                    TenNV = item.HoNV + " " + item.TenNV,
+                    MaPB = item.MaPB,
+                    GioiTinh = item.GioiTinh,
+                    SdtNV = item.SdtNV,
+                    DiaChiNV = item.DiaChiNV
+                };
                 NhanVienList.Add(nhanvien);
             }
         }

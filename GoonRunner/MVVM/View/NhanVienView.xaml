@@ -67,8 +67,8 @@
                   ItemContainerStyle="{StaticResource CenteredListViewItemStyle}"
                   Background="Transparent" >
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding DoubleClickCommand}" />
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding LoadToSidebar}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <ListView.View>
