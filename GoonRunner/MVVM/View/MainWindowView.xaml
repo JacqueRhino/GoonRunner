@@ -105,7 +105,7 @@
                             Name="SidebarButton"
                             FontSize="24"
                             gr:Extensions.Icon="DualScreenStatusBar24"
-                            IsEnabled="{Binding SidebarButtonEnabled}"
+                            IsEnabled="{Binding IsSidebarButtonEnabled}"
                             Click="ControlSidebar">
                     </ToggleButton>
 

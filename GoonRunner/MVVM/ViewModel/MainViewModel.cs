@@ -86,6 +86,7 @@ namespace GoonRunner.MVVM.ViewModel
             get => _currentView;
             set
             {
+                if (_currentView == value) return;
                 _currentView = value;
                 OnPropertyChanged();
             }
@@ -101,12 +102,12 @@ namespace GoonRunner.MVVM.ViewModel
         }
 
         
-        public bool SidebarButtonEnabled
+        public bool IsSidebarButtonEnabled
         {
-            get => _sidebarButtonEnabled;
+            get => _isSidebarButtonEnabled;
             set
             {
-                _sidebarButtonEnabled = value;
+                _isSidebarButtonEnabled = value;
                 OnPropertyChanged();
             }
         }
@@ -131,12 +132,12 @@ namespace GoonRunner.MVVM.ViewModel
             }
         }
         
-        public string Split2Enabled
+        public bool IsSplit2Enabled
         {
-            get => _split2Enabled;
+            get => _issplit2enabled;
             set
             {
-                _split2Enabled = value;
+                _issplit2enabled = value;
                 OnPropertyChanged();
             }
         }
@@ -146,10 +147,10 @@ namespace GoonRunner.MVVM.ViewModel
         private int _currentuser;
         private object _currentView;
         private object _currentSidebarView;
-        private bool _sidebarButtonEnabled;
+        private bool _isSidebarButtonEnabled;
         private int _sidebarLeftGapWidth;
         private int _sidebarWidth;
-        private string _split2Enabled;
+        private bool _issplit2enabled;
 
 
         public bool IsHomeVisible { get => _ishomevisible; set { _ishomevisible = value; OnPropertyChanged(); } }
@@ -254,10 +255,11 @@ namespace GoonRunner.MVVM.ViewModel
             });
         }
         
-        public void SetUpCurrentUser(int maNV,string privilige, string displayname)
+        public void SetUpCurrentUser(int maNV,string privilige, Employee.EmployeeRole role, string displayname)
         {
             CurrentUser = maNV;
             Privilege = privilige;
+            Role = role;
             DisplayName = displayname;
         }
         
@@ -309,16 +311,53 @@ namespace GoonRunner.MVVM.ViewModel
         
 
 
-        private static void SignOut(Window p)
+        private void SignOut(Window p)
         {
+            ResetState();
+            Instance = null;
             var loginWindow = new LogInView();
             var loginVM = loginWindow.DataContext as LoginViewModel; 
             loginVM?.ResetLogin();
            
             loginWindow.Show();
-            p.Hide();
+            p.Close();
         }
 
+        private void ResetState()
+        {
+            DisplayName = null;
+            Role = default;
+            Privilege = null;
+            CurrentUser = 0;
+            CurrentSidebarView = null;
+            IsSidebarButtonEnabled = false;
+            SidebarWidth = 0;
+            IsSplit2Enabled = false;
+            ResetVisiblity();
+            ClearViewModels();
+            
+        }
+
+        private void ClearViewModels()
+        {
+            KhachHangVM = null;
+            NhanVienVM = null;
+            SanPhamVM = null;
+            PhieuNhapHangVM = null;
+            ChiTietPhieuNhapHangVM = null;
+            HoaDonVM = null;
+            ChiTietHoaDonVM = null;
+            TonKhoVM = null;
+            HomeVM = null;
+            OwnerHomeVM = null;
+            SidebarNhanVienVM = null;
+            SidebarKhachHangVM = null;
+            SidebarPhieuNhapHangVM = null;
+            SidebarChiTietPhieuNhapHangVM = null;
+            SidebarHoaDonVM = null;
+            SidebarChiTietHoaDonVM = null;
+        }
+        
         private void ResetVisiblity()
         {
             IsHomeVisible = false;
@@ -334,11 +373,11 @@ namespace GoonRunner.MVVM.ViewModel
         
         private void EnableSidebar()
         {
-            SidebarButtonEnabled = true;
+            IsSidebarButtonEnabled = true;
         }
         private void DisableSidebar()
         {
-            SidebarButtonEnabled = false;
+            IsSidebarButtonEnabled = false;
         }
         
         private void InitializeHomeViewModel(Employee.EmployeeRole role)

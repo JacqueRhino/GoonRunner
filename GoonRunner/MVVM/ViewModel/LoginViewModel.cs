@@ -155,7 +155,7 @@ namespace GoonRunner.MVVM.ViewModel
             var mainwindow = new MainWindowView();
             var mainVM = new MainViewModel();
             mainwindow.DataContext = mainVM;
-            mainVM.SetUpCurrentUser(MaNV, RoleInString,DisplayName);
+            mainVM.SetUpCurrentUser(MaNV, RoleInString,Role,DisplayName);
             mainVM.SetAuthorization(Role);
             mainwindow.Show();
             p.Hide();
