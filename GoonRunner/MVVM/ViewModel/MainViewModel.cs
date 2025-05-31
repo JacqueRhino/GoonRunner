@@ -36,7 +36,7 @@ namespace GoonRunner.MVVM.ViewModel
         #endregion
         #region SidebarViewModel
         public SidebarNhanVienViewModel SidebarNhanVienVM { get; private set; }
-        private SidebarKhachHangViewModel SidebarKhachHangVM { get; set; }
+        public SidebarKhachHangViewModel SidebarKhachHangVM { get; set; }
         public SidebarPhieuNhapHangViewModel SidebarPhieuNhapHangVM { get; private set; }
         public SidebarChiTietPhieuNhapHangViewModel SidebarChiTietPhieuNhapHangVM { get; set; }
         public SidebarHoaDonViewModel SidebarHoaDonVM { get; private set; }
