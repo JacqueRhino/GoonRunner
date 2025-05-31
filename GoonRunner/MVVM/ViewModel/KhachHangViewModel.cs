@@ -12,24 +12,28 @@ namespace GoonRunner.MVVM.ViewModel
     {
         public ObservableCollection<KHACHHANG> KhachHangList { get; set; } = new ObservableCollection<KHACHHANG>();
 
-        private KHACHHANG _selectedKHACHHANG;
-        public KHACHHANG SelectedKHACHHANG { get => _selectedKHACHHANG; set { _selectedKHACHHANG = value; OnPropertyChanged(); } }
+        private KHACHHANG _selectedItem;
+        public KHACHHANG SelectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(); } }
 
         private string _filterText;
         public string FilterText { get => _filterText; set { _filterText = value; OnPropertyChanged(); FilteredKhachHangList.Refresh(); } }
 
-        public ICollectionView FilteredKhachHangList { get; set; }
+        private ICollectionView FilteredKhachHangList { get; set; }
 
         public ICommand RefreshCommand { get; set; }
+        public ICommand LoadToSidebar { get; set; }
+        
 
         public KhachHangViewModel()
         {
             Init();
-            RefreshCommand = new RelayCommand<Button>((p) => true, (p) =>
-            {
-                RefreshList();
-            });
+            RefreshCommand = new RelayCommand<Button>((p) => true, (p) => { RefreshList(); }); 
+            LoadToSidebar = new RelayCommand<object>((p) => SelectedItem != null, (p) => { LoadDataToSidebar(); });
+        }
 
+        public void ResetSelectedItem()
+        {
+            SelectedItem = null;
         }
 
         public void LoadKhachHangList()
@@ -51,18 +55,24 @@ namespace GoonRunner.MVVM.ViewModel
 
             FilteredKhachHangList?.Refresh();
         }
-
+        
+        private void LoadDataToSidebar()
+        {
+            MainViewModel.Instance.SidebarKhachHangVM.MaKH = SelectedItem.MaKH;
+            MainViewModel.Instance.SidebarKhachHangVM.LoadKhachHangInfo(SelectedItem.MaKH);
+        }
+        
         private bool FilterKhachHang(object item)
         {
             if (string.IsNullOrWhiteSpace(FilterText)) return true;
 
             if (!(item is KHACHHANG khachhang)) return false;
 
-            if (int.TryParse(FilterText, out var maKH))
-            {
-                if (khachhang.MaKH == maKH)
-                    return true;
-            }
+            if (!int.TryParse(FilterText, out var maKH))
+                return khachhang.TenKH.IndexOf(FilterText, StringComparison.OrdinalIgnoreCase) >= 0;
+            
+            if (khachhang.MaKH == maKH)
+                return true;
 
             return khachhang.TenKH.IndexOf(FilterText, StringComparison.OrdinalIgnoreCase) >= 0;
         }

@@ -4,6 +4,7 @@
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:gr="clr-namespace:GoonRunner.Utils"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel"
              d:DataContext="{d:DesignInstance Type=viewmodel:KhachHangViewModel}"
@@ -40,9 +41,6 @@
                         Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right">
-                <!-- <Button Style="{StaticResource NavButtonChangeColor}" > -->
-                <!--         <ui:SymbolIcon Symbol="ArrowSort16" FontSize="20"/> -->
-                <!-- </Button> -->
                 <gr:Textbox SetHeader="Lọc" 
                             Margin="0,0,0,10"
                             Width="150" 
@@ -61,12 +59,17 @@
                   FontFamily="{StaticResource 'JetBrains Mono'}"
                   FontWeight="Medium"
                   ItemsSource="{Binding KhachHangList}"
-                  SelectedItem="{Binding SelectedKHACHHANG}"
+                  SelectedItem="{Binding SelectedItem}"
                   VerticalAlignment="Top"
                   Foreground="{StaticResource Foreground}"
                   BorderThickness="0"
                   ItemContainerStyle="{StaticResource CenteredListViewItemStyle}"
                   Background="Transparent">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding LoadToSidebar}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <ListView.View>
                 <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle1}">
                     <GridViewColumn Header="Mã KH" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="MaKH"/>
