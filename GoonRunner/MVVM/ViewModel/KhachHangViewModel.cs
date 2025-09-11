@@ -2,9 +2,11 @@ using System;
 using GoonRunner.MVVM.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using GoonRunner.Utils;
 
 namespace GoonRunner.MVVM.ViewModel
 {
@@ -12,8 +14,31 @@ namespace GoonRunner.MVVM.ViewModel
     {
         public ObservableCollection<KHACHHANG> KhachHangList { get; set; } = new ObservableCollection<KHACHHANG>();
 
+        private bool _isUpdatingSelection;
         private KHACHHANG _selectedItem;
-        public KHACHHANG SelectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(); } }
+        public KHACHHANG SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                if (_selectedItem == value) return;
+                _selectedItem = value;
+                OnPropertyChanged();
+
+                if (_isUpdatingSelection) return;
+
+                try
+                {
+                    _isUpdatingSelection = true;
+                    Messenger.NotifyKhachHangSelected(_selectedItem?.MaKH ?? 0);
+                }
+                finally
+                {
+                    _isUpdatingSelection = false;
+                }
+            }
+        }
+        
 
         private string _filterText;
         public string FilterText { get => _filterText; set { _filterText = value; OnPropertyChanged(); FilteredKhachHangList.Refresh(); } }
@@ -28,7 +53,15 @@ namespace GoonRunner.MVVM.ViewModel
         {
             Init();
             RefreshCommand = new RelayCommand<Button>((p) => true, (p) => { RefreshList(); }); 
-            LoadToSidebar = new RelayCommand<object>((p) => SelectedItem != null, (p) => { LoadDataToSidebar(); });
+            Messenger.KhachHangChanged += kh =>
+            {
+                LoadKhachHangList();
+            };
+            
+            Messenger.KhachHangSelected += maKh =>
+            {
+                SelectedItem = KhachHangList.FirstOrDefault(kh => kh.MaKH == maKh);
+            };
         }
 
         public void ResetSelectedItem()
@@ -36,7 +69,7 @@ namespace GoonRunner.MVVM.ViewModel
             SelectedItem = null;
         }
 
-        public void LoadKhachHangList()
+        private void LoadKhachHangList()
         {
             KhachHangList.Clear();
             var danhSachKhachHang = DataProvider.Ins.goonRunnerDB.KHACHHANGs;
@@ -56,22 +89,16 @@ namespace GoonRunner.MVVM.ViewModel
             FilteredKhachHangList?.Refresh();
         }
         
-        private void LoadDataToSidebar()
-        {
-            MainViewModel.Instance.SidebarKhachHangVM.MaKH = SelectedItem.MaKH;
-            MainViewModel.Instance.SidebarKhachHangVM.LoadKhachHangInfo(SelectedItem.MaKH);
-        }
-        
         private bool FilterKhachHang(object item)
         {
             if (string.IsNullOrWhiteSpace(FilterText)) return true;
 
             if (!(item is KHACHHANG khachhang)) return false;
 
-            if (!int.TryParse(FilterText, out var maKH))
+            if (!int.TryParse(FilterText, out var maKh))
                 return khachhang.TenKH.IndexOf(FilterText, StringComparison.OrdinalIgnoreCase) >= 0;
             
-            if (khachhang.MaKH == maKH)
+            if (khachhang.MaKH == maKh)
                 return true;
 
             return khachhang.TenKH.IndexOf(FilterText, StringComparison.OrdinalIgnoreCase) >= 0;

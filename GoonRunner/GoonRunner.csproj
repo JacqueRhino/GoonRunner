@@ -81,8 +81,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Utils\EmployeeRoles.cs" />
     <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\InverseBooleanToVisibilityConverter.cs" />
+    <Compile Include="Utils\Messenger.cs" />
     <Page Include="CustomControl\Textbox.xaml" />
     <Page Include="MVVM\View\BaoHanhView.xaml">
       <SubType>Designer</SubType>
@@ -178,7 +180,6 @@
     <Compile Include="CustomControl\Textbox.xaml.cs">
       <DependentUpon>Textbox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Employee.cs" />
     <Compile Include="MVVM\Model\ACCNHANVIEN.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -50,7 +50,7 @@
     
     <!-- Template for MaNV Column -->
     <DataTemplate x:Key="ColumnTemplate">
-        <TextBlock Text="{Binding MaNV}" Style="{StaticResource CenteredGridViewCellStyle}"/>
+        <TextBlock Text="{Binding MaNv}" Style="{StaticResource CenteredGridViewCellStyle}"/>
     </DataTemplate>
     
     <Style TargetType="ScrollBar">

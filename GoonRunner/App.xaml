@@ -23,6 +23,9 @@
                 <ResourceDictionary Source="pack://application:,,,/Resources/MainResource.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Theme/ListViewTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <!-- Override wpf ui brushes -->
+            <SolidColorBrush x:Key="UiBrushDanger" Color="#D53E3E"/>
+            <SolidColorBrush x:Key="UiBrushControlFillSecondary" Color="#3C3836"/>
             <!-- Font -->
             <FontFamily x:Key="JetBrains Mono">pack://application:,,,/Assets/Fonts/#JetBrains Mono</FontFamily>
             <FontFamily x:Key="Segoe Fluent Icons">pack://application:,,,/Assets/Fonts/#Segoe Fluent Icons</FontFamily>

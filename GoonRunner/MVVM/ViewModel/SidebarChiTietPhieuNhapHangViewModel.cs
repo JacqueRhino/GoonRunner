@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using GoonRunner.Utils;
 
 namespace GoonRunner.MVVM.ViewModel
 {
@@ -34,8 +35,6 @@ namespace GoonRunner.MVVM.ViewModel
         public SidebarChiTietPhieuNhapHangViewModel(int maPNH)
         {
             MaPNH = maPNH;
-            //ChiTietPhieuNhapHangViewModel chiTietPhieuNhapHangViewModel = new ChiTietPhieuNhapHangViewModel();
-            //MaPNH = chiTietPhieuNhapHangViewModel.MaPNH;
             DanhSachPhieuNhapHang = new ObservableCollection<CHITIETPHIEUNHAPHANG>(DataProvider.Ins.goonRunnerDB.CHITIETPHIEUNHAPHANGs);
             AddChiTietPhieuNhapHangCommand = new RelayCommand<Button>((p) => { return true; }, (p) =>
             {
@@ -76,7 +75,7 @@ namespace GoonRunner.MVVM.ViewModel
                     DataProvider.Ins.goonRunnerDB.SaveChanges();
                     DanhSachPhieuNhapHang.Add(chitietphieunhaphang);
                     MessageBox.Show("Thêm thành công!");
-                    MainViewModel.Instance?.ChiTietPhieuNhapHangVM?.LoadChiTietPhieuNhapHangList();
+                    Messenger.NotifyChiTietPhieuNhapHangChanged(chitietphieunhaphang);
                 }
                 catch (System.Data.Entity.Infrastructure.DbUpdateException)
                 {

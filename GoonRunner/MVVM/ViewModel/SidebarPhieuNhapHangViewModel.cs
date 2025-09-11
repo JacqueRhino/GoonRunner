@@ -1,12 +1,9 @@
 ﻿using GoonRunner.MVVM.Model;
-using GoonRunner.MVVM.View;
+using GoonRunner.Utils;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -15,83 +12,177 @@ namespace GoonRunner.MVVM.ViewModel
 {
     public class SidebarPhieuNhapHangViewModel : BaseViewModel
     {
-        private ObservableCollection<PHIEUNHAPHANG> _danhsachphieunhaphang;
-        public ObservableCollection<PHIEUNHAPHANG> DanhSachPhieuNhapHang { get => _danhsachphieunhaphang; set { _danhsachphieunhaphang = value; OnPropertyChanged(); } }
-        private DateTime _selecteddate;
-        public DateTime SelectedDate { get => _selecteddate; set { if (_selecteddate != value) { _selecteddate = value; NgayNhap = value; OnPropertyChanged(); } } }
-        private int _mancc;
-        public int MaNCC { get => _mancc; set { _mancc = value; LoadNhaCungCapInfo(value); OnPropertyChanged(); } }
-        private string _tenncc;
-        public string TenNCC { get => _tenncc; set { _tenncc = value; OnPropertyChanged(); } }
-        private int _manv;
-        public int MaNV { get => _manv; set { _manv = value; OnPropertyChanged(); } }
-        private int _currentuser;
-        public int CurrentUser { get => _currentuser; set { _currentuser = value; OnPropertyChanged(); } }
-        private DateTime _ngaynhap;
-        public DateTime NgayNhap { get => _ngaynhap; set { _ngaynhap = value; OnPropertyChanged(); } }
-        public ICommand AddPhieuNhapHangCommand { get; set; }
-        public ICommand ClearFieldCommand { get; set; }
+        #region Public Properties
 
-        public SidebarPhieuNhapHangViewModel()
+        public ObservableCollection<PHIEUNHAPHANG> DanhSachPhieuNhapHang
         {
-            SelectedDate = DateTime.Now;
-            DanhSachPhieuNhapHang = new ObservableCollection<PHIEUNHAPHANG>(DataProvider.Ins.goonRunnerDB.PHIEUNHAPHANGs);
-            AddPhieuNhapHangCommand = new RelayCommand<Button>((p) => { return true; }, (p) =>
-            {
-                if (MaNCC == 0)
-                {
-                    MessageBox.Show("Hãy nhập Mã nhà cung cấp");
-                    return;
-                }
-
-                if (string.IsNullOrEmpty(TenNCC))
-                {
-                    MessageBox.Show("Hãy nhập Tên nhà cung cấp");
-                    return;
-                }
-
-                if (!IsInSmallDateTimeRange(NgayNhap))
-                {
-                    MessageBox.Show("Ngày nhập hàng không hợp lệ");
-                    return;
-                }
-
-                if (MaNV == 0)
-                {
-                    MessageBox.Show("Hãy nhập Mã nhân viên");
-                    return;
-                }
-
-                var phieunhaphang = new PHIEUNHAPHANG() { MaNCC = MaNCC, TenNCC = TenNCC, NgayNhap = NgayNhap, MaNV = MaNV };
-                DataProvider.Ins.goonRunnerDB.PHIEUNHAPHANGs.Add(phieunhaphang);
-                DataProvider.Ins.goonRunnerDB.SaveChanges();
-                DanhSachPhieuNhapHang.Add(phieunhaphang);
-                MessageBox.Show("Thêm thành công!");
-                MainViewModel.Instance?.PhieuNhapHangVM?.LoadPhieuNhapHangList();
-            });
-
-            ClearFieldCommand = new RelayCommand<Button>((p) => { return true; }, (p) =>
-            {
-                ClearFields();
-            });
+            get => _danhsachphieunhaphang;
+            set { _danhsachphieunhaphang = value; OnPropertyChanged(); }
         }
+
+        public DateTime SelectedDate
+        {
+            get => _selectedDate;
+            set
+            {
+                if (_selectedDate != value)
+                {
+                    _selectedDate = value;
+                    NgayNhap = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public int MaNcc
+        {
+            get => _maNcc;
+            set { _maNcc = value; LoadNhaCungCapInfo(value); OnPropertyChanged(); }
+        }
+
+        public string TenNcc
+        {
+            get => _tenNcc;
+            set { _tenNcc = value; OnPropertyChanged(); }
+        }
+
+        public int MaNv
+        {
+            get => _maNv;
+            set { _maNv = value; OnPropertyChanged(); }
+        }
+
+        public DateTime NgayNhap
+        {
+            get => _ngayNhap;
+            set { _ngayNhap = value; OnPropertyChanged(); }
+        }
+
+        #endregion
+
+        #region Public Commands
+
+        public ICommand AddPhieuNhapHangCommand { get; }
+        public ICommand ClearFieldCommand { get; }
+
+        #endregion
+
+        #region Constructor
+
+        public SidebarPhieuNhapHangViewModel(UserSession userSession)
+        {
+            if (userSession == null) throw new ArgumentNullException(nameof(userSession));
+
+            MaNv = userSession.UserId;
+
+            Messenger.PhieuNhapHangSelected += LoadPnh;
+            SelectedDate = DateTime.Now;
+
+            DanhSachPhieuNhapHang = new ObservableCollection<PHIEUNHAPHANG>(
+                DataProvider.Ins.goonRunnerDB.PHIEUNHAPHANGs
+            );
+
+            AddPhieuNhapHangCommand = new RelayCommand<Button>(_ => true, _ => AddPhieuNhapHang(userSession));
+            ClearFieldCommand = new RelayCommand<Button>(_ => true, _ => ClearFields());
+        }
+
+        #endregion
+
+        #region Private Fields
+
+        private ObservableCollection<PHIEUNHAPHANG> _danhsachphieunhaphang;
+        private DateTime _selectedDate;
+        private int _maNcc;
+        private string _tenNcc;
+        private int _maNv;
+        private DateTime _ngayNhap;
+
+        #endregion
+
+        #region Private Helpers
+
+        private void AddPhieuNhapHang(UserSession user)
+        {
+            if (MaNcc == 0)
+            {
+                MessageBox.Show("Hãy nhập Mã nhà cung cấp");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(TenNcc))
+            {
+                MessageBox.Show("Hãy nhập Tên nhà cung cấp");
+                return;
+            }
+
+            if (!IsInSmallDateTimeRange(NgayNhap))
+            {
+                MessageBox.Show("Ngày nhập hàng không hợp lệ");
+                return;
+            }
+
+            if (user.UserId == 0)
+            {
+                MessageBox.Show("Không tìm thấy nhân viên hiện tại");
+                return;
+            }
+
+            var phieuNhapHang = new PHIEUNHAPHANG
+            {
+                MaNCC = MaNcc,
+                TenNCC = TenNcc,
+                NgayNhap = NgayNhap,
+                MaNV = user.UserId
+            };
+
+            DataProvider.Ins.goonRunnerDB.PHIEUNHAPHANGs.Add(phieuNhapHang);
+            DataProvider.Ins.goonRunnerDB.SaveChanges();
+            DanhSachPhieuNhapHang.Add(phieuNhapHang);
+
+            MessageBox.Show("Thêm thành công!");
+            Messenger.NotifyPhieuNhapHangChanged(phieuNhapHang);
+        }
+
         private void ClearFields()
         {
-            MaNCC = 0;
-            TenNCC = string.Empty;
+            MaNcc = 0;
+            TenNcc = string.Empty;
             SelectedDate = DateTime.Now;
         }
-        private void LoadNhaCungCapInfo(int maNCC)
+
+        private void LoadPnh(int maPnh)
         {
             try
             {
-                // Assuming you have a KHACHHANG entity in your database
-                var nhacungcap = DataProvider.Ins.goonRunnerDB.NHACUNGCAPs.FirstOrDefault(ncc => ncc.MaNCC == maNCC);
+                var phieuNhapHang = DataProvider.Ins.goonRunnerDB.PHIEUNHAPHANGs
+                    .FirstOrDefault(p => p.MaPNH == maPnh);
+
+                if (phieuNhapHang == null) return;
+
+                TenNcc = phieuNhapHang.TenNCC;
+                MaNcc = phieuNhapHang.MaNCC;
+
+                Debug.Assert(phieuNhapHang.NgayNhap != null, "phieuNhapHang.NgayNhap != null");
+                NgayNhap = (DateTime)phieuNhapHang.NgayNhap;
+                SelectedDate = (DateTime)phieuNhapHang.NgayNhap;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải thông tin phiếu nhập hàng: {ex.Message}");
+                throw;
+            }
+        }
+
+        private void LoadNhaCungCapInfo(int maNcc)
+        {
+            try
+            {
+                var nhacungcap = DataProvider.Ins.goonRunnerDB.NHACUNGCAPs
+                    .FirstOrDefault(ncc => ncc.MaNCC == maNcc);
 
                 if (nhacungcap != null)
                 {
-                    // Auto-fill customer information
-                    TenNCC = nhacungcap.TenNCC;
+                    TenNcc = nhacungcap.TenNCC;
                 }
             }
             catch (Exception ex)
@@ -99,32 +190,14 @@ namespace GoonRunner.MVVM.ViewModel
                 MessageBox.Show($"Lỗi khi tải thông tin nhà cung cấp: {ex.Message}");
             }
         }
-        public void LoadCurrentUserAsEmployee()
-        {
-            try
-            {
-                CurrentUser = MainViewModel.Instance.CurrentUser;
-                MaNV = CurrentUser;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi tải thông tin nhân viên hiện tại: {ex.Message}");
-            }
-        }
+
         private static bool IsInSmallDateTimeRange(DateTime dateTime)
         {
-            DateTime minSmallDateTime = new DateTime(1900, 1, 1);
-            DateTime maxSmallDateTime = new DateTime(2079, 6, 6, 23, 59, 0);
-
+            var minSmallDateTime = new DateTime(1900, 1, 1);
+            var maxSmallDateTime = new DateTime(2079, 6, 6, 23, 59, 0);
             return dateTime >= minSmallDateTime && dateTime <= maxSmallDateTime;
         }
-        private bool IsCurrentDateTime(DateTime dateTime)
-        {
-            if (dateTime.Date == DateTime.Today)
-            {
-                return true;
-            }
-            return false;
-        }
+
+        #endregion
     }
 }

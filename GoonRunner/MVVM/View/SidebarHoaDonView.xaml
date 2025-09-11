@@ -11,14 +11,12 @@
              d:DesignHeight="590" d:DesignWidth="250">
     <Grid>
         <StackPanel>
-            <gr:Textbox SetHeader="Mã KH" SetPlaceholder="Nhập mã KH" SetBinding="{Binding MaKH}"/>
-            <gr:Textbox SetHeader="Họ KH" SetPlaceholder="Nhập họ KH" SetBinding="{Binding HoKH}"/>
-            <gr:Textbox SetHeader="Tên KH" SetPlaceholder="Nhập tên KH" SetBinding="{Binding TenKH}"/>
-            <gr:Textbox SetHeader="SDT KH" SetPlaceholder="Nhập Số điện thoại KH" SetBinding="{Binding SDTKH}"/>
+            <gr:Textbox SetHeader="Mã KH" SetPlaceholder="Nhập mã KH" SetBinding="{Binding MaKh}"/>
+            <gr:Textbox SetHeader="Họ KH" SetPlaceholder="Nhập họ KH" SetBinding="{Binding HoKh}"/>
+            <gr:Textbox SetHeader="Tên KH" SetPlaceholder="Nhập tên KH" SetBinding="{Binding TenKh}"/>
+            <gr:Textbox SetHeader="SDT KH" SetPlaceholder="Nhập Số điện thoại KH" SetBinding="{Binding Sdtkh}"/>
             <gr:Textbox SetHeader="Địa chỉ" SetPlaceholder="Nhập địa chỉ KH" SetBinding="{Binding DiaChi}"/>
-            <!--<gr:Textbox SetHeader="Mã NV" SetPlaceholder="Nhập mã NV" SetBinding="{Binding MaNV}"/>-->
-            <gr:Textbox SetHeader="Họ tên NV" SetPlaceholder="Nhập họ tên NV" SetBinding="{Binding HoTenNV, Mode=TwoWay}" IsHitTestVisible="False"/>
-            <!--<gr:Textbox SetHeader="Tên NV" SetPlaceholder="Nhập tên NV" SetBinding="{Binding TenNV}"/>-->
+            <gr:Textbox SetHeader="Họ tên NV" SetPlaceholder="Nhập họ tên NV" SetBinding="{Binding HoTenNv, Mode=TwoWay}" IsHitTestVisible="False"/>
             <DatePicker gr:Extensions.Header="Ngày mua hàng"
                     VerticalContentAlignment="Center"
                     Foreground="#3c3836" 
@@ -49,7 +47,7 @@
                         Margin="10"
                         Style="{StaticResource SidebarButton}">
                     <StackPanel>
-                        <ui:SymbolIcon Symbol="Pen24" FontSize="20"/>
+                        <ui:SymbolIcon Symbol="Pen20" FontSize="22"/>
                     </StackPanel>
                 </Button>
 
@@ -59,7 +57,7 @@
                         FontFamily="../../Assets/Fonts/#Segoe Fluent Icons" FontWeight="Medium" FontSize="20"
                         Command="{Binding ClearFieldCommand}">
                     <StackPanel>
-                        <TextBlock Text="" FontFamily="{StaticResource 'Segoe Fluent Icons'}" FontSize="22"/>
+                        <TextBlock Text="" FontFamily="{StaticResource 'Segoe Fluent Icons'}" FontSize="22"/>
                     </StackPanel>
                 </Button>
 

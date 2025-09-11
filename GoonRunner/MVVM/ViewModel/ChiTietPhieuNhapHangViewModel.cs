@@ -3,47 +3,65 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
+using GoonRunner.Utils;
 
 namespace GoonRunner.MVVM.ViewModel
 {
     public class ChiTietPhieuNhapHangViewModel : BaseViewModel
     {
         private ObservableCollection<CHITIETPHIEUNHAPHANG> _chitietphieunhaphanglist;
-        public ObservableCollection<CHITIETPHIEUNHAPHANG> ChiTietPhieuNhapHangList { get { return _chitietphieunhaphanglist; } set { _chitietphieunhaphanglist = value; OnPropertyChanged(); } }
-        private int _mapnh;
-        public int MaPNH { get { return _mapnh; } set { _mapnh = value; LoadChiTietPhieuNhapHangList(); OnPropertyChanged(); } }
-        public ICommand RefreshCommand { get; set; }
-        public ICommand PreviousPageCommand { get; set; }
-        public ChiTietPhieuNhapHangViewModel()
+        public ObservableCollection<CHITIETPHIEUNHAPHANG> ChiTietPhieuNhapHangList
         {
-            RefreshCommand = new RelayCommand<Button>((p) => true, (p) => { LoadChiTietPhieuNhapHangList(); });
+            get => _chitietphieunhaphanglist;
+            set { _chitietphieunhaphanglist = value; OnPropertyChanged(); }
         }
-        public ChiTietPhieuNhapHangViewModel(int maPNH)
+
+        private int _mapnh;
+        public int MaPNH
+        {
+            get => _mapnh;
+            set { _mapnh = value; LoadChiTietPhieuNhapHangList(); OnPropertyChanged(); }
+        }
+
+        public ICommand RefreshCommand { get; }
+        public ICommand PreviousPageCommand { get; }
+
+        private readonly System.Action _navigateBack;
+
+        public ChiTietPhieuNhapHangViewModel(System.Action navigateBack = null)
+        {
+            _navigateBack = navigateBack;
+            RefreshCommand = new RelayCommand<Button>(_ => true, _ => LoadChiTietPhieuNhapHangList());
+            PreviousPageCommand = new RelayCommand<object>(_ => true, _ => _navigateBack?.Invoke());
+            Messenger.ChiTietHoaDonChanged += cthd =>
+            {
+                LoadChiTietPhieuNhapHangList();
+            };
+        }
+
+        public ChiTietPhieuNhapHangViewModel(int maPNH, System.Action navigateBack = null) : this(navigateBack)
         {
             MaPNH = maPNH;
             LoadChiTietPhieuNhapHangList();
-            RefreshCommand = new RelayCommand<Button>((p) => true, (p) => { LoadChiTietPhieuNhapHangList(); });
-            PreviousPageCommand = new RelayCommand<object>((p) => true, (p) =>
-            {
-                MainViewModel.Instance.PhieuNhapHangVM = new PhieuNhapHangViewModel();
-
-                MainViewModel.Instance.CurrentView = MainViewModel.Instance.PhieuNhapHangVM;
-                MainViewModel.Instance.CurrentSidebarView = MainViewModel.Instance.SidebarPhieuNhapHangVM;
-            });
         }
+
         public void LoadChiTietPhieuNhapHangList()
         {
             ChiTietPhieuNhapHangList = new ObservableCollection<CHITIETPHIEUNHAPHANG>();
-            int i = MaPNH;
-            var danhSachChiTietPhieuNhapHang = DataProvider.Ins.goonRunnerDB.CHITIETPHIEUNHAPHANGs.Where((n) => n.MaPNH == i).ToList();
+
+            var danhSachChiTietPhieuNhapHang = DataProvider.Ins.goonRunnerDB.CHITIETPHIEUNHAPHANGs
+                .Where(n => n.MaPNH == MaPNH)
+                .ToList();
+
             foreach (var item in danhSachChiTietPhieuNhapHang)
             {
-                CHITIETPHIEUNHAPHANG chitietphieunhaphang = new CHITIETPHIEUNHAPHANG();
-                chitietphieunhaphang.MaSP = item.MaSP;
-                chitietphieunhaphang.TenSP = item.TenSP;
-                chitietphieunhaphang.SoLuongNhap = item.SoLuongNhap;
-                chitietphieunhaphang.DonGia = item.DonGia;
-                ChiTietPhieuNhapHangList.Add(chitietphieunhaphang);
+                ChiTietPhieuNhapHangList.Add(new CHITIETPHIEUNHAPHANG
+                {
+                    MaSP = item.MaSP,
+                    TenSP = item.TenSP,
+                    SoLuongNhap = item.SoLuongNhap,
+                    DonGia = item.DonGia
+                });
             }
         }
     }

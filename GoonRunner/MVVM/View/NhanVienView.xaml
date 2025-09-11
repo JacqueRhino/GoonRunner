@@ -66,11 +66,11 @@
                   BorderThickness="0"
                   ItemContainerStyle="{StaticResource CenteredListViewItemStyle}"
                   Background="Transparent" >
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding LoadToSidebar}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
+            <!-- <i:Interaction.Triggers> -->
+            <!--     <i:EventTrigger EventName="SelectionChanged"> -->
+            <!--         <i:InvokeCommandAction Command="{Binding LoadToSidebar}" /> -->
+            <!--     </i:EventTrigger> -->
+            <!-- </i:Interaction.Triggers> -->
             <ListView.View>
                         <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle1}">
                             <GridViewColumn Header="Mã NV" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="MaNV"/>

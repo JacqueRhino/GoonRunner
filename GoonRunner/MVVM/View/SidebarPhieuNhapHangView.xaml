@@ -11,8 +11,8 @@
              d:DesignHeight="590" d:DesignWidth="250">
     <Grid>
         <StackPanel>
-            <gr:Textbox SetHeader="Mã NCC" SetPlaceholder="Nhập mã NCC" SetBinding="{Binding MaNCC}"/>
-            <gr:Textbox SetHeader="Tên NCC" SetPlaceholder="Nhập tên NCC" SetBinding="{Binding TenNCC}"/>
+            <gr:Textbox SetHeader="Mã NCC" SetPlaceholder="Nhập mã NCC" SetBinding="{Binding MaNcc}"/>
+            <gr:Textbox SetHeader="Tên NCC" SetPlaceholder="Nhập tên NCC" SetBinding="{Binding TenNcc}"/>
             <DatePicker gr:Extensions.Header="Ngày nhập"
                     VerticalContentAlignment="Center"
                     Foreground="{StaticResource Foreground}" 
@@ -20,7 +20,7 @@
                     FontFamily="pack://application:,,,/Assets/Fonts/#JetBrains Mono"
                     Margin="0,0,0,5"
                     SelectedDate="{Binding SelectedDate, Mode=TwoWay}"/>
-            <gr:Textbox SetHeader="Mã NV" SetPlaceholder="Nhập mã NV" SetBinding="{Binding MaNV, Mode=TwoWay}" IsHitTestVisible="False"/>
+            <gr:Textbox SetHeader="Mã NV" SetPlaceholder="Nhập mã NV" SetBinding="{Binding MaNv, Mode=TwoWay}" IsHitTestVisible="False"/>
 
             <Grid HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
@@ -44,7 +44,7 @@
                         Margin="10"
                         Style="{StaticResource SidebarButton}">
                     <StackPanel>
-                        <ui:SymbolIcon Symbol="Pen24" FontSize="20"/>
+                        <ui:SymbolIcon Symbol="Pen20" FontSize="22"/>
                     </StackPanel>
                 </Button>
 
@@ -54,7 +54,7 @@
                         FontFamily="../../Assets/Fonts/#Segoe Fluent Icons" FontWeight="Medium" FontSize="20"
                         Command="{Binding ClearFieldCommand}">
                     <StackPanel>
-                        <TextBlock Text="" FontFamily="{StaticResource 'Segoe Fluent Icons'}" FontSize="22"/>
+                        <TextBlock Text="" FontFamily="{StaticResource 'Segoe Fluent Icons'}" FontSize="22"/>
                     </StackPanel>
                 </Button>
 

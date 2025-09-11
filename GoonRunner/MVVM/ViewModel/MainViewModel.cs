@@ -1,8 +1,10 @@
-﻿using System;
-using GoonRunner.MVVM.View;
+﻿using GoonRunner.MVVM.View;
 using System.Windows.Input;
 using System.Windows;
 using System.Windows.Controls;
+using GoonRunner.MVVM.Model;
+using GoonRunner.Utils;
+
 // ReSharper disable InconsistentNaming
 
 namespace GoonRunner.MVVM.ViewModel
@@ -10,77 +12,118 @@ namespace GoonRunner.MVVM.ViewModel
     public class MainViewModel : BaseViewModel
     {
         #region ICommand
-        public ICommand HomeViewCommand { get; set; }
-        public ICommand NhanVienViewCommand { get; set; }
-        public ICommand KhachHangViewCommand { get; set; }
-        public ICommand SanPhamViewCommand { get; set; }
-        public ICommand PhieuNhapHangViewCommand { get; set; }
-        public ICommand ChiTietPhieuNhapHangViewCommand { get; set; }
-        public ICommand HoaDonViewCommand { get; set; }
-        public ICommand ChiTietHoaDonViewCommand { get; set; }
-        public ICommand TonKhoViewCommand { get; set; }
-        public ICommand SignOutCommand { get; set; }
+        public ICommand HomeViewCommand { get; }
+        public ICommand NhanVienViewCommand { get; }
+        public ICommand KhachHangViewCommand { get; }
+        public ICommand SanPhamViewCommand { get; }
+        public ICommand PhieuNhapHangViewCommand { get; }
+        public ICommand HoaDonViewCommand { get; }
+        public ICommand TonKhoViewCommand { get; }
+        public ICommand SignOutCommand { get; }
 
         #endregion
         #region ViewModel
-        public KhachHangViewModel KhachHangVM { get; private set; }
-        public NhanVienViewModel NhanVienVM { get; private set; }
+
+        private KhachHangViewModel KhachHangVM { get; set; }
+        public NhanVienViewModel NhanVienVM { get; set; }
         private SanPhamViewModel SanPhamVM { get; set; }
-        public PhieuNhapHangViewModel PhieuNhapHangVM { get; set; }
+        public PhieuNhapHangViewModel PhieuNhapHangVM { get; private set; }
         public ChiTietPhieuNhapHangViewModel ChiTietPhieuNhapHangVM { get; set; }
-        public HoaDonViewModel HoaDonVM { get; set; }
-        public ChiTietHoaDonViewModel ChiTietHoaDonVM { get; set; }
-        public TonKhoViewModel TonKhoVM { get; set; }
+        private HoaDonViewModel HoaDonVM { get; set; }
+        public ChiTietHoaDonViewModel ChiTietHoaDonVM { get; private set; }
+        private TonKhoViewModel TonKhoVM { get; set; }
         private HomeViewModel HomeVM { get; set; }
         private OwnerHomeViewModel OwnerHomeVM { get; set; }
         #endregion
         #region SidebarViewModel
         public SidebarNhanVienViewModel SidebarNhanVienVM { get; private set; }
-        public SidebarKhachHangViewModel SidebarKhachHangVM { get; set; }
-        public SidebarPhieuNhapHangViewModel SidebarPhieuNhapHangVM { get; private set; }
+        private SidebarKhachHangViewModel SidebarKhachHangVM { get; set; }
+        private SidebarPhieuNhapHangViewModel SidebarPhieuNhapHangVM { get; set; }
         public SidebarChiTietPhieuNhapHangViewModel SidebarChiTietPhieuNhapHangVM { get; set; }
-        public SidebarHoaDonViewModel SidebarHoaDonVM { get; private set; }
-        public SidebarChiTietHoaDonViewModel SidebarChiTietHoaDonVM { get; set; }
+        private SidebarHoaDonViewModel SidebarHoaDonVM { get; set; }
+        private SidebarChiTietHoaDonViewModel SidebarChiTietHoaDonVM { get; set; }
         #endregion
         
-        public string DisplayName
-        { get => _displayname;
-            private set 
-            { _displayname = value;
-              OnPropertyChanged(); 
-            } 
-        }
+        private UserSession _currentSession;
 
-        public Employee.EmployeeRole Role
+        private UserSession CurrentSession
         {
-            get => _role;
+            get => _currentSession;
             set
             {
-                _role = value;
+                _currentSession = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(DisplayName));
+                OnPropertyChanged(nameof(Privilege));
+                OnPropertyChanged(nameof(Role));
             }
-            
-        }
+        }        
         
-        public string Privilege {
-            get => _privilege;
-            private set
-            {
-                _privilege = value;
-                OnPropertyChanged();
-            } 
-        }
-        
-        public int CurrentUser 
+        public string DisplayName => CurrentSession?.DisplayName;
+        public string Privilege => CurrentSession?.RoleName;
+        public EmployeeRoles.Roles Role => CurrentSession?.Role ?? EmployeeRoles.Roles.NhanVienBanHang;
+        private bool _isHomeVisible;
+        public bool IsHomeVisible
         {
-            get => _currentuser;
-            private set
-            {
-                _currentuser = value;
-                OnPropertyChanged();
-            } 
+            get => _isHomeVisible;
+            set { _isHomeVisible = value; OnPropertyChanged(); }
         }
-        
+
+        private bool _isNhanVienVisible;
+        public bool IsNhanVienVisible
+        {
+            get => _isNhanVienVisible;
+            set { _isNhanVienVisible = value; OnPropertyChanged(); }
+        }
+
+        private bool _isSanPhamVisible;
+        public bool IsSanPhamVisible
+        {
+            get => _isSanPhamVisible;
+            set { _isSanPhamVisible = value; OnPropertyChanged(); }
+        }
+
+        private bool _isHoaDonVisible;
+        public bool IsHoaDonVisible
+        {
+            get => _isHoaDonVisible;
+            set { _isHoaDonVisible = value; OnPropertyChanged(); }
+        }
+
+        private bool _isPhieuNhapVisible;
+        public bool IsPhieuNhapVisible
+        {
+            get => _isPhieuNhapVisible;
+            set { _isPhieuNhapVisible = value; OnPropertyChanged(); }
+        }
+
+        private bool _isTonKhoVisible;
+        public bool IsTonKhoVisible
+        {
+            get => _isTonKhoVisible;
+            set { _isTonKhoVisible = value; OnPropertyChanged(); }
+        }
+
+        private bool _isKhachHangVisible;
+        public bool IsKhachHangVisible
+        {
+            get => _isKhachHangVisible;
+            set { _isKhachHangVisible = value; OnPropertyChanged(); }
+        }
+
+        private bool _isKhuyenMaiVisible;
+        public bool IsKhuyenMaiVisible
+        {
+            get => _isKhuyenMaiVisible;
+            set { _isKhuyenMaiVisible = value; OnPropertyChanged(); }
+        }
+
+        private bool _isBaoHanhVisible;
+        public bool IsBaoHanhVisible
+        {
+            get => _isBaoHanhVisible;
+            set { _isBaoHanhVisible = value; OnPropertyChanged(); }
+        }
         public object CurrentView
         {
             get => _currentView;
@@ -125,7 +168,7 @@ namespace GoonRunner.MVVM.ViewModel
         public int SidebarWidth
         {
             get => _sidebarWidth;
-            set
+            private set
             {
                 _sidebarWidth = value;
                 OnPropertyChanged();
@@ -141,10 +184,6 @@ namespace GoonRunner.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
-        private string _displayname;
-        private Employee.EmployeeRole _role;
-        private string _privilege;
-        private int _currentuser;
         private object _currentView;
         private object _currentSidebarView;
         private bool _isSidebarButtonEnabled;
@@ -153,33 +192,15 @@ namespace GoonRunner.MVVM.ViewModel
         private bool _issplit2enabled;
 
 
-        public bool IsHomeVisible { get => _ishomevisible; set { _ishomevisible = value; OnPropertyChanged(); } }
-        public bool IsNhanvienVisible {get => _isnhanvienvisible; set { _isnhanvienvisible = value; OnPropertyChanged();}}
-        public bool IsSanPhamVisible {get => _issanphamvisible; set { _issanphamvisible = value; OnPropertyChanged();}}
-        public bool IsHoaDonVisible {get => _ishoadonvisible; set { _ishoadonvisible = value; OnPropertyChanged();}}
-        public bool IsPhieuNhapVisible {get => _isphieunhapvisible; set { _isphieunhapvisible = value; OnPropertyChanged();}}
-        public bool IsTonKhoVisible {get => _istonkhovisible; set { _istonkhovisible = value; OnPropertyChanged();}}
-        public bool IsKhachHangVisible {get => _iskhachhangvisible; set { _iskhachhangvisible = value; OnPropertyChanged();}}
-        public bool IsKhuyenMaiVisible {get => _iskhuyenmaivisible; set { _iskhuyenmaivisible = value; OnPropertyChanged();}}
-        public bool IsBaoHanhVisible {get => _isbaohanhvisible; set { _isbaohanhvisible = value; OnPropertyChanged();}}
-        private bool _ishomevisible;
-        private bool _isnhanvienvisible;
-        private bool _issanphamvisible;
-        private bool _ishoadonvisible;
-        private bool _isphieunhapvisible;
-        private bool _istonkhovisible;
-        private bool _iskhachhangvisible;
-        private bool _iskhuyenmaivisible;
-        private bool _isbaohanhvisible;
 
-        public static MainViewModel Instance { get; private set; }
-        
+        // public static MainViewModel Instance { get; private set; }
+
         public MainViewModel()
         {
-            Instance = this;
+            // Instance = this;
             HomeViewCommand = new RelayCommand<RadioButton>(o =>
             {
-                if (Role == Employee.EmployeeRole.ChuCuaHang)
+                if (Role == EmployeeRoles.Roles.ChuCuaHang)
                 {
                     CurrentView = OwnerHomeVM;
                 }
@@ -215,14 +236,6 @@ namespace GoonRunner.MVVM.ViewModel
             {
                 CurrentView = PhieuNhapHangVM;
                 CurrentSidebarView = SidebarPhieuNhapHangVM;
-                SidebarPhieuNhapHangVM?.LoadCurrentUserAsEmployee();
-                EnableSidebar();
-            });
-
-            ChiTietPhieuNhapHangViewCommand = new RelayCommand<RadioButton>(o =>
-            {
-                CurrentView = ChiTietPhieuNhapHangVM;
-                CurrentSidebarView = SidebarChiTietPhieuNhapHangVM;
                 EnableSidebar();
             });
 
@@ -230,14 +243,6 @@ namespace GoonRunner.MVVM.ViewModel
             {
                 CurrentView = HoaDonVM;
                 CurrentSidebarView = SidebarHoaDonVM;
-                SidebarHoaDonVM?.LoadCurrentUserAsEmployee();
-                EnableSidebar();
-            });
-
-            ChiTietHoaDonViewCommand = new RelayCommand<RadioButton>(o =>
-            {
-                CurrentView = ChiTietHoaDonVM;
-                CurrentSidebarView = SidebarChiTietHoaDonVM;
                 EnableSidebar();
             });
 
@@ -249,72 +254,133 @@ namespace GoonRunner.MVVM.ViewModel
 
             SignOutCommand = new RelayCommand<Window>((p) => true, (p) =>
             {
-                var messageResult = MessageBox.Show("Bạn có muốn đăng xuất?", "Thông báo", MessageBoxButton.YesNo);
-                if (messageResult == MessageBoxResult.Yes)
+                var messageBox = new Wpf.Ui.Controls.MessageBox
+                {
+                    Title = "Thông báo",
+                    Content = "Bạn có muốn đăng xuất?",
+                    PrimaryButtonText = "Yes",
+                    CloseButtonText = "No",
+                    PrimaryButtonAppearance = Wpf.Ui.Controls.ControlAppearance.Danger,
+                    CloseButtonAppearance = Wpf.Ui.Controls.ControlAppearance.Secondary
+                };
+
+                var result = messageBox.ShowDialogAsync().GetAwaiter().GetResult();
+                if (result == Wpf.Ui.Controls.MessageBoxResult.Primary)
                     SignOut(p);
+                
             });
         }
-        
-        public void SetUpCurrentUser(int maNV,string privilige, Employee.EmployeeRole role, string displayname)
-        {
-            CurrentUser = maNV;
-            Privilege = privilige;
-            Role = role;
-            DisplayName = displayname;
-        }
-        
-        public void SetAuthorization(Employee.EmployeeRole role)
-        {
-            ResetVisiblity();
-            InitializeHomeViewModel(role);
-            switch (role)
-            {
-                //TODO:ADD KHUYENMAI VIEWMODEL
-                case Employee.EmployeeRole.Admin:
-                    SetAdminPriviliges();
-                    break;
 
-                case Employee.EmployeeRole.NhanVienBanHang:
-                    SetSalesEmployeePriviliges();
-                    CurrentView = HomeVM;
-                    break;
-                
-                case Employee.EmployeeRole.NhanVienKeToan:
-                    SetAccountantPriviliges();
-                    break;
-                
-                case Employee.EmployeeRole.NhanVienChamSocKhachHang:
-                    SetCustomerServicePriviliges();
-                    break;
-                
-                case Employee.EmployeeRole.NhanVienKiemKho:
-                    SetInventoryPriviliges();
-                    break;
-                
-                case Employee.EmployeeRole.NhanVienKyThuat:
-                    SetTechnicalPriviliges();
-                    break;
-                case Employee.EmployeeRole.ChuCuaHang:
-                    SetOwnerPriviliges();
-                    break;
-                
-                case Employee.EmployeeRole.NhanVienMarketing:
-                case Employee.EmployeeRole.NhanVienTapVu:
-                case Employee.EmployeeRole.NhanVienBaoVe:
-                case Employee.EmployeeRole.NhanVienGiaoHang:
-                case Employee.EmployeeRole.NhanVienQuanTriMang:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(role), role, null);
+        public void SetCurrentSession(int userId, string roleInName , EmployeeRoles.Roles role, string displayName)
+        {
+            CurrentSession = new UserSession
+            {
+                UserId = userId,
+                DisplayName = displayName,
+                Role = role,
+                RoleName = roleInName
+            };
+
+            SetAuthorization(role); 
+            SetAuthorization(CurrentSession.Role);
+        }
+        public void SetAuthorization(EmployeeRoles.Roles role)
+        {
+            InitializeHomeViewModel(role);
+
+            if (!EmployeeRoles.Permissions.Map.TryGetValue(role, out var permissions))
+                return;
+
+            foreach (var perm in permissions)
+            {
+                switch (perm)
+                {
+                    case EmployeeRoles.Permission.Home:
+                        IsHomeVisible = true;
+                        break;
+
+                    case EmployeeRoles.Permission.NhanVien:
+                        if (NhanVienVM == null)
+                            NhanVienVM = new NhanVienViewModel();
+                        if (SidebarNhanVienVM == null)
+                            SidebarNhanVienVM = new SidebarNhanVienViewModel();
+                        IsNhanVienVisible = true;
+                        break;
+
+                    case EmployeeRoles.Permission.KhachHang:
+                        if (KhachHangVM == null)
+                            KhachHangVM = new KhachHangViewModel();
+                        if (SidebarKhachHangVM == null)
+                            SidebarKhachHangVM = new SidebarKhachHangViewModel();
+                        IsKhachHangVisible = true;
+                        break;
+
+                    case EmployeeRoles.Permission.SanPham:
+                        if (SanPhamVM == null)
+                            SanPhamVM = new SanPhamViewModel();
+                        IsSanPhamVisible = true;
+                        break;
+
+                    case EmployeeRoles.Permission.HoaDon:
+                        if (HoaDonVM == null)
+                            HoaDonVM = new HoaDonViewModel(maHD =>
+                            {
+                                // Dependency Injection cho navigateBack
+                                ChiTietHoaDonVM = new ChiTietHoaDonViewModel(maHD, () =>
+                                {
+                                    CurrentView = HoaDonVM;
+                                    CurrentSidebarView = SidebarHoaDonVM;
+                                });
+
+                                SidebarChiTietHoaDonVM = new SidebarChiTietHoaDonViewModel(maHD);
+
+                                CurrentView = ChiTietHoaDonVM;
+                                CurrentSidebarView = SidebarChiTietHoaDonVM;
+                            });                       
+                        if (SidebarHoaDonVM == null)
+                            SidebarHoaDonVM = new SidebarHoaDonViewModel(CurrentSession, HoaDonVM.Refresh);
+                        IsHoaDonVisible = true;
+                        break;
+
+                    case EmployeeRoles.Permission.PhieuNhap:
+                        if (PhieuNhapHangVM == null)
+                            PhieuNhapHangVM = new PhieuNhapHangViewModel(mapnh =>
+                            {
+                                ChiTietPhieuNhapHangVM = new ChiTietPhieuNhapHangViewModel(mapnh, () =>
+                                {
+                                    CurrentView = PhieuNhapHangVM;
+                                    CurrentSidebarView = SidebarPhieuNhapHangVM;
+                                });
+                                SidebarChiTietPhieuNhapHangVM = new SidebarChiTietPhieuNhapHangViewModel(mapnh);
+                                CurrentView = ChiTietPhieuNhapHangVM;
+                                CurrentSidebarView = SidebarChiTietPhieuNhapHangVM;
+                            });
+                        if (SidebarPhieuNhapHangVM == null)
+                            SidebarPhieuNhapHangVM = new SidebarPhieuNhapHangViewModel(CurrentSession);
+                        IsPhieuNhapVisible = true;
+                        break;
+
+                    case EmployeeRoles.Permission.TonKho:
+                        if (TonKhoVM == null)
+                            TonKhoVM = new TonKhoViewModel();
+                        IsTonKhoVisible = true;
+                        break;
+
+                    case EmployeeRoles.Permission.KhuyenMai:
+                        IsKhuyenMaiVisible = true;
+                        break;
+
+                    case EmployeeRoles.Permission.BaoHanh:
+                        IsBaoHanhVisible = true;
+                        break;
+                }
             }
         }
-        
-
 
         private void SignOut(Window p)
         {
             ResetState();
-            Instance = null;
+            // Instance = null;
             var loginWindow = new LogInView();
             var loginVM = loginWindow.DataContext as LoginViewModel; 
             loginVM?.ResetLogin();
@@ -325,15 +391,10 @@ namespace GoonRunner.MVVM.ViewModel
 
         private void ResetState()
         {
-            DisplayName = null;
-            Role = default;
-            Privilege = null;
-            CurrentUser = 0;
             CurrentSidebarView = null;
             IsSidebarButtonEnabled = false;
             SidebarWidth = 0;
             IsSplit2Enabled = false;
-            ResetVisiblity();
             ClearViewModels();
             
         }
@@ -357,20 +418,6 @@ namespace GoonRunner.MVVM.ViewModel
             SidebarHoaDonVM = null;
             SidebarChiTietHoaDonVM = null;
         }
-        
-        private void ResetVisiblity()
-        {
-            IsHomeVisible = false;
-            IsNhanvienVisible = false;
-            IsSanPhamVisible = false;
-            IsHoaDonVisible = false;
-            IsPhieuNhapVisible = false;
-            IsTonKhoVisible = false;
-            IsKhachHangVisible = false;
-            IsKhuyenMaiVisible = false;
-            IsBaoHanhVisible = false; 
-        }
-        
         private void EnableSidebar()
         {
             IsSidebarButtonEnabled = true;
@@ -380,175 +427,25 @@ namespace GoonRunner.MVVM.ViewModel
             IsSidebarButtonEnabled = false;
         }
         
-        private void InitializeHomeViewModel(Employee.EmployeeRole role)
+        
+        private void InitializeHomeViewModel(EmployeeRoles.Roles role)
         {
-            IsHomeVisible = true;
-
-            if (role == Employee.EmployeeRole.ChuCuaHang)
+            if (role == EmployeeRoles.Roles.ChuCuaHang)
             {
                 if (OwnerHomeVM == null)
                     OwnerHomeVM = new OwnerHomeViewModel();
 
                 CurrentView = OwnerHomeVM;
-                return;
+                IsHomeVisible = true;
             }
-
-            if (HomeVM == null)
-                HomeVM = new HomeViewModel();
-
-            CurrentView = HomeVM;
-        }
-        private void SetAdminPriviliges()
-        {
-            IsNhanvienVisible = true;
-            IsKhachHangVisible = true;
-            IsKhuyenMaiVisible = true;
-            
-            InitializeViewModels(
-                nhanVien: true,
-                khachHang: true
-            );
-        }
-
-        private void SetSalesEmployeePriviliges()
-        {
-            IsHoaDonVisible = true;
-            IsKhachHangVisible = true;
-            IsKhuyenMaiVisible = true;
-            IsSanPhamVisible = true;
-            IsTonKhoVisible = true;
-            
-            InitializeViewModels(
-                hoaDon: true,
-                khachHang: true,
-                sanPham: true,
-                tonKho: true
-            );
-        }
-
-        private void SetAccountantPriviliges()
-        {
-            IsNhanvienVisible = true;
-            IsHoaDonVisible = true;
-            
-            InitializeViewModels(
-                nhanVien: true,
-                hoaDon: true
-            );
-        }
-
-        private void SetCustomerServicePriviliges()
-        {
-            IsKhachHangVisible = true;
-            IsHoaDonVisible = true;
-
-            InitializeViewModels(
-                khachHang: true,
-                hoaDon: true
-            );
-        }
-
-        private void SetInventoryPriviliges()
-        {
-            InitializeViewModels(
-                tonKho: true,
-                sanPham: true,
-                phieuNhapHang: true
-            );
-        }
-
-        //TODO:Setup KyThuat
-        private void SetTechnicalPriviliges()
-        {
-            InitializeViewModels(
-                khachHang:true,
-                sanPham:true
-                );
-        }
-
-        private void SetOwnerPriviliges()
-        {
-            IsNhanvienVisible = true;
-            IsSanPhamVisible = true;
-            
-            InitializeViewModels(
-                nhanVien: true,
-                sanPham: true
-            );
-        }
-        //TODO:MISSING BAOHANH VIEWMODEL
-        private void InitializeViewModels(
-            bool nhanVien = false,
-            bool khachHang = false,
-            bool sanPham = false,
-            bool hoaDon = false,
-            bool phieuNhapHang = false,
-            bool tonKho = false
-        )
-        {
-            IsHomeVisible = true;
-            if (nhanVien)
+            else
             {
-                if (NhanVienVM == null)
-                    NhanVienVM = new NhanVienViewModel();
+                if (HomeVM == null)
+                    HomeVM = new HomeViewModel();
 
-                if (SidebarNhanVienVM == null)
-                    SidebarNhanVienVM = new SidebarNhanVienViewModel();                
-                
-                IsNhanvienVisible = true;
+                CurrentView = HomeVM;
+                IsHomeVisible = true;
             }
-
-            if (khachHang)
-            {
-                if (KhachHangVM == null)
-                    KhachHangVM = new KhachHangViewModel();
-
-                if (SidebarKhachHangVM == null)
-                    SidebarKhachHangVM = new SidebarKhachHangViewModel(); 
-                IsKhachHangVisible = true;
-            }
-            if (sanPham && SanPhamVM == null) SanPhamVM = new SanPhamViewModel();
-            if (hoaDon)
-            {
-                if (HoaDonVM == null)
-                    HoaDonVM = new HoaDonViewModel();
-
-                if (ChiTietHoaDonVM == null)
-                    ChiTietHoaDonVM = new ChiTietHoaDonViewModel();
-
-                if (SidebarHoaDonVM == null)
-                    SidebarHoaDonVM = new SidebarHoaDonViewModel();
-
-                if (SidebarChiTietHoaDonVM == null)
-                    SidebarChiTietHoaDonVM = new SidebarChiTietHoaDonViewModel();                
-                
-                IsHoaDonVisible = true;
-            } 
-            
-            if (phieuNhapHang)
-            {
-                if (PhieuNhapHangVM == null)
-                    PhieuNhapHangVM = new PhieuNhapHangViewModel();
-
-                if (ChiTietPhieuNhapHangVM == null)
-                    ChiTietPhieuNhapHangVM = new ChiTietPhieuNhapHangViewModel();
-
-                if (SidebarPhieuNhapHangVM == null)
-                    SidebarPhieuNhapHangVM = new SidebarPhieuNhapHangViewModel();
-
-                if (SidebarChiTietPhieuNhapHangVM == null)
-                    SidebarChiTietPhieuNhapHangVM = new SidebarChiTietPhieuNhapHangViewModel();                
-                
-                IsPhieuNhapVisible = true;
-            }
-
-            if (tonKho)
-            {
-                if (TonKhoVM == null)
-                    TonKhoVM = new TonKhoViewModel();                
-                
-                IsTonKhoVisible = true;
-            }
-        }
+        }        
     }
 }

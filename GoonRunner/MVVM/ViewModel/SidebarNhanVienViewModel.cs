@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using GoonRunner.Utils;
 
 namespace GoonRunner.MVVM.ViewModel
 {
@@ -118,6 +119,9 @@ namespace GoonRunner.MVVM.ViewModel
             SelectedRole = "Nhân viên bán hàng";
             SelectedGender = "Nam";
             SelectedDate = DateTime.Now;
+            
+            Messenger.NhanVienSelected += LoadNhanVienInfo;
+
             AddNhanVien();
             DeleteNhanVien();
 
@@ -186,7 +190,7 @@ namespace GoonRunner.MVVM.ViewModel
                 DataProvider.Ins.goonRunnerDB.SaveChanges();
                 DanhSachNhanVien.Add(nhanvien);
                 MessageBox.Show("Thêm thành công!");
-                MainViewModel.Instance?.NhanVienVM?.LoadNhanVienList();
+                Messenger.NotifyNhanVienChanged(nhanvien);
                 ClearFields();
             });
 
@@ -309,7 +313,7 @@ namespace GoonRunner.MVVM.ViewModel
 
                     MessageBox.Show("Cập nhật thành công!");
 
-                    MainViewModel.Instance?.NhanVienVM?.LoadNhanVienList();
+                    Messenger.NotifyNhanVienChanged(existingEmployee);
 
                 }
                 catch (Exception ex)
@@ -339,16 +343,13 @@ namespace GoonRunner.MVVM.ViewModel
                 {
                     try
                     {
-                        // Find the employee in database
                         var nhanvien = DataProvider.Ins.goonRunnerDB.NHANVIENs.FirstOrDefault(nv => nv.MaNV == MaNV);
 
                         if (nhanvien != null)
                         {
-                            // Remove from database
                             DataProvider.Ins.goonRunnerDB.NHANVIENs.Remove(nhanvien);
                             DataProvider.Ins.goonRunnerDB.SaveChanges();
 
-                            // Remove from ObservableCollection
                             var itemToRemove = DanhSachNhanVien.FirstOrDefault(nv => nv.MaNV == MaNV);
                             if (itemToRemove != null)
                             {
@@ -357,10 +358,8 @@ namespace GoonRunner.MVVM.ViewModel
 
                             MessageBox.Show("Xóa nhân viên thành công!", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                            // Refresh the main employee list
-                            MainViewModel.Instance?.NhanVienVM?.LoadNhanVienList();
+                            Messenger.NotifyNhanVienChanged(nhanvien);
 
-                            // Clear the form fields
                             ClearFields();
                         }
                         else
@@ -395,6 +394,7 @@ namespace GoonRunner.MVVM.ViewModel
 
                 if (nhanvien != null)
                 {
+                    MaNV = nhanvien.MaNV;
                     HoNV = nhanvien.HoNV;
                     TenNV = nhanvien.TenNV;
                     DiaChi = nhanvien.DiaChiNV;

@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using GoonRunner.Utils;
 
 namespace GoonRunner.MVVM.ViewModel
 {
@@ -14,17 +15,47 @@ namespace GoonRunner.MVVM.ViewModel
     {
         private ObservableCollection<PHIEUNHAPHANG> _phieunhaphanglist;
         public ObservableCollection<PHIEUNHAPHANG> PhieuNhapHangList { get { return _phieunhaphanglist; } set { _phieunhaphanglist = value; OnPropertyChanged(); } }
+        private bool _isUpdatingSelection;
         private PHIEUNHAPHANG _selectedItem;
-        public PHIEUNHAPHANG SelectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(); } }
+        public PHIEUNHAPHANG SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                if (_selectedItem == value) return;
+                _selectedItem = value;
+                OnPropertyChanged();
+
+                if (_isUpdatingSelection) return;
+
+                try
+                {
+                    _isUpdatingSelection = true;
+                    Messenger.NotifyPhieuNhapHangSelected(_selectedItem?.MaPNH ?? 0);
+                }
+                finally
+                {
+                    _isUpdatingSelection = false;
+                }
+            }
+        }
+
         private string _filterText;
         public string FilterText { get => _filterText; set { _filterText = value; OnPropertyChanged(); FilteredPhieuNhapHangList.Refresh(); } }
         private ICollectionView _filteredphieunhaphanglist;
         public ICollectionView FilteredPhieuNhapHangList { get => _filteredphieunhaphanglist; set { _filteredphieunhaphanglist = value; OnPropertyChanged(); } }
         public ICommand DoubleClickCommand { get; set; }
         public ICommand RefreshCommand { get; set; }
-        public PhieuNhapHangViewModel()
+
+        private readonly Action<int> _navigateToChiTietPhieuNhap;
+        public PhieuNhapHangViewModel( Action<int> navigateToChiTietPhieuNhap)
         {
+            _navigateToChiTietPhieuNhap = navigateToChiTietPhieuNhap ?? throw new ArgumentNullException(nameof(navigateToChiTietPhieuNhap));
             LoadPhieuNhapHangList();
+            Messenger.PhieuNhapHangChanged += pnh =>
+            {
+                LoadPhieuNhapHangList();
+            };
             RefreshCommand = new RelayCommand<Button>((p) => true, (p) =>
             {
                 LoadPhieuNhapHangList();
@@ -34,11 +65,7 @@ namespace GoonRunner.MVVM.ViewModel
             FilteredPhieuNhapHangList.Filter = FilterPhieuNhapHang;
             DoubleClickCommand = new RelayCommand<object>((p) => SelectedItem != null, (p) =>
             {
-                MainViewModel.Instance.ChiTietPhieuNhapHangVM = new ChiTietPhieuNhapHangViewModel(SelectedItem.MaPNH);
-                MainViewModel.Instance.SidebarChiTietPhieuNhapHangVM = new SidebarChiTietPhieuNhapHangViewModel(SelectedItem.MaPNH);
-
-                MainViewModel.Instance.CurrentView = MainViewModel.Instance.ChiTietPhieuNhapHangVM;
-                MainViewModel.Instance.CurrentSidebarView = MainViewModel.Instance.SidebarChiTietPhieuNhapHangVM;
+                _navigateToChiTietPhieuNhap?.Invoke(SelectedItem.MaPNH);
             });
         }
         public void LoadPhieuNhapHangList()

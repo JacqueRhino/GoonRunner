@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using GoonRunner.MVVM.Model;
 using GoonRunner.MVVM.View;
+using GoonRunner.Utils;
 
 // ReSharper disable InconsistentNaming
 
@@ -106,7 +107,7 @@ namespace GoonRunner.MVVM.ViewModel
                         return;
                     }
 
-                    if (!Employee.RoleNames.StringToRole.TryGetValue(user.Quyen, out Employee.EmployeeRole employeeRole))
+                    if (!EmployeeRoles.RoleNames.StringToRole.TryGetValue(user.Quyen, out EmployeeRoles.Roles employeeRole))
                     {
                         ErrorMessage = "Không phải quyền hợp lệ";
                         return;
@@ -149,13 +150,13 @@ namespace GoonRunner.MVVM.ViewModel
             return (true, "");
         } 
         
-        private void EnterMainView(Window p,int MaNV, string RoleInString, string DisplayName, Employee.EmployeeRole Role)
+        private void EnterMainView(Window p,int MaNV, string RoleInString, string DisplayName, EmployeeRoles.Roles Role)
         {
             Placeholder = DefaultPasswordPlaceholder;
             var mainwindow = new MainWindowView();
             var mainVM = new MainViewModel();
             mainwindow.DataContext = mainVM;
-            mainVM.SetUpCurrentUser(MaNV, RoleInString,Role,DisplayName);
+            mainVM.SetCurrentSession(MaNV, RoleInString,Role,DisplayName);
             mainVM.SetAuthorization(Role);
             mainwindow.Show();
             p.Hide();

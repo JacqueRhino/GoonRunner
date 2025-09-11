@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using GoonRunner.Utils;
 
 namespace GoonRunner.MVVM.ViewModel
 {
@@ -76,7 +77,8 @@ namespace GoonRunner.MVVM.ViewModel
                     DataProvider.Ins.goonRunnerDB.SaveChanges();
                     DanhSachChiTietHoaDon.Add(chitiethoadon);
                     MessageBox.Show("Thêm thành công!");
-                    MainViewModel.Instance?.ChiTietHoaDonVM?.LoadChiTietHoaDonList();
+                    Messenger.NotifyChiTietHoaDonChanged(chitiethoadon);
+
                 }
                 catch (System.Data.Entity.Infrastructure.DbUpdateException)
                 {

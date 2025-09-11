@@ -1,102 +1,101 @@
 ﻿using GoonRunner.MVVM.Model;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-// ReSharper disable InconsistentNaming
+using GoonRunner.Utils;
 
 namespace GoonRunner.MVVM.ViewModel
 {
     public class SidebarHoaDonViewModel : BaseViewModel
     {
+        private UserSession CurrentSession { get; }
+
         private ObservableCollection<HOADON> _danhsachhoadon;
-        public ObservableCollection<HOADON> DanhSachHoaDon { get => _danhsachhoadon; set { _danhsachhoadon = value; OnPropertyChanged(); } }
+        public ObservableCollection<HOADON> DanhSachHoaDon
+        {
+            get => _danhsachhoadon;
+            set { _danhsachhoadon = value; OnPropertyChanged(); }
+        }
+
         private DateTime _selecteddate;
-        public DateTime SelectedDate { get => _selecteddate; set { if (_selecteddate != value) { _selecteddate = value; FormattedDate = value.ToString("dd/MM/yyyy"); NgayMuaHang = value; OnPropertyChanged(); } } }
-        private string _formattedDate;
-        public string FormattedDate { get => _formattedDate; private set => _formattedDate = value; }
+        public DateTime SelectedDate
+        {
+            get => _selecteddate;
+            set
+            {
+                if (_selecteddate != value)
+                {
+                    _selecteddate = value;
+                    NgayMuaHang = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         private int _mahd;
-        public int MaHD { get => _mahd; set { _mahd = value; OnPropertyChanged(); } }
+        public int MaHd { get => _mahd; set { _mahd = value; OnPropertyChanged(); } }
+
         private int _makh;
-        public int MaKH { get => _makh; set { _makh = value; OnPropertyChanged(); LoadKhachHangInfo(value); } }
+        public int MaKh
+        {
+            get => _makh;
+            set { _makh = value; OnPropertyChanged(); LoadKhachHangInfo(value); }
+        }
+
         private string _hokh;
-        public string HoKH { get => _hokh; set { _hokh = value; OnPropertyChanged(); } }
+        public string HoKh { get => _hokh; set { _hokh = value; OnPropertyChanged(); } }
+
         private string _tenkh;
-        public string TenKH { get => _tenkh; set { _tenkh = value; OnPropertyChanged(); } }
+        public string TenKh { get => _tenkh; set { _tenkh = value; OnPropertyChanged(); } }
+
         private string _sdtkh;
-        public string SDTKH { get => _sdtkh; set { _sdtkh = value; OnPropertyChanged(); } }
+        public string Sdtkh { get => _sdtkh; set { _sdtkh = value; OnPropertyChanged(); } }
+
         private string _diachi;
-        public string DiaChi { get => _diachi; set { _diachi = value; OnPropertyChanged(); } }                  
+        public string DiaChi { get => _diachi; set { _diachi = value; OnPropertyChanged(); } }
+
         private int _manv;
-        public int MaNV { get => _manv; set { _manv = value; OnPropertyChanged(); LoadNhanVienInfo(value);  } }
+        public int MaNv { get => _manv; set { _manv = value; OnPropertyChanged(); LoadNhanVienInfo(value); } }
+
         private string _hotennv;
-        public string HoTenNV { get => _hotennv; set { _hotennv = value; OnPropertyChanged(); } }
+        public string HoTenNv { get => _hotennv; set { _hotennv = value; OnPropertyChanged(); } }
+
         private string _honv;
-        public string HoNV { get => _honv; set { _honv = value; OnPropertyChanged(); } }
+        private string HoNv { get => _honv; set { _honv = value; OnPropertyChanged(); } }
+
         private string _tennv;
-        public string TenNV { get => _tennv; set { _tennv = value; OnPropertyChanged(); } }
-        private int _currentuser;
-        public int CurrentUser { get => _currentuser; set { _currentuser = value; OnPropertyChanged(); } }
+        private string TenNv { get => _tennv; set { _tennv = value; OnPropertyChanged(); } }
+
         private DateTime _ngaymuahang;
         public DateTime NgayMuaHang { get => _ngaymuahang; set { _ngaymuahang = value; OnPropertyChanged(); } }
-        public ICommand AddHoaDonCommand { get; set; }
-        public ICommand ClearFieldCommand { get; set; }
 
-        public SidebarHoaDonViewModel()
+        public ICommand AddHoaDonCommand { get; }
+        public ICommand ClearFieldCommand { get; }
+
+        // Accept a callback action to notify the parent ViewModel about changes
+
+        public SidebarHoaDonViewModel(UserSession userSession, Action refreshHoaDonList = null)
         {
+            CurrentSession = userSession ?? throw new ArgumentNullException(nameof(userSession));
+
             SelectedDate = DateTime.Now;
             DanhSachHoaDon = new ObservableCollection<HOADON>(DataProvider.Ins.goonRunnerDB.HOADONs);
-            AddHoaDonCommand = new RelayCommand<Button>((p) => { return true; }, (p) =>
+
+            MaNv = CurrentSession.UserId;
+            Messenger.HoaDonSelected += LoadHoaDonInfo;
+            LoadNhanVienInfo(CurrentSession.UserId);
+            AddHoaDonCommand = new RelayCommand<Button>(_ => true, _ =>
             {
-                if (MaKH == 0)
+                if (MaKh == 0 || string.IsNullOrEmpty(HoKh) || string.IsNullOrEmpty(TenKh) ||
+                    string.IsNullOrEmpty(Sdtkh) || string.IsNullOrEmpty(DiaChi))
                 {
-                    MessageBox.Show("Hãy nhập Mã khách hàng");
+                    MessageBox.Show("Hãy nhập đầy đủ thông tin khách hàng");
                     return;
                 }
-
-                if (string.IsNullOrEmpty(HoKH))
-                {
-                    MessageBox.Show("Hãy nhập Họ khách hàng");
-                    return;
-                }
-                
-                if (string.IsNullOrEmpty(TenKH))
-                {
-                    MessageBox.Show("Hãy nhập Tên khách hàng");
-                    return;
-                }
-                
-                if (string.IsNullOrEmpty(SDTKH))
-                {
-                    MessageBox.Show("Hãy nhập Số điện thoại khách hàng");
-                    return;
-                }
-                
-                if (string.IsNullOrEmpty(DiaChi))
-                {
-                    MessageBox.Show("Hãy nhập Địa chỉ khách hàng");
-                    return;
-                }
-
-                //if (MaNV == 0)
-                //{
-                //    MessageBox.Show("Hãy nhập Mã nhân viên");
-                //    return;
-                //}
-
-                if (string.IsNullOrEmpty(HoTenNV))
-                {
-                    MessageBox.Show("Hãy nhập Họ nhân viên");
-                    return;
-                }
-
-                //if (string.IsNullOrEmpty(TenNV))
-                //{
-                //    MessageBox.Show("Hãy nhập Tên nhân viên");
-                //    return;
-                //}
 
                 if (!IsInSmallDateTimeRange(NgayMuaHang))
                 {
@@ -104,51 +103,88 @@ namespace GoonRunner.MVVM.ViewModel
                     return;
                 }
 
-                var hoadon = new HOADON() 
-                { 
-                    MaKH = MaKH, 
-                    HoKH = HoKH, 
-                    TenKH = TenKH,
-                    SdtKH = SDTKH,
+                var hoadon = new HOADON()
+                {
+                    MaKH = MaKh,
+                    HoKH = HoKh,
+                    TenKH = TenKh,
+                    SdtKH = Sdtkh,
                     DiaChi = DiaChi,
-                    MaNV = MaNV,
-                    HoNV = HoNV,
-                    TenNV = TenNV,
+                    MaNV = MaNv,
+                    HoNV = HoNv,
+                    TenNV = TenNv,
                     NgayMuaHang = NgayMuaHang
                 };
-                DataProvider.Ins.goonRunnerDB.HOADONs.Add(hoadon);
-                DataProvider.Ins.goonRunnerDB.SaveChanges();
-                DanhSachHoaDon.Add(hoadon);
-                MessageBox.Show("Thêm thành công!");
-                MainViewModel.Instance?.HoaDonVM?.LoadHoaDonList();
-                ClearFields();
-            });
 
-            ClearFieldCommand = new RelayCommand<Button>((p) => { return true; }, (p) =>
-            {
-                ClearFields();
+                using (var transaction = DataProvider.Ins.goonRunnerDB.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        DataProvider.Ins.goonRunnerDB.HOADONs.Add(hoadon);
+                        DataProvider.Ins.goonRunnerDB.SaveChanges();
+
+                        DanhSachHoaDon.Add(hoadon);
+
+                        transaction.Commit();
+
+                        MessageBox.Show("Thêm thành công!");
+                        refreshHoaDonList?.Invoke(); 
+                        ClearFields();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show($"Lỗi khi thêm hóa đơn: {ex.Message}");
+                    }
+                }
             });
+            ClearFieldCommand = new RelayCommand<Button>(_ => true, _ => ClearFields());
         }
-        private void ClearFields()
-        {
-            MaKH = 0;
-            HoKH = string.Empty;
-            TenKH = string.Empty;
-            SDTKH = string.Empty;
-            DiaChi = string.Empty;
-            SelectedDate = DateTime.Now;
-        }
-        private void LoadKhachHangInfo(int maKH)
+
+        public void LoadHoaDonInfo(int maHd)
         {
             try
             {
-                var khachHang = DataProvider.Ins.goonRunnerDB.KHACHHANGs.FirstOrDefault(kh => kh.MaKH == maKH);
+                var hoadon = DataProvider.Ins.goonRunnerDB.HOADONs.FirstOrDefault(hd => hd.MaHD == maHd);
 
+                if (hoadon != null)
+                {
+                    MaHd = hoadon.MaHD;
+                    MaKh = hoadon.MaKH;
+                    HoKh =  hoadon.HoKH;
+                    Sdtkh = hoadon.SdtKH;
+                    HoTenNv = hoadon.HoNV + " " + hoadon.TenNV;
+                    Debug.Assert(hoadon.NgayMuaHang != null, "hoadon.NgayMuaHang != null");
+                    NgayMuaHang = (DateTime)hoadon.NgayMuaHang;
+                    DiaChi = hoadon.DiaChi;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải thông tin nhân viên: {ex.Message}");
+            }
+        }
+
+        private void ClearFields()
+        {
+            MaKh = 0;
+            HoKh = string.Empty;
+            TenKh = string.Empty;
+            Sdtkh = string.Empty;
+            DiaChi = string.Empty;
+            SelectedDate = DateTime.Now;
+        }
+
+        private void LoadKhachHangInfo(int maKh)
+        {
+            try
+            {
+                var khachHang = DataProvider.Ins.goonRunnerDB.KHACHHANGs.FirstOrDefault(kh => kh.MaKH == maKh);
                 if (khachHang != null)
                 {
-                    HoKH = khachHang.HoKH;
-                    TenKH = khachHang.TenKH;
-                    SDTKH = khachHang.SdtKH;
+                    HoKh = khachHang.HoKH;
+                    TenKh = khachHang.TenKH;
+                    Sdtkh = khachHang.SdtKH;
                     DiaChi = khachHang.DiaChi;
                 }
             }
@@ -158,19 +194,16 @@ namespace GoonRunner.MVVM.ViewModel
             }
         }
 
-        private void LoadNhanVienInfo(int maNV)
+        private void LoadNhanVienInfo(int maNv)
         {
             try
             {
-                // Assuming you have a NHANVIEN entity in your database
-                var nhanVien = DataProvider.Ins.goonRunnerDB.NHANVIENs.FirstOrDefault(nv => nv.MaNV == maNV);
-
+                var nhanVien = DataProvider.Ins.goonRunnerDB.NHANVIENs.FirstOrDefault(nv => nv.MaNV == maNv);
                 if (nhanVien != null)
                 {
-                    // Auto-fill employee information
-                    HoNV = nhanVien.HoNV;
-                    TenNV = nhanVien.TenNV;
-                    HoTenNV = nhanVien.HoNV + " " + nhanVien.TenNV;
+                    HoNv = nhanVien.HoNV;
+                    TenNv = nhanVien.TenNV;
+                    HoTenNv = nhanVien.HoNV + " " + nhanVien.TenNV;
                 }
             }
             catch (Exception ex)
@@ -179,37 +212,11 @@ namespace GoonRunner.MVVM.ViewModel
             }
         }
 
-        public void LoadCurrentUserAsEmployee()
-        {
-            try
-            {
-                CurrentUser = MainViewModel.Instance.CurrentUser;
-                if (MainViewModel.Instance.Privilege != "Chủ cửa hàng" && CurrentUser == 0)
-                {
-                   MessageBox.Show("Không có thông tin đăng nhập. Vui lòng đăng nhập lại.");
-                }
-                MaNV = CurrentUser;
-                LoadNhanVienInfo(CurrentUser);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi tải thông tin nhân viên hiện tại: {ex.Message}");
-            }
-        }
         private bool IsInSmallDateTimeRange(DateTime dateTime)
         {
             var minSmallDateTime = new DateTime(1900, 1, 1);
             var maxSmallDateTime = new DateTime(2079, 6, 6, 23, 59, 0);
-
             return dateTime >= minSmallDateTime && dateTime <= maxSmallDateTime;
-        }
-        private bool IsCurrentDateTime(DateTime dateTime)
-        {
-            if (dateTime.Date == DateTime.Today)
-            {
-                return true;
-            }
-            return false;
         }
     }
 }

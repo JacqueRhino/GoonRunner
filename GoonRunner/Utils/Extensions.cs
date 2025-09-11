@@ -4,6 +4,10 @@ using System.Windows.Data;
 
 namespace GoonRunner.Utils
 {
+        /// <summary>
+    /// Provides attached properties for UI elements, such as Header, Icon, and Binding.
+    /// Useful for XAML binding and customizing controls like GridViewColumn dynamically.
+    /// </summary>
     internal class Extensions
     {
         public static readonly DependencyProperty Header =

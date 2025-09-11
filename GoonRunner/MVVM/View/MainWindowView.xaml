@@ -10,7 +10,7 @@
         d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
         DataContext="{StaticResource MainVM}"
         Title="GoonRunner - Trang chủ"
-        Name="mainWindow"
+        Name="MainWindow"
         Height="800" Width="1280" MinHeight="500" MinWidth="700" Background="{StaticResource Background}"
         Icon="/GoonRunner.ico">
     <Window.Resources>
@@ -171,7 +171,7 @@
                                 Style="{StaticResource RadioButtonStyle}"
                                 gr:Extensions.Icon="PersonAccounts20"
                                 Command="{Binding NhanVienViewCommand}"
-                                Visibility="{Binding IsNhanvienVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Visibility="{Binding IsNhanVienVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                 Click="ChangeTitleNhanvien">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" FontWeight="Medium" FontSize="18" Margin="10,0,0,0">
@@ -290,7 +290,7 @@
                             Style="{StaticResource SignOutButtonTheme}"
                             gr:Extensions.Icon="SignOut20"
                             Command="{Binding SignOutCommand}"
-                            CommandParameter="{Binding ElementName=mainWindow}">
+                            CommandParameter="{Binding ElementName=MainWindow}">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" 
                                    FontSize="18" Margin="10,0,0,0" 

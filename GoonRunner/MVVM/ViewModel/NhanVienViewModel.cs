@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using GoonRunner.Utils;
 
 namespace GoonRunner.MVVM.ViewModel
 {
@@ -11,8 +12,30 @@ namespace GoonRunner.MVVM.ViewModel
     {
         private ObservableCollection<NHANVIEN> _nhanvienlist;
         public ObservableCollection<NHANVIEN> NhanVienList { get { return _nhanvienlist; } set { _nhanvienlist = value; OnPropertyChanged(); } }
+        private bool _isUpdatingSelection;
         private NHANVIEN _selectedItem;
-        public NHANVIEN SelectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(); } }
+        public NHANVIEN SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                if (_selectedItem == value) return;
+                _selectedItem = value;
+                OnPropertyChanged();
+
+                if (_isUpdatingSelection) return;
+
+                try
+                {
+                    _isUpdatingSelection = true;
+                    Messenger.NotifyNhanVienSelected(_selectedItem?.MaNV ?? 0);
+                }
+                finally
+                {
+                    _isUpdatingSelection = false;
+                }
+            }
+        }
         private int _manv;
         public int MaNV { get => _manv; set { _manv  = value; OnPropertyChanged(); } }
         public ICommand DoubleClickCommand { get; set; }
@@ -22,11 +45,16 @@ namespace GoonRunner.MVVM.ViewModel
         {
             LoadNhanVienList();
             RefreshCommand = new RelayCommand<Button>((p) => true, (p) => { LoadNhanVienList(); });
-            LoadToSidebar = new RelayCommand<object>((p) => SelectedItem != null, (p) =>
+            Messenger.NhanVienChanged += nv =>
             {
-                MainViewModel.Instance.SidebarNhanVienVM.MaNV = SelectedItem.MaNV;
-                MainViewModel.Instance.SidebarNhanVienVM.LoadNhanVienInfo(SelectedItem.MaNV);
-            });
+                LoadNhanVienList();
+            };
+            
+            Messenger.NhanVienSelected += manv =>
+            {
+                SelectedItem = NhanVienList.FirstOrDefault(nv =>  nv.MaNV== manv);
+            };
+
         }
         public void LoadNhanVienList()
         {

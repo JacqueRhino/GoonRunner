@@ -12,12 +12,12 @@
              d:DesignHeight="590" d:DesignWidth="250">
     <Grid>
         <StackPanel>
-            <gr:Textbox SetHeader="Tên SP" SetPlaceholder="Nhập họ khách hàng" SetBinding="{Binding HoKH}"/>
-            <gr:Textbox SetHeader="Loại SP" SetPlaceholder="Nhập tên khách hàng" SetBinding="{Binding TenKH}"/>
+            <gr:Textbox SetHeader="Tên SP" SetPlaceholder="Nhập họ khách hàng" SetBinding="{Binding HoKh}"/>
+            <gr:Textbox SetHeader="Loại SP" SetPlaceholder="Nhập tên khách hàng" SetBinding="{Binding TenKh}"/>
             <gr:Textbox SetHeader="Thời gian BH" SetPlaceholder="Nhập địa chỉ" SetBinding="{Binding DiaChi}"/>
-            <gr:Textbox SetHeader="Giá SP" SetPlaceholder="Nhập số điện thoại" SetBinding="{Binding SDT}"/>
-            <gr:Textbox SetHeader="Nhà SX" SetPlaceholder="Nhập số điện thoại" SetBinding="{Binding SDT}"/>
-            <gr:Textbox SetHeader="Khuyến Mãi (Có/Không)" SetPlaceholder="Nhập số điện thoại" SetBinding="{Binding SDT}"/>
+            <gr:Textbox SetHeader="Giá SP" SetPlaceholder="Nhập số điện thoại" SetBinding="{Binding Sdt}"/>
+            <gr:Textbox SetHeader="Nhà SX" SetPlaceholder="Nhập số điện thoại" SetBinding="{Binding Sdt}"/>
+            <gr:Textbox SetHeader="Khuyến Mãi (Có/Không)" SetPlaceholder="Nhập số điện thoại" SetBinding="{Binding Sdt}"/>
 
             <DatePicker gr:Extensions.Header="Ngày nhập hàng"
                                 VerticalContentAlignment="Center"

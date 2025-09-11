@@ -11,11 +11,11 @@
              d:DesignHeight="590" d:DesignWidth="250">
     <Grid>
         <StackPanel>
-            <gr:Textbox SetHeader="Mã KH" SetPlaceholder="Mã Khách hàng" SetBinding="{Binding MaKH}" IsHitTestVisible="False"/>
-            <gr:Textbox SetHeader="Họ KH" SetPlaceholder="Nhập họ khách hàng" SetBinding="{Binding HoKH}"/>
-            <gr:Textbox SetHeader="Tên KH" SetPlaceholder="Nhập tên khách hàng" SetBinding="{Binding TenKH}"/>
+            <gr:Textbox SetHeader="Mã KH" SetPlaceholder="Mã Khách hàng" SetBinding="{Binding MaKh}" IsHitTestVisible="False"/>
+            <gr:Textbox SetHeader="Họ KH" SetPlaceholder="Nhập họ khách hàng" SetBinding="{Binding HoKh}"/>
+            <gr:Textbox SetHeader="Tên KH" SetPlaceholder="Nhập tên khách hàng" SetBinding="{Binding TenKh}"/>
             <gr:Textbox SetHeader="Địa chỉ" SetPlaceholder="Nhập địa chỉ" SetBinding="{Binding DiaChi}"/>
-            <gr:Textbox SetHeader="SĐT" SetPlaceholder="Nhập số điện thoại" SetBinding="{Binding SDT}"/>
+            <gr:Textbox SetHeader="SĐT" SetPlaceholder="Nhập số điện thoại" SetBinding="{Binding Sdt}"/>
 
             <DatePicker gr:Extensions.Header="Ngày sinh"
                                 VerticalContentAlignment="Center"
@@ -47,7 +47,7 @@
                         Style="{StaticResource SidebarButton}"
                         Command="{Binding UpdateKhachHangCommand}">
                     <StackPanel>
-                        <ui:SymbolIcon Symbol="Pen24" FontSize="20"/>
+                        <ui:SymbolIcon Symbol="Pen20" FontSize="22"/>
                     </StackPanel>
                 </Button>
 
@@ -56,7 +56,7 @@
                         Style="{StaticResource SidebarButton}"
                         Command="{Binding ClearFieldCommand}">
                     <StackPanel>
-                        <TextBlock Text="" FontFamily="{StaticResource 'Segoe Fluent Icons'}" FontSize="20"/>
+                        <TextBlock Text="" FontFamily="{StaticResource 'Segoe Fluent Icons'}" FontSize="22"/>
                     </StackPanel>
                 </Button>
 

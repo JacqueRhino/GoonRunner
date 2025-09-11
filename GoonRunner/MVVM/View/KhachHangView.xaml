@@ -4,7 +4,6 @@
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:gr="clr-namespace:GoonRunner.Utils"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel"
              d:DataContext="{d:DesignInstance Type=viewmodel:KhachHangViewModel}"
@@ -13,10 +12,10 @@
              d:DesignHeight="720">
     <UserControl.Resources>
         <SolidColorBrush x:Key="Foreground" Color="#3c3836"/>
-        <SolidColorBrush x:Key="Foreground2" Color="#A89984"/>
-        <SolidColorBrush x:Key="Background" Color="#fbf1c7"/>
-        <SolidColorBrush x:Key="Orange" Color="#D65D0E"/>
-        <SolidColorBrush x:Key="Aqua" Color="#427B55"/>
+        <!-- <SolidColorBrush x:Key="Foreground2" Color="#A89984"/> -->
+        <!-- <SolidColorBrush x:Key="Background" Color="#fbf1c7"/> -->
+        <!-- <SolidColorBrush x:Key="Orange" Color="#D65D0E"/> -->
+        <!-- <SolidColorBrush x:Key="Aqua" Color="#427B55"/> -->
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -65,11 +64,6 @@
                   BorderThickness="0"
                   ItemContainerStyle="{StaticResource CenteredListViewItemStyle}"
                   Background="Transparent">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding LoadToSidebar}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
             <ListView.View>
                 <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle1}">
                     <GridViewColumn Header="Mã KH" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="MaKH"/>
