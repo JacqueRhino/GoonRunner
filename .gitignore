@@ -1,12 +1,19 @@
+# Visual Studio
+*.sln
+*.suo
+*.user
+*.userosscache
+*.csproj.user
 bin/
 obj/
-/packages/
-riderModule.iml
-/_ReSharper.Caches/
-/.vs/GoonRunner/FileContentIndex
-/.vs/GoonRunner/v17/DocumentLayout.backup.json
-/.vs/GoonRunner/v17/DocumentLayout.json
-/.vs/GoonRunner/v17/.suo
-/GoonRunner/.vs/GoonRunner.csproj.dtbcache.json
-GoonRunner.sln.DotSettings.user
-/.idea
+
+# JetBrains IDEs
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# packages
+packages/
+
