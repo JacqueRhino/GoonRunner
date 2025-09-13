@@ -7,7 +7,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel"
              d:DataContext="{d:DesignInstance Type=viewmodel:TonKhoViewModel}"
-             DataContext="{StaticResource TonKhoVM}"
+             DataContext="{StaticResource TonKhoVm}"
              mc:Ignorable="d"
              d:DesignWidth="590"
              d:DesignHeight="700" >

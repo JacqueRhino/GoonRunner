@@ -9,7 +9,7 @@
         xmlns:visibility="clr-namespace:GoonRunner.Utils"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=viewmodel:LoginViewModel}"
-        DataContext="{StaticResource LoginVM}"
+        DataContext="{StaticResource LoginVm}"
         Name="loginWindow"
         Height="500" Width="380"
         WindowStyle="None"

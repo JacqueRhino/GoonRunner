@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
                      xmlns:view="clr-namespace:GoonRunner.MVVM.View"
                     xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel">
-    <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
+    <viewmodel:MainViewModel x:Key="MainVm"></viewmodel:MainViewModel>
     <!-- Menu View -->
     <DataTemplate DataType="{x:Type viewmodel:HomeViewModel}">
         <view:HomeView/>
@@ -58,22 +58,22 @@
         <view:SidebarChiTietHoaDonView/>
     </DataTemplate>
 
-    <viewmodel:LoginViewModel x:Key="LoginVM"/>
-    <viewmodel:OwnerHomeViewModel x:Key="OwnerHomeVM"/>
-    <viewmodel:KhachHangViewModel x:Key="KhachHangVM"/>
-    <viewmodel:NhanVienViewModel x:Key="NhanVienVM"/>
-    <viewmodel:SanPhamViewModel x:Key="SanPhamVM"/>
-    <viewmodel:PhieuNhapHangViewModel x:Key="PhieuNhapHangVM"/>
-    <viewmodel:ChiTietPhieuNhapHangViewModel x:Key="ChiTietPhieuNhapHangVM"/>
-    <viewmodel:HoaDonViewModel x:Key="HoaDonVM"/>
-    <viewmodel:ChiTietHoaDonViewModel x:Key="ChiTietHoaDonVM"/>
-    <viewmodel:SidebarKhachHangViewModel x:Key="SidebarKhachHangVM"/>
-    <viewmodel:SidebarNhanVienViewModel x:Key="SidebarNhanVienVM"/>
-    <viewmodel:SidebarSanPhamViewModel x:Key="SidebarSanPhamVM"/>
-    <viewmodel:SidebarPhieuNhapHangViewModel x:Key="SidebarPhieuNhapHangVM"/>
-    <viewmodel:SidebarChiTietPhieuNhapHangViewModel x:Key="SidebarChiTietPhieuNhapHangVM"/>
-    <viewmodel:SidebarHoaDonViewModel x:Key="SidebarHoaDonVM"/>
-    <viewmodel:SidebarChiTietHoaDonViewModel x:Key="SidebarChiTietHoaDonVM"/>
-    <viewmodel:TonKhoViewModel x:Key="TonKhoVM"/>
-    <viewmodel:ForgotPasswordViewModel x:Key="ForgotPassVM"/>
+    <viewmodel:LoginViewModel x:Key="LoginVm"/>
+    <viewmodel:OwnerHomeViewModel x:Key="OwnerHomeVm"/>
+    <viewmodel:KhachHangViewModel x:Key="KhachHangVm"/>
+    <viewmodel:NhanVienViewModel x:Key="NhanVienVm"/>
+    <viewmodel:SanPhamViewModel x:Key="SanPhamVm"/>
+    <viewmodel:PhieuNhapHangViewModel x:Key="PhieuNhapHangVm"/>
+    <viewmodel:ChiTietPhieuNhapHangViewModel x:Key="ChiTietPhieuNhapHangVm"/>
+    <viewmodel:HoaDonViewModel x:Key="HoaDonVm"/>
+    <viewmodel:ChiTietHoaDonViewModel x:Key="ChiTietHoaDonVm"/>
+    <viewmodel:SidebarKhachHangViewModel x:Key="SidebarKhachHangVm"/>
+    <viewmodel:SidebarNhanVienViewModel x:Key="SidebarNhanVienVm"/>
+    <viewmodel:SidebarSanPhamViewModel x:Key="SidebarSanPhamVm"/>
+    <viewmodel:SidebarPhieuNhapHangViewModel x:Key="SidebarPhieuNhapHangVm"/>
+    <viewmodel:SidebarChiTietPhieuNhapHangViewModel x:Key="SidebarChiTietPhieuNhapHangVm"/>
+    <viewmodel:SidebarHoaDonViewModel x:Key="SidebarHoaDonVm"/>
+    <viewmodel:SidebarChiTietHoaDonViewModel x:Key="SidebarChiTietHoaDonVm"/>
+    <viewmodel:TonKhoViewModel x:Key="TonKhoVm"/>
+    <viewmodel:ForgotPasswordViewModel x:Key="ForgotPassVm"/>
 </ResourceDictionary>

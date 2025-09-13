@@ -85,6 +85,7 @@
     <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="Utils\Messenger.cs" />
+    <Compile Include="Utils\Result.cs" />
     <Page Include="CustomControl\Textbox.xaml" />
     <Page Include="MVVM\View\BaoHanhView.xaml">
       <SubType>Designer</SubType>
@@ -363,6 +364,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Icon\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Fonts\JetBrainsMono-Bold.ttf" />

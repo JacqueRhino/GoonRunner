@@ -86,10 +86,10 @@ namespace GoonRunner.MVVM.ViewModel
                 }
                 var password = passwordBox.Password;
 
-                var (isValid, validationError) = ValidateLoginInput(UserName, password);
-                if (!isValid)
+                var userValidation = ValidateLoginInput(UserName, password);
+                if (!userValidation.IsSuccess)
                 {
-                    ErrorMessage = validationError;
+                    ErrorMessage = userValidation.Error;
                     return;
                 }
 
@@ -99,21 +99,21 @@ namespace GoonRunner.MVVM.ViewModel
                 {
                     storyboard?.Begin();
 
-                    var (user, checkaccountError) = await Task.Run(() => CheckAccount(UserName, password));
+                    var userAccount = await Task.Run(() => CheckAccount(UserName, password));
 
-                    if (user == null)
+                    if (!userAccount.IsSuccess)
                     {
-                        ErrorMessage = checkaccountError;
+                        ErrorMessage = userAccount.Error;
                         return;
                     }
 
-                    if (!EmployeeRoles.RoleNames.StringToRole.TryGetValue(user.Quyen, out EmployeeRoles.Roles employeeRole))
+                    if (!EmployeeRoles.RoleNames.StringToRole.TryGetValue(userAccount.Value.Quyen, out var employeeRole))
                     {
                         ErrorMessage = "Không phải quyền hợp lệ";
                         return;
                     }
 
-                    EnterMainView(p, user.MaNV, user.Quyen, user.DisplayName, employeeRole);
+                    EnterMainView(p, userAccount.Value.MaNV, userAccount.Value.Quyen, userAccount.Value.DisplayName, employeeRole);
                 }
                 catch (Exception ex)
                 {
@@ -133,21 +133,22 @@ namespace GoonRunner.MVVM.ViewModel
         }
 
 
-        private static (bool isValid, string errorMessage) ValidateLoginInput(string username, string password)
+        private static Result<bool, string> ValidateLoginInput(string username, string password)
         {
             if (string.IsNullOrEmpty(username))
-                return (false, "Hãy nhập tên người dùng");
+                return Result<bool, string>.Failure("Hãy nhập tên người dùng");
+            
 
             if (username.Length < 3)
-                return (false, "Tên người dùng phải dài ít nhất là 3 ký tự");
+                return Result<bool, string>.Failure("Tên người dùng phải dài ít nhất là 3 ký tự");
 
             if (string.IsNullOrEmpty(password))
-                return (false, "Hãy nhập mật khẩu");
+                return Result<bool, string>.Failure("Hãy nhập mật khẩu");
 
             if (password.Length < 3)
-                return (false, "Mật khẩu phải dài ít nhất là 3 ký tự");
+                return Result<bool, string>.Failure("Mật khẩu phải dài ít nhất là 3 ký tự");
 
-            return (true, "");
+            return Result<bool, string>.Success(true);
         } 
         
         private void EnterMainView(Window p,int MaNV, string RoleInString, string DisplayName, EmployeeRoles.Roles Role)
@@ -162,7 +163,7 @@ namespace GoonRunner.MVVM.ViewModel
             p.Hide();
         }
 
-        private static (UserAccountDTO user, string error) CheckAccount(string username, string password)
+        private static Result<UserAccountDTO,string> CheckAccount(string username, string password)
         {
             var encodedPass = MD5Hash(password);
 
@@ -170,7 +171,7 @@ namespace GoonRunner.MVVM.ViewModel
             {
                 if (!context.Database.Exists())
                 {
-                    return (null, "Không thể kết nối cơ sở dữ liệu");
+                    return Result<UserAccountDTO, string>.Failure("Không thể kết nối cơ sở dữ liệu");
                 }
 
                 try
@@ -182,20 +183,20 @@ namespace GoonRunner.MVVM.ViewModel
                     ).FirstOrDefault();
 
                     if (userAccount == null)
-                        return (null, "Tên tài khoản hoặc mật khẩu không đúng.");
+                        return Result<UserAccountDTO, string>.Failure("Tên tài khoản hoặc mật khẩu không đúng.");
 
-                    return (userAccount, null);
+                    return Result<UserAccountDTO, string>.Success(userAccount);
                 }
                 catch (SqlException ex)
                 {
                     var error = ex.Number == 2812
                         ? "Stored procedure 'kiem_tra_login' không tồn tại trong cơ sở dữ liệu."
                         : $"Lỗi truy vấn cơ sở dữ liệu: {ex.Message}";
-                    return (null, error);
+                    return Result<UserAccountDTO, string>.Failure(error);
                 }
                 catch (Exception ex)
                 {
-                    return (null, $"Lỗi không xác định: {ex.Message}");
+                    return Result<UserAccountDTO, string>.Failure(ex.Message);
                 }
             }
         }
@@ -204,7 +205,7 @@ namespace GoonRunner.MVVM.ViewModel
         {
             var hash = new StringBuilder();
             var md5Provider = new System.Security.Cryptography.MD5CryptoServiceProvider();
-            byte[] bytes = md5Provider.ComputeHash(new UTF8Encoding().GetBytes(input));
+            var bytes = md5Provider.ComputeHash(new UTF8Encoding().GetBytes(input));
 
             foreach (var t in bytes)
             {

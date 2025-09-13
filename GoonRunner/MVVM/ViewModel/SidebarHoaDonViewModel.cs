@@ -76,8 +76,6 @@ namespace GoonRunner.MVVM.ViewModel
         public ICommand AddHoaDonCommand { get; }
         public ICommand ClearFieldCommand { get; }
 
-        // Accept a callback action to notify the parent ViewModel about changes
-
         public SidebarHoaDonViewModel(UserSession userSession, Action refreshHoaDonList = null)
         {
             CurrentSession = userSession ?? throw new ArgumentNullException(nameof(userSession));

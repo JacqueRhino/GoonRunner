@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel" 
         d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
-        DataContext="{StaticResource MainVM}"
+        DataContext="{StaticResource MainVm}"
         Title="GoonRunner - Trang chủ"
         Name="MainWindow"
         Height="800" Width="1280" MinHeight="500" MinWidth="700" Background="{StaticResource Background}"

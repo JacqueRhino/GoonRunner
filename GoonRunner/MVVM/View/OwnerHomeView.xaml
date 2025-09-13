@@ -8,7 +8,7 @@
              xmlns:local="clr-namespace:GoonRunner.MVVM.View"
              xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel"
              d:DataContext="{d:DesignInstance Type=viewmodel:OwnerHomeViewModel}"
-             DataContext="{StaticResource OwnerHomeVM}"
+             DataContext="{StaticResource OwnerHomeVm}"
              mc:Ignorable="d"
              d:DesignHeight="590" d:DesignWidth="755">
     <UserControl.Resources>
