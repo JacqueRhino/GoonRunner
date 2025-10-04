@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             d:DesignHeight="590" d:DesignWidth="755">
+             d:DesignWidth="755">
     <UserControl.Resources>
         <SolidColorBrush x:Key="Foreground" Color="#3c3836"/>
         <!-- <SolidColorBrush x:Key="Foreground2" Color="#A89984"/> -->
@@ -19,20 +19,16 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <!-- <RowDefinition Height="*"/> -->
+            <!-- <RowDefinition Height="*"/> -->
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <GroupBox Grid.Row="0" 
-                      Grid.Column="0" 
-                      Style="{StaticResource GroupBoxGoonRunner}" 
+        <UniformGrid x:Name="TopStatsPanel"
+                     Grid.Row="0"
+                     Columns="4"
+                     Rows="1" > 
+            <GroupBox
+                Style="{StaticResource GroupBoxGoonRunner}" 
                       Header="Lương" Foreground="{StaticResource Aqua}">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -60,7 +56,7 @@
                                FontSize="32"/>
                 </Grid>
             </GroupBox>
-            <GroupBox Grid.Row="0" Grid.Column="1" Style="{StaticResource GroupBoxGoonRunner}" Header="Tình Trạng" Foreground="{StaticResource Red}">
+            <GroupBox Style="{StaticResource GroupBoxGoonRunner}" Header="Tình Trạng" Foreground="{StaticResource Red}">
                 <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" MinHeight="10"/>
@@ -82,7 +78,7 @@
                                FontSize="32"/>
                 </Grid>
             </GroupBox>
-            <GroupBox Grid.Row="0" Grid.Column="2" Style="{StaticResource GroupBoxGoonRunner}" Header="Xếp Hạng" Foreground="{StaticResource Orange}">
+            <GroupBox Style="{StaticResource GroupBoxGoonRunner}" Header="Xếp Hạng" Foreground="{StaticResource Orange}">
                 <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" MinHeight="10"/>
@@ -123,7 +119,7 @@
                                HorizontalAlignment="Center"/>
                 </Grid>
             </GroupBox>
-            <GroupBox Grid.Row="0" Grid.Column="3" Style="{StaticResource GroupBoxGoonRunner}" Header="KPI" Foreground="#98971A">
+            <GroupBox Style="{StaticResource GroupBoxGoonRunner}" Header="KPI" Foreground="#98971A">
                 <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" MinHeight="10"/>
@@ -163,115 +159,111 @@
                                HorizontalAlignment="Center"/>
                 </Grid>
             </GroupBox>
-        </Grid>
-        <Grid Grid.Row="1" Grid.RowSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        </UniformGrid>
+        <UniformGrid x:Name="Analytics"
+                     Grid.Row="2"
+                     Columns="2"
+                     Rows="1" > 
             <GroupBox Grid.ColumnSpan="2" Style="{StaticResource GroupBoxGoonRunner}" Header="Đơn bán được trong 12 tháng">
                 <Image Source="/Assets/Images/nen1.png"/>
             </GroupBox>
             <GroupBox Grid.Column="2" Style="{StaticResource GroupBoxGoonRunner}" Header="Sản Phẩm Bán Chạy">
                 <Image Source="/Assets/Images/nen2.png"/>
             </GroupBox>
+        </UniformGrid>
+<!-- <Grid Grid.Row="3"> -->
+<!--     <GroupBox Grid.Row="0" Style="{StaticResource GroupBoxGoonRunner}" Header="Lịch Làm" > -->
+<!--         <Grid> -->
+<!--             <Grid.ColumnDefinitions> -->
+<!--                 <ColumnDefinition Width="100"/> -->
+<!--                 <ColumnDefinition Width="*"/> -->
+<!--                 <ColumnDefinition Width="*"/> -->
+<!--                 <ColumnDefinition Width="*"/> -->
+<!--                 <ColumnDefinition Width="*"/> -->
+<!--                 <ColumnDefinition Width="*"/> -->
+<!--                 <ColumnDefinition Width="*"/> -->
+<!--                 <ColumnDefinition Width="*"/> -->
+<!--             </Grid.ColumnDefinitions> -->
+<!--             <Grid.RowDefinitions> -->
+<!--                 <RowDefinition Height="30"/> -->
+<!--                 <RowDefinition Height="*"/> -->
+<!--                 <RowDefinition Height="*"/> -->
+<!--                 <RowDefinition Height="*"/> -->
+<!--             </Grid.RowDefinitions> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="0" Grid.Column="0"> -->
+<!--                 <TextBlock Text="Ca Làm"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
+<!--             </Border> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="0" Grid.Column="1"> -->
+<!--                 <TextBlock Text="Thứ 2"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
+<!--             </Border> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="0" Grid.Column="2"> -->
+<!--                 <TextBlock Text="Thứ 3"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
+<!--             </Border> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="0" Grid.Column="3"> -->
+<!--                 <TextBlock Text="Thứ 4"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
+<!--             </Border> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="0" Grid.Column="4"> -->
+<!--                 <TextBlock Text="Thứ 5"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
+<!--             </Border> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="0" Grid.Column="5"> -->
+<!--                 <TextBlock Text="Thứ 6"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
+<!--             </Border> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="0" Grid.Column="6"> -->
+<!--                 <TextBlock Text="Thứ 7"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
+<!--             </Border> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="0" Grid.Column="7"> -->
+<!--                 <TextBlock Text="Chủ Nhật"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
+<!--             </Border> -->
+<!-- -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="1" Grid.Column="0"> -->
+<!--                 <TextBlock Text="Sáng" VerticalAlignment="Center" HorizontalAlignment="Center"/> -->
+<!--             </Border> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="2" Grid.Column="0"> -->
+<!--                 <TextBlock Text="Chiều" VerticalAlignment="Center" HorizontalAlignment="Center"/> -->
+<!--             </Border> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="3" Grid.Column="0"> -->
+<!--                 <TextBlock Text="Tối" VerticalAlignment="Center" HorizontalAlignment="Center"/> -->
+<!--             </Border> -->
+<!-- -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="1" Grid.Column="1"> -->
+<!--                 <Rectangle Fill="{StaticResource Blue}"/> -->
+<!--             </Border> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="1" Grid.Column="2"/> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="1" Grid.Column="3"/> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="1" Grid.Column="4"> -->
+<!--                 <Rectangle Fill="{StaticResource Blue}"/> -->
+<!--             </Border> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="1" Grid.Column="5"/> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="1" Grid.Column="6"> -->
+<!--                 <Rectangle Fill="{StaticResource Blue}"/> -->
+<!--             </Border> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="1" Grid.Column="7"/> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="2" Grid.Column="1"/> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="2" Grid.Column="2"> -->
+<!--                 <Rectangle Fill="{StaticResource Blue}"/> -->
+<!--             </Border> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="2" Grid.Column="3"/> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="2" Grid.Column="4"> -->
+<!--                 <Rectangle Fill="{StaticResource Blue}"/> -->
+<!--             </Border> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="2" Grid.Column="5"> -->
+<!--                 <Rectangle Fill="{StaticResource Blue}"/> -->
+<!--             </Border> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="2" Grid.Column="6"/> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="2" Grid.Column="7"/> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="3" Grid.Column="1"/> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="3" Grid.Column="2"/> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="3" Grid.Column="3"/> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="3" Grid.Column="4"> -->
+<!--                 <Rectangle Fill="{StaticResource Blue}"/> -->
+<!--             </Border> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="3" Grid.Column="5"> -->
+<!--                 <Rectangle Fill="{StaticResource Blue}"/> -->
+<!--             </Border> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="3" Grid.Column="6"/> -->
+<!--             <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="3" Grid.Column="7"/> -->
+<!--         </Grid> -->
+<!--                 </GroupBox> -->
+<!--             </Grid>  -->
         </Grid>
-        <Grid Grid.Row="3">
-<Grid Grid.Row="3">
-    <GroupBox Grid.Row="0" Style="{StaticResource GroupBoxGoonRunner}" Header="Lịch Làm" >
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="0" Grid.Column="0">
-                <TextBlock Text="Ca Làm"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="0" Grid.Column="1">
-                <TextBlock Text="Thứ 2"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="0" Grid.Column="2">
-                <TextBlock Text="Thứ 3"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="0" Grid.Column="3">
-                <TextBlock Text="Thứ 4"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="0" Grid.Column="4">
-                <TextBlock Text="Thứ 5"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="0" Grid.Column="5">
-                <TextBlock Text="Thứ 6"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="0" Grid.Column="6">
-                <TextBlock Text="Thứ 7"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="0" Grid.Column="7">
-                <TextBlock Text="Chủ Nhật"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="1" Grid.Column="0">
-                <TextBlock Text="Sáng" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </Border>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="2" Grid.Column="0">
-                <TextBlock Text="Chiều" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </Border>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="3" Grid.Column="0">
-                <TextBlock Text="Tối" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </Border>
-
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="1" Grid.Column="1">
-                <Rectangle Fill="{StaticResource Blue}"/>
-            </Border>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="1" Grid.Column="2"/>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="1" Grid.Column="3"/>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="1" Grid.Column="4">
-                <Rectangle Fill="{StaticResource Blue}"/>
-            </Border>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="1" Grid.Column="5"/>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="1" Grid.Column="6">
-                <Rectangle Fill="{StaticResource Blue}"/>
-            </Border>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="1" Grid.Column="7"/>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="2" Grid.Column="1"/>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="2" Grid.Column="2">
-                <Rectangle Fill="{StaticResource Blue}"/>
-            </Border>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="2" Grid.Column="3"/>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="2" Grid.Column="4">
-                <Rectangle Fill="{StaticResource Blue}"/>
-            </Border>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="2" Grid.Column="5">
-                <Rectangle Fill="{StaticResource Blue}"/>
-            </Border>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="2" Grid.Column="6"/>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="2" Grid.Column="7"/>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="3" Grid.Column="1"/>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="3" Grid.Column="2"/>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="3" Grid.Column="3"/>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="3" Grid.Column="4">
-                <Rectangle Fill="{StaticResource Blue}"/>
-            </Border>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="3" Grid.Column="5">
-                <Rectangle Fill="{StaticResource Blue}"/>
-            </Border>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="3" Grid.Column="6"/>
-            <Border BorderBrush="{StaticResource Foreground}" BorderThickness="1" Grid.Row="3" Grid.Column="7"/>
-        </Grid>
-                </GroupBox>
-            </Grid> 
-        </Grid>
-    </Grid>
 </UserControl>
