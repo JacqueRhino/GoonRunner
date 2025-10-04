@@ -13,12 +13,14 @@
         Title="{Binding Title}"
         Name="MainWindow"
         Height="800" Width="1280" MinHeight="500" MinWidth="700" Background="{StaticResource Background}"
+        SizeChanged="Window_SizeChanged"
         Icon="/GoonRunner.ico">
     <Window.Resources>
         <SolidColorBrush x:Key="Foreground" Color="#3c3836"/>
         <SolidColorBrush x:Key="Background" Color="#fbf1c7"/>
         
         <visibility:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <visibility:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
     </Window.Resources>
     
     <WindowChrome.WindowChrome>
@@ -102,17 +104,17 @@
                     <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
 
                         <ToggleButton Style="{StaticResource NavToggleButton}"
-                                Name="SidebarButton"
-                                FontSize="24"
-                                gr:Extensions.Icon="DualScreenStatusBar24"
-                                IsEnabled="{Binding IsSidebarButtonEnabled}"
-                                Click="ControlSidebar">
-                        </ToggleButton>
+                                      Name="SidebarButton"
+                                      FontSize="24"
+                                      gr:Extensions.Icon="DualScreenStatusBar24"
+                                      IsEnabled="{Binding IsSidebarButtonEnabled}"
+                                      Click="ControlSidebar"/>
 
                         <Button Height="60" Width="auto" Style="{StaticResource NavButton}"
                                 FontSize="24"
                                 gr:Extensions.Icon="Settings32">
                         </Button>
+                        
 
                     </StackPanel>
 
@@ -145,10 +147,11 @@
                 </Grid>
             </GroupBox>
             <customControl:MenuControl Grid.Column="1"
-                               Grid.Row="3"
-                               DataContext="{Binding}" />
-
-            <GridSplitter Grid.Column="2" Grid.Row="3" Style="{StaticResource GridSplitterColumn}"
+                                       Grid.Row="3"
+                                       DataContext="{Binding}"
+                                       />            
+            
+            <GridSplitter Name="Split1" Grid.Column="2" Grid.Row="3" Style="{StaticResource GridSplitterColumn}"
                           VerticalAlignment="Stretch" HorizontalAlignment="Left" 
                           ResizeBehavior="PreviousAndNext" ResizeDirection="Columns"
                           Margin="-6,20,0,10"
@@ -162,6 +165,9 @@
                           VerticalAlignment="Stretch" HorizontalAlignment="Left" 
                           ResizeBehavior="PreviousAndNext" ResizeDirection="Columns"
                           Margin="-6,20,0,10"
+                          PreviewMouseDown="Split2_OnPreviewMouseDown"
+                          MouseLeave="Split2_OnMouseLeave"
+                          PreviewMouseMove="Split2_OnPreviewMouseMove"
                           DragDelta="CheckSidebarWidth"
                           DragCompleted="SetSidebarWidth"/>
             <GroupBox Grid.Column="5" Grid.Row="3" Style="{StaticResource GroupBoxGoonRunner}" Header="Sidebar">

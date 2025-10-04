@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using GoonRunner.MVVM.Model;
 using GoonRunner.Utils;
 
@@ -217,6 +218,7 @@ namespace GoonRunner.MVVM.ViewModel
                 CurrentView = NhanVienVM;
                 CurrentSidebarView = SidebarNhanVienVM;
                 Title = "GoonRunner - Nhân Viên";
+                IsSplit2Enabled =  true;
                 EnableSidebar();
             });
 
@@ -225,6 +227,7 @@ namespace GoonRunner.MVVM.ViewModel
                 CurrentView = KhachHangVM;
                 CurrentSidebarView = SidebarKhachHangVM;
                 Title = "GoonRunner - Khách Hàng";
+                IsSplit2Enabled =  true;
                 EnableSidebar();
             });
             
@@ -240,6 +243,7 @@ namespace GoonRunner.MVVM.ViewModel
             {
                 CurrentView = PhieuNhapHangVM;
                 CurrentSidebarView = SidebarPhieuNhapHangVM;
+                IsSplit2Enabled =  true;
                 Title = "GoonRunner - Phiếu Nhập Hàng";
                 EnableSidebar();
             });
@@ -248,6 +252,7 @@ namespace GoonRunner.MVVM.ViewModel
             {
                 CurrentView = HoaDonVM;
                 CurrentSidebarView = SidebarHoaDonVM;
+                IsSplit2Enabled =  true;
                 Title = "GoonRunner - Hóa Đơn";
                 EnableSidebar();
             });
@@ -387,7 +392,6 @@ namespace GoonRunner.MVVM.ViewModel
         private void SignOut(Window p)
         {
             ResetState();
-            // Instance = null;
             var loginWindow = new LogInView();
             var loginVM = loginWindow.DataContext as LoginViewModel; 
             loginVM?.ResetLogin();
