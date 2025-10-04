@@ -1,0 +1,177 @@
+<UserControl x:Class="GoonRunner.CustomControl.MenuControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:gr="clr-namespace:GoonRunner.Utils"
+             mc:Ignorable="d" >
+
+    <GroupBox Style="{StaticResource GroupBoxGoonRunner}" Header="Menu">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0">
+
+                <RadioButton Name="TrangChuRadioButton"
+                             Style="{StaticResource RadioButtonStyle}"
+                             gr:Extensions.Icon="Home20"
+                             Command="{Binding HomeViewCommand}"
+                             Visibility="{Binding IsHomeVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                             IsChecked="True">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}"
+                                   FontWeight="Medium"
+                                   FontSize="18"
+                                   Margin="10,0,0,0">
+                            Trang Chủ
+                        </TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <RadioButton Name="NhanVienRadioButton"
+                             Style="{StaticResource RadioButtonStyle}"
+                             gr:Extensions.Icon="PersonAccounts20"
+                             Command="{Binding EmployeeViewCommand}"
+                             Visibility="{Binding IsNhanVienVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                             >
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}"
+                                   FontWeight="Medium"
+                                   FontSize="18"
+                                   Margin="10,0,0,0">
+                            Nhân Viên
+                        </TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <RadioButton Name="SanPhamRadioButton"
+                             Style="{StaticResource RadioButtonStyle}"
+                             gr:Extensions.Icon="Box20"
+                             Command="{Binding ProductViewCommand}"
+                             Visibility="{Binding IsSanPhamVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                             >
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}"
+                                   FontWeight="Medium"
+                                   FontSize="18"
+                                   Margin="10,0,0,0">
+                            Sản Phẩm
+                        </TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <RadioButton Name="HoaDonRadioButton"
+                             Style="{StaticResource RadioButtonStyle}"
+                             gr:Extensions.Icon="Clipboard20"
+                             Command="{Binding InvoiceViewCommand}"
+                             Visibility="{Binding IsHoaDonVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                             >
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}"
+                                   FontWeight="Medium"
+                                   FontSize="18"
+                                   Margin="10,0,0,0">
+                            Hóa Đơn
+                        </TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <RadioButton Name="PhieuNhapHangRadioButton"
+                             Style="{StaticResource RadioButtonStyle}"
+                             gr:Extensions.Icon="BoxArrowUp20"
+                             Visibility="{Binding IsPhieuNhapVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                             Command="{Binding GoodsReceiptViewCommand}"
+                             >
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}"
+                                   FontWeight="Medium"
+                                   FontSize="18"
+                                   Margin="10,0,0,0">
+                            Phiếu Nhập
+                        </TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <RadioButton Name="TonKhoRadioButton"
+                             Style="{StaticResource RadioButtonStyle}"
+                             gr:Extensions.Icon="BoxMultiple20"
+                             Command="{Binding InventoryViewCommand}"
+                             Visibility="{Binding IsTonKhoVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                             >
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}"
+                                   FontWeight="Medium"
+                                   FontSize="18"
+                                   Margin="10,0,0,0">
+                            Tồn Kho
+                        </TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <RadioButton Name="KhachHangRadioButton"
+                             Style="{StaticResource RadioButtonStyle}"
+                             Command="{Binding CustomerViewCommand}"
+                             gr:Extensions.Icon="People20"
+                             Visibility="{Binding IsKhachHangVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                             >
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}"
+                                   FontWeight="Medium"
+                                   FontSize="18"
+                                   Margin="10,0,0,0">
+                            Khách Hàng
+                        </TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <RadioButton Name="KhuyenMaiRadioButton"
+                             Style="{StaticResource RadioButtonStyle}"
+                             gr:Extensions.Icon="Tag20"
+                             Visibility="{Binding IsKhuyenMaiVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                             >
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}"
+                                   FontWeight="Medium"
+                                   FontSize="18"
+                                   Margin="10,0,0,0">
+                            Khuyến Mại
+                        </TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <RadioButton Name="BaoHanhRadioButton"
+                             Style="{StaticResource RadioButtonStyle}"
+                             gr:Extensions.Icon="Wrench20"
+                             Visibility="{Binding IsBaoHanhVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                             >
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}"
+                                   FontWeight="Medium"
+                                   FontSize="18"
+                                   Margin="10,0,0,0">
+                            Bảo hành
+                        </TextBlock>
+                    </StackPanel>
+                </RadioButton>
+            </StackPanel>
+
+            <!-- SIGN OUT -->
+            <Button Grid.Row="1"
+                    Style="{StaticResource SignOutButtonTheme}"
+                    gr:Extensions.Icon="SignOut20"
+                    Command="{Binding SignOutCommand}"
+                    CommandParameter="{Binding ElementName=MainWindow}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" 
+                               FontSize="18" Margin="10,0,0,0" 
+                               VerticalAlignment="Center">
+                        Đăng xuất
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+        </Grid>
+    </GroupBox>
+</UserControl>

@@ -81,11 +81,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CustomControl\MenuControl.xaml.cs">
+      <DependentUpon>MenuControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\EmployeeRoles.cs" />
     <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="Utils\Messenger.cs" />
     <Compile Include="Utils\Result.cs" />
+    <Page Include="CustomControl\MenuControl.xaml" />
     <Page Include="CustomControl\Textbox.xaml" />
     <Page Include="MVVM\View\BaoHanhView.xaml">
       <SubType>Designer</SubType>
