@@ -1,15 +1,16 @@
-﻿<UserControl x:Class="GoonRunner.MVVM.View.ChiTietPhieuNhapHangView"
+﻿<UserControl x:Class="GoonRunner.MVVM.View.AccNhanVienView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:gr="clr-namespace:GoonRunner.Utils"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel"
-             xmlns:gr="clr-namespace:GoonRunner.Utils"
-             d:DataContext="{d:DesignInstance Type=viewmodel:ChiTietPhieuNhapHangViewModel}"
+             d:DataContext="{d:DesignInstance Type=viewmodel:AccNhanVienViewModel}"
              mc:Ignorable="d"
              d:DesignWidth="590"
-             d:DesignHeight="700" >
+             d:DesignHeight="700">
+
     <UserControl.Resources>
         <SolidColorBrush x:Key="Foreground" Color="#3c3836"/>
         <SolidColorBrush x:Key="Foreground2" Color="#A89984"/>
@@ -18,9 +19,9 @@
         <SolidColorBrush x:Key="Aqua" Color="#427B55"/>
 
     </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -31,58 +32,45 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0"
-                    Style="{StaticResource NavButtonChangeColor}" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Left"
-                    Command="{Binding PreviousPageCommand}">
-                <ui:SymbolIcon Symbol="ArrowLeft16" FontSize="20"/>
-            </Button>
             <TextBlock Grid.Column="1" FontSize="20"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       Foreground="{StaticResource Foreground}" 
-                       FontFamily="{StaticResource 'JetBrains Mono'}"
-                       FontWeight="Medium" >
-                        Chi Tiết Phiếu Nhập
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Foreground="{StaticResource Foreground}" 
+                   FontFamily="{StaticResource 'JetBrains Mono'}"
+                   FontWeight="Medium" >
+                   Tài Khoản Nhân Viên
             </TextBlock>
             <StackPanel Grid.Column="2" Margin="0,0,20, 0"
-                        Orientation="Horizontal"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Right">
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right">
                 <Button Style="{StaticResource NavButtonChangeColor}" >
                     <ui:SymbolIcon Symbol="ArrowSort16" FontSize="20"/>
                 </Button>
                 <Button Style="{StaticResource NavButtonChangeColor}"
-                        Command="{Binding RefreshCommand}">
+                    Command="{Binding RefreshCommand}">
                     <ui:SymbolIcon Symbol="ArrowClockwise24" FontSize="20"/>
                 </Button>
             </StackPanel>
         </Grid>
 
-        <gr:Textbox Grid.Row="1"
-                    Margin="5,0,4,10"
-                    SetHeader="Mã phiếu nhập"
-                    SetPlaceholder="Nhập Mã PNH"
-                    SetBinding="{Binding MaPNH, Mode=TwoWay}"/>
-
-        <ListView Grid.Row="2"
+        <ListView Grid.Row="1"
                   Margin="5,0,10,0"
-                  FontFamily="{StaticResource 'JetBrains Mono'}" 
+                  FontFamily="{StaticResource 'JetBrains Mono'}"
                   FontWeight="Medium"
-                  ItemsSource="{Binding ChiTietPhieuNhapHangList}"
+                  ItemsSource="{Binding AccNhanVienList}"
                   SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}"
                   VerticalAlignment="Top"
                   Foreground="{StaticResource Foreground}"
                   BorderThickness="0"
                   ItemContainerStyle="{StaticResource CenteredListViewItemStyle}"
-                  Background="Transparent" >
+                  Background="Transparent">
             <ListView.View>
                 <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle1}">
-                    <GridViewColumn Header="Mã SP" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="MaSP" />
-                    <GridViewColumn Header="Tên SP" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="TenSP"/>
-                    <GridViewColumn Header="Số lượng nhập" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="SoLuongNhap"/>
-                    <GridViewColumn Header="Đơn giá" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="DonGia"/>
+                    <GridViewColumn Header="Tên hiển thị" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="DisplayName"/>
+                    <GridViewColumn Header="Tên người dùng" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="UserName"/>
+                    <GridViewColumn Header="Quyền" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="Quyen"/>
+                    <GridViewColumn Header="Mã NV" CellTemplate="{StaticResource ColumnTemplate}" gr:Extensions.Binding="MaNV"/>
                 </GridView>
             </ListView.View>
         </ListView>

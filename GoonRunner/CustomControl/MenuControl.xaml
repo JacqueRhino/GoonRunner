@@ -46,6 +46,22 @@
                         </TextBlock>
                     </StackPanel>
                 </RadioButton>
+                
+                <RadioButton Name="AccNhanVienRadioButton"
+                             Style="{StaticResource RadioButtonStyle}"
+                             gr:Extensions.Icon="PersonAccounts20"
+                             Command="{Binding EmployeeAccountViewCommand}"
+                             Visibility="{Binding IsAccNhanVienVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                             >
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}"
+                                   FontWeight="Medium"
+                                   FontSize="18"
+                                   Margin="10,0,0,0">
+                            Acc Nhân Viên
+                        </TextBlock>
+                    </StackPanel>
+                </RadioButton>
 
                 <RadioButton Name="SanPhamRadioButton"
                              Style="{StaticResource RadioButtonStyle}"
@@ -163,7 +179,7 @@
                     Style="{StaticResource SignOutButtonTheme}"
                     gr:Extensions.Icon="SignOut20"
                     Command="{Binding SignOutCommand}"
-                    CommandParameter="{Binding ElementName=MainWindow}">
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontFamily="{StaticResource 'JetBrains Mono'}" 
                                FontSize="18" Margin="10,0,0,0" 

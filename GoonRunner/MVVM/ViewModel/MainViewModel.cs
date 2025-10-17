@@ -1,10 +1,9 @@
-﻿using GoonRunner.MVVM.View;
-using System.Windows.Input;
+﻿using GoonRunner.MVVM.Model;
+using GoonRunner.MVVM.View;
+using GoonRunner.Utils;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using GoonRunner.MVVM.Model;
-using GoonRunner.Utils;
+using System.Windows.Input;
 
 // ReSharper disable InconsistentNaming
 
@@ -15,6 +14,7 @@ namespace GoonRunner.MVVM.ViewModel
         #region ICommand
         public ICommand HomeViewCommand { get; }
         public ICommand EmployeeViewCommand { get; }
+        public ICommand EmployeeAccountViewCommand { get; }
         public ICommand CustomerViewCommand { get; }
         public ICommand ProductViewCommand { get; }
         public ICommand GoodsReceiptViewCommand { get; }
@@ -27,6 +27,7 @@ namespace GoonRunner.MVVM.ViewModel
 
         private KhachHangViewModel KhachHangVM { get; set; }
         public NhanVienViewModel NhanVienVM { get; set; }
+        public AccNhanVienViewModel AccNhanVienVM { get; set; }
         private SanPhamViewModel SanPhamVM { get; set; }
         public PhieuNhapHangViewModel PhieuNhapHangVM { get; private set; }
         public ChiTietPhieuNhapHangViewModel ChiTietPhieuNhapHangVM { get; set; }
@@ -38,13 +39,14 @@ namespace GoonRunner.MVVM.ViewModel
         #endregion
         #region SidebarViewModel
         public SidebarNhanVienViewModel SidebarNhanVienVM { get; private set; }
+        public SidebarAccNhanVienViewModel SidebarAccNhanVienVM { get; private set; }
         private SidebarKhachHangViewModel SidebarKhachHangVM { get; set; }
         private SidebarPhieuNhapHangViewModel SidebarPhieuNhapHangVM { get; set; }
         public SidebarChiTietPhieuNhapHangViewModel SidebarChiTietPhieuNhapHangVM { get; set; }
         private SidebarHoaDonViewModel SidebarHoaDonVM { get; set; }
         private SidebarChiTietHoaDonViewModel SidebarChiTietHoaDonVM { get; set; }
         #endregion
-        
+
         private UserSession _currentSession;
 
         private UserSession CurrentSession
@@ -58,11 +60,13 @@ namespace GoonRunner.MVVM.ViewModel
                 OnPropertyChanged(nameof(Privilege));
                 OnPropertyChanged(nameof(Role));
             }
-        }        
-        
+        }
+
         public string DisplayName => CurrentSession?.DisplayName;
         public string Privilege => CurrentSession?.RoleName;
         public EmployeeRoles.Roles Role => CurrentSession?.Role ?? EmployeeRoles.Roles.NhanVienBanHang;
+
+        #region Visibility
         private bool _isHomeVisible;
         public bool IsHomeVisible
         {
@@ -75,6 +79,13 @@ namespace GoonRunner.MVVM.ViewModel
         {
             get => _isNhanVienVisible;
             set { _isNhanVienVisible = value; OnPropertyChanged(); }
+        }
+
+        private bool _isAccNhanVienVisible;
+        public bool IsAccNhanVienVisible
+        {
+            get => _isAccNhanVienVisible;
+            set { _isAccNhanVienVisible = value; OnPropertyChanged(); }
         }
 
         private bool _isSanPhamVisible;
@@ -125,6 +136,8 @@ namespace GoonRunner.MVVM.ViewModel
             get => _isBaoHanhVisible;
             set { _isBaoHanhVisible = value; OnPropertyChanged(); }
         }
+        #endregion
+
         public object CurrentView
         {
             get => _currentView;
@@ -145,7 +158,7 @@ namespace GoonRunner.MVVM.ViewModel
             }
         }
 
-        
+
         public bool IsSidebarButtonEnabled
         {
             get => _isSidebarButtonEnabled;
@@ -155,7 +168,7 @@ namespace GoonRunner.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
-        
+
         public int SidebarLeftGapWidth
         {
             get => _sidebarLeftGapWidth;
@@ -165,7 +178,7 @@ namespace GoonRunner.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
-        
+
         public int SidebarWidth
         {
             get => _sidebarWidth;
@@ -175,7 +188,7 @@ namespace GoonRunner.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
-        
+
         public bool IsSplit2Enabled
         {
             get => _issplit2enabled;
@@ -208,8 +221,8 @@ namespace GoonRunner.MVVM.ViewModel
                 {
                     CurrentView = HomeVM;
                 }
-
                 Title = "GoonRunner - Trang Chủ";
+
                 DisableSidebar();
             });
 
@@ -218,7 +231,16 @@ namespace GoonRunner.MVVM.ViewModel
                 CurrentView = NhanVienVM;
                 CurrentSidebarView = SidebarNhanVienVM;
                 Title = "GoonRunner - Nhân Viên";
-                IsSplit2Enabled =  true;
+                IsSplit2Enabled = true;
+                EnableSidebar();
+            });
+
+            EmployeeAccountViewCommand = new RelayCommand<RadioButton>(o =>
+            {
+                CurrentView = AccNhanVienVM;
+                CurrentSidebarView = SidebarAccNhanVienVM;
+                Title = "GoonRunner - Tài Khoản Nhân Viên";
+                IsSplit2Enabled = true;
                 EnableSidebar();
             });
 
@@ -227,10 +249,10 @@ namespace GoonRunner.MVVM.ViewModel
                 CurrentView = KhachHangVM;
                 CurrentSidebarView = SidebarKhachHangVM;
                 Title = "GoonRunner - Khách Hàng";
-                IsSplit2Enabled =  true;
+                IsSplit2Enabled = true;
                 EnableSidebar();
             });
-            
+
 
             ProductViewCommand = new RelayCommand<RadioButton>(o =>
             {
@@ -243,7 +265,7 @@ namespace GoonRunner.MVVM.ViewModel
             {
                 CurrentView = PhieuNhapHangVM;
                 CurrentSidebarView = SidebarPhieuNhapHangVM;
-                IsSplit2Enabled =  true;
+                IsSplit2Enabled = true;
                 Title = "GoonRunner - Phiếu Nhập Hàng";
                 EnableSidebar();
             });
@@ -252,7 +274,7 @@ namespace GoonRunner.MVVM.ViewModel
             {
                 CurrentView = HoaDonVM;
                 CurrentSidebarView = SidebarHoaDonVM;
-                IsSplit2Enabled =  true;
+                IsSplit2Enabled = true;
                 Title = "GoonRunner - Hóa Đơn";
                 EnableSidebar();
             });
@@ -279,11 +301,11 @@ namespace GoonRunner.MVVM.ViewModel
                 var result = messageBox.ShowDialogAsync().GetAwaiter().GetResult();
                 if (result == Wpf.Ui.Controls.MessageBoxResult.Primary)
                     SignOut(p);
-                
+
             });
         }
 
-        public void SetCurrentSession(int userId, string roleInName , EmployeeRoles.Roles role, string displayName)
+        public void SetCurrentSession(int userId, string roleInName, EmployeeRoles.Roles role, string displayName)
         {
             CurrentSession = new UserSession
             {
@@ -293,7 +315,7 @@ namespace GoonRunner.MVVM.ViewModel
                 RoleName = roleInName
             };
 
-            SetAuthorization(role); 
+            SetAuthorization(role);
             SetAuthorization(CurrentSession.Role);
         }
         public void SetAuthorization(EmployeeRoles.Roles role)
@@ -317,6 +339,14 @@ namespace GoonRunner.MVVM.ViewModel
                         if (SidebarNhanVienVM == null)
                             SidebarNhanVienVM = new SidebarNhanVienViewModel();
                         IsNhanVienVisible = true;
+                        break;
+
+                    case EmployeeRoles.Permission.AccNhanVien:
+                        if (AccNhanVienVM == null)
+                            AccNhanVienVM = new AccNhanVienViewModel();
+                        if (SidebarAccNhanVienVM == null)
+                            SidebarAccNhanVienVM = new SidebarAccNhanVienViewModel();
+                        IsAccNhanVienVisible = true;
                         break;
 
                     case EmployeeRoles.Permission.KhachHang:
@@ -348,7 +378,7 @@ namespace GoonRunner.MVVM.ViewModel
 
                                 CurrentView = ChiTietHoaDonVM;
                                 CurrentSidebarView = SidebarChiTietHoaDonVM;
-                            });                       
+                            });
                         if (SidebarHoaDonVM == null)
                             SidebarHoaDonVM = new SidebarHoaDonViewModel(CurrentSession, HoaDonVM.Refresh);
                         IsHoaDonVisible = true;
@@ -393,9 +423,9 @@ namespace GoonRunner.MVVM.ViewModel
         {
             ResetState();
             var loginWindow = new LogInView();
-            var loginVM = loginWindow.DataContext as LoginViewModel; 
+            var loginVM = loginWindow.DataContext as LoginViewModel;
             loginVM?.ResetLogin();
-           
+
             loginWindow.Show();
             p.Close();
         }
@@ -407,13 +437,14 @@ namespace GoonRunner.MVVM.ViewModel
             SidebarWidth = 0;
             IsSplit2Enabled = false;
             ClearViewModels();
-            
+
         }
 
         private void ClearViewModels()
         {
             KhachHangVM = null;
             NhanVienVM = null;
+            AccNhanVienVM = null;
             SanPhamVM = null;
             PhieuNhapHangVM = null;
             ChiTietPhieuNhapHangVM = null;
@@ -423,6 +454,7 @@ namespace GoonRunner.MVVM.ViewModel
             HomeVM = null;
             OwnerHomeVM = null;
             SidebarNhanVienVM = null;
+            SidebarAccNhanVienVM = null;
             SidebarKhachHangVM = null;
             SidebarPhieuNhapHangVM = null;
             SidebarChiTietPhieuNhapHangVM = null;
@@ -435,10 +467,11 @@ namespace GoonRunner.MVVM.ViewModel
         }
         private void DisableSidebar()
         {
+            SidebarWidth = 0;
             IsSidebarButtonEnabled = false;
         }
-        
-        
+
+
         private void InitializeHomeViewModel(EmployeeRoles.Roles role)
         {
             if (role == EmployeeRoles.Roles.ChuCuaHang)
@@ -457,6 +490,6 @@ namespace GoonRunner.MVVM.ViewModel
                 CurrentView = HomeVM;
                 IsHomeVisible = true;
             }
-        }        
+        }
     }
 }

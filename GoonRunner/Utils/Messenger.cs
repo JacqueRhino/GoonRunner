@@ -1,5 +1,5 @@
-using System;
 using GoonRunner.MVVM.Model;
+using System;
 
 namespace GoonRunner.Utils
 {
@@ -25,6 +25,14 @@ namespace GoonRunner.Utils
         public static void NotifyNhanVienSelected(int maNv) => NhanVienSelected?.Invoke(maNv);
         #endregion
 
+        #region ACCNHANVIEN
+        public static event Action<ACCNHANVIEN> AccNhanVienChanged;
+        public static void NotifyAccNhanVienChanged(ACCNHANVIEN accnhanvien) => AccNhanVienChanged?.Invoke(accnhanvien);
+
+        public static event Action<int> AccNhanVienSelected;
+        public static void NotifyAccNhanVienSelected(int maNv) => AccNhanVienSelected?.Invoke(maNv);
+        #endregion
+
         #region HOADON
         public static event Action<HOADON> HoaDonChanged;
         public static void NotifyHoaDonChanged(HOADON hd) => HoaDonChanged?.Invoke(hd);
@@ -44,11 +52,11 @@ namespace GoonRunner.Utils
         public static void NotifyPhieuNhapHangSelected(int maPnh) => PhieuNhapHangSelected?.Invoke(maPnh);
 
         public static event Action<CHITIETPHIEUNHAPHANG> ChiTietPhieuNhapHangChanged;
-        public static void NotifyChiTietPhieuNhapHangChanged(CHITIETPHIEUNHAPHANG ctpnh) 
+        public static void NotifyChiTietPhieuNhapHangChanged(CHITIETPHIEUNHAPHANG ctpnh)
             => ChiTietPhieuNhapHangChanged?.Invoke(ctpnh);
 
         public static event Action<int> ChiTietPhieuNhapHangSelected;
-        public static void NotifyChiTietPhieuNhapHangSelected(int maCtpnh) 
+        public static void NotifyChiTietPhieuNhapHangSelected(int maCtpnh)
             => ChiTietPhieuNhapHangSelected?.Invoke(maCtpnh);
         #endregion
     }

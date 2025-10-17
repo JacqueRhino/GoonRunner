@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
                      xmlns:view="clr-namespace:GoonRunner.MVVM.View"
                     xmlns:viewmodel="clr-namespace:GoonRunner.MVVM.ViewModel">
-    <viewmodel:MainViewModel x:Key="MainVm"></viewmodel:MainViewModel>
     <!-- Menu View -->
     <DataTemplate DataType="{x:Type viewmodel:HomeViewModel}">
         <view:HomeView/>
@@ -15,6 +14,9 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewmodel:NhanVienViewModel}">
         <view:NhanVienView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:AccNhanVienViewModel}">
+        <view:AccNhanVienView/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewmodel:SanPhamViewModel}">
         <view:SanPhamView/>
@@ -39,6 +41,9 @@
     <DataTemplate DataType="{x:Type viewmodel:SidebarNhanVienViewModel}">
         <view:SidebarNhanVienView/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:SidebarAccNhanVienViewModel}">
+        <view:SidebarAccNhanVienView/>
+    </DataTemplate>
     <DataTemplate DataType="{x:Type viewmodel:SidebarKhachHangViewModel}">
         <view:SidebarKhachHangView/>
     </DataTemplate>
@@ -58,10 +63,12 @@
         <view:SidebarChiTietHoaDonView/>
     </DataTemplate>
 
+    <viewmodel:MainViewModel x:Key="MainVm"/>
     <viewmodel:LoginViewModel x:Key="LoginVm"/>
     <viewmodel:OwnerHomeViewModel x:Key="OwnerHomeVm"/>
     <viewmodel:KhachHangViewModel x:Key="KhachHangVm"/>
     <viewmodel:NhanVienViewModel x:Key="NhanVienVm"/>
+    <viewmodel:AccNhanVienViewModel x:Key="AccNhanVienVm"/>
     <viewmodel:SanPhamViewModel x:Key="SanPhamVm"/>
     <viewmodel:PhieuNhapHangViewModel x:Key="PhieuNhapHangVm"/>
     <viewmodel:ChiTietPhieuNhapHangViewModel x:Key="ChiTietPhieuNhapHangVm"/>
@@ -69,6 +76,7 @@
     <viewmodel:ChiTietHoaDonViewModel x:Key="ChiTietHoaDonVm"/>
     <viewmodel:SidebarKhachHangViewModel x:Key="SidebarKhachHangVm"/>
     <viewmodel:SidebarNhanVienViewModel x:Key="SidebarNhanVienVm"/>
+    <viewmodel:SidebarAccNhanVienViewModel x:Key="SidebarAccNhanVienVm"/>
     <viewmodel:SidebarSanPhamViewModel x:Key="SidebarSanPhamVm"/>
     <viewmodel:SidebarPhieuNhapHangViewModel x:Key="SidebarPhieuNhapHangVm"/>
     <viewmodel:SidebarChiTietPhieuNhapHangViewModel x:Key="SidebarChiTietPhieuNhapHangVm"/>

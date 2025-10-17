@@ -24,6 +24,7 @@ namespace GoonRunner.Utils
         {
             Home,
             NhanVien,
+            AccNhanVien,
             KhachHang,
             SanPham,
             HoaDon,
@@ -60,7 +61,8 @@ namespace GoonRunner.Utils
                     [Roles.Admin] = new[]
                     {
                         Permission.Home, 
-                        Permission.NhanVien, 
+                        Permission.NhanVien,
+                        Permission.AccNhanVien,
                         Permission.KhachHang, 
                         Permission.KhuyenMai
                     },
@@ -101,7 +103,7 @@ namespace GoonRunner.Utils
                     [Roles.ChuCuaHang] = new[]
                     {
                         Permission.Home,
-                        Permission.NhanVien, 
+                        Permission.NhanVien,
                         Permission.SanPham
                     }
                 };

@@ -1,7 +1,4 @@
-﻿using System.Data.SqlClient;
-using System.Windows;
-
-namespace GoonRunner
+﻿namespace GoonRunner
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -12,6 +9,6 @@ namespace GoonRunner
         {
             InitializeComponent();
         }
-        
+
     }
 }

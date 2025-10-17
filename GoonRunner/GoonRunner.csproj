@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -39,16 +40,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="JetBrains.Annotations, Version=4242.42.42.42, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
-      <HintPath>..\packages\JetBrains.Annotations.2024.3.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+      <HintPath>packages\JetBrains.Annotations.2025.2.2\lib\net20\JetBrains.Annotations.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Xaml.Behaviors.Wpf.1.1.135\lib\net462\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -56,9 +57,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
-    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
@@ -67,10 +65,10 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Wpf.Ui, Version=4.0.0.0, Culture=neutral, PublicKeyToken=11f9f5cc97b3ffd6, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPF-UI.4.0.2\lib\net472\Wpf.Ui.dll</HintPath>
+      <HintPath>packages\WPF-UI.4.0.3\lib\net472\Wpf.Ui.dll</HintPath>
     </Reference>
     <Reference Include="Wpf.Ui.Abstractions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=11f9f5cc97b3ffd6, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPF-UI.Abstractions.4.0.2\lib\net472\Wpf.Ui.Abstractions.dll</HintPath>
+      <HintPath>packages\WPF-UI.Abstractions.4.0.3\lib\net472\Wpf.Ui.Abstractions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -85,13 +83,25 @@
     <Compile Include="CustomControl\MenuControl.xaml.cs">
       <DependentUpon>MenuControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\ViewModel\AccNhanVienViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\SidebarAccNhanVienViewModel.cs" />
+    <Compile Include="MVVM\View\AccNhanVienView.xaml.cs">
+      <DependentUpon>AccNhanVienView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\SidebarAccNhanVienView.xaml.cs">
+      <DependentUpon>SidebarAccNhanVienView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\EmployeeRoles.cs" />
-    <Compile Include="Utils\Extensions.cs" />
+    <Compile Include="CustomControl\Extensions.cs" />
     <Compile Include="Utils\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="Utils\Messenger.cs" />
     <Compile Include="Utils\Result.cs" />
     <Page Include="CustomControl\MenuControl.xaml" />
     <Page Include="CustomControl\Textbox.xaml" />
+    <Page Include="MVVM\View\AccNhanVienView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\BaoHanhView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -129,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\View\SanPhamView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\SidebarAccNhanVienView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -431,12 +445,20 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+  <!--<Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see https://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
-  </Target>
+  </Target>-->
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
 </Project>
