@@ -4,6 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -147,7 +148,7 @@ namespace GoonRunner.MVVM.ViewModel
                     return;
                 }
 
-                var accnhanvien = new ACCNHANVIEN() { MaNV = MaNV, DisplayName = DisplayName, UserName = Username, Pass = Password, Quyen = ChucVu };
+                var accnhanvien = new ACCNHANVIEN() { MaNV = MaNV, DisplayName = DisplayName, UserName = Username, Pass = MD5Hash(Password), Quyen = ChucVu };
                 DataProvider.Ins.goonRunnerDB.ACCNHANVIENs.Add(accnhanvien);
                 DataProvider.Ins.goonRunnerDB.SaveChanges();
                 DanhSachAccNhanVien.Add(accnhanvien);
@@ -340,6 +341,18 @@ namespace GoonRunner.MVVM.ViewModel
             Password = string.Empty;
             ConfirmPassword = string.Empty;
             SelectedRole = "Nhân viên bán hàng";
+        }
+        private static string MD5Hash(string input)
+        {
+            var hash = new StringBuilder();
+            var md5Provider = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            var bytes = md5Provider.ComputeHash(new UTF8Encoding().GetBytes(input));
+
+            foreach (var t in bytes)
+            {
+                hash.Append(t.ToString("x2"));
+            }
+            return hash.ToString();
         }
     }
 }
