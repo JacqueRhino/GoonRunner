@@ -165,7 +165,7 @@ namespace GoonRunner.MVVM.ViewModel
 
         private static Result<UserAccountDTO,string> CheckAccount(string username, string password)
         {
-            var encodedPass = MD5Hash(password);
+            var encodedPass = EncryptPassword.MD5Hash(password);
 
             using (var context = new GoonRunnerEntities())
             {
@@ -200,18 +200,6 @@ namespace GoonRunner.MVVM.ViewModel
                 }
             }
         }
-        
-        private static string MD5Hash(string input)
-        {
-            var hash = new StringBuilder();
-            var md5Provider = new System.Security.Cryptography.MD5CryptoServiceProvider();
-            var bytes = md5Provider.ComputeHash(new UTF8Encoding().GetBytes(input));
-
-            foreach (var t in bytes)
-            {
-                hash.Append(t.ToString("x2"));
-            }
-            return hash.ToString();
-        }
+      
     }
 }
