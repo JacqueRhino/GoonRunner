@@ -148,7 +148,7 @@ namespace GoonRunner.MVVM.ViewModel
                     return;
                 }
 
-                var accnhanvien = new ACCNHANVIEN() { MaNV = MaNV, DisplayName = DisplayName, UserName = Username, Pass = MD5Hash(Password), Quyen = ChucVu };
+                var accnhanvien = new ACCNHANVIEN() { MaNV = MaNV, DisplayName = DisplayName, UserName = Username, Pass = EncryptPassword.MD5Hash(Password), Quyen = ChucVu };
                 DataProvider.Ins.goonRunnerDB.ACCNHANVIENs.Add(accnhanvien);
                 DataProvider.Ins.goonRunnerDB.SaveChanges();
                 DanhSachAccNhanVien.Add(accnhanvien);

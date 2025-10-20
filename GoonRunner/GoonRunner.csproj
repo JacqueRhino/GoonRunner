@@ -93,6 +93,7 @@
     </Compile>
     <Compile Include="Utils\EmployeeRoles.cs" />
     <Compile Include="CustomControl\Extensions.cs" />
+    <Compile Include="Utils\EncryptPassword.cs" />
     <Compile Include="Utils\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="Utils\Messenger.cs" />
     <Compile Include="Utils\Result.cs" />
